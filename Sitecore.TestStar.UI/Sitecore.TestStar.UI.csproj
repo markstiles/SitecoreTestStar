@@ -93,7 +93,9 @@
       <DependentUpon>WebTest.ascx.cs</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Packages\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore modules\css\style.css" />
     <Content Include="sitecore modules\images\shrug.jpg" />
@@ -131,7 +133,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>start xcopy  /S /Y "$(ProjectDir)Config\*" "$(SolutionDir)Website\App_Config\Include\"
+    <PostBuildEvent>start xcopy  /S /Y "$(ProjectDir)AppConfig\*" "$(SolutionDir)Website\App_Config\Include\"
 start xcopy /S /Y "$(ProjectDir)\packages\Sitecore.TestStar-package.zip" "$(SolutionDir)\data\packages\Sitecore.TestStar-package.zip"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\sublayouts\*.ascx" "$(SolutionDir)\Website\sitecore modules\web\teststar\sublayouts"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\layouts\*.aspx" "$(SolutionDir)\Website\sitecore modules\web\teststar\layouts"
