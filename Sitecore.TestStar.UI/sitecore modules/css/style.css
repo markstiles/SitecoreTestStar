@@ -1,0 +1,94 @@
+﻿.clearfix:after {content: "."; display: block; clear: both;	visibility: hidden;	line-height: 0;	height: 0;}
+.clearfix {	display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+body { color:#555; font-family:helvetica; position:relative; margin:0px; padding:0px; }
+.wrapper { max-width:1110px; margin:0px auto;}
+
+.logo { margin: 10px 0 20px; }
+	.logo img { display:inline-block; vertical-align:middle; margin-right:10px;}
+	.logoTitle { display: inline-block; vertical-align:middle; font-size:36px; font-weight:bold; }
+	.logoTitle span { display:block; font-size:12px; font-weight:normal; }
+nav { min-height:23px; }
+	nav ul { margin:0px; padding:0px; list-style-type:none; }
+	nav li { display: inline-block; }
+	nav a { font-size:12px; border:1px solid #ccc; color:#fff; background-color:#ccc; border-radius:5px; text-decoration:none; padding:2px 5px;}
+		nav a.active,
+		nav a:hover { background-color: #0ad; }
+h1 { font-size:22px; }
+h2 { font-size:17px; }
+h3 { font-size:14px; }
+.log { margin-bottom:10px; color:#0ad; font-size:12px; }
+.error { margin-bottom:10px; color:#f00; font-size:12px; }
+.generate .formRow .submit { display:inline-block;}
+.generate .formRow .bordered { height: auto; padding:7px 7px 3px; }
+.TestForm { margin-bottom:10px; }
+.bordered { margin-bottom:3px; border:1px solid #ccc; border-radius:5px; padding:0 3px; display:inline-block; }
+.formRow { }
+	label.title { font-weight:bold; font-size:12px; margin-bottom:3px; display:block; }
+	.formRow table label { display:inline-block; vertical-align:middle; font-size: 12px; }
+		.formRow table label .systemName { display:block; font-size:10px; }
+	.subtext { font-size:11px; margin-bottom:5px; }
+	.formRow table input { display: inline-block; vertical-align:middle; }
+	.checkboxlist tr { display:inline-block; }
+.formRow select { }
+	.formRow .submit,
+	.popup .submit { display:block; border-radius:5px; background-color:#ccc; color:#fff; border:1px solid #ccc; margin-bottom:5px;}
+	.formRow .submit:hover,
+	.popup .submit:hover { background-color:#0ad; cursor:pointer; }
+		.formRow .submit.disabled {color:#ccc; background-color:#fff; }
+.cblSites { max-height:300px; overflow:auto; display:block; }
+	.cblSites tr { width:290px; }
+	.formRow table.cblSites label { text-transform: uppercase; vertical-align: top; }
+	.formRow table.cblSites input { vertical-align: top; }
+.resultSet { max-height:300px; overflow:auto; margin-bottom:20px; border:1px solid #ccc; border-radius:5px; padding:3px; margin-bottom:3px; }
+.result { padding:6px; line-height:12px; }
+	.result.even { background-color:#fff; }
+	.result.odd { background-color:#eee; border-radius:3px; }
+.rSite { font-size:12px; text-transform:uppercase; }
+.rMethod { font-size:10px; display:inline-block; }
+.rResult { font-size:10px; display:inline-block; font-weight:bold; }
+
+.cover { background-color:#000; opacity:.5; position:absolute; height:100%; width:100%; z-index:2; top:0px; display:none; }
+.popup { display: none; position:absolute; z-index:3; left:0px; right:0px; text-align:center; top:150px; }
+	.popupInner { border-radius:5px; border-color:#ccc; border:1px solid #ccc; padding:10px 15px; background-color:#fff; display:inline-block; text-align:left; }
+		.popup .submit { margin-top:5px; display:inline-block; }
+
+.sitePropAdd .submit,
+.siteEnvAdd .submit { margin-top:10px; }
+.attValues { }
+	.attValues span,
+	.attValues .att { font-size:11px; margin-right:5px; }
+	.attEditLnk { margin-right: 5px; }
+	.attEditLnk,
+	.attRemoveLnk { color:#0ad; font-size:10px; text-decoration:underline; cursor:pointer; }
+	.attEditLnk:hover,
+	.attRemoveLnk:hover { text-decoration: none; }
+
+/*default page*/
+.shrug { text-align:center; }
+
+/*test page vertical design*/
+.formRow { display: inline-block; vertical-align: top; }
+.checkboxlist tr { display:table-row; }
+.cblSites { max-height: 600px; width: 315px; }
+.bordered { height: 600px; }
+.resultSet { max-height:569px; width:420px; }
+.rSite { white-space: nowrap; }
+
+/*manager page style*/
+.manager .bordered { padding: 8px; height:auto; }
+.manager .formRow.vertical { display:block; margin-bottom:10px;}
+.manager .formRow .submit { display:inline-block; margin-top:10px; }
+
+/*unit test page style*/
+.UnitTestForm .resultSet { max-height:550px; }
+	.odd.pass { background-color: #d4fce0; }
+    .even.pass { background-color: #effcf3; }
+    .odd.fail { background-color: #f1baba; }
+    .even.fail { background-color: #f1cfcf; }
+    .odd.err { background-color: #ffe0af; }
+    .even.err { background-color: #ffeed4; }
+    .odd.skip { background-color: #afbeff; }
+    .even.skip { background-color: #cdd6ff; }
