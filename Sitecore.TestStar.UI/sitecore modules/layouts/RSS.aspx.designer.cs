@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.UI.layouts {
+namespace Sitecore.TestStar.Core.UI.layouts {
     
     
     public partial class RSS {

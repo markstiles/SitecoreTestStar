@@ -13,7 +13,6 @@ using NUnit.Core.Filters;
 using NUnit.Framework;
 using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
-using Sitecore.TestStar.WebTests.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Extensions;
 using System.Text;
@@ -23,9 +22,9 @@ using Sitecore.TestStar.Core.Managers;
 using System.IO;
 using System.Net;
 
-namespace Sitecore.TestStar.UI.sublayouts {
+namespace Sitecore.TestStar.Core.UI.sublayouts {
 	[RequiresSTA]
-	public partial class WebTest : System.Web.UI.UserControl, IWebTestHandler {
+	public partial class WebTestPage : System.Web.UI.UserControl, IWebTestHandler {
 
 		#region Properties
 
@@ -53,11 +52,11 @@ namespace Sitecore.TestStar.UI.sublayouts {
 			}
 		}
 
-		private Dictionary<int, TestEnvironment> _Environments;
-		protected Dictionary<int, TestEnvironment> Environments {
+		private Dictionary<string, TestEnvironment> _Environments;
+		protected Dictionary<string, TestEnvironment> Environments {
 			get {
 				if (_Environments == null)
-					_Environments = new Dictionary<int, TestEnvironment>();
+					_Environments = new Dictionary<string, TestEnvironment>();
 				return _Environments;
 			}
 			set {
@@ -65,11 +64,11 @@ namespace Sitecore.TestStar.UI.sublayouts {
 			}
 		}
 
-		private Dictionary<int, TestSystem> _Systems;
-		protected Dictionary<int, TestSystem> Systems {
+		private Dictionary<string, TestSystem> _Systems;
+		protected Dictionary<string, TestSystem> Systems {
 			get {
 				if (_Systems == null)
-					_Systems = new Dictionary<int, TestSystem>();
+					_Systems = new Dictionary<string, TestSystem>();
 				return _Systems;
 			}
 			set {
@@ -77,11 +76,11 @@ namespace Sitecore.TestStar.UI.sublayouts {
 			}
 		}
 
-		private Dictionary<int, TestSite> _Sites;
-		protected Dictionary<int, TestSite> Sites {
+		private Dictionary<string, TestSite> _Sites;
+		protected Dictionary<string, TestSite> Sites {
 			get {
 				if (_Sites == null)
-					_Sites = new Dictionary<int, TestSite>();
+					_Sites = new Dictionary<string, TestSite>();
 				return _Sites;
 			}
 			set {
@@ -129,22 +128,22 @@ namespace Sitecore.TestStar.UI.sublayouts {
 					ListItem li = new ListItem(TestUtility.GetClassName(kvp.Value.ClassName), kvp.Value.TestName.FullName);
 					cblTests.Items.Add(li);
 				}
-				foreach (KeyValuePair<int, TestEnvironment> ekvp in Environments) {
+				foreach (KeyValuePair<string, TestEnvironment> ekvp in Environments) {
 					ListItem li = new ListItem(ekvp.Value.Name, ekvp.Key.ToString());
 					cblEnv.Items.Add(li);
 				}
-				foreach (KeyValuePair<int,TestSystem> sykvp in Systems) {
+				foreach (KeyValuePair<string, TestSystem> sykvp in Systems) {
 					ListItem li = new ListItem(sykvp.Value.Name, sykvp.Value.Name);
 					cblSystems.Items.Add(li);
 				}
-				foreach (KeyValuePair<int, TestSite> skvp in Sites) {
+				foreach (KeyValuePair<string, TestSite> skvp in Sites) {
 					ListItem li = new ListItem(string.Format("{1}<span class='systemName'>{0}</span>", Systems[skvp.Value.SystemID].Name, skvp.Value.Name), skvp.Key.ToString());
 					li.Attributes.Add("class", Systems[skvp.Value.SystemID].Name);
 					cblSites.Items.Add(li);
 				}
 			} else {
 				foreach (ListItem li in cblSites.Items) { //css classes get lost on postback
-					li.Attributes.Add("class", Systems[Sites[int.Parse(li.Value)].SystemID].Name);
+					li.Attributes.Add("class", Systems[Sites[li.Value].SystemID].Name);
 				}
 			}
 		}
@@ -156,8 +155,8 @@ namespace Sitecore.TestStar.UI.sublayouts {
 
 			WebTestManager manager = new WebTestManager(this);
 			
-			IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[int.Parse(li.Value)];
-			IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[int.Parse(li.Value)];
+			IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
+			IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
 	
 			foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
 				TestFixture tf = Fixtures[li.Value];
@@ -175,8 +174,8 @@ namespace Sitecore.TestStar.UI.sublayouts {
 				return;
 			}
 
-			IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[int.Parse(li.Value)];
-			IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[int.Parse(li.Value)];
+			IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
+			IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
 			
 			StringBuilder sb = new StringBuilder();
 			sb.Append("@echo off").AppendLine();
@@ -212,7 +211,7 @@ namespace Sitecore.TestStar.UI.sublayouts {
 			sb.AppendLine().AppendLine("pause");
 
 			//write file
-			string filePath = string.Format(@"{0}/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
+			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}

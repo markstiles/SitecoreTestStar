@@ -15,8 +15,8 @@ using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sitecore.TestStar.UI.sublayouts {
-	public partial class UnitTest : UserControl, IUnitTestHandler {
+namespace Sitecore.TestStar.Core.UI.sublayouts {
+	public partial class UnitTestPage : UserControl, IUnitTestHandler {
 
 		#region Properties
 
@@ -116,7 +116,7 @@ namespace Sitecore.TestStar.UI.sublayouts {
 			sb.AppendLine().AppendLine("pause");
 
 			//write file
-			string filePath = string.Format(@"{0}/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
+			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}

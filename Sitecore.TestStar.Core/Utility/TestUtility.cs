@@ -18,13 +18,6 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		/// <summary>
-		/// gets the path to the json file
-		/// </summary>
-		public static string GetDataPath(string fileName) {
-			return string.Format(@"\data\{0}.js", fileName);
-		}
-
-		/// <summary>
 		/// gets the class name from the fully qualified class path
 		/// </summary>
 		public static string GetClassName(string classPath) {

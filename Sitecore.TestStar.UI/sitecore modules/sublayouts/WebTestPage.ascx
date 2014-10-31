@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
-    CodeBehind="WebTest.ascx.cs" 
-    Inherits="Sitecore.TestStar.UI.WebTest" %>
+    CodeBehind="WebTestPage.ascx.cs" 
+    Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
  
-<asp:ScriptManager ID="ScriptManager1" runat="server" />
+<asp:ScriptManager runat="server"></asp:ScriptManager>
 <h1>Web Testing</h1>
 <div class="log">
     <asp:Literal ID="ltlLog" runat="server"></asp:Literal>

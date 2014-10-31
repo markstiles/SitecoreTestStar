@@ -10,8 +10,8 @@ using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sitecore.TestStar.UI.sublayouts {
-	public partial class TestResult : UserControl {
+namespace Sitecore.TestStar.Core.UI.sublayouts {
+	public partial class TestResultPage : UserControl {
 
 		#region Events
 

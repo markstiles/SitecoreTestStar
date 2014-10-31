@@ -10,15 +10,25 @@ namespace Sitecore.TestStar.Core.Entities {
 		
 		#region Properties
 
-		public int ID = -1;
+		public string ID = string.Empty;
 		public string Name = string.Empty;
 		public string Domain = string.Empty;
-		public int SystemID = -1;
+		public string SystemID = string.Empty;
 		public bool Disabled = false;
 
 		public Dictionary<string, object> Properties;
 		public IEnumerable<TestEnvironment> Environments;
-		
+
+		public TestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<TestEnvironment> environments) {
+			ID = id;
+			Name = name;
+			Domain = domain;
+			SystemID = systemID;
+			Disabled = disabled;
+			Properties = properties;
+			Environments = environments;
+		}
+
 		#endregion Properties
 
 		/// <summary>

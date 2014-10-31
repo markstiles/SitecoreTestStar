@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SiteProvider {
 
 		public static IEnumerable<TestSite> GetSites() {
-			IEnumerable<TestSite> sites = JsonSerializer.GetObject<List<TestSite>>(filePath);
-			if (sites == null)
-				throw new NullReferenceException("Sitecore.TestStar.Core.SystemProvider.GetSites: Check the file path specified exists and that it's not malformed json.");
+			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
+			if (folder == null)
+				throw new NullReferenceException(Cons.Exceptions.EnvFoldNull);
+			IEnumerable<TestSite> sites = from Item i in folder.GetChildren()
+										  select Factory.GetTestSite(i);
 			return sites;
 		}
 

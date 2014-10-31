@@ -40,10 +40,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>bin\Microsoft.mshtml.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.core, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\nunit.core.dll</HintPath>
@@ -68,7 +64,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\pnunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\..\..\testsite-sc-7.1\Website\bin\Sitecore.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -86,6 +86,7 @@
     <Compile Include="Entities\TestEnvironment.cs" />
     <Compile Include="Entities\TestSite.cs" />
     <Compile Include="Entities\TestSystem.cs" />
+    <Compile Include="Extensions\SitecoreExtensions.cs" />
     <Compile Include="Extensions\TestExtensions.cs" />
     <Compile Include="Managers\IUnitTestHandler.cs" />
     <Compile Include="Managers\IWebTestHandler.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Providers\SystemProvider.cs" />
     <Compile Include="Tests\BaseWebTest.cs" />
     <Compile Include="Utility\Constants.cs" />
+    <Compile Include="Utility\Factory.cs" />
+    <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
   </ItemGroup>
   <ItemGroup>

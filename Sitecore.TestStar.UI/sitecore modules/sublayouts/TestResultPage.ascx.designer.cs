@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.UI {
+namespace Sitecore.TestStar.Core.UI.sublayouts {
     
     
-    public partial class RSS {
+    public partial class TestResultPage {
     }
 }

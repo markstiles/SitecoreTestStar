@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class EnvironmentProvider {
 
 		public static IEnumerable<TestEnvironment> GetEnvironments() {
-			IEnumerable<TestEnvironment> environments = JsonSerializer.GetObject<List<TestEnvironment>>(filePath);
-			if (environments == null)
-				throw new NullReferenceException(
-					string.Format("Sitecore.TestStar.Core.EnvironmentProvider.GetEnvironments: Check that the file path [{0}] exists and that it's not malformed json.",
-					filePath
-					)
-				);
+			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
+			if(folder == null)
+				throw new NullReferenceException(Cons.Exceptions.EnvFoldNull);
+			IEnumerable<TestEnvironment> environments = from Item i in folder.GetChildren()
+														select Factory.GetTestEnvironment(i);
 			return environments;
 		}
 	}

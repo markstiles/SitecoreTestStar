@@ -1,5 +1,5 @@
 ﻿<%@ Page language="c#" AutoEventWireup="true" 
-	Inherits="Sitecore.TestStar.UI.layouts.Master" 
+	Inherits="Sitecore.TestStar.Core.UI.layouts.Master" 
 	CodeBehind="Master.aspx.cs" %>
 <%@ Register TagPrefix="sc" Namespace="Sitecore.Web.UI.WebControls" Assembly="Sitecore.Kernel" %>
 

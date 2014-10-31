@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" 
-    CodeBehind="UnitTest.ascx.cs" 
-    Inherits="Sitecore.TestStar.UI.UnitTest" %>
+    CodeBehind="UnitTestPage.ascx.cs" 
+    Inherits="Sitecore.TestStar.Core.UI.sublayouts.UnitTestPage" %>
 
 <h1>Unit Testing</h1>
 <div class="log">

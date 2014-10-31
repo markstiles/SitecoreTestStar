@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Entities {
 	public class TestEnvironment {
 
-		public int ID = -1;
+		public string ID = string.Empty;
 		public string Name = string.Empty;
 		public string DomainPrefix = string.Empty;
 		public string IPAddress = string.Empty;
@@ -15,6 +15,13 @@ namespace Sitecore.TestStar.Core.Entities {
 		#region Constructors
 
 		public TestEnvironment() { }
+
+		public TestEnvironment(string id, string name, string domainPrefix, string ipAddress) {
+			ID = id;
+			Name = name;
+			DomainPrefix = domainPrefix;
+			IPAddress = ipAddress;
+		}
 
 		#endregion Constructors
 

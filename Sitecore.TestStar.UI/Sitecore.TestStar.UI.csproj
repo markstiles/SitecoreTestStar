@@ -39,14 +39,27 @@
     <Reference Include="nunit.framework">
       <HintPath>..\Sitecore.TestStar.Core\bin\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\Sitecore.TestStar.Core\bin\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\Sitecore.TestStar.Core\bin\nunit.util.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\Sitecore.TestStar.Core\bin\pnunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WatiN.Core">
+      <HintPath>..\Sitecore.TestStar.Core\bin\WatiN.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,33 +77,33 @@
     <Compile Include="sitecore modules\layouts\RSS.aspx.designer.cs">
       <DependentUpon>RSS.aspx.cs</DependentUpon>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\Home.ascx.cs">
-      <DependentUpon>Home.ascx</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\HomePage.ascx.cs">
+      <DependentUpon>HomePage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\Home.ascx.designer.cs">
-      <DependentUpon>Home.ascx.cs</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\HomePage.ascx.designer.cs">
+      <DependentUpon>HomePage.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\TestResult.ascx.cs">
-      <DependentUpon>TestResult.ascx</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\TestResultPage.ascx.cs">
+      <DependentUpon>TestResultPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\TestResult.ascx.designer.cs">
-      <DependentUpon>TestResult.ascx.cs</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\TestResultPage.ascx.designer.cs">
+      <DependentUpon>TestResultPage.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\UnitTest.ascx.cs">
-      <DependentUpon>UnitTest.ascx</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\UnitTestPage.ascx.cs">
+      <DependentUpon>UnitTestPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\UnitTest.ascx.designer.cs">
-      <DependentUpon>UnitTest.ascx.cs</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\UnitTestPage.ascx.designer.cs">
+      <DependentUpon>UnitTestPage.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\WebTest.ascx.cs">
-      <DependentUpon>WebTest.ascx</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\WebTestPage.ascx.cs">
+      <DependentUpon>WebTestPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="sitecore modules\sublayouts\WebTest.ascx.designer.cs">
-      <DependentUpon>WebTest.ascx.cs</DependentUpon>
+    <Compile Include="sitecore modules\sublayouts\WebTestPage.ascx.designer.cs">
+      <DependentUpon>WebTestPage.ascx.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -105,16 +118,16 @@
     <Content Include="sitecore modules\layouts\RSS.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="sitecore modules\sublayouts\Home.ascx">
+    <Content Include="sitecore modules\sublayouts\HomePage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="sitecore modules\sublayouts\TestResult.ascx">
+    <Content Include="sitecore modules\sublayouts\TestResultPage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="sitecore modules\sublayouts\UnitTest.ascx">
+    <Content Include="sitecore modules\sublayouts\UnitTestPage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="sitecore modules\sublayouts\WebTest.ascx">
+    <Content Include="sitecore modules\sublayouts\WebTestPage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
   </ItemGroup>
