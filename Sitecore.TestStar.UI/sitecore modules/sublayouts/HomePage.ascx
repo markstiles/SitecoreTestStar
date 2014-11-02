@@ -6,5 +6,5 @@
     <br />
     Sorry No Content.
     <br />
-    <img src="/sitecore modules/teststar/images/shrug.jpg" />
+    <img src="/sitecore modules/web/teststar/images/shrug.jpg" />
 </div>

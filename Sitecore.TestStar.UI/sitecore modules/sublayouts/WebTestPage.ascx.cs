@@ -21,6 +21,7 @@ using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Managers;
 using System.IO;
 using System.Net;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	[RequiresSTA]
@@ -100,7 +101,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			//setup for testing
 			CoreExtensions.Host.InitializeService();
 			//get the test suite
-			TestSuite suite = TestUtility.GetTestSuite(Constants.DefaultWebTestAssembly);
+			TestSuite suite = TestUtility.GetTestSuite(Cons.DefaultWebTestAssembly);
 			
 			//get dictionaries for forms and querying
 			foreach (TestMethod tm in suite.GetMethods())
@@ -179,7 +180,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			
 			StringBuilder sb = new StringBuilder();
 			sb.Append("@echo off").AppendLine();
-			sb.AppendFormat(@"set TestLauncherPath=%0\..\..\bin\{0}.exe", Constants.DefaultTestLauncher).AppendLine().AppendLine();
+			sb.AppendFormat(@"set TestLauncherPath=%0\..\..\bin\{0}.exe", Cons.DefaultTestLauncher).AppendLine().AppendLine();
 			sb.AppendLine("@echo on");
 			
 			foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
@@ -187,7 +188,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 				if(tf == null)
 					continue;
 				//define exe, assembly and test
-				sb.AppendFormat("\"%TestLauncherPath%\" \"-w\" \"{0}\" \"{1}\"", Constants.DefaultWebTestAssembly, TestUtility.GetClassName(tf.ClassName));
+				sb.AppendFormat("\"%TestLauncherPath%\" \"-w\" \"{0}\" \"{1}\"", Cons.DefaultWebTestAssembly, TestUtility.GetClassName(tf.ClassName));
 				StringBuilder envStr = new StringBuilder();
 				foreach (TestEnvironment te in envs) {
 					if (envStr.Length > 0)
@@ -211,7 +212,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			sb.AppendLine().AppendLine("pause");
 
 			//write file
-			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
+			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Cons.ApplicationRoot, scriptName);
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}

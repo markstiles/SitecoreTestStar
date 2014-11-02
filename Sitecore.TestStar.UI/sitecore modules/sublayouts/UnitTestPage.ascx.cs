@@ -14,6 +14,8 @@ using System.Text;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.IO;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Providers;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class UnitTestPage : UserControl, IUnitTestHandler {
@@ -43,7 +45,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			// Initialise NUnit
 			CoreExtensions.Host.InitializeService();
 			// Find tests in current assembly
-			suite = TestUtility.GetTestSuite(Constants.DefaultUnitTestAssembly);
+			suite = TestUtility.GetTestSuite(AssemblyProvider.GetUnitTestAssemblies().First());// Cons.DefaultUnitTestAssembly);
 
 			//get dictionaries for forms and querying
 			foreach (TestFixture tf in suite.GetFixtures())
@@ -101,7 +103,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 			StringBuilder sb = new StringBuilder();
 			sb.Append("@echo off").AppendLine();
-			sb.AppendFormat(@"set TestLauncherPath=%0\..\..\bin\{0}.exe", Constants.DefaultTestLauncher).AppendLine().AppendLine();
+			sb.AppendFormat(@"set TestLauncherPath=%0\..\..\bin\{0}.exe", Cons.DefaultTestLauncher).AppendLine().AppendLine();
 			sb.AppendLine("@echo on");
 
 			StringBuilder cats = new StringBuilder();
@@ -112,11 +114,11 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			}
 
 			//define exe, assembly, categories and name(blank)
-			sb.AppendFormat("\"%TestLauncherPath%\" \"-u\" \"{0}\" \"{1}\" \"\"", Constants.DefaultUnitTestAssembly, cats.ToString());
+			//sb.AppendFormat("\"%TestLauncherPath%\" \"-u\" \"{0}\" \"{1}\" \"\"", Cons.DefaultUnitTestAssembly, cats.ToString());
 			sb.AppendLine().AppendLine("pause");
 
 			//write file
-			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Constants.ApplicationRoot, scriptName);
+			string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Cons.ApplicationRoot, scriptName);
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}

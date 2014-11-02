@@ -49,12 +49,6 @@ namespace Sitecore.TestStar.Core.Utility {
 			}
 		}
 
-		public static string DefaultUnitTestAssembly {
-			get {
-				return Sitecore.Configuration.Settings.GetSetting("TestStar.DefaultUnitTestAssembly");
-			}
-		}
-
 		public static string DefaultTestLauncher {
 			get {
 				return Sitecore.Configuration.Settings.GetSetting("TestStar.DefaultTestLauncher");
@@ -79,15 +73,19 @@ namespace Sitecore.TestStar.Core.Utility {
 		public static readonly string SiteFolder = "{6B336815-7E53-454A-817E-FA52E4D6F33E}";
 		public static readonly string SystemFolder = "{6BCA3016-6B6F-4D95-BC73-6351CB8A5EA4}";
 		public static readonly string ResultsFolder = "{2789CBEA-390F-4EB3-8FE0-1752A800E720}";
+		public static readonly string UnitAssemblies = "{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}";
+		public static readonly string WebAssemblies = "{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}";
 
 		#endregion Item IDs
 
 		#region Exception Messages
 
 		public static class Exceptions {
-			public static readonly string EnvFoldNull = "Sitecore.TestStar.Core.EnvironmentProvider.GetEnvironments: Check that the environment folder exists in the content tree.";
-			public static readonly string SiteFoldNull = "Sitecore.TestStar.Core.SystemProvider.GetSites: Check that the site folder exists in the content tree.";
-			public static readonly string SysFoldNull = "Sitecore.TestStar.Core.SystemProvider.GetSystems: Check that the system folder exists in the content tree.";
+			public static readonly string EnvFoldNull = "Sitecore.TestStar.Core.EnvironmentProvider.GetEnvironments: Check that the Environments folder exists in the content tree.";
+			public static readonly string SiteFoldNull = "Sitecore.TestStar.Core.SiteProvider.GetSites: Check that the Sites folder exists in the content tree.";
+			public static readonly string SysFoldNull = "Sitecore.TestStar.Core.SystemProvider.GetSystems: Check that the Systems folder exists in the content tree.";
+			public static readonly string UnitFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
+			public static readonly string WebFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
 		}
 		
 		#endregion Exception Messages

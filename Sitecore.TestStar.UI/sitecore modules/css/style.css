@@ -7,7 +7,7 @@ body { color:#555; font-family:helvetica; position:relative; margin:0px; padding
 .wrapper { max-width:1110px; margin:0px auto;}
 
 .logo { margin: 10px 0 20px; }
-	.logo img { display:inline-block; vertical-align:middle; margin-right:10px;}
+	.logo a { display:inline-block; vertical-align:middle; margin-right:10px;}
 	.logoTitle { display: inline-block; vertical-align:middle; font-size:36px; font-weight:bold; }
 	.logoTitle span { display:block; font-size:12px; font-weight:normal; }
 nav { min-height:23px; }

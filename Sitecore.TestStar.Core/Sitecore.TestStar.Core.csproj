@@ -93,6 +93,7 @@
     <Compile Include="Managers\UnitTestManager.cs" />
     <Compile Include="Managers\WebTestManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\AssemblyProvider.cs" />
     <Compile Include="Providers\EnvironmentProvider.cs" />
     <Compile Include="Providers\SiteProvider.cs" />
     <Compile Include="Providers\SystemProvider.cs" />

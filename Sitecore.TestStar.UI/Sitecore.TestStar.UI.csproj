@@ -48,6 +48,10 @@
     <Reference Include="pnunit.framework">
       <HintPath>..\Sitecore.TestStar.Core\bin\pnunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\testsite-sc-7.1\Website\bin\Sitecore.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />

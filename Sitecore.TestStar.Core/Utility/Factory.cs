@@ -43,5 +43,10 @@ namespace Sitecore.TestStar.Core.Utility {
 		public static TestSystem GetTestSystem(Item i) {
 			return new TestSystem(i.ID.ToString(), i.DisplayName);
 		}
+
+		public static string GetTestAssembly(Item i) {
+			Field f = i.Fields["AssemblyName"];
+			return (f == null) ? string.Empty : f.Value;
+		}
 	}
 }
