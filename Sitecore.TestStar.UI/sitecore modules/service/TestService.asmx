@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" Class="Sitecore.TestStar.WebService.TestService" %>

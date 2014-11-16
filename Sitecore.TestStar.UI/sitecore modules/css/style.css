@@ -27,10 +27,10 @@ h3 { font-size:14px; }
 .bordered { margin-bottom:3px; border:1px solid #ccc; border-radius:5px; padding:0 3px; display:inline-block; }
 .formRow { }
 	label.title { font-weight:bold; font-size:12px; margin-bottom:3px; display:block; }
-	.formRow table label { display:inline-block; vertical-align:middle; font-size: 12px; }
-		.formRow table label .systemName { display:block; font-size:10px; }
+	.formRow .row label { display:inline-block; vertical-align:middle; font-size: 12px; }
+		.formRow .row label .systemName { display:block; font-size:10px; }
 	.subtext { font-size:11px; margin-bottom:5px; }
-	.formRow table input { display: inline-block; vertical-align:middle; }
+	.formRow .row input { display: inline-block; vertical-align:middle; }
 	.checkboxlist tr { display:inline-block; }
 .formRow select { }
 	.formRow .submit,

@@ -58,22 +58,22 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Button btnCreateScript;
         
         /// <summary>
-        /// lblCat control.
+        /// rptSuites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCat;
+        protected global::System.Web.UI.WebControls.Repeater rptSuites;
         
         /// <summary>
-        /// cblCategories control.
+        /// hdnTestCats control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblCategories;
+        protected global::System.Web.UI.WebControls.HiddenField hdnTestCats;
         
         /// <summary>
         /// btnSubmitTests control.

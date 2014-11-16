@@ -34,21 +34,33 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			}
 		}
 
-		TestSuite suite = null;
+		private Dictionary<string, TestSuite> _Suites;
+		protected Dictionary<string, TestSuite> Suites {
+			get {
+				if (_Suites == null)
+					_Suites = new Dictionary<string, TestSuite>();
+				return _Suites;
+			}
+			set {
+				_Suites = value;
+			}
+		}
 
 		#endregion Properties
 
 		#region Events
 
 		protected void Page_Load(object sender, EventArgs e) {
-
+			
 			// Initialise NUnit
 			CoreExtensions.Host.InitializeService();
 			// Find tests in current assembly
-			suite = TestUtility.GetTestSuite(AssemblyProvider.GetUnitTestAssemblies().First());// Cons.DefaultUnitTestAssembly);
+			foreach(string a in AssemblyProvider.GetUnitTestAssemblies()){
+				Suites.Add(a, TestUtility.GetTestSuite(a));
+			}
 
 			//get dictionaries for forms and querying
-			foreach (TestFixture tf in suite.GetFixtures())
+			foreach (TestFixture tf in Suites.SelectMany(a => a.Value.GetFixtures()))
 				Fixtures.Add(tf);
 
 			// Initialise controls
@@ -57,38 +69,41 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			ltlLog.Text = string.Empty;
 
 			if (!IsPostBack) {
-				// Display category filters
-				cblCategories.DataSource = suite.GetAllCategories().OrderBy(a => a);
-				cblCategories.DataBind();
+				rptSuites.DataSource = Suites.ToList();
+				rptSuites.DataBind();
 			}
 		}
 
 		protected void btnSubmitTests_Click(object sender, EventArgs e) {
 
 			UnitTestManager manager = new UnitTestManager(this);
-			
-			IEnumerable<ListItem> selectedCats = cblCategories.Items.Cast<ListItem>().Where(a => a.Selected);
-			
-			//build dictionary with any methods with the selected categories
-			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
-			if (selectedCats.Any()) {
-				foreach (ListItem li in selectedCats) {
-					foreach (TestFixture tf in Fixtures) {
-						bool fixtHasCat = (tf.Categories().Any(b => b.Equals(li.Value)));
-						foreach (TestMethod tm in tf.Tests) {
-							//don't add twice and if fixture or the method has the selected category then add
-							if (!sets.ContainsKey(tm.MethodName) && (fixtHasCat || tm.Categories().Any(b => b.Equals(li.Value))))
-								sets.Add(tm.MethodName, tm);
-						}
-					}
-				}
-			} else { // add all
-				sets = suite.GetMethods().ToDictionary(a => a.MethodName);
-			}
 
-			//run all tests found
-			foreach (TestMethod method in sets.Values)
-				manager.RunTest(method);
+			foreach (string s in Request.Params.Keys) {
+				Response.Write(s + "<br/>");
+			}
+			//CheckBoxList cblCategories = (CheckBoxList)e.Item.FindControl("cblCategories");
+
+			//IEnumerable<ListItem> selectedCats = cblCategories.Items.Cast<ListItem>().Where(a => a.Selected);
+			
+			////build dictionary with any methods with the selected categories
+			//Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
+			//if (selectedCats.Any()) {
+			//	foreach (ListItem li in selectedCats) {
+			//		foreach (TestFixture tf in Fixtures.Where(b => b.Categories().Any(c => c.Equals(li.Value)))){
+			//			foreach (TestMethod tm in tf.Tests) {
+			//				//don't add twice and if fixture and make sure each method itself is in the category
+			//				if (!sets.ContainsKey(tm.MethodName) && tm.Categories().Any(b => b.Equals(li.Value)))
+			//					sets.Add(tm.MethodName, tm);
+			//			}
+			//		}
+			//	}
+			//} else { // add all
+			//	sets = Suites.SelectMany(a => a.Value.GetMethods()).ToDictionary(a => a.MethodName);
+			//}
+
+			////run all tests found
+			//foreach (TestMethod method in sets.Values)
+			//	manager.RunTest(method);
 		}
 
 		/// <summary>
@@ -107,11 +122,11 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			sb.AppendLine("@echo on");
 
 			StringBuilder cats = new StringBuilder();
-			foreach (ListItem li in cblCategories.Items.Cast<ListItem>().Where(a => a.Selected)) {
-				if (cats.Length > 0) 
-					cats.Append(",");
-				cats.Append(li.Value);
-			}
+			//foreach (ListItem li in cblCategories.Items.Cast<ListItem>().Where(a => a.Selected)) {
+			//	if (cats.Length > 0) 
+			//		cats.Append(",");
+			//	cats.Append(li.Value);
+			//}
 
 			//define exe, assembly, categories and name(blank)
 			//sb.AppendFormat("\"%TestLauncherPath%\" \"-u\" \"{0}\" \"{1}\" \"\"", Cons.DefaultUnitTestAssembly, cats.ToString());

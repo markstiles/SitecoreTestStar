@@ -11,8 +11,8 @@
     <title>TestStar</title>
     <link href="/sitecore modules/web/teststar/css/style.css" rel="stylesheet" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/sitecore modules/web/teststar/js/manager.js"></script>
 	<script src="/sitecore modules/web/teststar/js/webtests.js"></script>
+	<script src="/sitecore modules/web/teststar/js/unittests.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

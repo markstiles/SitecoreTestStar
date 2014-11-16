@@ -71,6 +71,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,8 +102,12 @@
     <Compile Include="Tests\BaseWebTest.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Factory.cs" />
+    <Compile Include="Utility\JsonSerializer.cs" />
     <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
+    <Compile Include="WebService\TestService.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Interop.SHDocVw.dll" />

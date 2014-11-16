@@ -117,11 +117,12 @@
     <Content Include="sitecore modules\css\style.css" />
     <Content Include="sitecore modules\images\shrug.jpg" />
     <Content Include="sitecore modules\images\teststar.png" />
-    <Content Include="sitecore modules\js\manager.js" />
+    <Content Include="sitecore modules\js\unittests.js" />
     <Content Include="sitecore modules\js\webtests.js" />
     <Content Include="sitecore modules\layouts\RSS.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="sitecore modules\service\TestService.asmx" />
     <Content Include="sitecore modules\sublayouts\HomePage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -157,7 +158,7 @@ start xcopy /S /Y "$(ProjectDir)\sitecore modules\layouts\*.aspx" "$(SolutionDir
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\js\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\js"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\images\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\images"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\css\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\css"
-</PostBuildEvent>
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

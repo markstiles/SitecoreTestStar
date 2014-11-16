@@ -86,6 +86,7 @@ namespace Sitecore.TestStar.Core.Utility {
 			public static readonly string SysFoldNull = "Sitecore.TestStar.Core.SystemProvider.GetSystems: Check that the Systems folder exists in the content tree.";
 			public static readonly string UnitFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
 			public static readonly string WebFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
+			public static readonly string NullJSON = "Sitecore.TestStar.Core.Utility.JsonSerializer.GetObject: The data is empty.";
 		}
 		
 		#endregion Exception Messages

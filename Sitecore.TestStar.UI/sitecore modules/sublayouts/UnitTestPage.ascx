@@ -1,6 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="UnitTestPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.UnitTestPage" %>
+<%@ Import Namespace="NUnit.Core" %>
 
 <h1>Unit Testing</h1>
 <div class="log">
@@ -20,13 +21,24 @@
 </div>
 <div class="UnitTestForm">
     <div class="formRow">
-        <asp:Label ID="lblCat" CssClass="title" AssociatedControlID="cblCategories" Text="Category Filter" runat="server"></asp:Label>
-		<div class="bordered">
-            <asp:CheckBoxList runat="server" ID="cblCategories" />
+		<div class="hdn suites">
+			<asp:Repeater ID="rptSuites" runat="server">
+				<ItemTemplate>
+					<a class="utSuite" href="#" test="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
+						<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
+					</a>
+				</ItemTemplate>
+			</asp:Repeater>
+			<asp:HiddenField ID="hdnTestCats" runat="server" />
+		</div>
+		<div class="bordered utCategories">
+            
         </div>
+		<div class=""
     </div>
 	<div class="formRow">
         <label class="title">Results</label>
+		<input id="utSubmit" class="submit" type="submit" value="Run">
 		<asp:Button runat="server" CssClass="submit" ID="btnSubmitTests" Text="Run" OnClick="btnSubmitTests_Click" />
         <div class="subtext">If no categories are selected the entire suite will run.</div>
         <div class="resultSet bordered">
