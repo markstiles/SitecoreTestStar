@@ -1,31 +1,57 @@
 ﻿$(document).ready(function () {
     
+	var catList;
+
 	$("#utSubmit").click(function (e) {
 		e.preventDefault();
+		catList = [];
 		$(".utCategories input[type='checkbox']").each(function (key, value) {
 			if (!$(this).is(':checked'))
 				return;
-			//run test through web service
-			console.log(value);
+			catList.push($(value).attr("name"));
 		});
+		//run test through web service
+		var data = JSON.stringify({ Categories: catList });
+		CallTestWS("RunUnitTests", data, RunTestSuccess);
 	});
+
+	function RunTestSuccess(data, status) {
+		$(".resultSet").html("");
+		data.d.forEach(function (cat) {
+			var css = (cat.Flag) ? "even" : "odd";
+			var s = "<div class='result " + css + " " + cat.Type + "'>";
+			if (cat.Name != "")
+				s += "<div class='rMethod'>" + cat.Method + " -</div>";
+			var div = (cat.Value.Length > 0) ? ": " : "";
+			s += "<div class='rResult'>" + cat.Name + div + " " + cat.Value + "</div>";
+			s += "</div>";
+
+			$(".resultSet").append(s);
+		});
+	}
 
 	$(".utSuite").click(function (e) {
     	e.preventDefault();
 		var testName = $(this).attr("test");
+		var data = "{ 'TestSuiteName':'" + testName + "'}";
+		CallTestWS("GetCategories", data, GetCatSuccess);
+	});
+
+	function GetCatSuccess(data, status) {
+		data.d.forEach(function (cat) {
+			$(".utCategories").append('<div class="row"><input type="checkbox" id="id' + cat + '" name="' + cat + '" value="' + cat + '"><label for="id' + cat + '">' + cat + '</label></div>');
+		});
+	}
+
+	function CallTestWS(WebServiceMethod, callData, SuccessHandler) {
 		$.ajax({
 			type: "POST",
-			url: "/sitecore modules/Web/teststar/service/testservice.asmx/GetCategories",
-			data: "{ 'TestSuiteName':'" + testName + "'}",
+			url: "/sitecore modules/Web/teststar/service/testservice.asmx/"+ WebServiceMethod,
+			data: callData,
 			contentType: "application/json",
 			dataType: "json",
-			success: function (data, status) {
-				var a = ["a", "b", "c"];
-				data.d.forEach(function (cat) {
-					$(".utCategories").append('<div class="row"><input type="checkbox" name="' + cat + '" value="' + cat + '"><label for="id' + cat + '">' + cat + '</label></div>');
-				});
-			},
+			success: SuccessHandler,
 			error: function (e) { }
 		});
-	});
+	}
 });
