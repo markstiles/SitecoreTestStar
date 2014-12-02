@@ -32,7 +32,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			ltlLog.Text = string.Empty;
 
 			if (!IsPostBack) {
-				rptSuites.DataSource = TestUtility.GetSuites().ToList();
+                rptSuites.DataSource = TestUtility.GetUnitTestSuites();
 				rptSuites.DataBind();
 			}
 		}
@@ -87,5 +87,16 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		}
 
 		#endregion UI Messaging
+
+        protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
+            if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
+
+            KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
+            TestSuite t = TestUtility.GetTestSuite(profile.Key);
+
+            Repeater rptCategories = (Repeater)e.Item.FindControl("rptCategories");
+            rptCategories.DataSource = t.GetAllCategories().OrderBy(a => a);
+            rptCategories.DataBind();
+        }
 	}
 }

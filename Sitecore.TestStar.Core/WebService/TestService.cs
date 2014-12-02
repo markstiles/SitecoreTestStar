@@ -19,13 +19,6 @@ namespace Sitecore.TestStar.WebService {
 	public class TestService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public List<string> GetCategories(string TestSuiteName) {
-			CoreExtensions.Host.InitializeService();
-			TestSuite t = TestUtility.GetTestSuite(TestSuiteName);
-			return t.GetAllCategories().OrderBy(a => a).ToList();
-		}
-
-		[WebMethod]
 		public List<JSONTestResult> RunUnitTests(List<string> Categories) {
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
@@ -35,7 +28,7 @@ namespace Sitecore.TestStar.WebService {
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
 			if (Categories.Any()) {
 				foreach (string s in Categories) {
-					foreach (TestFixture tf in TestUtility.GetFixtures()){
+					foreach (TestFixture tf in TestUtility.GetUnitTestFixtures()){
 						bool fixtHasCat = (tf.Categories().Any(b => b.Equals(s)));
 						foreach (TestMethod tm in tf.Tests) {
 							//don't add twice and if fixture or the method has the selected category then add
@@ -45,7 +38,7 @@ namespace Sitecore.TestStar.WebService {
 					}
 				}
 			} else { // add all
-				sets = TestUtility.GetSuites().SelectMany(a => a.Value.GetMethods()).ToDictionary(a => a.MethodName);
+                sets = TestUtility.GetUnitTestSuites().SelectMany(a => a.Value.GetMethods()).ToDictionary(a => a.MethodName);
 			}
 
 			//run all tests found

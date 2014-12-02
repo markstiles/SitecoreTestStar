@@ -15,6 +15,10 @@ namespace Sitecore.TestStar.Core.Providers {
 			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
 			if (folder == null)
 				throw new NullReferenceException(Cons.Exceptions.SysFoldNull);
+
+            if (!folder.HasChildren)
+                return Enumerable.Empty<TestSystem>();
+
 			IEnumerable<TestSystem> systems = from Item i in folder.GetChildren()
 											  select Factory.GetTestSystem(i);
 			return systems;

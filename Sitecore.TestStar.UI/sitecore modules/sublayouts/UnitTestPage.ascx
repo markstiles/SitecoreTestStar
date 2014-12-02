@@ -21,19 +21,26 @@
 </div>
 <div class="UnitTestForm">
     <div class="row suites">
-		<asp:Repeater ID="rptSuites" runat="server">
+		<asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
-				<a class="utSuite" href="#" test="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
-					<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
-				</a>
+			    <div class="utSuite">
+                	<h3 class="utSuite">
+					    <%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
+				    </h3>
+                    <div class="utCategories">
+                        <asp:Repeater ID="rptCategories" runat="server">
+                            <ItemTemplate>
+                                <div class="row">
+                                    <input type="checkbox" id="id<%# Container.DataItem %>" name="<%# Container.DataItem %>" value="<%# Container.DataItem %>">
+                                    <label for="id<%# Container.DataItem %>"><%# Container.DataItem %></label>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
 			</ItemTemplate>
 		</asp:Repeater>
 	</div>
-	<div class="formRow">
-		<div class="bordered utCategories">
-            
-        </div>
-    </div>
 	<div class="formRow">
         <label class="title">Results</label>
 		<input id="utSubmit" class="submit" type="submit" value="Run">

@@ -30,19 +30,6 @@
 		});
 	}
 
-	$(".utSuite").click(function (e) {
-    	e.preventDefault();
-		var testName = $(this).attr("test");
-		var data = "{ 'TestSuiteName':'" + testName + "'}";
-		CallTestWS("GetCategories", data, GetCatSuccess);
-	});
-
-	function GetCatSuccess(data, status) {
-		data.d.forEach(function (cat) {
-			$(".utCategories").append('<div class="row"><input type="checkbox" id="id' + cat + '" name="' + cat + '" value="' + cat + '"><label for="id' + cat + '">' + cat + '</label></div>');
-		});
-	}
-
 	function CallTestWS(WebServiceMethod, callData, SuccessHandler) {
 		$.ajax({
 			type: "POST",
