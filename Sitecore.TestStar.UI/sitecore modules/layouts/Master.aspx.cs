@@ -21,7 +21,13 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 			string cssClass =  (Sitecore.Context.Item.ID.ToString().Equals(i.ID.ToString())) ? "class='active'" : string.Empty;
 			UrlOptions u = new UrlOptions();
 			u.LanguageEmbedding = LanguageEmbedding.Never;
-			return string.Format("<a href='{0}'{1}>{2}</a>", LinkManager.GetItemUrl(i,u), cssClass, i.DisplayName);
+			string navTitle = i["Nav Title"];
+			string navText = (string.IsNullOrEmpty(navTitle)) ? i.DisplayName : navTitle;
+			return string.Format("<a href='{0}'{1}>{2}</a>", LinkManager.GetItemUrl(i,u), cssClass, navText);
+		}
+
+		protected string GetSpacer(int ItemIndex) {
+			return (ItemIndex == 0) ? string.Empty : "<li class='spacer'></li>";
 		}
 	}
 }

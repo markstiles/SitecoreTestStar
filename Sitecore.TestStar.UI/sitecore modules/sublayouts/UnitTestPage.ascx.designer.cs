@@ -31,6 +31,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Literal ltlError;
         
         /// <summary>
+        /// rptSuites control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSuites;
+        
+        /// <summary>
         /// lblScript control.
         /// </summary>
         /// <remarks>
@@ -56,14 +65,5 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreateScript;
-        
-        /// <summary>
-        /// rptSuites control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSuites;
     }
 }

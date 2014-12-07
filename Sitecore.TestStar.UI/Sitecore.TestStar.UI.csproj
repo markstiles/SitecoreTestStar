@@ -115,8 +115,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore modules\css\style.css" />
-    <Content Include="sitecore modules\images\shrug.jpg" />
-    <Content Include="sitecore modules\images\teststar.png" />
+    <Content Include="sitecore modules\images\bullet.png" />
+    <Content Include="sitecore modules\images\content-frame-bg.png" />
+    <Content Include="sitecore modules\images\content-frame-bot-pre-thick.png" />
+    <Content Include="sitecore modules\images\content-frame-bot-pre-thin.png" />
+    <Content Include="sitecore modules\images\content-frame-bot-pre.png" />
+    <Content Include="sitecore modules\images\content-frame-bot.png" />
+    <Content Include="sitecore modules\images\content-frame-top.png" />
+    <Content Include="sitecore modules\images\h1-pre.png" />
+    <Content Include="sitecore modules\images\header.png" />
+    <Content Include="sitecore modules\images\nav-bg.png" />
+    <Content Include="sitecore modules\images\result-bot.png" />
+    <Content Include="sitecore modules\images\result-pre.png" />
+    <Content Include="sitecore modules\images\result-top.png" />
+    <Content Include="sitecore modules\images\space-1.jpg" />
     <Content Include="sitecore modules\js\unittests.js" />
     <Content Include="sitecore modules\js\webtests.js" />
     <Content Include="sitecore modules\layouts\RSS.aspx">
@@ -138,7 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AppConfig\Sitecore.TestStar.UI.Site.config" />
-    <None Include="sitecore modules\images\teststar.psd" />
+    <None Include="sitecore modules\fonts\DaMadRave.ttf" />
+    <None Include="sitecore modules\fonts\darktech_ldr.ttf" />
+    <None Include="sitecore modules\fonts\Xolonium-Bold.ttf" />
     <Content Include="sitecore modules\layouts\Master.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -155,6 +169,7 @@
 start xcopy /S /Y "$(ProjectDir)\packages\Sitecore.TestStar-package.zip" "$(SolutionDir)\data\packages\Sitecore.TestStar-package.zip"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\sublayouts\*.ascx" "$(SolutionDir)\Website\sitecore modules\web\teststar\sublayouts"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\layouts\*.aspx" "$(SolutionDir)\Website\sitecore modules\web\teststar\layouts"
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\fonts\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\fonts"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\js\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\js"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\images\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\images"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\css\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\css"
