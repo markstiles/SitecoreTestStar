@@ -11,6 +11,7 @@
     <asp:Literal ID="ltlError" runat="server"></asp:Literal>
 </div>
 <div class="UnitTestForm">
+    <div class="subtext corners">If no categories are selected the entire suite will run.</div>
     <div class="utSuiteList">
 		<asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
@@ -28,15 +29,15 @@
                             </ItemTemplate>
                         </asp:Repeater>
                     </div>
-					<input id="utSubmit" class="submit" type="submit" value="Run">
+                    <div class="submit corners">
+					    <input id="utSubmit" type="submit" value="Run">
+                    </div>
                 </div>
 			</ItemTemplate>
 		</asp:Repeater>
 	</div>
-	<div class="utResultWrap corners">
+	<div class="resultWrap">
         <h3>Results</h3>
-		
-		<div class="subtext">If no categories are selected the entire suite will run.</div>
         <div class="resultSet">
             
         </div>

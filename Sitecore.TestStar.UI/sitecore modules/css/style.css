@@ -38,22 +38,41 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .generate .formRow .submit { display:inline-block;}
 .generate .formRow .bordered { height: auto; padding:7px 7px 3px; }
 
-.corners { }
+.corners { position:relative; }
 	.corners:before { content: ''; position: absolute; width: 0;}
 	.corners:after { content: ""; position: absolute; width: 0; }
 
+.subtext { background: white; padding:5px 15px; color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; display:inline-block; }
+    .subtext:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
+	.subtext:after { bottom: 0; right: 0; border-right: 5px solid #333; border-top: 5px solid white; }
+
 .utSuiteList { width:620px; display:inline-block; vertical-align:top; }
-.utSuite { background: white; position: relative; padding:15px; }
+.utSuite { background: white; padding:15px; }
 	.utSuite:before { top: 0; left: 0; border-top: 20px solid #333; border-right: 20px solid white; }
 	.utSuite:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
 .utCategories { margin-left:23px; }
-.utResultWrap { background:url('../images/result-top.png') no-repeat 0 27px; position: relative; display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
-	
+
+.resultWrap { background:url('../images/result-top.png') no-repeat 0 27px; display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
+    .resultWrap h3 { margin-bottom: 36px; }
 .resultSet { max-height:300px; overflow:auto; }
 .result { padding:6px; line-height:12px; }
 	.result.even { background-color:#fff; }
 	.result.odd { background-color:#eee; border-radius:3px; }
-	.result-foot {  }
+	.result-foot { background:url('../images/result-bot.png') no-repeat 0 0px; height:18px; margin-top:10px; }
+
+.submit { background-color: #00aadd; padding:3px 4px; display:inline-block; }
+    .submit:before { top: 0; left: 0; border-top: 10px solid #fff; border-right: 10px solid #00aadd; }
+	.submit:after { bottom: 0; right: 0; border-right: 10px solid #fff; border-top: 10px solid #00aadd; }
+    .submit input { border:0px; background-color:transparent; color:#fff; text-transform:uppercase; font-family:'xolonium'; }
+
+
+
+
+
+
+
+
+
 
 .TestForm { margin-bottom:10px; }
 .bordered { margin-bottom:3px; border:1px solid #ccc; border-radius:5px; padding:0 3px; display:inline-block; }
@@ -61,7 +80,6 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	label.title { font-weight:bold; font-size:12px; margin-bottom:3px; display:block; }
 	.formRow .row label { display:inline-block; vertical-align:middle; font-size: 12px; }
 		.formRow .row label .systemName { display:block; font-size:10px; }
-	.subtext { font-size:11px; margin-bottom:5px; }
 	.formRow .row input { display: inline-block; vertical-align:middle; }
 	.checkboxlist tr { display:inline-block; }
 .formRow select { }
