@@ -4,16 +4,30 @@
 <%@ Import Namespace="NUnit.Core" %>
 
 
-<div class="log">
+<asp:Panel ID="pnlLog" runat="server" CssClass="log corners">
     <asp:Literal ID="ltlLog" runat="server"></asp:Literal>
-</div>
-<div class="error">
+</asp:Panel>
+<div></div>
+<asp:Panel ID="pnlError" runat="server" CssClass="error corners">
     <asp:Literal ID="ltlError" runat="server"></asp:Literal>
+</asp:Panel>
+<div></div>
+<div class="generate corners">
+    <h2>Generate Script</h2>
+    <div class="genFields">
+        <asp:Label ID="lblScript" AssociatedControlID="txtScriptName" Text="Script Name" CssClass="title" runat="server"></asp:Label>
+        <asp:TextBox ID="txtScriptName" runat="server"></asp:TextBox>
+    </div>
+    <div class="submit corners">
+        <asp:Button ID="btnCreateScript" OnClick="btnCreateScript_Click" Text="Generate Script" runat="server" />
+    </div>
 </div>
-<div class="UnitTestForm">
-    <div class="subtext corners">If no categories are selected the entire suite will run.</div>
+<div></div>
+<div class="utForm">
     <div class="utSuiteList">
-		<asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
+        <h3>Unit Test Suites</h3>
+        <div class="subtext corners">If no categories are selected the entire suite will run.</div>
+        <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
 			    <div class="utSuite corners">
                 	<h2>
@@ -42,14 +56,5 @@
             
         </div>
 		<div class="result-foot"></div>
-    </div>
-</div>
-<div class="generate">
-    <div class="formRow">
-        <asp:Label ID="lblScript" AssociatedControlID="txtScriptName" Text="Script Name" CssClass="title" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:TextBox ID="txtScriptName" runat="server"></asp:TextBox>
-            <asp:Button ID="btnCreateScript" CssClass="generateSubmit submit" OnClick="btnCreateScript_Click" Text="Generate Script" runat="server" />
-        </div>
     </div>
 </div>

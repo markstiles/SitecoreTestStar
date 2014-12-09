@@ -19,9 +19,9 @@
 		$(".resultSet").html("");
 		data.d.forEach(function (cat) {
 			var css = (cat.Flag) ? "even" : "odd";
-			var s = "<div class='result " + css + " " + cat.Type + "'>";
+			var s = "<div class='result corners " + css + " " + cat.Type + "'><div class='ind corners'></div>";
 			if (cat.Name != "")
-				s += "<div class='rMethod'>" + cat.Method + " -</div>";
+				s += "<div class='rMethod'>" + cat.Method + "</div>";
 			var div = (cat.Value.Length > 0) ? ": " : "";
 			s += "<div class='rResult'>" + cat.Name + div + " " + cat.Value + "</div>";
 			s += "</div>";

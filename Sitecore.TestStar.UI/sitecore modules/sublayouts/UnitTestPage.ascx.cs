@@ -28,8 +28,10 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			CoreExtensions.Host.InitializeService();
 			
 			// Initialise controls
+            pnlError.Visible = false;
 			ltlError.Text = string.Empty;
-			ltlLog.Text = string.Empty;
+            pnlLog.Visible = false;
+            ltlLog.Text = string.Empty;
 
 			if (!IsPostBack) {
                 rptSuites.DataSource = TestUtility.GetUnitTestSuites();
@@ -79,10 +81,12 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		/// writes message to the log window
 		/// </summary>
 		protected void Log(string name, string value) {
+            pnlLog.Visible = true;
 			ltlLog.Text += string.Format("{0}: {1}<br/>", name, value);
 		}
 
 		protected void LogError(string name, string value) {
+            pnlError.Visible = true;
 			ltlError.Text += string.Format("{0}: {1}<br/>", name, value);
 		}
 

@@ -13,6 +13,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class UnitTestPage {
         
         /// <summary>
+        /// pnlLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLog;
+        
+        /// <summary>
         /// ltlLog control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Literal ltlLog;
         
         /// <summary>
+        /// pnlError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlError;
+        
+        /// <summary>
         /// ltlError control.
         /// </summary>
         /// <remarks>
@@ -29,15 +47,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlError;
-        
-        /// <summary>
-        /// rptSuites control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSuites;
         
         /// <summary>
         /// lblScript control.
@@ -65,5 +74,14 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCreateScript;
+        
+        /// <summary>
+        /// rptSuites control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSuites;
     }
 }
