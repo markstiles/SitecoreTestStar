@@ -11,6 +11,7 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 	public partial class Master : System.Web.UI.Page {
 		protected void Page_Load(object sender, EventArgs e) {
 
+            ltlPageTitle.Text = Sitecore.Context.Item["Page Title"];
 
 			Item h = Sitecore.Context.Database.Items[Sitecore.Context.Site.StartPath];
 			rptNav.DataSource = h.GetChildren().ToList(); ;

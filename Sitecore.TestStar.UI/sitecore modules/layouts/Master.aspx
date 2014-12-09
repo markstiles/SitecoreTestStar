@@ -38,7 +38,7 @@
 			</header>
 			<main>
 				<div class="main-bg"></div>
-				<h1>Unit Testing</h1>
+				<h1><asp:Literal ID="ltlPageTitle" runat="server"></asp:Literal></h1>
 				<div class="mainInner">
 					<sc:Placeholder Key="main" runat="server"></sc:Placeholder>
 				</div>
