@@ -103,12 +103,12 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.CheckBoxList cblSites;
         
         /// <summary>
-        /// cblTests control.
+        /// rptSuites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblTests;
+        protected global::System.Web.UI.WebControls.Repeater rptSuites;
     }
 }

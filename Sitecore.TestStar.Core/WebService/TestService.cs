@@ -47,5 +47,19 @@ namespace Sitecore.TestStar.WebService {
 
 			return wsuth.ResultList;
 		}
+
+        //[WebMethod]
+        //public List<JSONWebTestResult> RunWebTests(string env, string site, string test) {
+        
+            //WebTestManager manager = new WebTestManager(this);
+			
+            //IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
+            //IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
+	
+            //foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
+            //    TestFixture tf = Fixtures[li.Value];
+            //    manager.RunTest(tf, envs, sites);
+            //}
+		//}
 	}
 }

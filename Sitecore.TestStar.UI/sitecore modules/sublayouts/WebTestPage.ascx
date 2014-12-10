@@ -1,7 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="WebTestPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
- 
+ <%@ Import Namespace="NUnit.Core" %>
+
+
 <asp:ScriptManager runat="server"></asp:ScriptManager>
 <asp:Panel ID="pnlLog" runat="server" CssClass="log corners">
     <asp:Literal ID="ltlLog" runat="server"></asp:Literal>
@@ -44,15 +46,26 @@
             </div>    
         </div>
         <div></div>
-        <div class="wtTests whiteBox corners">
-            <h3>Tests</h3>
-            <div class="testInputs">
-                <asp:CheckBoxList ID="cblTests" CssClass="cblTests checkboxlist" runat="server"></asp:CheckBoxList>
-            </div>
-            <div class="submit corners">
-			    <input id="utSubmit" type="submit" value="Run">
-            </div>
-        </div>
+        <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
+			<ItemTemplate>
+                <div class="wtTests whiteBox corners">
+                    <h3><%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %></h3>
+                    <div class="testInputs">
+                        <asp:Repeater ID="rptFixtures" runat="server">
+                            <ItemTemplate>
+                                <div class="row">
+                                    <input type="checkbox" id="id<%# ((ListItem)Container.DataItem).Text %>" name="<%# ((ListItem)Container.DataItem).Text %>" value="<%# ((ListItem)Container.DataItem).Text %>">
+                                    <label for="id<%# ((ListItem)Container.DataItem).Text %>"><%# ((ListItem)Container.DataItem).Value %></label>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <div class="submit corners">
+			            <input id="wtSubmit" type="submit" value="Run">
+                    </div>
+                </div>
+			</ItemTemplate>
+		</asp:Repeater>
     </div>
 	<div class="resultWrap">
         <h2>Results</h2>

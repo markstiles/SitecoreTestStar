@@ -36,15 +36,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 			//setup for testing
 			CoreExtensions.Host.InitializeService();
-			//get the test suite
-			Dictionary<string, TestSuite> wtSuites = TestUtility.GetWebTestSuites();
 			
-			Dictionary<string, TestFixture> Fixtures = new Dictionary<string, TestFixture>();
-            foreach (KeyValuePair<string, TestSuite> kvp in wtSuites) {
-                foreach (TestFixture tf in kvp.Value.GetFixtures())
-                    Fixtures.Add(string.Format("{0}::{1}", kvp.Key, tf.ClassName), tf);
-            }
-
             Dictionary<string, TestEnvironment> Environments = EnvironmentProvider.GetEnvironments().OrderBy(a => a.Name).ToDictionary(a => a.ID);
             Dictionary<string, TestSystem> Systems = SystemProvider.GetSystems().OrderBy(a => a.Name).ToDictionary(a => a.ID);
             Dictionary<string, TestSite> Sites = SiteProvider.GetEnabledSites().OrderBy(a => a.SystemID).ThenBy(a => a.Name).ToDictionary(a => a.ID);
@@ -55,11 +47,10 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
             ltlLog.Text = string.Empty;
 			
 			if (!IsPostBack) { //setup form
-				foreach (KeyValuePair<string, TestFixture> kvp in Fixtures) {
-					ListItem li = new ListItem(TestUtility.GetClassName(kvp.Value.ClassName), kvp.Value.TestName.FullName);
-					cblTests.Items.Add(li);
-				}
-				foreach (KeyValuePair<string, TestEnvironment> ekvp in Environments) {
+                rptSuites.DataSource = TestUtility.GetWebTestSuites();
+                rptSuites.DataBind();
+				
+                foreach (KeyValuePair<string, TestEnvironment> ekvp in Environments) {
 					ListItem li = new ListItem(ekvp.Value.Name, ekvp.Key.ToString());
 					cblEnv.Items.Add(li);
 				}
@@ -149,5 +140,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		}
 
 		#endregion UI Messaging
+
+        protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
+            if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
+
+            KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
+            
+            Repeater rptFixtures = (Repeater)e.Item.FindControl("rptFixtures");
+            rptFixtures.DataSource = from TestFixture t in profile.Value.GetFixtures() select new ListItem(t.ClassName, TestUtility.GetClassName(t.ClassName));
+            rptFixtures.DataBind();
+        }
 	}
 }
