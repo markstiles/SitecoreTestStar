@@ -27,8 +27,8 @@ main { position:relative; }
 .main-bg { background:url('../images/content-frame-bg.png'); bottom: 4px; position: absolute; top: 62px; width: 100%; z-index: -1; }
 	.mainInner { background:url('../images/content-frame-top.png') no-repeat; padding:55px 25px 60px;  }
 h1 { background: url("../images/h1-pre.png") no-repeat; color: #fff; font-family: 'Da Mad Rave'; font-size: 32px; line-height: 32px; padding-left: 89px; }
-h2 { color: #00aadd; font-size:21px; font-family:'xolonium'; margin:0 0 5px; background:url('../images/bullet.png') no-repeat 0px 5px; padding-left: 25px; }
-h3 { color:#fff; background: url("../images/result-pre.png") no-repeat; color: #fff; font-family: 'Da Mad Rave'; font-size: 19px; line-height: 19px;  padding-left: 54px; margin:0 0 20px; }
+h2 { color:#fff; background: url("../images/result-pre.png") no-repeat; color: #fff; font-family: 'Da Mad Rave'; font-size: 19px; line-height: 19px;  padding-left: 54px; margin:0 0 15px; }
+h3 { color: #00aadd; font-size:21px; font-family:'xolonium'; margin:0 0 5px; background:url('../images/bullet.png') no-repeat 0px 5px; padding-left: 25px; }
 footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37px; margin:-30px 0 40px 0; position:relative;}
 .preThin { background:url('../images/content-frame-bot-pre-thin.png') no-repeat; padding-left:44px; line-height:17px; font-family:'Darktech LDR'; font-size:22px; color:#fff; position:absolute; top:4px; right:0px; width:630px; }
 .preThick { background:url('../images/content-frame-bot-pre-thick.png') no-repeat; height:17px; width:41px; position:absolute; left:13px; }
@@ -52,39 +52,36 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	.corners:before { content: ""; position: absolute; width: 0;}
 	.corners:after { content: ""; position: absolute; width: 0; }
 
-.generate { background: #fff; padding:5px 10px; width:590px; margin-bottom:15px; display:inline-block; }
-    .generate:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
-	.generate:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
+.whiteBox { background: white; padding:5px 10px; }
+	.whiteBox:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
+	.whiteBox:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
 
+.generate { width:590px; margin-bottom:15px; display:inline-block; }
     .genFields { margin:0 0 40px 23px; }
 
-.utForm { margin-bottom:15px; }
-.utSuiteList { width:620px; display:inline-block; vertical-align:top; }
+.testForm { margin-bottom:15px; }
+.suiteWrap { width:620px; display:inline-block; vertical-align:top; }
 
-.subtext { background: white; padding:5px 15px; color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; }
-    .subtext:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
-	.subtext:after { bottom: 0; right: 0; border-right: 5px solid #333; border-top: 5px solid white; }
+.subtext { color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; }
 
-.utSuite { background: white; padding:5px 10px; }
-	.utSuite:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
-	.utSuite:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
-.utCategories { margin:0 0 40px 23px; }
+.testInputs { margin:0 0 40px 23px; }
 
-.submit { background-color: #00aadd; padding:7px 9px 0 0px; display:inline-block; position:absolute; right:10px; bottom:10px; cursor:pointer; }
+.submit { background-color: #00aadd; display:inline-block; position:absolute; right:10px; bottom:10px; cursor:pointer; }
     .submit:hover { background-color: #555; }
     .submit:before { top: 0; left: 0; border-top: 10px solid #fff; border-right: 10px solid #00aadd; }
         .submit:hover:before { border-right: 10px solid #555; }
 	.submit:after { bottom: 0; right: 0; border-right: 10px solid #fff; border-top: 10px solid #00aadd; }
         .submit:hover:after { border-top: 10px solid #555; }
-    .submit input { border:0px; background-color:transparent; color:#fff; font-size:16px; padding:0px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
+    .submit input { border:0px; background-color:transparent; color:#fff; font-size:16px; padding:7px 9px 0 0px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
 
-.resultWrap { background:url('../images/result-top.png') no-repeat 0 39px; display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
+.resultWrap { display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
     .resultWrap h3 { margin-bottom: 48px; }
-.resultSet { max-height:600px; overflow:auto; }
+.resultSet { max-height:600px; overflow:auto; margin:10px 0 5px; }
 .result { background-color:#fff; padding:10px; line-height:12px; margin:0 10px 6px 0; }
     .result:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
 	.result:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
-	.result-foot { background:url('../images/result-bot.png') no-repeat 0 0px; height:18px; margin-top:10px; }
+	.result-head { background:url('../images/result-top.png') no-repeat 0 0px; height:18px; }
+    .result-foot { background:url('../images/result-bot.png') no-repeat 0 0px; height:18px; }
 
     .ind { display: inline-block; height: 25px; vertical-align: top; width: 50px; margin:0 5px 5px 0; }
         .ind:before { top: 0; left: 0; border-top: 5px solid #fff; }
@@ -106,3 +103,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
     .rMethod { font-size:14px; display:inline-block; line-height:25px; }
     .rResult { font-size:10px; display:inline-block; font-weight:bold; }
 
+.wtEnvs { width:200px; display:inline-block; margin-right:10px; }
+.wtSystems { width:160px; display:inline-block; margin-right:10px; }
+.wtSites { width:170px; display:inline-block; }
+.wtTests { margin:15px 0; }

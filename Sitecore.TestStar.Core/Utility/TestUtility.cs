@@ -12,7 +12,9 @@ using Sitecore.TestStar.Core.Providers;
 namespace Sitecore.TestStar.Core.Utility {
 	public class TestUtility {
 
-		public static List<TestFixture> GetUnitTestFixtures() {
+        #region Unit Tests
+
+        public static List<TestFixture> GetUnitTestFixtures() {
 			List<TestFixture> Fixtures = new List<TestFixture>();
 			//get dictionaries for forms and querying
             foreach (TestFixture tf in GetUnitTestSuites().SelectMany(a => a.Value.GetFixtures()))
@@ -28,8 +30,23 @@ namespace Sitecore.TestStar.Core.Utility {
 			}
 			return Suites;
 		}
-		
-		public static TestSuite GetTestSuite(string assemblyName) {	
+
+        #endregion Unit Tests
+
+        #region Web Tests
+
+        public static Dictionary<string, TestSuite> GetWebTestSuites() {
+            Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
+            // Find tests in current assembly
+            foreach (string a in AssemblyProvider.GetWebTestAssemblies()) {
+                Suites.Add(a, TestUtility.GetTestSuite(a));
+            }
+            return Suites;
+        }
+
+        #endregion Web Tests
+
+        public static TestSuite GetTestSuite(string assemblyName) {	
 			TestSuiteBuilder builder = new TestSuiteBuilder();
 			string packagePath = string.Format(@"{0}\{1}.dll", Constants.ExecutionRoot, assemblyName);
 			TestPackage testPackage = new TestPackage(packagePath);

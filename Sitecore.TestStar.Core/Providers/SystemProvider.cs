@@ -12,7 +12,7 @@ namespace Sitecore.TestStar.Core.Providers {
 	public class SystemProvider {
 
 		public static IEnumerable<TestSystem> GetSystems() {
-			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
+			Item folder = Cons.MasterDB.GetItem(Cons.SystemFolder);
 			if (folder == null)
 				throw new NullReferenceException(Cons.Exceptions.SysFoldNull);
 

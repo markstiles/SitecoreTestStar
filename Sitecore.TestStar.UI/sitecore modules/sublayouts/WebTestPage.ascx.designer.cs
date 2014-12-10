@@ -13,6 +13,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class WebTestPage {
         
         /// <summary>
+        /// pnlLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLog;
+        
+        /// <summary>
         /// ltlLog control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlLog;
+        
+        /// <summary>
+        /// pnlError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlError;
         
         /// <summary>
         /// ltlError control.
@@ -58,33 +76,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Button btnCreateScript;
         
         /// <summary>
-        /// lblTests control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTests;
-        
-        /// <summary>
-        /// cblTests control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblTests;
-        
-        /// <summary>
-        /// lblEnv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEnv;
-        
-        /// <summary>
         /// cblEnv control.
         /// </summary>
         /// <remarks>
@@ -92,15 +83,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList cblEnv;
-        
-        /// <summary>
-        /// lblSystems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSystems;
         
         /// <summary>
         /// cblSystems control.
@@ -112,15 +94,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.CheckBoxList cblSystems;
         
         /// <summary>
-        /// lblSites control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSites;
-        
-        /// <summary>
         /// cblSites control.
         /// </summary>
         /// <remarks>
@@ -130,21 +103,12 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.CheckBoxList cblSites;
         
         /// <summary>
-        /// btnSubmitTests control.
+        /// cblTests control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmitTests;
-        
-        /// <summary>
-        /// ltlResults control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlResults;
+        protected global::System.Web.UI.WebControls.CheckBoxList cblTests;
     }
 }

@@ -3,52 +3,63 @@
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
  
 <asp:ScriptManager runat="server"></asp:ScriptManager>
-<h1>Web Testing</h1>
-<div class="log">
+<asp:Panel ID="pnlLog" runat="server" CssClass="log corners">
     <asp:Literal ID="ltlLog" runat="server"></asp:Literal>
-</div>
-<div class="error">
+</asp:Panel>
+<div></div>
+<asp:Panel ID="pnlError" runat="server" CssClass="error corners">
     <asp:Literal ID="ltlError" runat="server"></asp:Literal>
-</div>
-<div class="generate">
-    <div class="formRow">
+</asp:Panel>
+<div></div>
+<div class="whiteBox generate corners">
+    <h3>Generate Script</h3>
+    <div class="genFields">
         <asp:Label ID="lblScript" AssociatedControlID="txtScriptName" Text="Script Name" CssClass="title" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:TextBox ID="txtScriptName" runat="server"></asp:TextBox>
-            <asp:Button ID="btnCreateScript" CssClass="generateSubmit submit" OnClick="btnCreateScript_Click" Text="Generate Script" runat="server" />
-        </div>
+        <asp:TextBox ID="txtScriptName" runat="server"></asp:TextBox>
+    </div>
+    <div class="submit corners">
+        <asp:Button ID="btnCreateScript" OnClick="btnCreateScript_Click" Text="Generate Script" runat="server" />
     </div>
 </div>
-<div class="TestForm">
-    <div class="formRow">
-        <asp:Label ID="lblTests" CssClass="title" AssociatedControlID="cblTests" Text="Tests" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:CheckBoxList ID="cblTests" CssClass="cblTests checkboxlist" runat="server"></asp:CheckBoxList>
+<div></div>
+<div class="testForm">
+    <div class="suiteWrap">
+        <h2>Web Test Suites</h2>
+        <div class="wtEnvs whiteBox corners">
+            <h3>Environments</h3>
+            <div class="testInputs">
+                <asp:CheckBoxList ID="cblEnv" CssClass="cblEnv checkboxlist" runat="server"></asp:CheckBoxList>
+            </div>
+        </div>
+        <div class="wtSystems whiteBox corners">
+            <h3>Systems</h3>
+            <div class="testInputs">
+                <asp:CheckBoxList ID="cblSystems" CssClass="cblSystems checkboxlist" runat="server"></asp:CheckBoxList>
+            </div>
+        </div>
+        <div class="wtSites whiteBox corners">
+            <h3>Sites</h3>
+            <div class="testInputs">
+                <asp:CheckBoxList ID="cblSites" CssClass="cblSites checkboxlist" runat="server"></asp:CheckBoxList>
+            </div>    
+        </div>
+        <div></div>
+        <div class="wtTests whiteBox corners">
+            <h3>Tests</h3>
+            <div class="testInputs">
+                <asp:CheckBoxList ID="cblTests" CssClass="cblTests checkboxlist" runat="server"></asp:CheckBoxList>
+            </div>
+            <div class="submit corners">
+			    <input id="utSubmit" type="submit" value="Run">
+            </div>
         </div>
     </div>
-    <div class="formRow">
-        <asp:Label ID="lblEnv" CssClass="title" AssociatedControlID="cblEnv" Text="Environments" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:CheckBoxList ID="cblEnv" CssClass="cblEnv checkboxlist" runat="server"></asp:CheckBoxList>
+	<div class="resultWrap">
+        <h2>Results</h2>
+        <div class="result-head"></div>
+        <div class="resultSet">
+            
         </div>
-    </div>
-    <div class="formRow">
-        <asp:Label ID="lblSystems" CssClass="title" AssociatedControlID="cblSystems" Text="Systems" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:CheckBoxList ID="cblSystems" CssClass="cblSystems checkboxlist" runat="server"></asp:CheckBoxList>
-        </div>
-    </div>
-    <div class="formRow">
-        <asp:Label ID="lblSites" CssClass="title" AssociatedControlID="cblSites" Text="Sites" runat="server"></asp:Label>
-        <div class="bordered">
-            <asp:CheckBoxList ID="cblSites" CssClass="cblSites checkboxlist" runat="server"></asp:CheckBoxList>
-        </div>
-    </div>
-    <div class="formRow">
-        <label class="title">Results</label>
-        <asp:Button ID="btnSubmitTests" CssClass="testSubmit submit" OnClick="btnSubmitTests_Click" Text="Run" runat="server" />
-        <div class="resultSet bordered">
-            <asp:Literal ID="ltlResults" runat="server"></asp:Literal>
-        </div>
+		<div class="result-foot"></div>
     </div>
 </div>

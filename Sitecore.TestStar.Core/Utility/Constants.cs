@@ -42,13 +42,7 @@ namespace Sitecore.TestStar.Core.Utility {
 		#endregion 
 
 		#region Assembly Info
-
-		public static string DefaultWebTestAssembly {
-			get {
-				return Sitecore.Configuration.Settings.GetSetting("TestStar.DefaultWebTestAssembly");
-			}
-		}
-
+        
 		public static string DefaultTestLauncher {
 			get {
 				return Sitecore.Configuration.Settings.GetSetting("TestStar.DefaultTestLauncher");
