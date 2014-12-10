@@ -106,4 +106,5 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .wtEnvs { width:200px; display:inline-block; margin-right:10px; }
 .wtSystems { width:160px; display:inline-block; margin-right:10px; }
 .wtSites { width:170px; display:inline-block; }
+    .systemName { font-size:12px; display:block; }
 .wtTests { margin:15px 0; }

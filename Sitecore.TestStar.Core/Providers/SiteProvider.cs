@@ -13,7 +13,7 @@ namespace Sitecore.TestStar.Core.Providers {
 	public class SiteProvider {
 
 		public static IEnumerable<TestSite> GetSites() {
-			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
+			Item folder = Cons.MasterDB.GetItem(Cons.SiteFolder);
 			if (folder == null)
 				throw new NullReferenceException(Cons.Exceptions.EnvFoldNull);
 

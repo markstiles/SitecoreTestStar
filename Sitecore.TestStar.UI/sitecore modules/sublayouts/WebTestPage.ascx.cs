@@ -67,11 +67,11 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
                     ListItem li = new ListItem(sykvp.Value.Name, sykvp.Value.Name);
                     cblSystems.Items.Add(li);
                 }
-                //foreach (KeyValuePair<string, TestSite> skvp in Sites) {
-                //    ListItem li = new ListItem(string.Format("{1}<span class='systemName'>{0}</span>", Systems[skvp.Value.SystemID].Name, skvp.Value.Name), skvp.Key.ToString());
-                //    li.Attributes.Add("class", Systems[skvp.Value.SystemID].Name);
-                //    cblSites.Items.Add(li);
-                //}
+                foreach (KeyValuePair<string, TestSite> skvp in Sites) {
+                    ListItem li = new ListItem(string.Format("{1}<span class='systemName'>{0}</span>", Systems[skvp.Value.SystemID].Name, skvp.Value.Name), skvp.Key.ToString());
+                    li.Attributes.Add("class", Systems[skvp.Value.SystemID].Name);
+                    cblSites.Items.Add(li);
+                }
 			} else {
 				foreach (ListItem li in cblSites.Items) { //css classes get lost on postback
 					li.Attributes.Add("class", Systems[Sites[li.Value].SystemID].Name);
