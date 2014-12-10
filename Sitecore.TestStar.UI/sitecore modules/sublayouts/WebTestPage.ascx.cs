@@ -25,7 +25,7 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	[RequiresSTA]
-	public partial class WebTestPage : System.Web.UI.UserControl, IWebTestHandler {
+	public partial class WebTestPage : System.Web.UI.UserControl {
 
 		#region Properties
 
@@ -154,15 +154,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		/// </summary>
 		protected void btnSubmitTests_Click(object sender, EventArgs e) {
 
-			WebTestManager manager = new WebTestManager(this);
+            //WebTestManager manager = new WebTestManager(this);
 			
-			IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
-			IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
+            //IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
+            //IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
 	
-			foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
-				TestFixture tf = Fixtures[li.Value];
-				manager.RunTest(tf, envs, sites);
-			}
+            //foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
+            //    TestFixture tf = Fixtures[li.Value];
+            //    manager.RunTest(tf, envs, sites);
+            //}
 		}
 
 		/// <summary>
@@ -221,47 +221,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 		#endregion Events
 		
-		#region ITestHandler Events
-
-		public void OnError(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus){
-			Results(ts, te, tm, "Has Errors", tr.Message, "err");
-		}
-
-		public void OnFailure(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus) {
-			Results(ts, te, tm, "Failed", tr.Message, "fail");
-		}
-
-		public void OnSuccess(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus) {
-			Results(ts, te, tm, "Succeeded", string.Empty, "pass");
-		}
-
-		public void OnSkipped(TestMethod tm, TestEnvironment te, TestSite ts) {
-			Results(ts, te, null, "Skipped", string.Format("{0} doesn't support the {1} environment", ts.Name, te.Name), "skip");
-		}
-
-		#endregion ITestHandler Events
-
 		#region UI Messaging
-
-		private bool ResultFlag = false;
-
-		/// <summary>
-		/// writes message to the results window
-		/// </summary>
-		protected void Results(TestSite ts, TestEnvironment te, TestMethod tm, string name, string value, string type) {
-			StringBuilder sb = new StringBuilder();
-			sb.AppendFormat("<div class='result {0} {1}'>", (ResultFlag) ? "even" : "odd" , type).AppendLine();
-			sb.AppendFormat("<div class='rSite'>{0} - {1}</div>",ts.Name, te.Name).AppendLine();
-			sb.Append("<div class='clearfix'></div>").AppendLine();
-			if (tm != null) {
-				sb.AppendFormat("<div class='rMethod'>{0} -</div>", TestUtility.GetClassName(tm.ClassName)).AppendLine();
-			}
-			sb.AppendFormat("<div class='rResult'>{0}{1}{2}</div>", name, (value.Length > 0) ? ": ": string.Empty, value).AppendLine();
-			sb.Append("</div>").AppendLine();
-			ltlResults.Text += sb.ToString();
-			
-			ResultFlag = !ResultFlag;
-		}
 
 		/// <summary>
 		/// writes message to the log window

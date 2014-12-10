@@ -105,11 +105,13 @@
     <Compile Include="Utility\JsonSerializer.cs" />
     <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
-    <Compile Include="WebService\JSONTestResult.cs" />
+    <Compile Include="WebService\JSONUnitTestResult.cs" />
+    <Compile Include="WebService\JSONWebTestResult.cs" />
     <Compile Include="WebService\TestService.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebService\WebServiceUnitTestHandler.cs" />
+    <Compile Include="WebService\WebServiceWebTestHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Interop.SHDocVw.dll" />

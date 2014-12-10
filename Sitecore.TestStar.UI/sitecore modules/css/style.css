@@ -78,8 +78,8 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
         .submit:hover:after { border-top: 10px solid #555; }
     .submit input { border:0px; background-color:transparent; color:#fff; font-size:16px; padding:0px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
 
-.resultWrap { background:url('../images/result-top.png') no-repeat 0 27px; display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
-    .resultWrap h3 { margin-bottom: 36px; }
+.resultWrap { background:url('../images/result-top.png') no-repeat 0 39px; display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
+    .resultWrap h3 { margin-bottom: 48px; }
 .resultSet { max-height:600px; overflow:auto; }
 .result { background-color:#fff; padding:10px; line-height:12px; margin:0 10px 6px 0; }
     .result:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }

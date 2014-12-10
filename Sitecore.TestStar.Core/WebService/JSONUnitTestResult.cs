@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.WebService {
-	public class JSONTestResult {
+	public class JSONUnitTestResult {
 
 		public bool Flag;
 		public string Type;
@@ -13,7 +13,7 @@ namespace Sitecore.TestStar.Core.WebService {
 		public string Name;
 		public string Value;
 
-		public JSONTestResult(bool f, string t, string m, string n, string v){
+		public JSONUnitTestResult(bool f, string t, string m, string n, string v){
 			Flag = f;
 			Type = t;
 			Method = m;

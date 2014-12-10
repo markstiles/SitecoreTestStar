@@ -26,9 +26,9 @@ namespace Sitecore.TestStar.Core.WebService {
 
 		#endregion ITestHandler Events
 
-		public List<JSONTestResult> ResultList = new List<JSONTestResult>();
-
 		#region Messaging
+
+        public List<JSONUnitTestResult> ResultList = new List<JSONUnitTestResult>();
 
 		private bool ResultFlag = false;
 
@@ -37,7 +37,7 @@ namespace Sitecore.TestStar.Core.WebService {
 		/// </summary>
 		protected void Results(TestMethod tm, string name, string value, string type) {
 
-			JSONTestResult r = new JSONTestResult(
+			JSONUnitTestResult r = new JSONUnitTestResult(
 				ResultFlag, 
 				type,
 				(tm != null) ? TestUtility.GetClassName(tm.MethodName) : string.Empty,

@@ -19,7 +19,7 @@ namespace Sitecore.TestStar.WebService {
 	public class TestService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public List<JSONTestResult> RunUnitTests(List<string> Categories) {
+		public List<JSONUnitTestResult> RunUnitTests(List<string> Categories) {
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
 			UnitTestManager manager = new UnitTestManager(wsuth);
