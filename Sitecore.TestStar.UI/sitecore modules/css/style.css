@@ -28,21 +28,21 @@ main { position:relative; }
 	.mainInner { background:url('../images/content-frame-top.png') no-repeat; padding:55px 25px 60px;  }
 h1 { background: url("../images/h1-pre.png") no-repeat; color: #fff; font-family: 'Da Mad Rave'; font-size: 32px; line-height: 32px; padding-left: 89px; }
 h2 { color:#fff; background: url("../images/result-pre.png") no-repeat; color: #fff; font-family: 'Da Mad Rave'; font-size: 19px; line-height: 19px;  padding-left: 54px; margin:0 0 15px; }
-h3 { color: #00aadd; font-size:21px; font-family:'xolonium'; margin:0 0 5px; background:url('../images/bullet.png') no-repeat 0px 5px; padding-left: 25px; }
+h3 { color: #00aadd; font-size:21px; font-family:'xolonium'; margin:0 0 5px; background:url('../images/bullet.png') no-repeat 0px 5px; padding-left: 22px; }
 footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37px; margin:-30px 0 40px 0; position:relative;}
 .preThin { background:url('../images/content-frame-bot-pre-thin.png') no-repeat; padding-left:44px; line-height:17px; font-family:'Darktech LDR'; font-size:22px; color:#fff; position:absolute; top:4px; right:0px; width:630px; }
 .preThick { background:url('../images/content-frame-bot-pre-thick.png') no-repeat; height:17px; width:41px; position:absolute; left:13px; }
 
 .log, 
-.error { margin-bottom:15px; font-size:14px; color:#fff; font-family: 'Da Mad Rave'; padding:2px 15px; display:inline-block;  }
+.error { text-align:center; margin-bottom:15px; font-size:21px; color:#fff; font-family: "xolonium"; padding:2px 15px; display:none;  }
     .log:before,
     .error:before { top: 0; left: 0; border-top: 10px solid #333; }
 	.log:after,
     .error:after { bottom: 0; right: 0; border-right: 10px solid #333; }
 
 .log { background-color:#0ad; }
-    .log:before { border-right: 10px solid #a0d; }
-	.log:after { border-top: 10px solid #a0d; }
+    .log:before { border-right: 10px solid #0ad; }
+	.log:after { border-top: 10px solid #0ad; }
 
 .error { background-color:#f00; }
     .error:before { border-right: 10px solid #f00; }
@@ -103,8 +103,14 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
     .rMethod { font-size:14px; display:inline-block; line-height:25px; }
     .rResult { font-size:10px; display:inline-block; font-weight:bold; }
 
-.wtEnvs { width:200px; display:inline-block; margin-right:10px; }
-.wtSystems { width:160px; display:inline-block; margin-right:10px; }
-.wtSites { width:170px; display:inline-block; }
+.testInputs input { display:inline-block; margin:5px 0 0; vertical-align:top; }
+.testInputs label { display:inline-block; vertical-align:top; }
+
+.wtEnvs,
+.wtSystems,
+.wtSites { display:inline-block; vertical-align:top; }
+.wtEnvs { width:200px; margin-right:10px; }
+.wtSystems { width:160px; margin-right:10px; }
+.wtSites { width:170px; }
     .systemName { font-size:12px; display:block; }
 .wtTests { margin:15px 0; }

@@ -12,8 +12,7 @@
     <link href="/sitecore modules/web/teststar/css/style.css" rel="stylesheet" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-	<script src="/sitecore modules/web/teststar/js/webtests.js"></script>
-	<script src="/sitecore modules/web/teststar/js/unittests.js"></script>
+	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>
 <body class="space">
     <form id="form1" runat="server">

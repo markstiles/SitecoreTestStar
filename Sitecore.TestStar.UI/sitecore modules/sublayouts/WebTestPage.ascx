@@ -1,18 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="WebTestPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
- <%@ Import Namespace="NUnit.Core" %>
-
+<%@ Import Namespace="NUnit.Core" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 
 <asp:ScriptManager runat="server"></asp:ScriptManager>
-<asp:Panel ID="pnlLog" runat="server" CssClass="log corners">
-    <asp:Literal ID="ltlLog" runat="server"></asp:Literal>
-</asp:Panel>
-<div></div>
-<asp:Panel ID="pnlError" runat="server" CssClass="error corners">
-    <asp:Literal ID="ltlError" runat="server"></asp:Literal>
-</asp:Panel>
-<div></div>
+
+<div class="log corners"></div><div></div>
+<div class="error corners"></div><div></div>
+
 <div class="whiteBox generate corners">
     <h3>Generate Script</h3>
     <div class="genFields">
@@ -30,19 +26,59 @@
         <div class="wtEnvs whiteBox corners">
             <h3>Environments</h3>
             <div class="testInputs">
-                <asp:CheckBoxList ID="cblEnv" CssClass="cblEnv checkboxlist" runat="server"></asp:CheckBoxList>
+                <asp:Repeater ID="rptEnvironments" runat="server">
+                    <ItemTemplate>
+                        <div class="row">
+                            <input type="checkbox" 
+                                id="<%# GetShortID(((ListItem)Container.DataItem).Value) %>" 
+                                name="<%# ((ListItem)Container.DataItem).Text %>" 
+                                value="<%# ((ListItem)Container.DataItem).Value %>">
+                            <label for="<%# GetShortID(((ListItem)Container.DataItem).Value) %>">
+                                <%# ((ListItem)Container.DataItem).Text %>
+                            </label>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
         </div>
         <div class="wtSystems whiteBox corners">
             <h3>Systems</h3>
             <div class="testInputs">
-                <asp:CheckBoxList ID="cblSystems" CssClass="cblSystems checkboxlist" runat="server"></asp:CheckBoxList>
+                <asp:Repeater ID="rptSystems" runat="server">
+                    <ItemTemplate>
+                        <div class="row">
+                            <input type="checkbox" 
+                                id="<%# GetShortID(((ListItem)Container.DataItem).Value) %>" 
+                                name="<%# ((ListItem)Container.DataItem).Text %>" 
+                                value="<%# ((ListItem)Container.DataItem).Value %>">
+                            <label for="<%# GetShortID(((ListItem)Container.DataItem).Value) %>">
+                                <%# ((ListItem)Container.DataItem).Text %>
+                            </label>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
         </div>
         <div class="wtSites whiteBox corners">
             <h3>Sites</h3>
             <div class="testInputs">
-                <asp:CheckBoxList ID="cblSites" CssClass="cblSites checkboxlist" runat="server"></asp:CheckBoxList>
+                <asp:Repeater ID="rptSites" runat="server">
+                    <ItemTemplate>
+                        <div class="row">
+                            <input type="checkbox" 
+                                id="<%# GetShortID(((ListItem)Container.DataItem).Value) %>" 
+                                name="<%# ((ListItem)Container.DataItem).Text %>" 
+                                value="<%# ((ListItem)Container.DataItem).Value %>" 
+                                class="<%# GetSystemName(((ListItem)Container.DataItem).Value) %>">
+                            <label for="<%# GetShortID(((ListItem)Container.DataItem).Value) %>">
+                                <%# ((ListItem)Container.DataItem).Text %>
+                                <span class='systemName'>
+                                    <%# GetSystemName(((ListItem)Container.DataItem).Value) %>
+                                </span>
+                            </label>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>    
         </div>
         <div></div>
@@ -54,8 +90,13 @@
                         <asp:Repeater ID="rptFixtures" runat="server">
                             <ItemTemplate>
                                 <div class="row">
-                                    <input type="checkbox" id="id<%# ((ListItem)Container.DataItem).Text %>" name="<%# ((ListItem)Container.DataItem).Text %>" value="<%# ((ListItem)Container.DataItem).Text %>">
-                                    <label for="id<%# ((ListItem)Container.DataItem).Text %>"><%# ((ListItem)Container.DataItem).Value %></label>
+                                    <input type="checkbox" 
+                                        id="<%# CondenseClassName(((ListItem)Container.DataItem).Text) %>" 
+                                        name="<%# ((ListItem)Container.DataItem).Text %>" 
+                                        value="<%# ((ListItem)Container.DataItem).Value %>">
+                                    <label for="<%# CondenseClassName(((ListItem)Container.DataItem).Text) %>">
+                                        <%# TestUtility.GetClassName(((ListItem)Container.DataItem).Text) %>
+                                    </label>
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>

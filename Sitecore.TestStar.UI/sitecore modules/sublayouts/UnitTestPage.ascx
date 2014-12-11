@@ -4,14 +4,9 @@
 <%@ Import Namespace="NUnit.Core" %>
 
 
-<asp:Panel ID="pnlLog" runat="server" CssClass="log corners">
-    <asp:Literal ID="ltlLog" runat="server"></asp:Literal>
-</asp:Panel>
-<div></div>
-<asp:Panel ID="pnlError" runat="server" CssClass="error corners">
-    <asp:Literal ID="ltlError" runat="server"></asp:Literal>
-</asp:Panel>
-<div></div>
+<div class="log corners"></div><div></div>
+<div class="error corners"></div><div></div>
+
 <div class="whiteBox generate corners">
     <h3>Generate Script</h3>
     <div class="genFields">

@@ -37,38 +37,49 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			//setup for testing
 			CoreExtensions.Host.InitializeService();
 			
-            Dictionary<string, TestEnvironment> Environments = EnvironmentProvider.GetEnvironments().OrderBy(a => a.Name).ToDictionary(a => a.ID);
-            Dictionary<string, TestSystem> Systems = SystemProvider.GetSystems().OrderBy(a => a.Name).ToDictionary(a => a.ID);
-            Dictionary<string, TestSite> Sites = SiteProvider.GetEnabledSites().OrderBy(a => a.SystemID).ThenBy(a => a.Name).ToDictionary(a => a.ID);
-
-			pnlError.Visible = false;
-            ltlError.Text = string.Empty;
-            pnlLog.Visible = false;
-            ltlLog.Text = string.Empty;
-			
-			if (!IsPostBack) { //setup form
-                rptSuites.DataSource = TestUtility.GetWebTestSuites();
-                rptSuites.DataBind();
+			rptSuites.DataSource = TestUtility.GetWebTestSuites();
+            rptSuites.DataBind();
 				
-                foreach (KeyValuePair<string, TestEnvironment> ekvp in Environments) {
-					ListItem li = new ListItem(ekvp.Value.Name, ekvp.Key.ToString());
-					cblEnv.Items.Add(li);
-				}
-                foreach (KeyValuePair<string, TestSystem> sykvp in Systems) {
-                    ListItem li = new ListItem(sykvp.Value.Name, sykvp.Value.Name);
-                    cblSystems.Items.Add(li);
-                }
-                foreach (KeyValuePair<string, TestSite> skvp in Sites) {
-                    ListItem li = new ListItem(string.Format("{1}<span class='systemName'>{0}</span>", Systems[skvp.Value.SystemID].Name, skvp.Value.Name), skvp.Key.ToString());
-                    li.Attributes.Add("class", Systems[skvp.Value.SystemID].Name);
-                    cblSites.Items.Add(li);
-                }
-			} else {
-				foreach (ListItem li in cblSites.Items) { //css classes get lost on postback
-					li.Attributes.Add("class", Systems[Sites[li.Value].SystemID].Name);
-				}
-			}
+            rptEnvironments.DataSource = from TestEnvironment te in EnvironmentProvider.GetEnvironments()
+                                         orderby te.Name
+                                         select new ListItem(te.Name, te.ID);
+            rptEnvironments.DataBind();
+
+            rptSystems.DataSource = from TestSystem tsys in SystemProvider.GetSystems()
+                                    orderby tsys.Name
+                                    select new ListItem(tsys.Name, tsys.ID);
+            rptSystems.DataBind();    
+
+            rptSites.DataSource = from TestSite ts in SiteProvider.GetEnabledSites()
+                                  orderby ts.SystemID, ts.Name
+                                  select new ListItem(ts.Name, ts.ID);
+            rptSites.DataBind();
 		}
+
+        protected string GetSystemName(string siteID) {
+            TestSite ts = SiteProvider.GetEnabledSites().Where(a => a.ID.Equals(siteID)).FirstOrDefault();
+            return (ts == null || string.IsNullOrEmpty(ts.SystemID))
+                ? string.Empty
+                : SystemProvider.GetSystems().Where(a => a.ID.Equals(ts.SystemID)).FirstOrDefault().Name;
+        }
+
+        protected string GetShortID(string scID) {
+            return scID.Replace("{", string.Empty).Replace("}", string.Empty).Replace("-", string.Empty);
+        }
+
+        protected string CondenseClassName(string className) {
+            return className.Replace(".", string.Empty);
+        }
+
+        protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
+            if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
+
+            KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
+
+            Repeater rptFixtures = (Repeater)e.Item.FindControl("rptFixtures");
+            rptFixtures.DataSource = from TestFixture t in profile.Value.GetFixtures() select new ListItem(t.ClassName, profile.Key);
+            rptFixtures.DataBind();
+        }
 
 		/// <summary>
 		/// Generates a batch script from the configured test on the page
@@ -125,30 +136,5 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		}
 
 		#endregion Events
-		
-		#region UI Messaging
-
-		/// <summary>
-		/// writes message to the log window
-		/// </summary>
-		protected void Log(string name, string value){
-			ltlLog.Text += string.Format("{0}: {1}<br/>", name, value);
-		}
-
-		protected void LogError(string name, string value) {
-			ltlError.Text += string.Format("{0}: {1}<br/>", name, value);
-		}
-
-		#endregion UI Messaging
-
-        protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
-            if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
-
-            KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
-            
-            Repeater rptFixtures = (Repeater)e.Item.FindControl("rptFixtures");
-            rptFixtures.DataSource = from TestFixture t in profile.Value.GetFixtures() select new ListItem(t.ClassName, TestUtility.GetClassName(t.ClassName));
-            rptFixtures.DataBind();
-        }
 	}
 }

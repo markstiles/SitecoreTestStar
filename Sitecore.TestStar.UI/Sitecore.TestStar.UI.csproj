@@ -129,8 +129,7 @@
     <Content Include="sitecore modules\images\result-pre.png" />
     <Content Include="sitecore modules\images\result-top.png" />
     <Content Include="sitecore modules\images\space-1.jpg" />
-    <Content Include="sitecore modules\js\unittests.js" />
-    <Content Include="sitecore modules\js\webtests.js" />
+    <Content Include="sitecore modules\js\global.js" />
     <Content Include="sitecore modules\layouts\RSS.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

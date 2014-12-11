@@ -13,42 +13,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class WebTestPage {
         
         /// <summary>
-        /// pnlLog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlLog;
-        
-        /// <summary>
-        /// ltlLog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlLog;
-        
-        /// <summary>
-        /// pnlError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlError;
-        
-        /// <summary>
-        /// ltlError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlError;
-        
-        /// <summary>
         /// lblScript control.
         /// </summary>
         /// <remarks>
@@ -76,31 +40,31 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Button btnCreateScript;
         
         /// <summary>
-        /// cblEnv control.
+        /// rptEnvironments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblEnv;
+        protected global::System.Web.UI.WebControls.Repeater rptEnvironments;
         
         /// <summary>
-        /// cblSystems control.
+        /// rptSystems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblSystems;
+        protected global::System.Web.UI.WebControls.Repeater rptSystems;
         
         /// <summary>
-        /// cblSites control.
+        /// rptSites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblSites;
+        protected global::System.Web.UI.WebControls.Repeater rptSites;
         
         /// <summary>
         /// rptSuites control.

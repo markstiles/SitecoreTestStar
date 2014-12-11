@@ -11,6 +11,8 @@ using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.WebService;
+using Sitecore.TestStar.Core.Entities;
+using Sitecore.Data.Items;
 
 namespace Sitecore.TestStar.WebService {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -48,18 +50,30 @@ namespace Sitecore.TestStar.WebService {
 			return wsuth.ResultList;
 		}
 
-        //[WebMethod]
-        //public List<JSONWebTestResult> RunWebTests(string env, string site, string test) {
-        
-            //WebTestManager manager = new WebTestManager(this);
-			
-            //IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
-            //IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
-	
-            //foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
-            //    TestFixture tf = Fixtures[li.Value];
-            //    manager.RunTest(tf, envs, sites);
-            //}
-		//}
+        [WebMethod]
+        public List<JSONWebTestResult> RunWebTests(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
+
+            CoreExtensions.Host.InitializeService();
+            WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
+            WebTestManager manager = new WebTestManager(wswth);
+
+            Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
+            //if(ei == null)
+            //    return error;
+            TestEnvironment te = Factory.GetTestEnvironment(ei);
+
+            Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
+            //if(ei == null)
+            //    return error;
+            TestSite ts = Factory.GetTestSite(si);
+
+            TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
+            //if (tf == null)
+            //    return error;
+
+            manager.RunTest(tf, te, ts);
+
+            return wswth.ResultList;
+        }
 	}
 }

@@ -22,6 +22,12 @@ namespace Sitecore.TestStar.Core.Managers {
 			Handler = handler;
 		}
 
+        public void RunTest(TestFixture tf, TestEnvironment Environment, TestSite Site) {
+            IEnumerable<TestEnvironment> Environments = new List<TestEnvironment>() { Environment };
+            IEnumerable<TestSite> Sites = new List<TestSite>() { Site };
+            RunTest(tf, Environments, Sites);
+        }
+
 		public void RunTest(TestFixture tf, IEnumerable<TestEnvironment> Environments, IEnumerable<TestSite> Sites) {
 			if (tf == null)
 				throw new NullReferenceException("Test Fixture was null. Make sure the class has the [TestFixture] attribute.");
