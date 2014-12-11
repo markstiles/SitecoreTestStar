@@ -5,7 +5,9 @@
     //unit test submit
 	var catList;
 	$("#utSubmit").click(function (e) {
-		e.preventDefault();
+	    $(".resultSet").html("");
+
+	    e.preventDefault();
 		catList = [];
 		$(".utCategories input[type='checkbox']").each(function (key, value) {
 			if (!$(this).is(':checked'))
@@ -19,7 +21,6 @@
 
     //unit test result callback
 	function RunUnitTestSuccess(data, status) {
-		$(".resultSet").html("");
 		data.d.forEach(function (res) {
 			var css = (res.Flag) ? "even" : "odd";
 			var s = "<div class='result corners " + css + " " + res.Type + "'><div class='ind corners'></div>";
@@ -46,34 +47,40 @@
 
     //web test submit
     $("#wtSubmit").click(function (e) {
+        $(".resultSet").html("");
+
         e.preventDefault();
         $(".error").hide();
         //form validation
-        var testSelected = $(".wtTests input").is(':checked');
-	    var envSelected = $(".wtEnvs input").is(':checked');
-	    var siteSelected = $(".wtSites input").is(':checked');
-	    if (!testSelected || !envSelected || !siteSelected) {
+        var tests = $(".wtTests input[type='checkbox']:checked");
+        var envs = $(".wtEnvs input[type='checkbox']:checked");
+        var sites = $(".wtSites input[type='checkbox']:checked");
+        if (tests.length == 0 || envs.length == 0 || sites.length == 0) {
 	        $(".error").show();
-	        if (!envSelected)
+	        if (envs.length == 0)
 	            $(".error").html("You should select at least one environment");
-	        else if (!siteSelected)
+	        else if (sites.length == 0)
 	            $(".error").html("You should select at least one site");
-	        else if (!testSelected)
+	        else if (tests.length == 0)
 	            $(".error").html("You should select at least one test");
 	    }
 
-        //foreach test
-            //foreach env
-                //foreach site
-         
-        //run test through web service
-	    var data = JSON.stringify({ EnvironmentID: e, SiteID: s, AssemblyName: an, ClassName: cn });
-	    CallTestWS("RunWebTest", data, RunWebTestSuccess);
+        for (var i = 0; i < tests.length; i++) {
+            var curTest = tests[i];
+            for (var j = 0; j < envs.length; j++) {
+                var curEnv = envs[j];
+                for (var k = 0; k < sites.length; k++) {
+                    var curSite = sites[k];
+                    //call web service
+                    var data = JSON.stringify({ EnvironmentID: $(curEnv).attr("value"), SiteID: $(curSite).attr("value"), AssemblyName: $(curTest).attr("value"), ClassName: $(curTest).attr("name") });
+                    CallTestWS("RunWebTest", data, RunWebTestSuccess);
+                }
+            }
+        }
 	});
 
     //web test result callback
-    function RunUnitTestSuccess(data, status) {
-        $(".resultSet").html("");
+    function RunWebTestSuccess(data, status) {
         data.d.forEach(function (res) {
             var css = (res.Flag) ? "even" : "odd";
             var s = "<div class='result corners " + css + " " + res.Type + "'><div class='ind corners'></div>";

@@ -51,7 +51,7 @@ namespace Sitecore.TestStar.WebService {
 		}
 
         [WebMethod]
-        public List<JSONWebTestResult> RunWebTests(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
+        public List<JSONWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
 
             CoreExtensions.Host.InitializeService();
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
