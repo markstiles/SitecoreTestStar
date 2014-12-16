@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,8 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<string>();
 
 			IEnumerable<string> assemblies = from Item i in folder.GetChildren()
-											   select Factory.GetTestAssembly(i);
-			return assemblies.Where(a => !string.IsNullOrEmpty(a));
+											 select Factory.GetTestAssembly(i);
+			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
 
 		public static IEnumerable<string> GetWebTestAssemblies() {
@@ -33,7 +34,7 @@ namespace Sitecore.TestStar.Core.Providers {
 
             IEnumerable<string> assemblies = from Item i in folder.GetChildren()
 											 select Factory.GetTestAssembly(i);
-			return assemblies.Where(a => !string.IsNullOrEmpty(a));
+			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
 	}
 }

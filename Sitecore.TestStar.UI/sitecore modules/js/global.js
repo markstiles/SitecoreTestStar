@@ -9,14 +9,13 @@
 
 	    e.preventDefault();
 		catList = [];
-		$(".utCategories input[type='checkbox']").each(function (key, value) {
-			if (!$(this).is(':checked'))
-				return;
+		var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
 			catList.push($(value).attr("name"));
 		});
+		console.log("catlist: " + catList);
 		//run test through web service
 		var data = JSON.stringify({ Categories: catList });
-		CallTestWS("RunUnitTests", data, RunUnitTestSuccess);
+		CallTestWS("RunUnitTests", data, RunUnitTestSuccess, TestError);
 	});
 
     //unit test result callback
@@ -73,7 +72,7 @@
                     var curSite = sites[k];
                     //call web service
                     var data = JSON.stringify({ EnvironmentID: $(curEnv).attr("value"), SiteID: $(curSite).attr("value"), AssemblyName: $(curTest).attr("value"), ClassName: $(curTest).attr("name") });
-                    CallTestWS("RunWebTest", data, RunWebTestSuccess);
+                    CallTestWS("RunWebTest", data, RunWebTestSuccess, TestError);
                 }
             }
         }
@@ -96,9 +95,13 @@
         });
     }
 
+    function TestError(e) {
+    	$(".resultSet").append(e);
+    }
+
     //SHARED FUNCTIONS
 
-	function CallTestWS(WebServiceMethod, callData, SuccessHandler) {
+	function CallTestWS(WebServiceMethod, callData, SuccessHandler, ErrorHandler) {
 		$.ajax({
 			type: "POST",
 			url: "/sitecore modules/Web/teststar/service/testservice.asmx/"+ WebServiceMethod,
@@ -106,7 +109,7 @@
 			contentType: "application/json",
 			dataType: "json",
 			success: SuccessHandler,
-			error: function (e) { }
+			error: ErrorHandler
 		});
 	}
 });

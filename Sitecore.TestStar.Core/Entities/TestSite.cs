@@ -7,7 +7,7 @@ using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.Entities {
 	public class TestSite {
-		
+
 		#region Properties
 
 		public string ID = string.Empty;
@@ -15,6 +15,8 @@ namespace Sitecore.TestStar.Core.Entities {
 		public string Domain = string.Empty;
 		public string SystemID = string.Empty;
 		public bool Disabled = false;
+		public string LanguageCode = string.Empty;
+		public string SiteNodeID = string.Empty;
 
 		public Dictionary<string, object> Properties;
 		public IEnumerable<TestEnvironment> Environments;
@@ -41,7 +43,10 @@ namespace Sitecore.TestStar.Core.Entities {
 			if (envs == null || !envs.Any(e => e.ID.Equals(env.ID)))
 				return string.Empty;
 			TestEnvironment te = envs.First();
-			return string.Format("{0}{1}", ((string.IsNullOrEmpty(te.DomainPrefix)) ? env.DomainPrefix : te.DomainPrefix), Domain);
+			string envChunk = (string.IsNullOrEmpty(LanguageCode))
+				? string.Empty
+				: string.Format("/{0}", LanguageCode);
+			return string.Format("{0}{1}{2}", ((string.IsNullOrEmpty(te.DomainPrefix)) ? env.DomainPrefix : te.DomainPrefix), Domain, envChunk);
 		}
 	}
 }

@@ -10,7 +10,6 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
-using Sitecore.TestStar.WebTests.Entities;
 using Sitecore.TestStar.WebTests.Logging;
 
 namespace Sitecore.TestStar.WebTests.Tests {
@@ -21,11 +20,10 @@ namespace Sitecore.TestStar.WebTests.Tests {
 		
 		[Test]
 		public override void RunTest() {
-			SitecoreSite scs = ContextSite.ConvertTo<SitecoreSite>();
 			
-			if (!string.IsNullOrEmpty(scs.SiteNodeID)) {
+			if (!string.IsNullOrEmpty(ContextSite.SiteNodeID)) {
 
-				string baseURL = scs.SCBaseURL(ContextEnvironment);
+				string baseURL = ContextSite.BaseURL(ContextEnvironment);
 
 				//create web service
 				string wsaddress = string.Format("{0}/{1}", baseURL, "services/test.asmx");
@@ -36,23 +34,23 @@ namespace Sitecore.TestStar.WebTests.Tests {
 				EndpointAddress a = new EndpointAddress(wsaddress);
 
 				//write the sitemap.xml to publishing targets using web service
-				ArrayOfString links = client.GetDistinctUrls(scs.SiteNodeID);
+				//ArrayOfString links = client.GetDistinctUrls(ContextSite.SiteNodeID);
 
-				foreach (string s in links) {
-					string url = string.Format("{0}{1}", baseURL, s);
-					HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-					try {
-						HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-						ResponseStatus = resp.StatusCode;
-						resp.Close();
-						if (!ResponseStatus.Equals(HttpStatusCode.OK))
-							SetFailure(url, string.Format("{0} was {1}", s, ResponseStatus.ToString()));
-					} catch (WebException wex) {
-						HttpWebResponse resp = (HttpWebResponse)wex.Response;
-						ResponseStatus = (resp != null) ? resp.StatusCode : HttpStatusCode.BadRequest;
-						SetFailure(url, string.Format("{0} wasn't found. {1}", s, wex.Message));
-					}
-				}
+				//foreach (string s in links) {
+				//	string url = string.Format("{0}{1}", baseURL, s);
+				//	HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+				//	try {
+				//		HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+				//		ResponseStatus = resp.StatusCode;
+				//		resp.Close();
+				//		if (!ResponseStatus.Equals(HttpStatusCode.OK))
+				//			SetFailure(url, string.Format("{0} was {1}", s, ResponseStatus.ToString()));
+				//	} catch (WebException wex) {
+				//		HttpWebResponse resp = (HttpWebResponse)wex.Response;
+				//		ResponseStatus = (resp != null) ? resp.StatusCode : HttpStatusCode.BadRequest;
+				//		SetFailure(url, string.Format("{0} wasn't found. {1}", s, wex.Message));
+				//	}
+				//}
 
 				if (HasFailed)
 					Assert.Fail(Log.ToString());

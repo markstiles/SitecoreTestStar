@@ -100,7 +100,8 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	    .skip .ind:after { border-top: 5px solid #afbeff; }
     
     .rSite { font-size:12px; text-transform:uppercase; }
-    .rMethod { font-size:14px; display:inline-block; line-height:25px; }
+    .rMethod { font-size:14px; display:inline-block; line-height:25px; margin-right:10px; }
+	.rMethod:after { content:"\2014"; padding-left:10px; }
     .rResult { font-size:10px; display:inline-block; font-weight:bold; }
 
 .testInputs input { display:inline-block; margin:5px 0 0; vertical-align:top; }

@@ -8,7 +8,6 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
-using Sitecore.TestStar.WebTests.Entities;
 using Sitecore.TestStar.WebTests.Logging;
 namespace Sitecore.TestStar.WebTests.Tests {
 	[TestFixture, RequiresSTA]
@@ -38,8 +37,6 @@ namespace Sitecore.TestStar.WebTests.Tests {
 		
 		[Test]
 		public override void RunTest() {
-
-			SitecoreSite scs = ContextSite.ConvertTo<SitecoreSite>();
 
 			foreach (string s in GetPaths()) {
 				string url = string.Format("{0}/{1}", RequestURL, s);
