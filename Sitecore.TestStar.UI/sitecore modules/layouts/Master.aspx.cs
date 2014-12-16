@@ -24,11 +24,8 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 			u.LanguageEmbedding = LanguageEmbedding.Never;
 			string navTitle = i["Nav Title"];
 			string navText = (string.IsNullOrEmpty(navTitle)) ? i.DisplayName : navTitle;
-			return string.Format("<a href='{0}'{1}>{2}</a>", LinkManager.GetItemUrl(i,u), cssClass, navText);
-		}
-
-		protected string GetSpacer(int ItemIndex) {
-			return (ItemIndex == 0) ? string.Empty : "<li class='spacer'></li>";
+			string firstLetter = navText.ToArray().First().ToString();
+			return string.Format("<a title='{3}' href='{0}'{1}>{2}<span>{3}</span></a>", LinkManager.GetItemUrl(i, u), cssClass, firstLetter, navText);
 		}
 	}
 }

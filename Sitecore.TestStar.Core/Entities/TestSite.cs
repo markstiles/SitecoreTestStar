@@ -43,10 +43,10 @@ namespace Sitecore.TestStar.Core.Entities {
 			if (envs == null || !envs.Any(e => e.ID.Equals(env.ID)))
 				return string.Empty;
 			TestEnvironment te = envs.First();
-			string envChunk = (string.IsNullOrEmpty(LanguageCode))
+			string langChunk = (string.IsNullOrEmpty(LanguageCode))
 				? string.Empty
 				: string.Format("/{0}", LanguageCode);
-			return string.Format("{0}{1}{2}", ((string.IsNullOrEmpty(te.DomainPrefix)) ? env.DomainPrefix : te.DomainPrefix), Domain, envChunk);
+			return string.Format("{0}{1}{2}", ((string.IsNullOrEmpty(te.DomainPrefix)) ? env.DomainPrefix : te.DomainPrefix), Domain, langChunk);
 		}
 	}
 }

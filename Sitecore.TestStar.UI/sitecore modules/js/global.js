@@ -1,5 +1,27 @@
-﻿$(document).ready(function () {
+﻿//Main Nav On Hover State
+function NavHoverOn() {
+	$(this).find("span").width($(this).attr("rel") + "px");
+}
+
+//Main Nav Off Hover State
+function NavHoverOff() {
+	$(this).find("span").width("0px");
+}
+
+$(document).ready(function () {
     
+	//set bg
+	var bgNum = 4;
+	var bgCur = Math.floor((Math.random() * 4) + 1);
+	$("body").addClass("space"+bgCur);
+
+	var headNavItems = $("header nav a");
+	headNavItems.each(function () {
+		$(this).attr("rel", $(this).find("span").width());
+		$(this).find("span").width("0px");
+	});
+	headNavItems.hover(NavHoverOn, NavHoverOff);
+
     //UNIT TESTING 
 
     //unit test submit

@@ -14,7 +14,7 @@
 	<script src="//ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
 	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>
-<body class="space">
+<body>
     <form id="form1" runat="server">
     <div class="wrapper">
         <div class="innerwrapper">
@@ -26,7 +26,6 @@
 					<ul>
 						<asp:Repeater ID="rptNav" runat="server">
 							<ItemTemplate>
-								<%# GetSpacer(Container.ItemIndex) %>
 								<li>
 									<%# GetLink((Item)Container.DataItem) %>
 								</li>

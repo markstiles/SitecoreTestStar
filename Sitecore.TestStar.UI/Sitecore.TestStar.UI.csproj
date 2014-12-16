@@ -125,10 +125,14 @@
     <Content Include="sitecore modules\images\h1-pre.png" />
     <Content Include="sitecore modules\images\header.png" />
     <Content Include="sitecore modules\images\nav-bg.png" />
+    <Content Include="sitecore modules\images\nav-btn-bg.png" />
     <Content Include="sitecore modules\images\result-bot.png" />
     <Content Include="sitecore modules\images\result-pre.png" />
     <Content Include="sitecore modules\images\result-top.png" />
     <Content Include="sitecore modules\images\space-1.jpg" />
+    <Content Include="sitecore modules\images\space-2.jpg" />
+    <Content Include="sitecore modules\images\space-3.jpg" />
+    <Content Include="sitecore modules\images\space-4.jpg" />
     <Content Include="sitecore modules\js\global.js" />
     <Content Include="sitecore modules\layouts\RSS.aspx">
       <SubType>ASPXCodeBehind</SubType>
