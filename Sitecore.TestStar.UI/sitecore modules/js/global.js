@@ -1,11 +1,11 @@
 ﻿//Main Nav On Hover State
 function NavHoverOn() {
-	$(this).find("span").width($(this).attr("rel") + "px");
+	$(this).find("span").animate({ width: $(this).attr("rel") + "px" }, 200, function () { })
 }
 
 //Main Nav Off Hover State
 function NavHoverOff() {
-	$(this).find("span").width("0px");
+	$(this).find("span").animate({ width: "0px" }, 200, function () { });
 }
 
 $(document).ready(function () {

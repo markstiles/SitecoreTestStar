@@ -25,7 +25,7 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 			string navTitle = i["Nav Title"];
 			string navText = (string.IsNullOrEmpty(navTitle)) ? i.DisplayName : navTitle;
 			string firstLetter = navText.ToArray().First().ToString();
-			return string.Format("<a title='{3}' href='{0}'{1}>{2}<span>{3}</span></a>", LinkManager.GetItemUrl(i, u), cssClass, firstLetter, navText);
+			return string.Format("<a title='{3}' href='{0}'{1}><div>{2}</div><span>{3}</span></a>", LinkManager.GetItemUrl(i, u), cssClass, firstLetter, navText);
 		}
 	}
 }

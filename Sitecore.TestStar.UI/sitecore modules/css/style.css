@@ -26,7 +26,8 @@ nav { background:url('../images/nav-bg.png') no-repeat 0 5px; height: 47px; widt
 	nav a { color: #00aadd; font-family:"Da Mad Rave"; margin-left:-38px; font-size:36px; text-decoration:none; padding:0 0 0 44px; min-width:88px; transition:width 1s; line-height:47px; white-space:nowrap; overflow:hidden; display:block; background:url('../images/nav-btn-bg.png') no-repeat 0 0; position:relative; }
 		nav a.active,
 		nav a:hover { color: #007294; }
-		nav a span { font-family: 'xolonium'; font-size:17px; color:#fff; position:relative; left:39px; top: -13px; display:inline-block; text-align:center; }
+		nav a div { display:inline-block; vertical-align:top;}
+		nav a span { font-family: 'xolonium'; font-size:17px; color:#fff; position:relative; left:39px; top: -2px; display:inline-block; text-align:center; overflow:hidden; }
 		nav a:hover span { margin-right:47px; left:27px; }
 main { position:relative; }
 .main-bg { background:url('../images/content-frame-bg.png'); bottom: 4px; position: absolute; top: 62px; width: 100%; z-index: -1; }
