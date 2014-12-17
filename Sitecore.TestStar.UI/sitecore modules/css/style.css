@@ -20,15 +20,15 @@ header { height:188px; position:relative; }
 .logo { position:absolute; top:10px; left:-1px; background:url('../images/header.png') no-repeat; height:178px; width:707px; }
 	.logo a { display:block; height:126px; width:700px; }
 	.logo span { text-indent:-999999999px; display:block; }
-nav { background:url('../images/nav-bg.png') no-repeat 0 5px; height: 47px; width:1095px; position: absolute; top: 148px; }
+nav { background:url('../images/nav-bg.png') no-repeat 0 5px; height: 47px; width:1095px; position: absolute; top: 146px; }
 	nav ul { margin:0px; padding:0px; list-style-type:none; margin-left:194px; }
 	nav li { display: inline-block; vertical-align:top; }
 	nav a { color: #00aadd; font-family:"Da Mad Rave"; margin-left:-38px; font-size:36px; text-decoration:none; padding:0 0 0 44px; min-width:88px; transition:width 1s; line-height:47px; white-space:nowrap; overflow:hidden; display:block; background:url('../images/nav-btn-bg.png') no-repeat 0 0; position:relative; }
 		nav a.active,
 		nav a:hover { color: #007294; }
-		nav a div { display:inline-block; vertical-align:top;}
-		nav a span { font-family: 'xolonium'; font-size:17px; color:#fff; position:relative; left:39px; top: -2px; display:inline-block; text-align:center; overflow:hidden; }
-		nav a:hover span { margin-right:47px; left:27px; }
+		nav a div { display:inline-block; vertical-align:top; text-shadow:-3px 2px 2px #888888; }
+		nav a span { font-family: 'xolonium'; font-size:17px; color:#fff; position:relative; left:27px; top: -2px; display:inline-block; text-align:center; overflow:hidden; }
+		nav a:hover span { margin-right:47px; transition:margin-right 1s; }
 main { position:relative; }
 .main-bg { background:url('../images/content-frame-bg.png'); bottom: 4px; position: absolute; top: 62px; width: 100%; z-index: -1; }
 	.mainInner { background:url('../images/content-frame-top.png') no-repeat; padding:55px 25px 60px;  }

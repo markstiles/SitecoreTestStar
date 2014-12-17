@@ -1,11 +1,9 @@
-﻿//Main Nav On Hover State
-function NavHoverOn() {
-	$(this).find("span").animate({ width: $(this).attr("rel") + "px" }, 200, function () { })
-}
+﻿var animateNav;
 
-//Main Nav Off Hover State
-function NavHoverOff() {
-	$(this).find("span").animate({ width: "0px" }, 200, function () { });
+function AnimateNavWidth(obj, newWidth) {
+	$(obj).find("span").stop();
+	$(obj).find("span").animate({ width: newWidth + "px" }, 200, function () { })
+	clearInterval(animateNav);
 }
 
 $(document).ready(function () {
@@ -20,7 +18,14 @@ $(document).ready(function () {
 		$(this).attr("rel", $(this).find("span").width());
 		$(this).find("span").width("0px");
 	});
-	headNavItems.hover(NavHoverOn, NavHoverOff);
+	headNavItems.hover(function () {
+		var curNavItem = $(this);
+		var curNavWidth = $(this).attr("rel");
+		animateNav = setInterval(function () { AnimateNavWidth(curNavItem, curNavWidth) }, 150);
+	}, function () {
+		clearInterval(animateNav);
+		$(this).find("span").animate({ width: "0px" }, 200, function () { });
+	});
 
     //UNIT TESTING 
 
