@@ -115,7 +115,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 
 .wtEnvs,
 .wtSystems,
-.wtSites { display:inline-block; vertical-align:top; }
+.wtSites { display:inline-block; vertical-align:top; margin-bottom:15px; }
 .wtEnvs { width:200px; margin-right:10px; }
 .wtSystems { width:160px; margin-right:10px; }
 .wtSites { width:170px; }

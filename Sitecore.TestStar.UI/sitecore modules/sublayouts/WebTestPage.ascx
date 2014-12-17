@@ -22,7 +22,7 @@
 <div></div>
 <div class="testForm">
     <div class="suiteWrap">
-        <h2>Web Test Suites</h2>
+        <h2>Test Settings</h2>
         <div class="wtEnvs whiteBox corners">
             <h3>Environments</h3>
             <div class="testInputs">
@@ -81,7 +81,7 @@
                 </asp:Repeater>
             </div>    
         </div>
-        <div></div>
+        <h2>Test Suites</h2>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
                 <div class="wtTests whiteBox corners">
