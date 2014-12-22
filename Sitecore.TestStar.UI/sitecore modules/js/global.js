@@ -1,4 +1,8 @@
 ﻿var animateNav;
+var wTests = [];
+var wPos = 0;
+var uTests = [];
+var uPos = 0;
 
 function AnimateNavWidth(obj, newWidth) {
 	$(obj).find("span").stop();
@@ -30,19 +34,20 @@ $(document).ready(function () {
     //UNIT TESTING 
 
     //unit test submit
-	var catList;
 	$("#utSubmit").click(function (e) {
 	    $(".resultSet").html("");
 
 	    e.preventDefault();
-		catList = [];
-		var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
-			catList.push($(value).attr("name"));
+	    uTests = [];
+		uPos = 0;
+	    var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
+			//run test through web service
+	    	var data = JSON.stringify({ AssemblyName: $(value).attr("value"), Category: $(value).attr("name") });
+	    	console.log(data);
+			uTests.push(data);
 		});
-		console.log("catlist: " + catList);
-		//run test through web service
-		var data = JSON.stringify({ Categories: catList });
-		CallTestWS("RunUnitTests", data, RunUnitTestSuccess, TestError);
+		
+		UnitTestRunner();
 	});
 
     //unit test result callback
@@ -58,6 +63,16 @@ $(document).ready(function () {
 
 			$(".resultSet").append(s);
 		});
+
+		UnitTestRunner();
+	}
+
+	function UnitTestRunner() {
+		if (uPos >= uTests.length)
+			return;
+
+		CallTestWS("RunUnitTests", uTests[uPos], RunUnitTestSuccess, TestError);
+		uPos++;
 	}
 
     //WEB TESTING
@@ -91,6 +106,8 @@ $(document).ready(function () {
 	            $(".error").html("You should select at least one test");
 	    }
 
+        wTests = [];
+        wPos = 0;
         for (var i = 0; i < tests.length; i++) {
             var curTest = tests[i];
             for (var j = 0; j < envs.length; j++) {
@@ -99,10 +116,12 @@ $(document).ready(function () {
                     var curSite = sites[k];
                     //call web service
                     var data = JSON.stringify({ EnvironmentID: $(curEnv).attr("value"), SiteID: $(curSite).attr("value"), AssemblyName: $(curTest).attr("value"), ClassName: $(curTest).attr("name") });
-                    CallTestWS("RunWebTest", data, RunWebTestSuccess, TestError);
+                    wTests.push(data);
                 }
             }
         }
+
+        WebTestRunner();
 	});
 
     //web test result callback
@@ -120,6 +139,16 @@ $(document).ready(function () {
 
             $(".resultSet").append(s);
         });
+
+        WebTestRunner();
+    }
+
+    function WebTestRunner() {
+    	if (wPos >= wTests.length)
+    		return;
+
+    	CallTestWS("RunWebTest", wTests[wPos], RunWebTestSuccess, TestError);
+    	wPos++;
     }
 
     function TestError(e) {

@@ -72,11 +72,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
             KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
 
-            Repeater rptCategories = (Repeater)e.Item.FindControl("rptCategories");
-            rptCategories.DataSource = profile.Value.GetAllCategories().OrderBy(a => a);
-            rptCategories.DataBind();
+			Repeater rptCategories = (Repeater)e.Item.FindControl("rptCategories");
+			rptCategories.DataSource = from string t in profile.Value.GetAllCategories().OrderBy(a => a) select new ListItem(t, profile.Key);
+			rptCategories.DataBind();
         }
 
+		protected string CondenseCatName(string className) {
+			return className.Replace(" ", string.Empty);
+		}
+		
 		#endregion Events
 	}
 }

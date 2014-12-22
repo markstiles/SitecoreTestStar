@@ -2,6 +2,7 @@
     CodeBehind="UnitTestPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.UnitTestPage" %>
 <%@ Import Namespace="NUnit.Core" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 
 
 <div class="log corners"></div><div></div>
@@ -21,7 +22,6 @@
 <div class="testForm">
     <div class="suiteWrap">
         <h2>Unit Test Suites</h2>
-        <div class="whiteBox subtext corners">If no categories are selected the entire suite will run.</div>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
 			    <div class="whiteBox corners">
@@ -32,8 +32,13 @@
                         <asp:Repeater ID="rptCategories" runat="server">
                             <ItemTemplate>
                                 <div class="row">
-                                    <input type="checkbox" id="id<%# Container.DataItem %>" name="<%# Container.DataItem %>" value="<%# Container.DataItem %>">
-                                    <label for="id<%# Container.DataItem %>"><%# Container.DataItem %></label>
+                                    <input type="checkbox" 
+                                        id="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>" 
+                                        name="<%# ((ListItem)Container.DataItem).Text %>" 
+                                        value="<%# ((ListItem)Container.DataItem).Value %>">
+                                    <label for="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>">
+                                        <%# TestUtility.GetClassName(((ListItem)Container.DataItem).Text) %>
+                                    </label>
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>

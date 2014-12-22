@@ -21,26 +21,20 @@ namespace Sitecore.TestStar.WebService {
 	public class TestService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public List<JSONUnitTestResult> RunUnitTests(List<string> Categories) {
+		public List<JSONUnitTestResult> RunUnitTests(string AssemblyName, string Category) {
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
 			UnitTestManager manager = new UnitTestManager(wsuth);
 
 			//build dictionary with any methods with the selected categories
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
-			if (Categories.Any()) {
-				foreach (string s in Categories) {
-					foreach (TestFixture tf in TestUtility.GetUnitTestFixtures()){
-						bool fixtHasCat = (tf.Categories().Any(b => b.Equals(s)));
-						foreach (TestMethod tm in tf.Tests) {
-							//don't add twice and if fixture or the method has the selected category then add
-							if (!sets.ContainsKey(tm.MethodName) && (fixtHasCat || tm.Categories().Any(b => b.Equals(s))))
-								sets.Add(tm.MethodName, tm);
-						}
-					}
+			foreach (TestFixture tf in TestUtility.GetTestSuite(AssemblyName).GetFixtures()) {
+				bool fixtHasCat = (tf.Categories().Any(b => b.Equals(Category)));
+				foreach (TestMethod tm in tf.Tests) {
+					//don't add twice and if fixture or the method has the selected category then add
+					if (!sets.ContainsKey(tm.MethodName) && (fixtHasCat || tm.Categories().Any(b => b.Equals(Category))))
+						sets.Add(tm.MethodName, tm);
 				}
-			} else { // add all
-                sets = TestUtility.GetUnitTestSuites().SelectMany(a => a.Value.GetMethods()).ToDictionary(a => a.MethodName);
 			}
 
 			//run all tests found
