@@ -27,7 +27,7 @@ namespace Sitecore.TestStar.Core.WebService {
         }
 
         public void OnSkipped(TestMethod tm, TestEnvironment te, TestSite ts) {
-            Results(ts, te, null, "Skipped", string.Format("{0} doesn't support the {1} environment", ts.Name, te.Name), "skip");
+            Results(ts, te, tm, "Skipped", string.Format("{0} doesn't support the {1} environment", ts.Name, te.Name), "skip");
         }
 
         #endregion ITestHandler Events

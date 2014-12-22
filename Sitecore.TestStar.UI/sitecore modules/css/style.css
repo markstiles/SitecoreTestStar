@@ -105,7 +105,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
         .skip .ind:before { border-right: 5px solid #afbeff; }
 	    .skip .ind:after { border-top: 5px solid #afbeff; }
     
-    .rSite { font-size:12px; text-transform:uppercase; }
+    .rSite { font-size:12px; text-transform:uppercase; display:inline-block; max-width:315px; line-height:25px; }
     .rMethod { font-size:14px; display:inline-block; line-height:25px; margin-right:10px; }
 	.rMethod:after { content:"\2014"; padding-left:10px; }
     .rResult { font-size:10px; display:inline-block; font-weight:bold; }
