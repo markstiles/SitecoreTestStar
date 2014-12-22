@@ -25,7 +25,7 @@
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
 			    <div class="whiteBox corners">
-                	<h3>
+                	<h3 title="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
 					    <%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
 				    </h3>
                     <div class="testInputs">
