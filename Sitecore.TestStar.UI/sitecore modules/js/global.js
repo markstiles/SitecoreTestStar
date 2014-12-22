@@ -43,8 +43,7 @@ $(document).ready(function () {
 	    var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
 			//run test through web service
 	    	var data = JSON.stringify({ AssemblyName: $(value).attr("value"), Category: $(value).attr("name") });
-	    	console.log(data);
-			uTests.push(data);
+	    	uTests.push(data);
 		});
 		
 		UnitTestRunner();
