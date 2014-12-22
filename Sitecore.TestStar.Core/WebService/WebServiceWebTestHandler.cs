@@ -46,7 +46,7 @@ namespace Sitecore.TestStar.Core.WebService {
             JSONWebTestResult r = new JSONWebTestResult(
                 ResultFlag,
                 type,
-                (tm != null) ? TestUtility.GetClassName(tm.MethodName) : string.Empty,
+                (tm != null) ? TestUtility.GetClassName(tm.ClassName) : string.Empty,
                 name,
                 value,
                 ts.Name,
