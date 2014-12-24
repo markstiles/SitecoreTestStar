@@ -137,6 +137,7 @@
     <Content Include="sitecore modules\layouts\RSS.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="sitecore modules\scripts\ph.txt" />
     <Content Include="sitecore modules\service\TestService.asmx" />
     <Content Include="sitecore modules\sublayouts\HomePage.ascx">
       <SubType>ASPXCodeBehind</SubType>
@@ -176,7 +177,8 @@ start xcopy /S /Y "$(ProjectDir)\sitecore modules\fonts\*" "$(SolutionDir)\Websi
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\js\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\js"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\images\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\images"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\css\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\css"
-start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"</PostBuildEvent>
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\scripts\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\scripts"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -33,7 +33,7 @@ namespace Sitecore.TestStar.Core.Utility {
 						e.Add(GetTestEnvironment(env));
 				}
 			}
-			return new TestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.GetSafeFieldValue("System"), i.GetSafeFieldBool("Disabled"), p, e);
+			return new TestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, e);
 		}
 
 		public static TestEnvironment GetTestEnvironment(Item i){

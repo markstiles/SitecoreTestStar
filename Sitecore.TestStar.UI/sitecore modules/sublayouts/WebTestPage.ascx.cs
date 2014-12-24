@@ -81,60 +81,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
             rptFixtures.DataBind();
         }
 
-		/// <summary>
-		/// Generates a batch script from the configured test on the page
-		/// </summary>
-		protected void btnCreateScript_Click(object sender, EventArgs e) {
-            //string scriptName = txtScriptName.Text;
-            //if (string.IsNullOrEmpty(scriptName)) {
-            //    LogError("Script Generator", "Need to provide a script name");
-            //    return;
-            //}
-
-            //IEnumerable<TestEnvironment> envs = from ListItem li in cblEnv.Items.Cast<ListItem>() where li.Selected select Environments[li.Value];
-            //IEnumerable<TestSite> sites = from ListItem li in cblSites.Items.Cast<ListItem>() where li.Selected select Sites[li.Value];
-			
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("@echo off").AppendLine();
-            //sb.AppendFormat(@"set TestLauncherPath=%0\..\..\bin\{0}.exe", Cons.DefaultTestLauncher).AppendLine().AppendLine();
-            //sb.AppendLine("@echo on");
-			
-            //foreach (ListItem li in cblTests.Items.Cast<ListItem>().Where(a => a.Selected)) {
-            //    TestFixture tf = Fixtures[li.Value];
-            //    if(tf == null)
-            //        continue;
-            //    //define exe, assembly and test
-            //    sb.AppendFormat("\"%TestLauncherPath%\" \"-w\" \"{0}\" \"{1}\"", Cons.DefaultWebTestAssembly, TestUtility.GetClassName(tf.ClassName));
-            //    StringBuilder envStr = new StringBuilder();
-            //    foreach (TestEnvironment te in envs) {
-            //        if (envStr.Length > 0)
-            //            envStr.Append(",");
-            //        envStr.AppendFormat("{0}", te.ID);
-            //    }
-            //    sb.AppendFormat(" \"{0}\"", envStr.ToString());
-
-            //    //leave systems blank and open sites
-            //    sb.Append(" \"\"");
-            //    StringBuilder siteStr = new StringBuilder();
-            //    foreach (TestSite ts in sites) {
-            //        if (siteStr.Length > 0)
-            //            siteStr.Append(",");
-            //        siteStr.AppendFormat("{0}", ts.ID);
-            //    }
-            //    //close sites
-            //    sb.AppendFormat(" \"{0}\"", siteStr.ToString());
-            //}
-
-            //sb.AppendLine().AppendLine("pause");
-
-            ////write file
-            //string filePath = string.Format(@"{0}/sitecore modules/web/TestStar/scripts/{1}.bat", Cons.ApplicationRoot, scriptName);
-            //using (StreamWriter newData = new StreamWriter(filePath, false)) {
-            //    newData.WriteLine(sb.ToString());
-            //}
-            //Log("Script Generator", string.Format("Successfully Created {0}", filePath));
-		}
-
 		#endregion Events
 	}
 }

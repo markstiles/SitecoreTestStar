@@ -12,14 +12,15 @@ namespace Sitecore.TestStar.Core.Providers {
 	public class SystemProvider {
 
 		public static IEnumerable<TestSystem> GetSystems() {
-			Item folder = Cons.MasterDB.GetItem(Cons.SystemFolder);
+			Item folder = Cons.MasterDB.GetItem(Cons.SiteFolder);
 			if (folder == null)
-				throw new NullReferenceException(Cons.Exceptions.SysFoldNull);
+				throw new NullReferenceException(Cons.Exceptions.SiteFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<TestSystem>();
 
 			IEnumerable<TestSystem> systems = from Item i in folder.GetChildren()
+											  where i.TemplateID.ToString().Equals(Cons.SystemTemplate)
 											  select Factory.GetTestSystem(i);
 			return systems;
 		}

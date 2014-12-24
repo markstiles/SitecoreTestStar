@@ -105,6 +105,7 @@
     <Compile Include="Utility\JsonSerializer.cs" />
     <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
+    <Compile Include="WebService\JSONGenScriptResult.cs" />
     <Compile Include="WebService\JSONUnitTestResult.cs" />
     <Compile Include="WebService\JSONWebTestResult.cs" />
     <Compile Include="WebService\TestService.cs">

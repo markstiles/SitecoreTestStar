@@ -11,12 +11,13 @@
 
 <div class="whiteBox generate corners">
     <h3>Generate Script</h3>
+	<div class="genToggle">+</div>
     <div class="genFields">
-        <asp:Label ID="lblScript" AssociatedControlID="txtScriptName" Text="Script Name" CssClass="title" runat="server"></asp:Label>
-        <asp:TextBox ID="txtScriptName" runat="server"></asp:TextBox>
-    </div>
-    <div class="submit corners">
-        <asp:Button ID="btnCreateScript" OnClick="btnCreateScript_Click" Text="Generate Script" runat="server" />
+        <label for="wtScriptName" class="title">Script Name</label>
+        <input type="text" ID="wtScriptName"></input>
+		<div class="submit corners">
+			<input id="wtGenerate" type="submit" value="Generate Script">
+		</div>
     </div>
 </div>
 <div></div>
@@ -111,7 +112,7 @@
 		</asp:Repeater>
     </div>
 	<div class="resultWrap">
-        <h2>Results</h2>
+        <h2>Results<div class="resultCounter"></div></h2>
         <div class="result-head"></div>
         <div class="resultSet">
             

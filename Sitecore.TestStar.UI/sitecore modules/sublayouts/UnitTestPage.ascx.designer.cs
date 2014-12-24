@@ -13,33 +13,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class UnitTestPage {
         
         /// <summary>
-        /// lblScript control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblScript;
-        
-        /// <summary>
-        /// txtScriptName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtScriptName;
-        
-        /// <summary>
-        /// btnCreateScript control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreateScript;
-        
-        /// <summary>
         /// rptSuites control.
         /// </summary>
         /// <remarks>

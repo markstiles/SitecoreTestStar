@@ -17,6 +17,7 @@ $(document).ready(function () {
 	var bgCur = Math.floor((Math.random() * 4) + 1);
 	$("body").addClass("space"+bgCur);
 
+	//navigation animation
 	var headNavItems = $("header nav a");
 	headNavItems.each(function () {
 		$(this).attr("rel", $(this).find("span").width());
@@ -31,13 +32,13 @@ $(document).ready(function () {
 		$(this).find("span").animate({ width: "0px" }, 200, function () { });
 	});
 
-    //UNIT TESTING 
+	//	UNIT TESTING //////////
 
     //unit test submit
 	$("#utSubmit").click(function (e) {
 	    $(".resultSet").html("");
-
 	    e.preventDefault();
+
 	    uTests = [];
 		uPos = 0;
 	    var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
@@ -60,21 +61,42 @@ $(document).ready(function () {
 			s += "<div class='rResult'>" + res.Name + div + " " + res.Value + "</div>";
 			s += "</div>";
 
-			$(".resultSet").append(s);
+			$(".resultSet").prepend(s);
 		});
 
 		UnitTestRunner();
 	}
 
+	//makes recursive calls while tests are available
 	function UnitTestRunner() {
-		if (uPos >= uTests.length)
+		if (uPos >= uTests.length) {
+			$(".resultCounter").text("100%");
 			return;
+		} else {
+			var per = (uPos / uTests.length) * 100;
+			$(".resultCounter").text(Math.floor(per) + "%");
+		}
 
 		CallTestWS("RunUnitTests", uTests[uPos], RunUnitTestSuccess, TestError);
 		uPos++;
 	}
 
-    //WEB TESTING
+	//test generation
+	$("#utGenerate").click(function (e) {
+		$(".resultSet").html("");
+		e.preventDefault();
+
+		var tCalls = [];
+		var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
+			tCalls.push($(value).attr("value") + "::" + $(value).attr("name"));
+		});
+
+		var data = JSON.stringify({ ScriptName: $("#utScriptName").val(), TestCalls: tCalls });
+
+		CallTestWS("CreateUnitTestScript", data, RunGenSuccess, TestError);
+	});
+		
+	//	WEB TESTING //////////
 
     //if system is (un)checked then (un)check all corresponding sites
 	$(".wtSystems input[type='checkbox']").click(function (e) {
@@ -134,25 +156,83 @@ $(document).ready(function () {
             s += "<div class='rResult'>" + res.Name + div + " " + res.Value + "</div>";
             s += "</div>";
 
-            $(".resultSet").append(s);
+            $(".resultSet").prepend(s);
         });
 
         WebTestRunner();
     }
 
+	//makes recursive calls while tests are available
     function WebTestRunner() {
-    	if (wPos >= wTests.length)
+    	if (wPos >= wTests.length) {
+    		$(".resultCounter").text("100%");
     		return;
+    	} else {
+    		var per = (wPos / wTests.length) * 100;
+    		$(".resultCounter").text(Math.floor(per) + "%");
+    	}
 
     	CallTestWS("RunWebTest", wTests[wPos], RunWebTestSuccess, TestError);
     	wPos++;
     }
 
+	//test generation
+    $("#wtGenerate").click(function (e) {
+    	$(".resultSet").html("");
+    	e.preventDefault();
+
+    	//form validation
+    	var tests = $(".wtTests input[type='checkbox']:checked");
+    	var envs = $(".wtEnvs input[type='checkbox']:checked");
+    	var sites = $(".wtSites input[type='checkbox']:checked");
+    	if (tests.length == 0 || envs.length == 0 || sites.length == 0) {
+    		$(".error").show();
+    		if (envs.length == 0)
+    			$(".error").html("You should select at least one environment");
+    		else if (sites.length == 0)
+    			$(".error").html("You should select at least one site");
+    		else if (tests.length == 0)
+    			$(".error").html("You should select at least one test");
+    	}
+
+    	wTests = [];
+    	for (var i = 0; i < tests.length; i++) 
+    		wTests.push($(tests[i]).attr("value") + "::" + $(tests[i]).attr("name"));
+    	wEnvs = [];
+    	for (var j = 0; j < envs.length; j++) 
+    		wEnvs.push($(envs[j]).attr("value"));
+    	wSites = [];
+    	for (var k = 0; k < sites.length; k++) 
+    		wSites.push($(sites[k]).attr("value"));
+
+    	var data = JSON.stringify({ ScriptName: $("#wtScriptName").val(), TestCalls: wTests, EnvironmentIDs: wEnvs, SiteIDs: wSites });
+		CallTestWS("CreateWebTestScript", data, RunGenSuccess, TestError);
+    });
+
+	//	SHARED TEST FUNCTIONS //////////
+
     function TestError(e) {
     	$(".resultSet").append(e);
     }
 
-    //SHARED FUNCTIONS
+	//unit test result callback
+    function RunGenSuccess(data, status) {
+    	var css = (data.d.Success) ? "pass" : "fail";
+    	$(".resultSet").append("<div class='result corners " + css + "'><div class='ind corners'></div><div class='rResult'>" + data.d.Message + "</div></div>");
+    }
+
+    $(".genToggle").click(function (e) {
+    	var text = $(this).text();
+    	if (text.indexOf("+") == -1) {
+    		$(this).text("+");
+    		$(".generate .submit").hide();
+    		$(".genFields").slideUp();
+    	} else {
+    		$(this).text("-");
+    		$(".genFields").slideDown();
+    		setTimeout(function () { $(".generate .submit").show(); }, 250);
+		}
+    });
 
 	function CallTestWS(WebServiceMethod, callData, SuccessHandler, ErrorHandler) {
 		$.ajax({

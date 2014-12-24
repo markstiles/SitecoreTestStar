@@ -14,14 +14,6 @@ namespace Sitecore.TestStar.Core.Utility {
 
         #region Unit Tests
 
-        public static List<TestFixture> GetUnitTestFixtures() {
-			List<TestFixture> Fixtures = new List<TestFixture>();
-			//get dictionaries for forms and querying
-            foreach (TestFixture tf in GetUnitTestSuites().SelectMany(a => a.Value.GetFixtures()))
-				Fixtures.Add(tf);
-			return Fixtures;
-		}
-
 		public static Dictionary<string, TestSuite> GetUnitTestSuites() {
 			Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
 			// Find tests in current assembly

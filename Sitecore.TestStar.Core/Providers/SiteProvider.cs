@@ -20,7 +20,8 @@ namespace Sitecore.TestStar.Core.Providers {
             if (!folder.HasChildren)
                 return Enumerable.Empty<TestSite>();
 
-			IEnumerable<TestSite> sites = from Item i in folder.GetChildren()
+			IEnumerable<TestSite> sites = from Item i in folder.Axes.GetDescendants()
+										  where i.TemplateID.ToString().Equals(Cons.SiteTemplate)
 										  select Factory.GetTestSite(i);
 			return sites;
 		}
