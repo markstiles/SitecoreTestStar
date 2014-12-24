@@ -36,15 +36,5 @@ namespace Sitecore.TestStar.WebTests.Tests {
 				Assert.Fail(wex.Message);
 			}
 		}
-		
-		//[Test]
-		//public void RunTest() {
-			//using (IE browser = new IE()) {
-			//	NavigationObserver observer = new NavigationObserver(browser);
-			//	browser.GoTo(homeURL);
-			//	browser.WaitForComplete();
-			//	observer.ShouldHave(HttpStatusCode.Accepted);
-			//}
-		//}
 	}
 }

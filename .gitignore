@@ -6,3 +6,5 @@ Sitecore.TestStar.Core/bin/
 Sitecore.TestStar.WebTests/obj/
 Sitecore.TestStar.WebTests/Sitecore.TestStar.WebTests.csproj.user
 Sitecore.TestStar.WebTests/bin/
+Sitecore.TestStar.TestLauncher/bin/
+Sitecore.TestStar.TestLauncher/Sitecore.TestStar.TestLauncher.csproj.user

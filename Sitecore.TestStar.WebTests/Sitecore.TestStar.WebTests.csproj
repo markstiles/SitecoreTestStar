@@ -70,15 +70,11 @@
   <ItemGroup>
     <Compile Include="Logging\LogToBlog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tasks\RebuildLucene.cs" />
     <Compile Include="Tests\BranchingTest.cs" />
     <Compile Include="Tests\IPTest.cs" />
     <Compile Include="Tests\PingTest.cs" />
-    <Compile Include="Tests\PlatformTest.cs" />
     <Compile Include="Tests\RedirectTest.cs" />
-    <Compile Include="Tests\SearchTest.cs" />
     <Compile Include="Tests\SitemapTest.cs" />
-    <Compile Include="Tests\UniqueURLTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sitecore.TestStar.Core\Sitecore.TestStar.Core.csproj">
