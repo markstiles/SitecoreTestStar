@@ -10,6 +10,11 @@ namespace Sitecore.TestStar.Core.WebService {
 		public bool Success;
 		public string Message;
 
+		public JSONGenScriptResult() {
+			Success = false;
+			Message = string.Empty;
+		}
+
 		public JSONGenScriptResult(bool b, string m) {
 			Success = b;
 			Message = m;

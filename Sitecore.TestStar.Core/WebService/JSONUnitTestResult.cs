@@ -13,6 +13,14 @@ namespace Sitecore.TestStar.Core.WebService {
 		public string Name;
 		public string Value;
 
+		public JSONUnitTestResult() {
+			Flag = false;
+			Type = string.Empty;
+			Method = string.Empty;
+			Name = string.Empty;
+			Value = string.Empty;
+		}
+
 		public JSONUnitTestResult(bool f, string t, string m, string n, string v){
 			Flag = f;
 			Type = t;

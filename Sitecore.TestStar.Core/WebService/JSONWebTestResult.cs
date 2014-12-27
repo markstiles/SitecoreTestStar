@@ -15,6 +15,16 @@ namespace Sitecore.TestStar.Core.WebService {
         public string Site;
         public string Environment;
 
+		public JSONWebTestResult() {
+			Flag = false;
+			Type = string.Empty;
+			Method = string.Empty;
+			Name = string.Empty;
+			Value = string.Empty;
+			Site = string.Empty;
+			Environment = string.Empty;
+		}
+
 		public JSONWebTestResult(bool f, string t, string m, string n, string v, string s, string e){
 			Flag = f;
 			Type = t;
