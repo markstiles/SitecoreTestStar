@@ -88,31 +88,69 @@ namespace Sitecore.TestStar.WebService {
 		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::Category
 		public JSONGenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
+
 			if (string.IsNullOrEmpty(ScriptName)) 
 				return new JSONGenScriptResult(false, "Script Generator: Need to provide a script name");
 		
 			if (!TestCalls.Any()) 
 				return new JSONGenScriptResult(false, "Script Generator: Need to provide at least one test call");
 
-			StringBuilder sb = new StringBuilder();
-			sb.Append("@echo off").AppendLine();
-			sb.Append(@"set TestLauncherPath=%0\..\..\bin\Sitecore.TestStar.TestLauncher.exe").AppendLine().AppendLine();
-			sb.AppendLine("@echo on");
-
+			Dictionary<string, List<string>> testSet = new Dictionary<string, List<string>>();
 			//define exe, assembly, categories and name(blank)
 			foreach (string s in TestCalls) {
 				string[] arr = s.Split(new string[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
 				if (arr.Length < 2)
 					continue;
-				sb.AppendFormat("\"%TestLauncherPath%\" \"-u\" \"{0}\" \"{1}\" \"\"", arr[0], arr[1]).AppendLine();
+				if (!testSet.ContainsKey(arr[0]))
+					testSet[arr[0]] = new List<string>();
+				testSet[arr[0]].Add(arr[1]);
 			}
-			sb.AppendLine().AppendLine("pause");
+
+			StringBuilder sb = new StringBuilder();
+			sb.Append("#UNIT TESTING#").AppendLine().AppendLine();
+			sb.Append("$testTable = @{}").AppendLine().AppendLine();
+			
+			int i = 1;
+			foreach (KeyValuePair<string, List<string>> kvp in testSet) {
+				string entryName = string.Format("$testCats{0}", i);
+				sb.AppendFormat("{0} = New-Object System.Collections.ArrayList", entryName).AppendLine();
+				foreach (string s in kvp.Value) {
+					sb.AppendFormat("$length = {0}.Add(\"{1}\");", entryName, s).AppendLine();
+				}
+				sb.AppendLine().AppendFormat("$testTable.Add(\"{0}\", {1})", kvp.Key, entryName).AppendLine().AppendLine();
+				i++;
+			}
+
+			sb.Append("$URI = 'http://teststar.local'").AppendLine().AppendLine();
+
+			sb.Append("$URI += '/sitecore%20modules/Web/teststar/service/testservice.asmx'").AppendLine();
+			sb.Append("$proxy = New-WebServiceProxy -Uri $URI -Namespace System -Class string").AppendLine();
+			sb.Append("$errList = New-Object System.Collections.ArrayList").AppendLine().AppendLine();
+
+			sb.Append("foreach ($t in $testTable.GetEnumerator()) {").AppendLine();
+			sb.Append("  foreach ($c in $t.Value) {").AppendLine();
+			sb.Append("    [json]$response = $proxy.RunUnitTests($t.Key, $c)").AppendLine();
+			sb.Append("    $errs = $response | where {$_.Failed -eq $True}").AppendLine();
+			sb.Append("    foreach($e in $errs){").AppendLine();
+			sb.Append("      $a = $errList.Add($e.Message)").AppendLine();
+			sb.Append("    }").AppendLine();
+			sb.Append("  }").AppendLine();
+			sb.Append("}").AppendLine().AppendLine();
+
+			sb.Append("if($errList.Count -gt 0){").AppendLine();
+			sb.Append("  $out = 'There was ' + $errList.Count + ' error(s)'").AppendLine();
+			sb.Append("  Write-Output $out").AppendLine();
+			sb.Append("  exit(1)").AppendLine();
+			sb.Append("} else {").AppendLine();
+			sb.Append("  exit(0)").AppendLine();
+			sb.Append("}");
 
 			//write file
-			string filePath = string.Format(@"{0}sitecore modules\web\teststar\scripts\{1}.bat", Cons.ApplicationRoot, ScriptName);
+			string filePath = string.Format(@"{0}sitecore modules\web\teststar\scripts\{1}.ps1", Cons.ApplicationRoot, ScriptName);
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
+			//System.IO.File.WriteAllText("output.ps1", generatedCode);
 			return new JSONGenScriptResult(true, string.Format("Script Generator: Successfully Created {0}", filePath));
 		}
 

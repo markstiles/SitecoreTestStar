@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Packages\" />
+    <Folder Include="sitecore modules\scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore modules\css\style.css" />
