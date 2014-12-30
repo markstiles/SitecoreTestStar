@@ -122,7 +122,7 @@ namespace Sitecore.TestStar.WebService {
 				i++;
 			}
 
-			sb.AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.Host).AppendLine().AppendLine();
+			sb.AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)).AppendLine().AppendLine();
 
 			sb.Append("$URI += '/sitecore%20modules/Web/teststar/service/testservice.asmx'").AppendLine();
 			sb.Append("$proxy = New-WebServiceProxy -Uri $URI -Namespace System -Class string").AppendLine();
@@ -181,7 +181,7 @@ namespace Sitecore.TestStar.WebService {
 				sb.AppendFormat("$length = $sites.Add(\"{0}\");", s).AppendLine();
 			}
 
-			sb.AppendLine().AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.Host).AppendLine().AppendLine();
+			sb.AppendLine().AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)).AppendLine().AppendLine();
 			
 			sb.Append("$URI += '/sitecore%20modules/Web/teststar/service/testservice.asmx'").AppendLine();
 			sb.Append("$proxy = New-WebServiceProxy -Uri $URI -Namespace System -Class string").AppendLine();
