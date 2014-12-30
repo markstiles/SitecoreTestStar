@@ -13,15 +13,15 @@ namespace Sitecore.TestStar.Core.WebService {
 		#region ITestHandler Events
 
 		public void OnError(TestMethod tm, TestResult tr) {
-			Results(tm, "Has Errors", tr.Message, "err", true);
+			Results(tm, tr, "Has Errors", tr.Message, "err", true);
 		}
 
 		public void OnFailure(TestMethod tm, TestResult tr) {
-			Results(tm, "Failed", tr.Message, "fail", true);
+			Results(tm, tr, "Failed", tr.Message, "fail", true);
 		}
 
 		public void OnSuccess(TestMethod tm, TestResult tr) {
-			Results(tm, "Succeeded", string.Empty, "pass", false);
+			Results(tm, tr, "Succeeded", string.Empty, "pass", false);
 		}
 
 		#endregion ITestHandler Events
@@ -35,8 +35,10 @@ namespace Sitecore.TestStar.Core.WebService {
 		/// <summary>
 		/// writes message to the results window
 		/// </summary>
-		protected void Results(TestMethod tm, string name, string message, string type, bool failed) {
+		protected void Results(TestMethod tm, TestResult tr, string name, string message, string type, bool failed) {
 
+			SitecoreUtility.AddUnitTestResults(TestUtility.GetClassName(((Test)tm).ClassName), tr.Message);
+			
 			JSONUnitTestResult r = new JSONUnitTestResult(
 				ResultFlag, 
 				type,

@@ -27,5 +27,9 @@ namespace Sitecore.TestStar.Core.Extensions {
 			CheckboxField f = i.Fields[fieldName];
 			return (f == null) ? defaultValue : f.Checked;
 		}
+
+		public static string ToDateFieldValue(this DateTime Date) {
+			return Date.ToString("yyyyMMddTHHmmss");
+		}
 	}
 }

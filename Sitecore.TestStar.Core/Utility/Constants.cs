@@ -55,6 +55,8 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		public static readonly string SiteTemplate = "{2FDA2A39-357F-42F0-B97C-DEED4F935F7B}";
 		public static readonly string SystemTemplate = "{F94502A7-D76E-468C-8488-3397368AFDD2}";
+		public static readonly string ResultsFolderTemplate = "{98CDE7D8-3488-43B6-8773-D140DDEBAB51}";
+		public static readonly string ResultsTemplate = "{1915F851-227B-430C-88D0-373B85AFFBEE}";
 
 		#endregion Template IDs
 
