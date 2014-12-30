@@ -73,6 +73,19 @@ namespace Sitecore.TestStar.WebService {
         }
 
 		[WebMethod]
+		///@TestCalls is a list of strings in the format AssemblyName::ClassName
+		public List<JSONWebTestResult> RunWebTests(string EnvironmentID, string SiteID, List<string> TestCalls) {
+			List<JSONWebTestResult> resultSet = new List<JSONWebTestResult>();
+			foreach (string s in TestCalls) {
+				string[] arr = s.Split(new string[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
+				if (arr.Length < 2)
+					continue;
+				resultSet.AddRange(RunWebTest(EnvironmentID, SiteID, arr[0], arr[1]));
+			}
+			return resultSet;
+		}
+
+		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::Category
 		public JSONGenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
 			if (string.IsNullOrEmpty(ScriptName)) 
