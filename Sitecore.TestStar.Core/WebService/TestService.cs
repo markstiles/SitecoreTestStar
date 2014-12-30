@@ -15,6 +15,7 @@ using Sitecore.TestStar.Core.Entities;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Items;
 using System.IO;
+using System.Web;
 
 namespace Sitecore.TestStar.WebService {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -121,7 +122,7 @@ namespace Sitecore.TestStar.WebService {
 				i++;
 			}
 
-			sb.Append("$URI = 'http://teststar.local'").AppendLine().AppendLine();
+			sb.AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.Host).AppendLine().AppendLine();
 
 			sb.Append("$URI += '/sitecore%20modules/Web/teststar/service/testservice.asmx'").AppendLine();
 			sb.Append("$proxy = New-WebServiceProxy -Uri $URI -Namespace System -Class string").AppendLine();
@@ -180,8 +181,8 @@ namespace Sitecore.TestStar.WebService {
 				sb.AppendFormat("$length = $sites.Add(\"{0}\");", s).AppendLine();
 			}
 
-			sb.AppendLine().Append("$URI = 'http://teststar.local'").AppendLine().AppendLine();
-
+			sb.AppendLine().AppendFormat("$URI = '{0}'", HttpContext.Current.Request.Url.Host).AppendLine().AppendLine();
+			
 			sb.Append("$URI += '/sitecore%20modules/Web/teststar/service/testservice.asmx'").AppendLine();
 			sb.Append("$proxy = New-WebServiceProxy -Uri $URI -Namespace System -Class string").AppendLine();
 			sb.Append("$errList = New-Object System.Collections.ArrayList").AppendLine().AppendLine();
