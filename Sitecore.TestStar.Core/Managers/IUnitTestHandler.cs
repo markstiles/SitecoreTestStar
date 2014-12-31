@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Core;
-using Sitecore.TestStar.Core.Entities;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public interface IUnitTestHandler {

@@ -28,6 +28,11 @@ namespace Sitecore.TestStar.Core.Extensions {
 			return (f == null) ? defaultValue : f.Checked;
 		}
 
+		public static DateTime GetSafeDateFieldValue(this Item i, string fieldName) {
+			DateField f = i.Fields[fieldName];
+			return (f == null) ? DateTime.Now : f.DateTime;
+		}
+
 		public static string ToDateFieldValue(this DateTime Date) {
 			return Date.ToString("yyyyMMddTHHmmss");
 		}

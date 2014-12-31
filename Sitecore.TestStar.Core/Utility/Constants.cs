@@ -49,6 +49,12 @@ namespace Sitecore.TestStar.Core.Utility {
 			}
 		}
 
+		public static Database WebDB {
+			get {
+				return Sitecore.Configuration.Factory.GetDatabase("web");
+			}
+		}
+
 		#endregion DB
 
 		#region Template IDs
@@ -78,6 +84,7 @@ namespace Sitecore.TestStar.Core.Utility {
 			public static readonly string UnitFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
 			public static readonly string WebFoldNull = "Sitecore.TestStar.Core.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
 			public static readonly string NullJSON = "Sitecore.TestStar.Core.Utility.JsonSerializer.GetObject: The data is empty.";
+			public static readonly string ResultFoldNull = "Sitecore.TestStar.Core.ResultProvider.GetResults: Check that the Test Results folder exists in the content tree.";
 		}
 		
 		#endregion Exception Messages
