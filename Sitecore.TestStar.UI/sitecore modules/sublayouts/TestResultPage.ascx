@@ -1,7 +1,7 @@
 <%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="TestResultPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.TestResultPage" %>
-<<%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
 
 <div class="ResultList">
 	<asp:Panel ID="pnlNav" Visible="false" CssClass="pagerWrap" runat="server">
