@@ -5,29 +5,22 @@
 
 <div class="ResultList">
 	<asp:Panel ID="pnlNav" Visible="false" CssClass="pagerWrap" runat="server">
-		<asp:HyperLink ID="lnkPrev" Visible="false" Text="< Previous Page" CssClass="prevPage" runat="server"></asp:HyperLink>
-		<asp:HyperLink ID="lnkNext" Visible="false" Text="Next Page >" CssClass="nextPage" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkPrev" Visible="false" Text="< Previous Page" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkNext" Visible="false" Text="Next Page >" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
         <div class="clear"></div>
 	</asp:Panel>
 	<div>
-		<div class="Message">
+		<div class="message">
 			<asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
 		</div>
 		<asp:Repeater ID="rptResults" runat="server">
 			<HeaderTemplate>
-				<div class="Results">
+				<div class="resultList">
 			</HeaderTemplate>
 			<ItemTemplate>
-				<div class="TestResult">
-					<h3><%# ((TestResultEntry)Container.DataItem).Title %></a></h3>
-					<div class="DateCreated">
-						<%# ((TestResultEntry)Container.DataItem).Date.ToString("MMMM d, yyyy") %>
-					</div>
-					<div class"ResultType">
-						<%# (((TestResultEntry)Container.DataItem).IsUnitTest) ? "Unit Test" : "Web Test" %>
-					</div>
-					<div class="clear"></div>
-					<div class="Message">
+				<div class="testResult whiteBox corners">
+					<h3><%# ((TestResultEntry)Container.DataItem).Title %>: <span><%# ((TestResultEntry)Container.DataItem).Date.ToString("MMMM d, yyyy") %></span></h3>
+					<div class="resultMessage">
 						<%# ((TestResultEntry)Container.DataItem).Message %>
 					</div>
 					<div class="clear"></div>
@@ -39,8 +32,8 @@
 		</asp:Repeater>
 	</div>
 	<asp:Panel ID="pnlNav2" Visible="false" CssClass="pagerWrap" runat="server">
-		<asp:HyperLink ID="lnkPrev2" Visible="false" Text="< Previous Page" CssClass="prevPage" runat="server"></asp:HyperLink>
-		<asp:HyperLink ID="lnkNext2" Visible="false" Text="Next Page >" CssClass="nextPage" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkPrev2" Visible="false" Text="< Previous Page" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkNext2" Visible="false" Text="Next Page >" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
         <div class="clear"></div>
 	</asp:Panel>
 </div>
