@@ -19,9 +19,9 @@
 			</HeaderTemplate>
 			<ItemTemplate>
 				<div class="testResult whiteBox corners">
-					<h3><%# ((TestResultEntry)Container.DataItem).Title %>: <span><%# ((TestResultEntry)Container.DataItem).Date.ToString("MMMM d, yyyy") %></span></h3>
+					<h3><%# ((TestResultList)Container.DataItem).Title %>: <span><%# ((TestResultList)Container.DataItem).Date.ToString("MMMM d, yyyy") %></span></h3>
 					<div class="resultMessage">
-						<%# ((TestResultEntry)Container.DataItem).Message %>
+						<%# ((TestResultList)Container.DataItem).Message %>
 					</div>
 					<div class="clear"></div>
 				</div>

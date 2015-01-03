@@ -21,7 +21,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		protected void Page_Load(object sender, EventArgs e) {
 			
 			//choose results 
-			List<TestResultEntry> results = ResultProvider.GetResults().ToList();
+			List<TestResultList> results = ResultProvider.GetResults().ToList();
 			
 			int page = 1;
 			int maxPosts = 10;
@@ -49,7 +49,8 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 				//if you're on a page higher than 1 st the prev
 				if (page > 1) {
-					string prevUrl = pageUrl + "?page=" + (page - 1).ToString();
+					string qstring = (page == 2) ? string.Empty : "?page=" + (page - 1).ToString();
+					string prevUrl = pageUrl + qstring;
 					lnkPrev.NavigateUrl = prevUrl;
 					lnkPrev.Visible = true;
 					lnkPrev2.NavigateUrl = prevUrl;

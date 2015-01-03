@@ -11,26 +11,26 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 namespace Sitecore.TestStar.Core.Providers {
 	public class ResultProvider {
 		
-		public static IEnumerable<TestResultEntry> GetResults() {
+		public static IEnumerable<TestResultList> GetResults() {
 			Item folder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			if (folder == null)
 				throw new NullReferenceException(Cons.Exceptions.ResultFoldNull);
 
 			if (!folder.HasChildren)
-				return Enumerable.Empty<TestResultEntry>();
+				return Enumerable.Empty<TestResultList>();
 
-			IEnumerable<TestResultEntry> results = from Item i in folder.Axes.GetDescendants()
-										  where i.TemplateID.ToString().Equals(Cons.ResultsTemplate)
+			IEnumerable<TestResultList> results = from Item i in folder.Axes.GetDescendants()
+										  where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)
 										  select Factory.GetTestResult(i);
 
 			return results.OrderByDescending(a => a.Date);
 		}
 
-		public static IEnumerable<TestResultEntry> GetUnitTestResults() {
+		public static IEnumerable<TestResultList> GetUnitTestResults() {
 			return GetResults().Where(a => a.IsUnitTest);
 		}
 
-		public static IEnumerable<TestResultEntry> GetWebTestResults() {
+		public static IEnumerable<TestResultList> GetWebTestResults() {
 			return GetResults().Where(a => !a.IsUnitTest);
 		}
 	}

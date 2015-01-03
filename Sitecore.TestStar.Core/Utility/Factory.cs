@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
@@ -44,8 +45,8 @@ namespace Sitecore.TestStar.Core.Utility {
 			return new TestSystem(i.ID.ToString(), i.DisplayName);
 		}
 
-		public static TestResultEntry GetTestResult(Item i) {
-			return new TestResultEntry(i.ID.ToString(), i.GetSafeFieldValue("Title"), i.GetSafeDateFieldValue("Date"), i.GetSafeFieldValue("Description"), i.GetSafeFieldValue("Message"), i.GetSafeFieldBool("IsUnitTest"));
+		public static TestResultList GetTestResult(Item i) {
+			return new TestResultList(i.ID.ToString(), i.GetSafeFieldValue("Title"), i.GetSafeDateFieldValue("Date"), i.GetSafeFieldValue("Description"), i.GetSafeFieldValue("Message"), i.GetSafeFieldBool("IsUnitTest"));
 		}
 
 		public static string GetTestAssembly(Item i) {

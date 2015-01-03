@@ -63,13 +63,13 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	.whiteBox:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
 	.whiteBox:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
 
-.generate { width:590px; margin-bottom:15px; display:inline-block; position:relative; }
+.generate { max-width:590px; margin-bottom:15px; display:block; position:relative; }
     .genFields { display:none; margin:0 0 40px 23px; }
 	.genToggle { position: absolute; top:0px; right:10px; width:50px; color: #00aadd; font-family: "xolonium"; font-size: 30px; text-align:center; cursor:pointer; }
 	.generate .submit { display: none; }
 
 .testForm { margin-bottom:15px; }
-.suiteWrap { width:620px; display:inline-block; vertical-align:top; }
+.suiteWrap { max-width:620px; display:inline-block; vertical-align:top; }
 
 .subtext { color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; }
 
@@ -96,18 +96,18 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
     .ind { display: inline-block; height: 25px; vertical-align: top; width: 50px; margin:0 5px 5px 0; }
         .ind:before { top: 0; left: 0; border-top: 5px solid #fff; }
 	    .ind:after { bottom: 0; right: 0; border-right: 5px solid #fff; }
-	.pass .ind { background-color: #d4fce0; }
-        .pass .ind:before { border-right: 5px solid #d4fce0; }
-	    .pass .ind:after { border-top: 5px solid #d4fce0; }
-    .fail .ind { background-color: #f1baba; }
-        .fail .ind:before { border-right: 5px solid #f1baba; }
-	    .fail .ind:after { border-top: 5px solid #f1baba; }
-    .err .ind { background-color: #ffe0af; }
-        .err .ind:before { border-right: 5px solid #ffe0af; }
-	    .err .ind:after { border-top: 5px solid #ffe0af; }
-    .skip .ind { background-color: #afbeff; }
-        .skip .ind:before { border-right: 5px solid #afbeff; }
-	    .skip .ind:after { border-top: 5px solid #afbeff; }
+	.Success .ind { background-color: #d4fce0; }
+        .Success .ind:before { border-right: 5px solid #d4fce0; }
+	    .Success .ind:after { border-top: 5px solid #d4fce0; }
+    .Failure .ind { background-color: #f1baba; }
+        .Failure .ind:before { border-right: 5px solid #f1baba; }
+	    .Failure .ind:after { border-top: 5px solid #f1baba; }
+    .Error .ind { background-color: #ffe0af; }
+        .Error .ind:before { border-right: 5px solid #ffe0af; }
+	    .Error .ind:after { border-top: 5px solid #ffe0af; }
+    .Skipped .ind { background-color: #afbeff; }
+        .Skipped .ind:before { border-right: 5px solid #afbeff; }
+	    .Skipped .ind:after { border-top: 5px solid #afbeff; }
     
     .rSite { font-size:12px; text-transform:uppercase; display:inline-block; max-width:315px; line-height:25px; }
     .rMethod { font-size:14px; display:inline-block; line-height:25px; margin-right:10px; }
@@ -131,3 +131,4 @@ h3 span { color:#555; }
 .pagerWrap { margin-bottom:15px; }
 .prevPage, 
 .nextPage { color:#00aadd; font-family:"xolonium"; text-decoration:none; display:inline-block; }
+.prevPage { margin-right:15px; }

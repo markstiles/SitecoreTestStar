@@ -24,7 +24,7 @@ namespace Sitecore.TestStar.WebService {
 	public class TestService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public List<JSONUnitTestResult> RunUnitTests(string AssemblyName, string Category) {
+		public List<UnitTestResult> RunUnitTests(string AssemblyName, string Category) {
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
 			UnitTestManager manager = new UnitTestManager(wsuth);
@@ -48,7 +48,7 @@ namespace Sitecore.TestStar.WebService {
 		}
 
         [WebMethod]
-        public List<JSONWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
+        public List<WebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
 
             CoreExtensions.Host.InitializeService();
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
@@ -75,8 +75,8 @@ namespace Sitecore.TestStar.WebService {
 
 		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::ClassName
-		public List<JSONWebTestResult> RunWebTests(string EnvironmentID, string SiteID, List<string> TestCalls) {
-			List<JSONWebTestResult> resultSet = new List<JSONWebTestResult>();
+		public List<WebTestResult> RunWebTests(string EnvironmentID, string SiteID, List<string> TestCalls) {
+			List<WebTestResult> resultSet = new List<WebTestResult>();
 			foreach (string s in TestCalls) {
 				string[] arr = s.Split(new string[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
 				if (arr.Length < 2)

@@ -55,10 +55,10 @@ $(document).ready(function () {
 		data.d.forEach(function (res) {
 			var css = (res.Flag) ? "even" : "odd";
 			var s = "<div class='result corners " + css + " " + res.Type + "'><div class='ind corners'></div>";
-			if (res.Name != "")
+			if (res.ClassName != "")
 				s += "<div class='rMethod'>" + res.Method + "</div>";
 			var div = (res.Message.Length > 0) ? ": " : "";
-			s += "<div class='rResult'>" + res.Name + div + " " + res.Message + "</div>";
+			s += "<div class='rResult'>" + res.ClassName + div + " " + res.Message + "</div>";
 			s += "</div>";
 
 			$(".resultSet").prepend(s);
@@ -153,7 +153,7 @@ $(document).ready(function () {
             s += "<div class='rSite'>" + res.Method + " - " + res.Environment + " - " + res.Site + "</div>";
             s += "<div class='clearfix'></div>";
             var div = (res.Message.Length > 0) ? ": " : "";
-            s += "<div class='rResult'>" + res.Name + div + " " + res.Message + "</div>";
+            s += "<div class='rResult'>" + res.ClassName + div + " " + res.Message + "</div>";
             s += "</div>";
 
             $(".resultSet").prepend(s);

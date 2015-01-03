@@ -6,7 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Core;
 using NUnit.Util;
+using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Tests;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class UnitTestManager {
@@ -38,11 +40,11 @@ namespace Sitecore.TestStar.Core.Managers {
 			ResultSummarizer summ = new ResultSummarizer(tr);
 
 			if (tr.IsError) {
-				Handler.OnError(tm, tr);
+				Handler.OnResult(tm, tr, TestResultEnum.Error);
 			} else if (tr.IsFailure) {
-				Handler.OnFailure(tm, tr);
+				Handler.OnResult(tm, tr, TestResultEnum.Failure);
 			} else if (tr.IsSuccess) {
-				Handler.OnSuccess(tm, tr);
+				Handler.OnResult(tm, tr, TestResultEnum.Success);
 			}
 		}
 	}

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-	public class TestResultEntry {
+	public class TestResultList {
 
 		public string ID = string.Empty;
 		public string Title = string.Empty;
@@ -16,9 +16,9 @@ namespace Sitecore.TestStar.Core.Entities {
 		
 		#region Constructors
 
-		public TestResultEntry() { }
+		public TestResultList() { }
 
-		public TestResultEntry(string id, string title, DateTime date, string description, string message, bool isUnitTest) {
+		public TestResultList(string id, string title, DateTime date, string description, string message, bool isUnitTest) {
 			ID = id;
 			Title = title;
 			Date = date;
@@ -30,7 +30,7 @@ namespace Sitecore.TestStar.Core.Entities {
 		#endregion Constructors
 
 		public override bool Equals(object obj) {
-			return (this.ID.Equals(((TestResultEntry)obj).ID)) ? true : false;
+			return (this.ID.Equals(((TestResultList)obj).ID)) ? true : false;
 		}
 	}
 }

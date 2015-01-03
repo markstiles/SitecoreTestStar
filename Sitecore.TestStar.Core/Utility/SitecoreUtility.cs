@@ -8,6 +8,7 @@ using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
+using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
@@ -22,40 +23,7 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		#region Result Definition
 
-		public static void AddUnitTestResults(string testName, string message) {
-			
-			StringBuilder resultMessage = new StringBuilder();
-			resultMessage.Append("<div class='resultError'>");
-			resultMessage.AppendFormat("{0}: {1}<br/>", GetKeyStr("Time"), DateTime.Now.ToString("h:mm tt"));
-			resultMessage.AppendFormat("{0}: {1}<br/>", GetKeyStr("Body"), message);
-			resultMessage.Append("</div>");
-
-			CreateResult(GetItemName(testName), testName, message, resultMessage.ToString(), true);
-		}
-
-		public static void AddWebTestResults(string testName, string url, HttpStatusCode statusCode, string message) {
-
-			//short text
-			StringBuilder resultDesc = new StringBuilder();
-			resultDesc.AppendFormat("<div class='resultLink'>{0}: {1}</div>", GetKeyStr(((int)statusCode).ToString()), MakeHref(url));
-
-			//full text
-			StringBuilder resultMessage = new StringBuilder();
-			resultMessage.Append("<div class='resultError'>");
-			resultMessage.AppendFormat("{0}: {1}<br/>", GetKeyStr("Time"), DateTime.Now.ToString("h:mm tt"));
-			resultMessage.AppendFormat("{0}: {1}<br/>", GetKeyStr("URL"), MakeHref(url));
-			resultMessage.AppendFormat("{0}: {1} - {2}<br/>", GetKeyStr("Status Code"), ((int)statusCode).ToString(), statusCode.ToString());
-			resultMessage.AppendFormat("{0}: {1}<br/>", GetKeyStr("Body"), message);
-			resultMessage.Append("</div>");
-
-			CreateResult(GetItemName(testName), testName, resultDesc.ToString(), resultMessage.ToString(), false);
-		}
-
-		#endregion Result Definition
-
-		#region Helper Methods
-
-		public static void CreateResult(string resultItemName, string title, string desc, string message, bool isUnitTest){
+		public static void CreateResultEntry(string listName, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
 			//change to the item in the master db so that content isn't created in the web db
 			Item resultsFolder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			//need to open security to create item
@@ -66,38 +34,48 @@ namespace Sitecore.TestStar.Core.Utility {
 				if (parentNode == null) 
 					return;
 
+				string goodListName = GetItemName(listName);
 				//see if post already exists
-				Item newItem = GetResult(parentNode, resultItemName, isUnitTest);
-				
+				Item listItem = parentNode.Axes.GetChild(goodListName);
+				//if it doesn't exist or if it's not the same type we want, then create it
+				if (listItem == null) //Create new item
+					listItem = parentNode.Add(goodListName, Cons.MasterDB.Templates[Cons.ResultsListTemplate]);
+
 				//if you created the item successfully
-				if (newItem == null) 
+				if (listItem == null) 
 					return;
 
 				//set permissions to edit comment data fields
-				using (new EditContext(newItem, true, false)) {
-					newItem["Title"] = title;
-					newItem["Date"] = DateTime.Now.ToDateFieldValue();
-					newItem["Description"] += desc;
-					newItem["Message"] += message;
-					newItem["IsUnitTest"] = (isUnitTest) ? "1" : string.Empty;
+				if (listItem.Fields["Date"] == null || listItem["Date"].Equals(string.Empty)) {
+					using (new EditContext(listItem, true, false)) {
+						listItem["Date"] = DateTime.Now.ToDateFieldValue();
+					}
 				}
-				PublishItem(newItem);
+			
+				string entryName = (listItem.Children.Count + 1).ToString("0000");
+				Item newEntryItem = listItem.Add(entryName, Cons.MasterDB.Templates[(isUnitTest) ? Cons.UnitTestResultTemplate : Cons.WebTestResultTemplate]);
+				using (new EditContext(newEntryItem, true, false)) {
+					newEntryItem["Type"] = type;
+					newEntryItem["Method"] = method;
+					newEntryItem["ClassName"] = className;
+					newEntryItem["Message"] = message;
+					newEntryItem["Date"] = DateTime.Now.ToDateFieldValue();
+
+					if (!isUnitTest) {
+						newEntryItem["Site"] = siteID;
+						newEntryItem["Environment"] = envID;
+						newEntryItem["RequestURL"] = url;
+						newEntryItem["ResponseStatus"] = status;
+					}
+				}
+
+				PublishItem(listItem);
 			}
 		}
 
-		public static Item GetResult(Item parentNode, string resultName, bool isUnitTest) {
-			//see if post already exists
-			Item newItem = parentNode.Axes.GetChild(resultName);
-			//separate web tests from unit test results
-			bool isUnitResult = (newItem != null && newItem.Fields["IsUnitTest"] != null && ((CheckboxField)newItem.Fields["IsUnitTest"]).Checked);
-			//if it doesn't exist or if it's not the same type we want, then create it
-			if (newItem == null || isUnitTest != isUnitResult) {
-				//Create new item
-				Sitecore.Data.Items.TemplateItem newTemp = Cons.MasterDB.Templates[Cons.ResultsTemplate];
-				newItem = parentNode.Add(resultName, newTemp);
-			}
-			return newItem;
-		}
+		#endregion Result Definition
+
+		#region Helper Methods
 
 		public static Item GetDateParentNode(Item parentNode, DateTime dt, TemplateItem folderType) {
 
@@ -142,7 +120,7 @@ namespace Sitecore.TestStar.Core.Utility {
 				Sitecore.Publishing.PublishMode.Full, 
 				Sitecore.Data.Managers.LanguageManager.DefaultLanguage, 
 				DateTime.Now);
-			pubOpts.Deep = false;
+			pubOpts.Deep = true;
 			pubOpts.RootItem = item;
 			var pub = new Sitecore.Publishing.Publisher(pubOpts);
 			Sitecore.Jobs.Job pubJob = pub.PublishAsync();

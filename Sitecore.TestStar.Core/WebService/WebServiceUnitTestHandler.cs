@@ -4,54 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Core;
+using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.WebService {
 	public class WebServiceUnitTestHandler : IUnitTestHandler {
 
+		#region Messaging
+
+		public List<UnitTestResult> ResultList = new List<UnitTestResult>();
+
+		#endregion Messaging
+
 		#region ITestHandler Events
 
-		public void OnError(TestMethod tm, TestResult tr) {
-			Results(tm, tr, "Has Errors", tr.Message, "err", true);
-		}
+		public void OnResult(TestMethod tm, TestResult tr, TestResultEnum tre) {
 
-		public void OnFailure(TestMethod tm, TestResult tr) {
-			Results(tm, tr, "Failed", tr.Message, "fail", true);
-		}
+			UnitTestResult utr = new UnitTestResult(
+				string.Empty,
+				tre.ToString(),
+				TestUtility.GetClassName(tm.MethodName),
+				TestUtility.GetClassName(((Test)tm).ClassName),
+				tr.Message
+			);
 
-		public void OnSuccess(TestMethod tm, TestResult tr) {
-			Results(tm, tr, "Succeeded", string.Empty, "pass", false);
+			SitecoreUtility.CreateResultEntry((tm.Categories().Any()) ? tm.Categories().First() : utr.ClassName, utr.ClassName, utr.Method, utr.Type, utr.Message, true, string.Empty, string.Empty, string.Empty, string.Empty);
+			ResultList.Add(utr);
 		}
 
 		#endregion ITestHandler Events
-
-		#region Messaging
-
-        public List<JSONUnitTestResult> ResultList = new List<JSONUnitTestResult>();
-
-		private bool ResultFlag = false;
-
-		/// <summary>
-		/// writes message to the results window
-		/// </summary>
-		protected void Results(TestMethod tm, TestResult tr, string name, string message, string type, bool failed) {
-
-			SitecoreUtility.AddUnitTestResults(TestUtility.GetClassName(((Test)tm).ClassName), tr.Message);
-			
-			JSONUnitTestResult r = new JSONUnitTestResult(
-				ResultFlag, 
-				type,
-				(tm != null) ? TestUtility.GetClassName(tm.MethodName) : string.Empty,
-				name,
-				message,
-				failed
-			);
-			ResultList.Add(r);
-
-			ResultFlag = !ResultFlag;
-		}
-
-		#endregion Messaging
 	}
 }

@@ -10,6 +10,7 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class WebTestManager {
@@ -37,7 +38,7 @@ namespace Sitecore.TestStar.Core.Managers {
 			foreach (TestEnvironment te in Environments) {
 				foreach (TestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
-						Handler.OnSkipped(tm, te, ts);
+						Handler.OnResult(tm, te, ts, null, string.Empty, HttpStatusCode.NoContent, TestResultEnum.Skipped);
 						continue;
 					}
 
@@ -66,11 +67,11 @@ namespace Sitecore.TestStar.Core.Managers {
 			HttpStatusCode status = ((Test)tm).GetProperty<HttpStatusCode>(BaseWebTest.ResponseStatusCodeKey);
 			string requestURL = ((Test)tm).GetProperty<string>(BaseWebTest.RequestURLKey);
 			if (tr.IsError) {
-				Handler.OnError(tm, te, ts, tr, requestURL, status);
+				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Error);
 			} else if (tr.IsFailure) {
-				Handler.OnFailure(tm, te, ts, tr, requestURL, status);
+				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Failure);
 			} else if (tr.IsSuccess) {
-				Handler.OnSuccess(tm, te, ts, tr, requestURL, status);
+				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Success);
 			}
 		}
 	}

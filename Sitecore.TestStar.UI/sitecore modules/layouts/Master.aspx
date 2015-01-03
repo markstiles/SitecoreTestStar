@@ -41,7 +41,7 @@
 					<sc:Placeholder Key="main" runat="server"></sc:Placeholder>
 				</div>
 			</main>
-			<footer><div class="preThin"><div class="preThick"></div>Sitecore TestStar 2014</div></footer>
+			<footer><div class="preThin"><div class="preThick"></div>Sitecore TestStar <%= DateTime.Now.Year %></div></footer>
         </div>
     </div>
     </form>

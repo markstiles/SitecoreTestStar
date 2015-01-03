@@ -6,16 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public interface IWebTestHandler {
 
-		void OnError(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus);
-
-		void OnFailure(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus);
-
-		void OnSuccess(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus);
-
-		void OnSkipped(TestMethod tm, TestEnvironment te, TestSite ts);
+		void OnResult(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre);
 	}
 }
