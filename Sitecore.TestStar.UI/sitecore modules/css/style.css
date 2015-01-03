@@ -126,7 +126,17 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
     .systemName { font-size:12px; display:block; }
 .wtTests { margin:15px 0; }
 
-.testResult { margin-bottom:15px; }
+.resultList { margin-bottom: 15px; }
+	.testResult { border-bottom:1px solid #00aadd; padding:5px 10px; }
+	.testResult:last-child { border: 0px; }
+		.resultDate { font-weight:bold; display:inline-block; margin-right:5px; }
+		.resultMethod { display:inline-block; margin-right:5px; }
+		.resultType { display:inline-block; margin-right:5px; }
+		.tSuccess { color:#00fc4c; }
+		.tFailure { color:#f10000; }
+		.tError { color:#ff9c00; }
+		.tSkipped { color:#0030ff; }
+		.resultMessage { background: #00aadd; color: #fff; margin: 4px 0; padding: 5px 10px; }
 h3 span { color:#555; }
 .pagerWrap { margin-bottom:15px; }
 .prevPage, 

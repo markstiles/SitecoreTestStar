@@ -46,7 +46,7 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		public static TestResultList GetTestResult(Item i) {
-			return new TestResultList(i.ID.ToString(), i.GetSafeFieldValue("Title"), i.GetSafeDateFieldValue("Date"), i.GetSafeFieldValue("Description"), i.GetSafeFieldValue("Message"), i.GetSafeFieldBool("IsUnitTest"));
+			return new TestResultList(i.ID.ToString(), i.DisplayName, i.GetSafeDateFieldValue("Date"));
 		}
 
 		public static string GetTestAssembly(Item i) {

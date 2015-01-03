@@ -10,21 +10,15 @@ namespace Sitecore.TestStar.Core.Entities {
 		public string ID = string.Empty;
 		public string Title = string.Empty;
 		public DateTime Date = DateTime.Now;
-		public string Description = string.Empty;
-		public string Message = string.Empty;
-		public bool IsUnitTest = false;
 		
 		#region Constructors
 
 		public TestResultList() { }
 
-		public TestResultList(string id, string title, DateTime date, string description, string message, bool isUnitTest) {
+		public TestResultList(string id, string title, DateTime date) {
 			ID = id;
 			Title = title;
 			Date = date;
-			Description = description;
-			Message = message;
-			IsUnitTest = isUnitTest;
 		}
 
 		#endregion Constructors

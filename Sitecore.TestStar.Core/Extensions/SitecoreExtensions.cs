@@ -11,8 +11,8 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Extensions {
 	public static class SitecoreExtensions {
-		public static Item GetItem(this Database db, string id) {
-			return db.GetItem(SitecoreUtility.GetID(Cons.EnvironmentFolder));
+		public static Item GetItemByID(this Database db, string id) {
+			return db.GetItem(SitecoreUtility.GetID(id));
 		}
 
 		public static string GetSafeFieldValue(this Item i, string fieldName){

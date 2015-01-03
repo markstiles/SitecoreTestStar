@@ -1,5 +1,6 @@
 ﻿using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Utility;
 using System;
@@ -24,6 +25,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
 			WebTestResult wtr = new WebTestResult(
 				string.Empty,
+				DateTime.Now,
 				tre.ToString(),
 				TestUtility.GetClassName(tm.ClassName),
 				TestUtility.GetClassName(((Test)tm).ClassName),
@@ -34,7 +36,7 @@ namespace Sitecore.TestStar.Core.WebService {
 				responseStatus.ToString()
 			);
 
-			wtr.ID = SitecoreUtility.CreateResultEntry(wtr.Method, wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
+			wtr.ID = SitecoreUtility.CreateResultEntry(wtr.Method, wtr.Date.ToDateFieldValue(), wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
 			ResultList.Add(wtr);
 		}
         	

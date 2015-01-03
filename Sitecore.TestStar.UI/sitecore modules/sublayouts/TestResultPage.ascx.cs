@@ -5,6 +5,7 @@ using System.Data;
 using System.Reflection;
 using System.Web.UI;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Extensions;
 using System.Text;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.IO;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.Web;
 using Sitecore.Links;
+using Sitecore.Data.Items;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class TestResultPage : UserControl {
@@ -72,6 +74,33 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			}
 		}
 
+		protected void rptResults_ItemDataBound(object sender, RepeaterItemEventArgs e) {
+			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
+
+			TestResultList r = (TestResultList)e.Item.DataItem;
+			
+			if (stored == null) 
+				stored = r.Date;
+
+			string sStr = stored.ToString("yyyyMMdd");
+			string rStr = r.Date.ToString("yyyyMMdd");
+
+			PlaceHolder phDateHead = (PlaceHolder)e.Item.FindControl("phDateHead");
+			if (!sStr.Equals(rStr)) {
+				phDateHead.Visible = true;
+				stored = r.Date;
+			}
+
+			//get the entry children
+			Item rItem = Sitecore.Context.Database.GetItemByID(r.ID);
+
+			Repeater rptEntries = (Repeater)e.Item.FindControl("rptEntries");
+			rptEntries.DataSource = rItem.GetChildren().Reverse();
+			rptEntries.DataBind();
+		}
+
 		#endregion Events
+
+		protected DateTime stored = DateTime.Now.AddDays(1);
 	}
 }

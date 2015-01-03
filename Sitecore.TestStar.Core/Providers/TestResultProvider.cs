@@ -25,13 +25,5 @@ namespace Sitecore.TestStar.Core.Providers {
 
 			return results.OrderByDescending(a => a.Date);
 		}
-
-		public static IEnumerable<TestResultList> GetUnitTestResults() {
-			return GetResults().Where(a => a.IsUnitTest);
-		}
-
-		public static IEnumerable<TestResultList> GetWebTestResults() {
-			return GetResults().Where(a => !a.IsUnitTest);
-		}
 	}
 }
