@@ -27,15 +27,14 @@ namespace Sitecore.TestStar.Core.WebService {
 				tre.ToString(),
 				TestUtility.GetClassName(tm.ClassName),
 				TestUtility.GetClassName(((Test)tm).ClassName),
-				tr.Message,
+				(tr != null) ? tr.Message : string.Empty,
 				ts.Name,
 				te.Name,
 				requestURL, 
 				responseStatus.ToString()
 			);
 
-			SitecoreUtility.CreateResultEntry(wtr.Method, wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
-
+			wtr.ID = SitecoreUtility.CreateResultEntry(wtr.Method, wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
 			ResultList.Add(wtr);
 		}
         	

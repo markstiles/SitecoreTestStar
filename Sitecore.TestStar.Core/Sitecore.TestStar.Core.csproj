@@ -101,6 +101,7 @@
     <Compile Include="Providers\TestResultProvider.cs" />
     <Compile Include="Providers\SiteProvider.cs" />
     <Compile Include="Providers\SystemProvider.cs" />
+    <Compile Include="Providers\TextEntryProvider.cs" />
     <Compile Include="Tests\BaseWebTest.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Enums.cs" />

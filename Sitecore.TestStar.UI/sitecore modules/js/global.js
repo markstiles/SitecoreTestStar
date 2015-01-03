@@ -57,7 +57,7 @@ $(document).ready(function () {
 			var s = "<div class='result corners " + css + " " + res.Type + "'><div class='ind corners'></div>";
 			if (res.ClassName != "")
 				s += "<div class='rMethod'>" + res.Method + "</div>";
-			var div = (res.Message.Length > 0) ? ": " : "";
+			var div = (res.Message.length > 0) ? ": " : "";
 			s += "<div class='rResult'>" + res.ClassName + div + " " + res.Message + "</div>";
 			s += "</div>";
 
@@ -152,8 +152,10 @@ $(document).ready(function () {
             var s = "<div class='result corners " + css + " " + res.Type + "'><div class='ind corners'></div>";
             s += "<div class='rSite'>" + res.Method + " - " + res.Environment + " - " + res.Site + "</div>";
             s += "<div class='clearfix'></div>";
-            var div = (res.Message.Length > 0) ? ": " : "";
-            s += "<div class='rResult'>" + res.ClassName + div + " " + res.Message + "</div>";
+            var div = (res.Message.length > 0) ? ": " : "";
+            console.log(res.Message.length);
+            console.log(res.Message);
+            s += "<div class='rResult'>" + res.Type + div + " " + res.Message + "</div>";
             s += "</div>";
 
             $(".resultSet").prepend(s);

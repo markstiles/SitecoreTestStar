@@ -23,7 +23,8 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		#region Result Definition
 
-		public static void CreateResultEntry(string listName, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
+		public static string CreateResultEntry(string listName, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
+			string returnID = string.Empty;
 			//change to the item in the master db so that content isn't created in the web db
 			Item resultsFolder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			//need to open security to create item
@@ -32,7 +33,7 @@ namespace Sitecore.TestStar.Core.Utility {
 				Sitecore.Data.Items.TemplateItem folderTemplate = Cons.MasterDB.Templates[Cons.ResultsFolderTemplate];
 				Item parentNode = GetDateParentNode(resultsFolder, DateTime.Now, folderTemplate);
 				if (parentNode == null) 
-					return;
+					return returnID;
 
 				string goodListName = GetItemName(listName);
 				//see if post already exists
@@ -42,8 +43,8 @@ namespace Sitecore.TestStar.Core.Utility {
 					listItem = parentNode.Add(goodListName, Cons.MasterDB.Templates[Cons.ResultsListTemplate]);
 
 				//if you created the item successfully
-				if (listItem == null) 
-					return;
+				if (listItem == null)
+					return returnID;
 
 				//set permissions to edit comment data fields
 				if (listItem.Fields["Date"] == null || listItem["Date"].Equals(string.Empty)) {
@@ -54,6 +55,7 @@ namespace Sitecore.TestStar.Core.Utility {
 			
 				string entryName = (listItem.Children.Count + 1).ToString("0000");
 				Item newEntryItem = listItem.Add(entryName, Cons.MasterDB.Templates[(isUnitTest) ? Cons.UnitTestResultTemplate : Cons.WebTestResultTemplate]);
+				returnID = newEntryItem.ID.ToString();
 				using (new EditContext(newEntryItem, true, false)) {
 					newEntryItem["Type"] = type;
 					newEntryItem["Method"] = method;
@@ -71,6 +73,7 @@ namespace Sitecore.TestStar.Core.Utility {
 
 				PublishItem(listItem);
 			}
+			return returnID;
 		}
 
 		#endregion Result Definition

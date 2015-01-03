@@ -30,7 +30,7 @@ namespace Sitecore.TestStar.Core.WebService {
 				tr.Message
 			);
 
-			SitecoreUtility.CreateResultEntry((tm.Categories().Any()) ? tm.Categories().First() : utr.ClassName, utr.ClassName, utr.Method, utr.Type, utr.Message, true, string.Empty, string.Empty, string.Empty, string.Empty);
+			utr.ID = SitecoreUtility.CreateResultEntry((tm.Categories().Any()) ? tm.Categories().First() : utr.ClassName, utr.ClassName, utr.Method, utr.Type, utr.Message, true, string.Empty, string.Empty, string.Empty, string.Empty);
 			ResultList.Add(utr);
 		}
 
