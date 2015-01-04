@@ -25,7 +25,7 @@
 				</asp:PlaceHolder>
 				<div class="resultList whiteBox corners">
 					<h3><%# ((TestResultList)Container.DataItem).Title %></h3>
-					<asp:Repeater ID="rptEntries" runat="server">
+					<asp:Repeater ID="rptEntries" runat="server" OnItemDataBound="rptEntries_ItemDataBound">
 						<ItemTemplate>
 							<div class="testResult">
 								<div class="resultDate">
@@ -38,6 +38,9 @@
 									- <%# ((Item)Container.DataItem)["Method"] %>
 								</div>
 								<div class="clear"></div>
+								<div>
+									<asp:Literal ID="ltlWebTestDetails" runat="server"></asp:Literal>
+								</div>
 								<div class="resultMessage" style="<%# (((Item)Container.DataItem)["Message"]).Length > 0 ? string.Empty : "display:none;" %>">
 									<%# ((Item)Container.DataItem)["Message"] %>
 								</div>

@@ -99,8 +99,20 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			rptEntries.DataBind();
 		}
 
+		protected void rptEntries_ItemDataBound(object sender, RepeaterItemEventArgs e) {
+			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
+
+			Item entry = (Item)e.Item.DataItem;
+			if(entry.TemplateID.ToString().Equals(Sitecore.TestStar.Core.Utility.Constants.WebTestResultTemplate)) {
+				Literal ltlWebTestDetails = (Literal)e.Item.FindControl("ltlWebTestDetails");
+				ltlWebTestDetails.Text = string.Format("{0} - {1}: {2}<br/>{3}", entry["Site"], entry["Environment"], entry["ResponseStatus"], entry["RequestURL"]);
+			}
+		}
+
 		#endregion Events
 
 		protected DateTime stored = DateTime.Now.AddDays(1);
+
+		
 	}
 }
