@@ -5,8 +5,6 @@
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 
-<asp:ScriptManager runat="server"></asp:ScriptManager>
-
 <div class="log corners"></div><div></div>
 <div class="error corners"></div><div></div>
 
