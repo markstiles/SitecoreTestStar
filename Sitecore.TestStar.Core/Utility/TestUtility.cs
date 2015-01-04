@@ -18,7 +18,8 @@ namespace Sitecore.TestStar.Core.Utility {
 			Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
 			// Find tests in current assembly
 			foreach (string a in AssemblyProvider.GetUnitTestAssemblies()) {
-				Suites.Add(a, TestUtility.GetTestSuite(a));
+				if (!Suites.ContainsKey(a))
+					Suites.Add(a, TestUtility.GetTestSuite(a));
 			}
 			return Suites;
 		}
@@ -31,7 +32,8 @@ namespace Sitecore.TestStar.Core.Utility {
             Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
             // Find tests in current assembly
             foreach (string a in AssemblyProvider.GetWebTestAssemblies()) {
-                Suites.Add(a, TestUtility.GetTestSuite(a));
+                if(!Suites.ContainsKey(a))
+					Suites.Add(a, TestUtility.GetTestSuite(a));
             }
             return Suites;
         }

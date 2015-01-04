@@ -25,7 +25,7 @@
         <h2><%= TextEntryProvider.Page.UnitTestSuites %></h2>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
-			    <div class="whiteBox corners">
+			    <div class="utTests whiteBox corners">
                 	<h3 title="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
 					    <%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
 				    </h3>

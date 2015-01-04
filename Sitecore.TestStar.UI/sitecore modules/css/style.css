@@ -124,7 +124,8 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .wtSystems { width:160px; margin-right:10px; }
 .wtSites { width:170px; }
     .systemName { font-size:12px; display:block; }
-.wtTests { margin:15px 0; }
+.utTests,
+.wtTests { margin:0 0 15px 0; }
 
 .resultList { margin-bottom: 15px; }
 	.testResult { border-bottom:1px solid #00aadd; padding:5px 10px; }
