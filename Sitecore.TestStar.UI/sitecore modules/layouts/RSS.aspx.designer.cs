@@ -11,5 +11,23 @@ namespace Sitecore.TestStar.Core.UI.layouts {
     
     
     public partial class RSS {
+        
+        /// <summary>
+        /// XmlOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal XmlOutput;
+        
+        /// <summary>
+        /// rptRSS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptRSS;
     }
 }

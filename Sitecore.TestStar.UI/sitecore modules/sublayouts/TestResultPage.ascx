@@ -16,9 +16,6 @@
 			<asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
 		</div>
 		<asp:Repeater ID="rptResults" runat="server" OnItemDataBound="rptResults_ItemDataBound">
-			<HeaderTemplate>
-				
-			</HeaderTemplate>
 			<ItemTemplate>
 				<asp:PlaceHolder ID="phDateHead" runat="server" Visible="false">
 					<h2><%# ((TestResultList)Container.DataItem).Date.ToString("MMMM d, yyyy") %></h2>
@@ -50,9 +47,6 @@
 					</asp:Repeater>	
 				</div>
 			</ItemTemplate>
-			<FooterTemplate>
-				
-			</FooterTemplate>
 		</asp:Repeater>
 	</div>
 	<div class="pagerWrap">
