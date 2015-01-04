@@ -11,6 +11,7 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class WebTestManager {
@@ -19,7 +20,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public WebTestManager(IWebTestHandler handler){
 			if (handler == null)
-				throw new ArgumentNullException("The handler provided is null");
+				throw new ArgumentNullException(Cons.Exceptions.IWebTestHandlerNull);
 			Handler = handler;
 		}
 
@@ -31,10 +32,10 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestFixture tf, IEnumerable<TestEnvironment> Environments, IEnumerable<TestSite> Sites) {
 			if (tf == null)
-				throw new NullReferenceException("Test Fixture was null. Make sure the class has the [TestFixture] attribute.");
+				throw new NullReferenceException(Cons.Exceptions.TestFixtureNull);
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
-				throw new NullReferenceException("Test Method was null. Make sure the class method has the [Test] attribute.");
+				throw new NullReferenceException(Cons.Exceptions.TestMethodNull);
 			foreach (TestEnvironment te in Environments) {
 				foreach (TestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
@@ -56,7 +57,7 @@ namespace Sitecore.TestStar.Core.Managers {
 		}
 
 		/// <summary>
-		/// deals with the results of tests
+		/// Passes the proper test result to the handler method
 		/// </summary>
 		private void HandleTest(TestFixture tf, TestMethod tm, TestEnvironment te, TestSite ts) {
 			

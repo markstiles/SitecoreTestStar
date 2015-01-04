@@ -8,7 +8,6 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Tests;
-using Sitecore.TestStar.WebTests.Logging;
 using System.Collections.Generic;
 using System.Threading;
 using System;

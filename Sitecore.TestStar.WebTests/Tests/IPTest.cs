@@ -10,7 +10,6 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
-using Sitecore.TestStar.WebTests.Logging;
 
 namespace Sitecore.TestStar.WebTests.Tests {
 	[TestFixture, RequiresSTA]

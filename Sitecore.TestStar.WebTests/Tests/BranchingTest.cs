@@ -8,7 +8,6 @@ using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
-using Sitecore.TestStar.WebTests.Logging;
 using Sitecore.TestStar.Core.Tests;
 
 namespace Sitecore.TestStar.WebTests.Tests {
@@ -25,7 +24,6 @@ namespace Sitecore.TestStar.WebTests.Tests {
 		protected void SetFailure(string requestURL, string message) {
 			HasFailed = true;
 			Log.Append(message).AppendLine();
-			LogToBlog.LogResults(TestUtility.GetClassName(((Test)ContextTest).ClassName), requestURL, ResponseStatus, true, message);
 		}
 	}
 }

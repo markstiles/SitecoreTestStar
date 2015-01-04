@@ -25,6 +25,8 @@ namespace Sitecore.TestStar.WebService {
 
 		[WebMethod]
 		public List<UnitTestResult> RunUnitTests(string AssemblyName, string Category) {
+			
+			//warm up nunit and configure the manager and handler
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
 			UnitTestManager manager = new UnitTestManager(wsuth);
@@ -50,12 +52,15 @@ namespace Sitecore.TestStar.WebService {
         [WebMethod]
         public List<WebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
 
+			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
             WebTestManager manager = new WebTestManager(wswth);
 
+			//build an error list to pass if you need it
 			List<WebTestResult> errorList = new List<WebTestResult> { new WebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
 			
+			//get the environment
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
 			if (ei == null) {
 				errorList[0].Message = Cons.Errors.NullEnv;
@@ -63,6 +68,7 @@ namespace Sitecore.TestStar.WebService {
 			}
             TestEnvironment te = Factory.GetTestEnvironment(ei);
 
+			//get the site
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
 			if (si == null) {
 				errorList[0].Message = Cons.Errors.NullSite;
@@ -70,6 +76,7 @@ namespace Sitecore.TestStar.WebService {
 			}
             TestSite ts = Factory.GetTestSite(si);
 
+			//get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
             if (tf == null) {
 				errorList[0].Message = Cons.Errors.NullTest;
@@ -98,11 +105,11 @@ namespace Sitecore.TestStar.WebService {
 		///@TestCalls is a list of strings in the format AssemblyName::Category
 		public JSONGenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
 
-			if (string.IsNullOrEmpty(ScriptName)) 
-				return new JSONGenScriptResult(false, "Script Generator: Need to provide a script name");
+			if (string.IsNullOrEmpty(ScriptName))
+				return new JSONGenScriptResult(false, Cons.Errors.ScriptGenNameNull);
 		
-			if (!TestCalls.Any()) 
-				return new JSONGenScriptResult(false, "Script Generator: Need to provide at least one test call");
+			if (!TestCalls.Any())
+				return new JSONGenScriptResult(false, Cons.Errors.ScriptGenNoCalls);
 
 			Dictionary<string, List<string>> testSet = new Dictionary<string, List<string>>();
 			//define exe, assembly, categories and name(blank)
@@ -160,16 +167,16 @@ namespace Sitecore.TestStar.WebService {
 				newData.WriteLine(sb.ToString());
 			}
 			//System.IO.File.WriteAllText("output.ps1", generatedCode);
-			return new JSONGenScriptResult(true, string.Format("Script Generator: Successfully Created {0}", filePath));
+			return new JSONGenScriptResult(true, string.Format(Cons.Messages.ScriptGenSuccess, filePath));
 		}
 
 		[WebMethod]
 		public JSONGenScriptResult CreateWebTestScript(string ScriptName, List<string> TestCalls, List<string> EnvironmentIDs, List<string> SiteIDs) {
-			if (string.IsNullOrEmpty(ScriptName)) 
-				return new JSONGenScriptResult(false, "Script Generator: Need to provide a script name");
+			if (string.IsNullOrEmpty(ScriptName))
+				return new JSONGenScriptResult(false, Cons.Errors.ScriptGenNameNull);
 
 			if (!TestCalls.Any())
-				return new JSONGenScriptResult(false, "Script Generator: Need to provide at least one test call");
+				return new JSONGenScriptResult(false, Cons.Errors.ScriptGenNoCalls);
 
 			StringBuilder sb = new StringBuilder();
 			sb.Append("#WEB TESTING#").AppendLine().AppendLine();
@@ -218,7 +225,7 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			return new JSONGenScriptResult(true, string.Format("Script Generator: Successfully Created {0}", filePath));
+			return new JSONGenScriptResult(true, string.Format(Cons.Messages.ScriptGenSuccess, filePath));
 		}
 	}
 }

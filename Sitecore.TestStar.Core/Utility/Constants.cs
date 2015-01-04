@@ -56,51 +56,64 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		#endregion DB
-
-		#region Test Params
-
-		public static int TestEntryLimit = 10000;
-
-		#endregion Test Params
-
+		
 		#region Template IDs
 
-		public static readonly string SiteTemplate = "{2FDA2A39-357F-42F0-B97C-DEED4F935F7B}";
-		public static readonly string SystemTemplate = "{F94502A7-D76E-468C-8488-3397368AFDD2}";
-		public static readonly string ResultsFolderTemplate = "{98CDE7D8-3488-43B6-8773-D140DDEBAB51}";
-		public static readonly string ResultsListTemplate = "{1915F851-227B-430C-88D0-373B85AFFBEE}";
-		public static readonly string UnitTestResultTemplate = "{6BBECB0C-2A2D-4BE6-B9D2-24D17104A2C5}";
-		public static readonly string WebTestResultTemplate = "{09F4C9EF-7E9E-4980-80EE-6E520A24332E}";
+		public static readonly string SiteTemplate				= "{2FDA2A39-357F-42F0-B97C-DEED4F935F7B}";
+		public static readonly string SystemTemplate			= "{F94502A7-D76E-468C-8488-3397368AFDD2}";
+		public static readonly string ResultsFolderTemplate		= "{98CDE7D8-3488-43B6-8773-D140DDEBAB51}";
+		public static readonly string ResultsListTemplate		= "{1915F851-227B-430C-88D0-373B85AFFBEE}";
+		public static readonly string UnitTestResultTemplate	= "{6BBECB0C-2A2D-4BE6-B9D2-24D17104A2C5}";
+		public static readonly string WebTestResultTemplate		= "{09F4C9EF-7E9E-4980-80EE-6E520A24332E}";
 
 		#endregion Template IDs
 
 		#region Item IDs
 
 		public static readonly string EnvironmentFolder = "{3449A8FD-6516-4011-B0C5-46DCC4DCA208}";
-		public static readonly string SiteFolder = "{6B336815-7E53-454A-817E-FA52E4D6F33E}";
-		public static readonly string ResultsFolder = "{2789CBEA-390F-4EB3-8FE0-1752A800E720}";
-		public static readonly string UnitAssemblies = "{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}";
-		public static readonly string WebAssemblies = "{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}";
-		public static readonly string TextDictionary = "{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}";
+		public static readonly string SiteFolder		= "{6B336815-7E53-454A-817E-FA52E4D6F33E}";
+		public static readonly string ResultsFolder		= "{2789CBEA-390F-4EB3-8FE0-1752A800E720}";
+		public static readonly string UnitAssemblies	= "{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}";
+		public static readonly string WebAssemblies		= "{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}";
+		public static readonly string TextDictionary	= "{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}";
 
 		#endregion Item IDs
 
 		#region Exception Messages
 
 		public static class Exceptions {
-			public static readonly string EnvFoldNull = "Sitecore.TestStar.Core.Providers.EnvironmentProvider.GetEnvironments: Check that the Environments folder exists in the content tree.";
-			public static readonly string SiteFoldNull = "Sitecore.TestStar.Core.Providers.SiteProvider.GetSites: Check that the Sites folder exists in the content tree.";
-			public static readonly string UnitFoldNull = "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
-			public static readonly string TextDicNull = "Sitecore.TestStar.Core.Providers.TextEntryProvider.GetTextByKey: Check that the TextDictionary folder exists in the content tree.";
-			public static readonly string WebFoldNull = "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
+			
+			//providers
+			public static readonly string EnvFoldNull		= "Sitecore.TestStar.Core.Providers.EnvironmentProvider.GetEnvironments: Check that the Environments folder exists in the content tree.";
+			public static readonly string ResultFoldNull	= "Sitecore.TestStar.Core.Providers.ResultProvider.GetResults: Check that the Test Results folder exists in the content tree.";
+			public static readonly string SiteFoldNull		= "Sitecore.TestStar.Core.Providers.SiteProvider.GetSites: Check that the Sites folder exists in the content tree.";
+			public static readonly string TextDicNull		= "Sitecore.TestStar.Core.Providers.TextEntryProvider.GetTextByKey: Check that the TextDictionary folder exists in the content tree.";
+			public static readonly string UnitFoldNull		= "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
+			public static readonly string WebFoldNull		= "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
+			
+			//util
 			public static readonly string NullJSON = "Sitecore.TestStar.Core.Utility.JsonSerializer.GetObject: The data is empty.";
-			public static readonly string ResultFoldNull = "Sitecore.TestStar.Core.ResultProvider.GetResults: Check that the Test Results folder exists in the content tree.";
+			
+			//managers
+			public static readonly string IUnitTestHandlerNull	= "The IUnitTestHandler provided is null";
+			public static readonly string IWebTestHandlerNull	= "The IWebTestHandler provided is null";
+			public static readonly string TestFixtureNull		= "Test Fixture was null. Make sure the class has the [TestFixture] attribute.";
+			public static readonly string TestMethodNull		= "Test Method was null. Make sure the class method has the [Test] attribute.";
 		}
 
 		public static class Errors {
-			public static readonly string NullEnv = "The Environment you provided could not be found";
-			public static readonly string NullSite = "The Site you provided could not be found";
-			public static readonly string NullTest = "The Test Assembly and Class you provided could not be found";
+			//test runner
+			public static readonly string NullEnv	= "The Environment you provided could not be found";
+			public static readonly string NullSite	= "The Site you provided could not be found";
+			public static readonly string NullTest	= "The Test Assembly and Class you provided could not be found";
+
+			//script gen
+			public static readonly string ScriptGenNameNull = "Script Generator: Need to provide a script name";
+			public static readonly string ScriptGenNoCalls	= "Script Generator: Need to provide at least one test call";
+		}
+
+		public static class Messages {
+			public static readonly string ScriptGenSuccess = "Script Generator: Successfully Created {0}";
 		}
 
 		#endregion Exception Messages

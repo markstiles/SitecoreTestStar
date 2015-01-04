@@ -9,6 +9,7 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class UnitTestManager {
@@ -17,13 +18,13 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public UnitTestManager(IUnitTestHandler handler) {
 			if (handler == null)
-				throw new ArgumentNullException("The handler provided is null");
+				throw new ArgumentNullException(Cons.Exceptions.IUnitTestHandlerNull);
 			Handler = handler;
 		}
 
 		public void RunTest(TestMethod tm) {
 			if (tm == null)
-				throw new NullReferenceException("Test Method was null. Make sure the class method has the [Test] attribute.");
+				throw new NullReferenceException(Cons.Exceptions.TestMethodNull);
 
 			var t = new Thread(new ThreadStart(() => HandleTest(tm)));
 			t.SetApartmentState(ApartmentState.STA);
@@ -32,7 +33,7 @@ namespace Sitecore.TestStar.Core.Managers {
 		}
 
 		/// <summary>
-		/// deals with the results of tests
+		/// Passes the proper test result to the handler method
 		/// </summary>
 		private void HandleTest(TestMethod tm) {
 
