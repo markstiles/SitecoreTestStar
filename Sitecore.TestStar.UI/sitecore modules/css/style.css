@@ -142,3 +142,4 @@ h3 span { color:#555; }
 .prevPage, 
 .nextPage { color:#00aadd; font-family:"xolonium"; text-decoration:none; display:inline-block; }
 .prevPage { margin-right:15px; }
+ol li { font-weight:bold; }
