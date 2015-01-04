@@ -54,19 +54,27 @@ namespace Sitecore.TestStar.WebService {
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
             WebTestManager manager = new WebTestManager(wswth);
 
+			List<WebTestResult> errorList = new List<WebTestResult> { new WebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
+			
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
-            //if(ei == null)
-            //    return error;
+			if (ei == null) {
+				errorList[0].Message = Cons.Errors.NullEnv;
+				return errorList;
+			}
             TestEnvironment te = Factory.GetTestEnvironment(ei);
 
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
-            //if(ei == null)
-            //    return error;
+			if (si == null) {
+				errorList[0].Message = Cons.Errors.NullSite;
+				return errorList;
+			}
             TestSite ts = Factory.GetTestSite(si);
 
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
-            //if (tf == null)
-            //    return error;
+            if (tf == null) {
+				errorList[0].Message = Cons.Errors.NullTest;
+				return errorList;
+			}
 
             manager.RunTest(tf, te, ts);
 

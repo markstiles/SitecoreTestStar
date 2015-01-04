@@ -96,7 +96,13 @@ namespace Sitecore.TestStar.Core.Utility {
 			public static readonly string NullJSON = "Sitecore.TestStar.Core.Utility.JsonSerializer.GetObject: The data is empty.";
 			public static readonly string ResultFoldNull = "Sitecore.TestStar.Core.ResultProvider.GetResults: Check that the Test Results folder exists in the content tree.";
 		}
-		
+
+		public static class Errors {
+			public static readonly string NullEnv = "The Environment you provided could not be found";
+			public static readonly string NullSite = "The Site you provided could not be found";
+			public static readonly string NullTest = "The Test Assembly and Class you provided could not be found";
+		}
+
 		#endregion Exception Messages
 	}
 }
