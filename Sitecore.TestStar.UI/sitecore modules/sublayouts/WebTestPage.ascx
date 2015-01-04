@@ -3,6 +3,7 @@
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 
 <asp:ScriptManager runat="server"></asp:ScriptManager>
 
@@ -10,22 +11,22 @@
 <div class="error corners"></div><div></div>
 
 <div class="whiteBox generate corners">
-    <h3>Generate Script</h3>
+    <h3><%= TextEntryProvider.Page.GenerateScript %></h3>
 	<div class="genToggle">+</div>
     <div class="genFields">
-        <label for="wtScriptName" class="title">Script Name</label>
+        <label for="wtScriptName" class="title"><%= TextEntryProvider.Page.ScriptName %></label>
         <input type="text" ID="wtScriptName"></input>
 		<div class="submit corners">
-			<input id="wtGenerate" type="submit" value="Generate Script">
+			<input id="wtGenerate" type="submit" value="<%= TextEntryProvider.Page.GenerateScript %>">
 		</div>
     </div>
 </div>
 <div></div>
 <div class="testForm">
     <div class="suiteWrap">
-        <h2>Test Settings</h2>
+        <h2><%= TextEntryProvider.Page.TestSettings %></h2>
         <div class="wtEnvs whiteBox corners">
-            <h3>Environments</h3>
+            <h3><%= TextEntryProvider.Page.Environments %></h3>
             <div class="testInputs">
                 <asp:Repeater ID="rptEnvironments" runat="server">
                     <ItemTemplate>
@@ -43,7 +44,7 @@
             </div>
         </div>
         <div class="wtSystems whiteBox corners">
-            <h3>Systems</h3>
+            <h3><%= TextEntryProvider.Page.Systems %></h3>
             <div class="testInputs">
                 <asp:Repeater ID="rptSystems" runat="server">
                     <ItemTemplate>
@@ -61,7 +62,7 @@
             </div>
         </div>
         <div class="wtSites whiteBox corners">
-            <h3>Sites</h3>
+            <h3><%= TextEntryProvider.Page.Sites %></h3>
             <div class="testInputs">
                 <asp:Repeater ID="rptSites" runat="server">
                     <ItemTemplate>
@@ -82,7 +83,7 @@
                 </asp:Repeater>
             </div>    
         </div>
-        <h2>Test Suites</h2>
+        <h2><%= TextEntryProvider.Page.TestSuites %></h2>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
                 <div class="wtTests whiteBox corners">
@@ -105,14 +106,14 @@
                         </asp:Repeater>
                     </div>
                     <div class="submit corners">
-			            <input id="wtSubmit" type="submit" value="Run">
+			            <input id="wtSubmit" type="submit" value="<%= TextEntryProvider.Page.Run %>">
                     </div>
                 </div>
 			</ItemTemplate>
 		</asp:Repeater>
     </div>
 	<div class="resultWrap">
-        <h2>Results<div class="resultCounter"></div></h2>
+        <h2><%= TextEntryProvider.Page.Results %><div class="resultCounter"></div></h2>
         <div class="result-head"></div>
         <div class="resultSet">
             

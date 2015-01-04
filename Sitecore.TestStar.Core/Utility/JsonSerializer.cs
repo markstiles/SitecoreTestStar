@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Script.Serialization;
+using Sitecore.TestStar.Core.Providers;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 
 namespace Sitecore.TestStar.Core.Utility {
@@ -14,7 +15,7 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		public static T GetObject<T>(string data) {
 			if(string.IsNullOrEmpty(data))
-				throw new Exception(Cons.Exceptions.NullJSON);
+				throw new Exception(TextEntryProvider.Exceptions.Util.NullJSON);
 
 			T results = new JavaScriptSerializer().Deserialize<T>(data);
 			return results;

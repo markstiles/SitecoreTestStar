@@ -33,9 +33,11 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			//if getting most recent
 			if (results.Count > maxPosts) {
 
-				//show nav
-				pnlNav.Visible = true;
-				pnlNav2.Visible = true;
+				//set link text
+				lnkNext.Text = TextEntryProvider.ResultList.NextBtn;
+				lnkNext2.Text = TextEntryProvider.ResultList.NextBtn;
+				lnkPrev.Text = TextEntryProvider.ResultList.PrevBtn;
+				lnkPrev2.Text = TextEntryProvider.ResultList.PrevBtn;
 
 				//build page links
 				int totalPages = (int)Math.Ceiling(decimal.Divide(results.Count, maxPosts));
@@ -49,7 +51,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 					lnkNext2.Visible = true;
 				}
 
-				//if you're on a page higher than 1 st the prev
+				//if you're on a page higher than 1 set the prev
 				if (page > 1) {
 					string qstring = (page == 2) ? string.Empty : "?page=" + (page - 1).ToString();
 					string prevUrl = pageUrl + qstring;
@@ -70,7 +72,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 				rptResults.DataSource = results;
 				rptResults.DataBind();
 			} else {
-				ltlMessage.Text = "Sorry, but there are no results.";
+				ltlMessage.Text = TextEntryProvider.ResultList.NoResults;
 			}
 		}
 
@@ -85,6 +87,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			string sStr = stored.ToString("yyyyMMdd");
 			string rStr = r.Date.ToString("yyyyMMdd");
 
+			//only show each date once
 			PlaceHolder phDateHead = (PlaceHolder)e.Item.FindControl("phDateHead");
 			if (!sStr.Equals(rStr)) {
 				phDateHead.Visible = true;
@@ -93,7 +96,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 			//get the entry children
 			Item rItem = Sitecore.Context.Database.GetItemByID(r.ID);
-
 			Repeater rptEntries = (Repeater)e.Item.FindControl("rptEntries");
 			rptEntries.DataSource = rItem.GetChildren().Reverse();
 			rptEntries.DataBind();
@@ -102,6 +104,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		protected void rptEntries_ItemDataBound(object sender, RepeaterItemEventArgs e) {
 			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
 
+			//show extra information for web test items
 			Item entry = (Item)e.Item.DataItem;
 			if(entry.TemplateID.ToString().Equals(Sitecore.TestStar.Core.Utility.Constants.WebTestResultTemplate)) {
 				Literal ltlWebTestDetails = (Literal)e.Item.FindControl("ltlWebTestDetails");

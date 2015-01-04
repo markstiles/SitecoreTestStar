@@ -6,11 +6,11 @@
 <%@ Import Namespace="Sitecore.Data.Fields" %>
 
 <div class="ResultList">
-	<asp:Panel ID="pnlNav" Visible="false" CssClass="pagerWrap" runat="server">
-		<asp:HyperLink ID="lnkPrev" Visible="false" Text="< Previous Page" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
-		<asp:HyperLink ID="lnkNext" Visible="false" Text="Next Page >" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
+	<div class="pagerWrap">
+		<asp:HyperLink ID="lnkPrev" Visible="false" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkNext" Visible="false" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
         <div class="clear"></div>
-	</asp:Panel>
+	</div>
 	<div>
 		<div class="message">
 			<asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
@@ -55,9 +55,9 @@
 			</FooterTemplate>
 		</asp:Repeater>
 	</div>
-	<asp:Panel ID="pnlNav2" Visible="false" CssClass="pagerWrap" runat="server">
-		<asp:HyperLink ID="lnkPrev2" Visible="false" Text="< Previous Page" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
-		<asp:HyperLink ID="lnkNext2" Visible="false" Text="Next Page >" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
+	<div class="pagerWrap">
+		<asp:HyperLink ID="lnkPrev2" Visible="false" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
+		<asp:HyperLink ID="lnkNext2" Visible="false" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>
         <div class="clear"></div>
-	</asp:Panel>
+	</div>
 </div>

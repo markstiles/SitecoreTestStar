@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Core;
 using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
@@ -18,13 +19,13 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public UnitTestManager(IUnitTestHandler handler) {
 			if (handler == null)
-				throw new ArgumentNullException(Cons.Exceptions.IUnitTestHandlerNull);
+				throw new ArgumentNullException(TextEntryProvider.Exceptions.Managers.IUnitTestHandlerNull);
 			Handler = handler;
 		}
 
 		public void RunTest(TestMethod tm) {
 			if (tm == null)
-				throw new NullReferenceException(Cons.Exceptions.TestMethodNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestMethodNull);
 
 			var t = new Thread(new ThreadStart(() => HandleTest(tm)));
 			t.SetApartmentState(ApartmentState.STA);

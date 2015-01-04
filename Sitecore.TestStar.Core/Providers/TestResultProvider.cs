@@ -14,7 +14,7 @@ namespace Sitecore.TestStar.Core.Providers {
 		public static IEnumerable<TestResultList> GetResults() {
 			Item folder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			if (folder == null)
-				throw new NullReferenceException(Cons.Exceptions.ResultFoldNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Providers.ResultFoldNull);
 
 			if (!folder.HasChildren)
 				return Enumerable.Empty<TestResultList>();

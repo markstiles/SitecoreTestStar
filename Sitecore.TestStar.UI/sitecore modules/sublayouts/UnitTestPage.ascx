@@ -3,26 +3,26 @@
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.UnitTestPage" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-
+<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 
 <div class="log corners"></div><div></div>
 <div class="error corners"></div><div></div>
 
 <div class="whiteBox generate corners">
-    <h3>Generate Script</h3>
+    <h3><%= TextEntryProvider.Page.GenerateScript %></h3>
     <div class="genToggle">+</div>
     <div class="genFields">
-        <label for="utScriptName" class="title">Script Name</label>
+        <label for="utScriptName" class="title"><%= TextEntryProvider.Page.ScriptName %></label>
         <input type="text" ID="utScriptName"></input>
 		<div class="submit corners">
-			<input id="utGenerate" type="submit" value="Generate Script">
+			<input id="utGenerate" type="submit" value="<%= TextEntryProvider.Page.GenerateScript %>">
 		</div>
     </div>
 </div>
 <div></div>
 <div class="testForm">
     <div class="suiteWrap">
-        <h2>Unit Test Suites</h2>
+        <h2><%= TextEntryProvider.Page.UnitTestSuites %></h2>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
 			    <div class="whiteBox corners">
@@ -45,14 +45,14 @@
                         </asp:Repeater>
                     </div>
                     <div class="submit corners">
-					    <input id="utSubmit" type="submit" value="Run">
+					    <input id="utSubmit" type="submit" value="<%= TextEntryProvider.Page.Run %>">
                     </div>
                 </div>
 			</ItemTemplate>
 		</asp:Repeater>
 	</div>
 	<div class="resultWrap">
-        <h2>Results <div class="resultCounter"></div></h2>
+        <h2><%= TextEntryProvider.Page.Results %> <div class="resultCounter"></div></h2>
         <div class="result-head"></div>
         <div class="resultSet">
             

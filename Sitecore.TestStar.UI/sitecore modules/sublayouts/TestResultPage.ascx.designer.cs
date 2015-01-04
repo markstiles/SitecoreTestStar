@@ -13,15 +13,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class TestResultPage {
         
         /// <summary>
-        /// pnlNav control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNav;
-        
-        /// <summary>
         /// lnkPrev control.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptResults;
-        
-        /// <summary>
-        /// pnlNav2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNav2;
         
         /// <summary>
         /// lnkPrev2 control.

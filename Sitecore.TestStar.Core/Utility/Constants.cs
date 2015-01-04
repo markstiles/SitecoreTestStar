@@ -78,44 +78,5 @@ namespace Sitecore.TestStar.Core.Utility {
 		public static readonly string TextDictionary	= "{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}";
 
 		#endregion Item IDs
-
-		#region Exception Messages
-
-		public static class Exceptions {
-			
-			//providers
-			public static readonly string EnvFoldNull		= "Sitecore.TestStar.Core.Providers.EnvironmentProvider.GetEnvironments: Check that the Environments folder exists in the content tree.";
-			public static readonly string ResultFoldNull	= "Sitecore.TestStar.Core.Providers.ResultProvider.GetResults: Check that the Test Results folder exists in the content tree.";
-			public static readonly string SiteFoldNull		= "Sitecore.TestStar.Core.Providers.SiteProvider.GetSites: Check that the Sites folder exists in the content tree.";
-			public static readonly string TextDicNull		= "Sitecore.TestStar.Core.Providers.TextEntryProvider.GetTextByKey: Check that the TextDictionary folder exists in the content tree.";
-			public static readonly string UnitFoldNull		= "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetUnitTestAssemblies: Check that the UnitTestAssemblies folder exists in the content tree.";
-			public static readonly string WebFoldNull		= "Sitecore.TestStar.Core.Providers.AssemblyProvider.GetWebTestAssemblies: Check that the WebTestAssemblies folder exists in the content tree.";
-			
-			//util
-			public static readonly string NullJSON = "Sitecore.TestStar.Core.Utility.JsonSerializer.GetObject: The data is empty.";
-			
-			//managers
-			public static readonly string IUnitTestHandlerNull	= "The IUnitTestHandler provided is null";
-			public static readonly string IWebTestHandlerNull	= "The IWebTestHandler provided is null";
-			public static readonly string TestFixtureNull		= "Test Fixture was null. Make sure the class has the [TestFixture] attribute.";
-			public static readonly string TestMethodNull		= "Test Method was null. Make sure the class method has the [Test] attribute.";
-		}
-
-		public static class Errors {
-			//test runner
-			public static readonly string NullEnv	= "The Environment you provided could not be found";
-			public static readonly string NullSite	= "The Site you provided could not be found";
-			public static readonly string NullTest	= "The Test Assembly and Class you provided could not be found";
-
-			//script gen
-			public static readonly string ScriptGenNameNull = "Script Generator: Need to provide a script name";
-			public static readonly string ScriptGenNoCalls	= "Script Generator: Need to provide at least one test call";
-		}
-
-		public static class Messages {
-			public static readonly string ScriptGenSuccess = "Script Generator: Successfully Created {0}";
-		}
-
-		#endregion Exception Messages
 	}
 }

@@ -14,7 +14,7 @@ namespace Sitecore.TestStar.Core.Providers {
 		public static IEnumerable<string> GetUnitTestAssemblies() {
 			Item folder = Cons.MasterDB.GetItem(Cons.UnitAssemblies);
 			if (folder == null)
-				throw new NullReferenceException(Cons.Exceptions.UnitFoldNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Providers.UnitFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();
@@ -27,7 +27,7 @@ namespace Sitecore.TestStar.Core.Providers {
 		public static IEnumerable<string> GetWebTestAssemblies() {
 			Item folder = Cons.MasterDB.GetItem(Cons.WebAssemblies);
 			if (folder == null)
-				throw new NullReferenceException(Cons.Exceptions.WebFoldNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Providers.WebFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();

@@ -9,6 +9,7 @@ using NUnit.Core;
 using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
@@ -20,7 +21,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public WebTestManager(IWebTestHandler handler){
 			if (handler == null)
-				throw new ArgumentNullException(Cons.Exceptions.IWebTestHandlerNull);
+				throw new ArgumentNullException(TextEntryProvider.Exceptions.Managers.IWebTestHandlerNull);
 			Handler = handler;
 		}
 
@@ -32,10 +33,10 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestFixture tf, IEnumerable<TestEnvironment> Environments, IEnumerable<TestSite> Sites) {
 			if (tf == null)
-				throw new NullReferenceException(Cons.Exceptions.TestFixtureNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestFixtureNull);
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
-				throw new NullReferenceException(Cons.Exceptions.TestMethodNull);
+				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestMethodNull);
 			foreach (TestEnvironment te in Environments) {
 				foreach (TestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
