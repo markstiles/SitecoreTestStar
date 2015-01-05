@@ -103,13 +103,13 @@ namespace Sitecore.TestStar.WebService {
 
 		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::Category
-		public JSONGenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
+		public GenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
 
 			if (string.IsNullOrEmpty(ScriptName))
-				return new JSONGenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
 		
 			if (!TestCalls.Any())
-				return new JSONGenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
 
 			Dictionary<string, List<string>> testSet = new Dictionary<string, List<string>>();
 			//define exe, assembly, categories and name(blank)
@@ -167,16 +167,16 @@ namespace Sitecore.TestStar.WebService {
 				newData.WriteLine(sb.ToString());
 			}
 			//System.IO.File.WriteAllText("output.ps1", generatedCode);
-			return new JSONGenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+			return new GenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
 		}
 
 		[WebMethod]
-		public JSONGenScriptResult CreateWebTestScript(string ScriptName, List<string> TestCalls, List<string> EnvironmentIDs, List<string> SiteIDs) {
+		public GenScriptResult CreateWebTestScript(string ScriptName, List<string> TestCalls, List<string> EnvironmentIDs, List<string> SiteIDs) {
 			if (string.IsNullOrEmpty(ScriptName))
-				return new JSONGenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
 
 			if (!TestCalls.Any())
-				return new JSONGenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
 
 			StringBuilder sb = new StringBuilder();
 			sb.Append("#WEB TESTING#").AppendLine().AppendLine();
@@ -225,7 +225,7 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			return new JSONGenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+			return new GenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
 		}
 	}
 }

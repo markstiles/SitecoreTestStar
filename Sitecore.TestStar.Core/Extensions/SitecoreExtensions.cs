@@ -16,20 +16,28 @@ namespace Sitecore.TestStar.Core.Extensions {
 		}
 
 		public static string GetSafeFieldValue(this Item i, string fieldName){
-			Field f = i.Fields[fieldName];
+            if (i == null)
+                return string.Empty;
+            Field f = i.Fields[fieldName];
 			return (f == null) ? string.Empty : f.Value;
 		}
 
 		public static bool GetSafeFieldBool(this Item i, string fieldName) {
-			return GetSafeFieldBool(i, fieldName, false);
+            if (i == null)
+                return false; 
+            return GetSafeFieldBool(i, fieldName, false);
 		}
 		public static bool GetSafeFieldBool(this Item i, string fieldName, bool defaultValue) {
-			CheckboxField f = i.Fields[fieldName];
+            if (i == null)
+                return defaultValue; 
+            CheckboxField f = i.Fields[fieldName];
 			return (f == null) ? defaultValue : f.Checked;
 		}
 
 		public static DateTime GetSafeDateFieldValue(this Item i, string fieldName) {
-			DateField f = i.Fields[fieldName];
+            if (i == null)
+                return DateTime.Now; 
+            DateField f = i.Fields[fieldName];
 			return (f == null) ? DateTime.Now : f.DateTime;
 		}
 

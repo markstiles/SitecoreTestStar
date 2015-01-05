@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.TestStar.Core.WebService {
-	public class JSONGenScriptResult {
+namespace Sitecore.TestStar.Core.Entities {
+	public class GenScriptResult {
 
 		public bool Success;
 		public string Message;
 
-		public JSONGenScriptResult() {
+		public GenScriptResult() {
 			Success = false;
 			Message = string.Empty;
 		}
 
-		public JSONGenScriptResult(bool b, string m) {
-			Success = b;
-			Message = m;
+		public GenScriptResult(bool success, string message) {
+			Success = success;
+			Message = message;
 		}
 	}
 }

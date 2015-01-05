@@ -36,7 +36,7 @@ namespace Sitecore.TestStar.Core.WebService {
 				responseStatus.ToString()
 			);
 
-			wtr.ID = SitecoreUtility.CreateResultEntry(wtr.Method, wtr.Date.ToDateFieldValue(), wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
+            wtr.ID = SitecoreUtility.CreateResultEntry(tm.FixtureType.FullName, wtr.Date.ToDateFieldValue(), wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
 			ResultList.Add(wtr);
 		}
         	

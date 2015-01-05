@@ -141,55 +141,46 @@ namespace Sitecore.TestStar.Core.Providers {
 					return GetTextByKey("/Page/Environments");
 				}
 			}
-			
 			public static string GenerateScript {
 				get {
 					return GetTextByKey("/Page/GenerateScript");
 				}
 			}
-
 			public static string Results {
 				get {
 					return GetTextByKey("/Page/Results");
 				}
 			}
-
 			public static string Run {
 				get {
 					return GetTextByKey("/Page/Run");
 				}
 			}
-
 			public static string ScriptName {
 				get {
 					return GetTextByKey("/Page/ScriptName");
 				}
 			}
-
 			public static string Sites {
 				get {
 					return GetTextByKey("/Page/Sites");
 				}
 			}
-
 			public static string Systems {
 				get {
 					return GetTextByKey("/Page/Systems");
 				}
 			}
-
 			public static string TestSettings {
 				get {
 					return GetTextByKey("/Page/TestSettings");
 				}
 			}
-
 			public static string TestSuites {
 				get {
 					return GetTextByKey("/Page/TestSuites");
 				}
 			}
-
 			public static string UnitTestSuites {
 				get {
 					return GetTextByKey("/Page/UnitTestSuites");
@@ -203,13 +194,11 @@ namespace Sitecore.TestStar.Core.Providers {
 					return GetTextByKey("/ResultList/NextBtn");
 				}
 			}
-
 			public static string PrevBtn {
 				get {
 					return GetTextByKey("/ResultList/PrevBtn");
 				}
 			}
-
 			public static string NoResults {
 				get {
 					return GetTextByKey("/ResultList/NoResults");

@@ -84,7 +84,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\NavigationObserver.cs" />
     <Compile Include="Entities\TestEnvironment.cs" />
     <Compile Include="Entities\TestResultList.cs" />
     <Compile Include="Entities\TestSite.cs" />
@@ -109,7 +108,7 @@
     <Compile Include="Utility\JsonSerializer.cs" />
     <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
-    <Compile Include="WebService\JSONGenScriptResult.cs" />
+    <Compile Include="Entities\GenScriptResult.cs" />
     <Compile Include="Entities\UnitTestResult.cs" />
     <Compile Include="Entities\WebTestResult.cs" />
     <Compile Include="WebService\TestService.cs">
