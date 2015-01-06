@@ -52,5 +52,9 @@ namespace Sitecore.TestStar.Core.Utility {
 		public static string GetTestAssembly(Item i) {
 			return i.GetSafeFieldValue("AssemblyName");
 		}
+
+        public static string GetTextEntry(Item i) {
+            return i.GetSafeFieldValue("Value");
+        }
 	}
 }

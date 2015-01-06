@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class TextEntryProvider {
@@ -16,12 +17,12 @@ namespace Sitecore.TestStar.Core.Providers {
 
 		public static string GetTextByKey(string TextKey, Database db) {
 
-			Item folder = Cons.MasterDB.GetItem(Cons.TextDictionary);
+			Item folder = db.GetItem(Cons.TextDictionary);
 			if (folder == null)
 				throw new NullReferenceException(Exceptions.Providers.TextDicNull);
 
 			Item i = db.GetItem(string.Format("{0}{1}", folder.Paths.Path, TextKey));
-			return (i != null) ? i["Value"] : string.Empty;
+			return (i != null) ? Factory.GetTextEntry(i) : string.Empty;
 		}
 
 		#region Exception Messages
