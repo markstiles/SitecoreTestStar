@@ -8,6 +8,7 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.UI.layouts {
 	public partial class RSS : System.Web.UI.Page {
@@ -19,7 +20,8 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 			XmlOutput.Text = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 
 			//handle the recent posts
-			List<TestResultList> posts = ResultProvider.GetResults().ToList();
+            ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
+			List<TestResultList> posts = tProvider.GetResults().ToList();
 			if (posts.Count > 20) 
 				posts = posts.GetRange(0, 20);
 			rptRSS.DataSource = posts;

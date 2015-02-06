@@ -14,6 +14,7 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.Web;
 using Sitecore.Links;
 using Sitecore.Data.Items;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class TestResultPage : UserControl {
@@ -23,7 +24,8 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		protected void Page_Load(object sender, EventArgs e) {
 			
 			//choose results 
-			List<TestResultList> results = ResultProvider.GetResults().ToList();
+            ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
+			List<TestResultList> results = tProvider.GetResults().ToList();
 			
 			int page = 1;
 			int maxPosts = 10;
@@ -34,10 +36,10 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			if (results.Count > maxPosts) {
 
 				//set link text
-				lnkNext.Text = TextEntryProvider.ResultList.NextBtn;
-				lnkNext2.Text = TextEntryProvider.ResultList.NextBtn;
-				lnkPrev.Text = TextEntryProvider.ResultList.PrevBtn;
-				lnkPrev2.Text = TextEntryProvider.ResultList.PrevBtn;
+				lnkNext.Text = SCTextEntryProvider.ResultList.NextBtn;
+				lnkNext2.Text = SCTextEntryProvider.ResultList.NextBtn;
+				lnkPrev.Text = SCTextEntryProvider.ResultList.PrevBtn;
+				lnkPrev2.Text = SCTextEntryProvider.ResultList.PrevBtn;
 
 				//build page links
 				int totalPages = (int)Math.Ceiling(decimal.Divide(results.Count, maxPosts));
@@ -72,7 +74,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 				rptResults.DataSource = results;
 				rptResults.DataBind();
 			} else {
-				ltlMessage.Text = TextEntryProvider.ResultList.NoResults;
+				ltlMessage.Text = SCTextEntryProvider.ResultList.NoResults;
 			}
 		}
 

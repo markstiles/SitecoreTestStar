@@ -22,6 +22,7 @@ using Sitecore.TestStar.Core.Managers;
 using System.IO;
 using System.Net;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	[RequiresSTA]
@@ -36,31 +37,38 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
 			//setup for testing
 			CoreExtensions.Host.InitializeService();
-			
-			rptSuites.DataSource = TestUtility.GetWebTestSuites();
+
+            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider();
+            rptSuites.DataSource = TestUtility.GetWebTestSuites(aProvider);
             rptSuites.DataBind();
-				
-            rptEnvironments.DataSource = from TestEnvironment te in EnvironmentProvider.GetEnvironments()
+
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
+            rptEnvironments.DataSource = from TestEnvironment te in eProvider.GetEnvironments()
                                          orderby te.Name
                                          select new ListItem(te.Name, te.ID);
             rptEnvironments.DataBind();
 
-            rptSystems.DataSource = from TestSystem tsys in SystemProvider.GetSystems()
+            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider();
+            rptSystems.DataSource = from TestSystem tsys in sysProvider.GetSystems()
                                     orderby tsys.Name
                                     select new ListItem(tsys.Name, tsys.ID);
-            rptSystems.DataBind();    
+            rptSystems.DataBind();
 
-            rptSites.DataSource = from TestSite ts in SiteProvider.GetEnabledSites()
+            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
+            rptSites.DataSource = from TestSite ts in sProvider.GetEnabledSites(eProvider)
                                   orderby ts.SystemID, ts.Name
                                   select new ListItem(ts.Name, ts.ID);
             rptSites.DataBind();
 		}
 
         protected string GetSystemName(string siteID) {
-            TestSite ts = SiteProvider.GetEnabledSites().Where(a => a.ID.Equals(siteID)).FirstOrDefault();
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
+            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider();
+            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
+            TestSite ts = sProvider.GetEnabledSites(eProvider).Where(a => a.ID.Equals(siteID)).FirstOrDefault();
             return (ts == null || string.IsNullOrEmpty(ts.SystemID))
                 ? string.Empty
-                : SystemProvider.GetSystems().Where(a => a.ID.Equals(ts.SystemID)).FirstOrDefault().Name;
+                : sysProvider.GetSystems().Where(a => a.ID.Equals(ts.SystemID)).FirstOrDefault().Name;
         }
 
         protected string GetShortID(string scID) {

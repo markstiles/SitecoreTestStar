@@ -19,13 +19,13 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public UnitTestManager(IUnitTestHandler handler) {
 			if (handler == null)
-				throw new ArgumentNullException(TextEntryProvider.Exceptions.Managers.IUnitTestHandlerNull);
+				throw new ArgumentNullException(SCTextEntryProvider.Exceptions.Managers.IUnitTestHandlerNull);
 			Handler = handler;
 		}
 
 		public void RunTest(TestMethod tm) {
 			if (tm == null)
-				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestMethodNull);
+				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestMethodNull);
 
 			var t = new Thread(new ThreadStart(() => HandleTest(tm)));
 			t.SetApartmentState(ApartmentState.STA);

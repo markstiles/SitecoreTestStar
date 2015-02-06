@@ -8,16 +8,17 @@ using System.Web;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.Utility {
 	public class TestUtility {
 
         #region Unit Tests
 
-		public static Dictionary<string, TestSuite> GetUnitTestSuites() {
+		public static Dictionary<string, TestSuite> GetUnitTestSuites(IAssemblyProvider aProvider) {
 			Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
 			// Find tests in current assembly
-			foreach (string a in AssemblyProvider.GetUnitTestAssemblies()) {
+            foreach (string a in aProvider.GetUnitTestAssemblies()) {
 				if (!Suites.ContainsKey(a))
 					Suites.Add(a, TestUtility.GetTestSuite(a));
 			}
@@ -28,10 +29,10 @@ namespace Sitecore.TestStar.Core.Utility {
 
         #region Web Tests
 
-        public static Dictionary<string, TestSuite> GetWebTestSuites() {
+        public static Dictionary<string, TestSuite> GetWebTestSuites(IAssemblyProvider aProvider) {
             Dictionary<string, TestSuite> Suites = new Dictionary<string, TestSuite>();
             // Find tests in current assembly
-            foreach (string a in AssemblyProvider.GetWebTestAssemblies()) {
+            foreach (string a in aProvider.GetWebTestAssemblies()) {
                 if(!Suites.ContainsKey(a))
 					Suites.Add(a, TestUtility.GetTestSuite(a));
             }

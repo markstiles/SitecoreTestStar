@@ -16,6 +16,7 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Items;
 using System.IO;
 using System.Web;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.WebService {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -63,23 +64,25 @@ namespace Sitecore.TestStar.WebService {
 			//get the environment
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
 			if (ei == null) {
-				errorList[0].Message = TextEntryProvider.Errors.TestRunner.NullEnv;
+				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullEnv;
 				return errorList;
 			}
-            TestEnvironment te = Factory.GetTestEnvironment(ei);
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
+            TestEnvironment te = eProvider.FillTestEnvironment(ei);
 
 			//get the site
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
 			if (si == null) {
-				errorList[0].Message = TextEntryProvider.Errors.TestRunner.NullSite;
+				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullSite;
 				return errorList;
 			}
-            TestSite ts = Factory.GetTestSite(si);
+            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
+            TestSite ts = sProvider.FillTestSite(eProvider, si);
 
 			//get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
             if (tf == null) {
-				errorList[0].Message = TextEntryProvider.Errors.TestRunner.NullTest;
+				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullTest;
 				return errorList;
 			}
 
@@ -106,10 +109,10 @@ namespace Sitecore.TestStar.WebService {
 		public GenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
 
 			if (string.IsNullOrEmpty(ScriptName))
-				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
 		
 			if (!TestCalls.Any())
-				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
 
 			Dictionary<string, List<string>> testSet = new Dictionary<string, List<string>>();
 			//define exe, assembly, categories and name(blank)
@@ -167,16 +170,16 @@ namespace Sitecore.TestStar.WebService {
 				newData.WriteLine(sb.ToString());
 			}
 			//System.IO.File.WriteAllText("output.ps1", generatedCode);
-			return new GenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+			return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
 		}
 
 		[WebMethod]
 		public GenScriptResult CreateWebTestScript(string ScriptName, List<string> TestCalls, List<string> EnvironmentIDs, List<string> SiteIDs) {
 			if (string.IsNullOrEmpty(ScriptName))
-				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
 
 			if (!TestCalls.Any())
-				return new GenScriptResult(false, TextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
 
 			StringBuilder sb = new StringBuilder();
 			sb.Append("#WEB TESTING#").AppendLine().AppendLine();
@@ -225,7 +228,7 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			return new GenScriptResult(true, string.Format(TextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+			return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
 		}
 	}
 }

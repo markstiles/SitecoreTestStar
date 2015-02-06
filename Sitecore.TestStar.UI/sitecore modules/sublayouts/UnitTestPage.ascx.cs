@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class UnitTestPage : UserControl {
@@ -26,9 +27,11 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			
 			// Initialise NUnit
 			CoreExtensions.Host.InitializeService();
-			
+
+            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider();
+
 			if (!IsPostBack) {
-                rptSuites.DataSource = TestUtility.GetUnitTestSuites();
+                rptSuites.DataSource = TestUtility.GetUnitTestSuites(aProvider);
 				rptSuites.DataBind();
 			}
 		}

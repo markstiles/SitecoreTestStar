@@ -21,7 +21,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public WebTestManager(IWebTestHandler handler){
 			if (handler == null)
-				throw new ArgumentNullException(TextEntryProvider.Exceptions.Managers.IWebTestHandlerNull);
+				throw new ArgumentNullException(SCTextEntryProvider.Exceptions.Managers.IWebTestHandlerNull);
 			Handler = handler;
 		}
 
@@ -33,10 +33,10 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestFixture tf, IEnumerable<TestEnvironment> Environments, IEnumerable<TestSite> Sites) {
 			if (tf == null)
-				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestFixtureNull);
+				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestFixtureNull);
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
-				throw new NullReferenceException(TextEntryProvider.Exceptions.Managers.TestMethodNull);
+				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestMethodNull);
 			foreach (TestEnvironment te in Environments) {
 				foreach (TestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {

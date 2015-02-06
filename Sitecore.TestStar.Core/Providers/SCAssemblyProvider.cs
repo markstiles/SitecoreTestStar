@@ -7,34 +7,40 @@ using System.Threading.Tasks;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.Providers {
-	public static class AssemblyProvider {
+	public class SCAssemblyProvider : IAssemblyProvider {
 
-		public static IEnumerable<string> GetUnitTestAssemblies() {
+        public IEnumerable<string> GetUnitTestAssemblies() {
 			Item folder = Cons.MasterDB.GetItem(Cons.UnitAssemblies);
 			if (folder == null)
-				throw new NullReferenceException(TextEntryProvider.Exceptions.Providers.UnitFoldNull);
+				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.UnitFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();
 
 			IEnumerable<string> assemblies = from Item i in folder.GetChildren()
-											 select Factory.GetTestAssembly(i);
+                                             select FillTestAssembly(i);
 			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
 
-		public static IEnumerable<string> GetWebTestAssemblies() {
+        public IEnumerable<string> GetWebTestAssemblies() {
 			Item folder = Cons.MasterDB.GetItem(Cons.WebAssemblies);
 			if (folder == null)
-				throw new NullReferenceException(TextEntryProvider.Exceptions.Providers.WebFoldNull);
+				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.WebFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();
 
             IEnumerable<string> assemblies = from Item i in folder.GetChildren()
-											 select Factory.GetTestAssembly(i);
+                                             select FillTestAssembly(i);
 			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
+
+        public string FillTestAssembly(Item i) {
+            return i.GetSafeFieldValue("AssemblyName");
+        }
 	}
 }

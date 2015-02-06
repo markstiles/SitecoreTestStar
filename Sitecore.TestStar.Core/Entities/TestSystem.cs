@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Utility;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.Entities {
 	
@@ -18,10 +19,8 @@ namespace Sitecore.TestStar.Core.Entities {
 			Name = name;
 		}
 
-		public virtual IEnumerable<TestSite> Sites {
-			get {
-				return SiteProvider.GetSites().Where(s => s.SystemID.Equals(this.ID)); 
-			}
+		public virtual IEnumerable<TestSite> Sites(ISiteProvider sProvider, IEnvironmentProvider eProvider) {
+            return sProvider.GetSites(eProvider).Where(s => s.SystemID.Equals(this.ID)); 
 		}
 	}
 }
