@@ -1,7 +1,6 @@
 ﻿<%@ Page language="c#" AutoEventWireup="true" 
 	Inherits="Sitecore.TestStar.Core.UI.layouts.RSS" 
 	CodeBehind="RSS.aspx.cs" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
@@ -17,7 +16,7 @@
 			<ItemTemplate>
 				<item>
 					<title>
-						<%# string.Format("<![CDATA[{0}]]>", ((TestResultList)Container.DataItem).Title) %>
+						<%# string.Format("<![CDATA[{0}]]>", ((ITestResultList)Container.DataItem).Title) %>
 					</title>
 					<description>
 						<%# "<![CDATA[" %>
@@ -42,10 +41,10 @@
 						<%# string.Format("http://{0}/results", Request.Url.Host) %>
 					</link>
 					<guid>
-						<%# string.Format("http://{0}/results?g={0}", Request.Url.Host, ((TestResultList)Container.DataItem).ID.Replace("{",string.Empty).Replace("-",string.Empty)) %>
+						<%# string.Format("http://{0}/results?g={0}", Request.Url.Host, ((ITestResultList)Container.DataItem).ID.Replace("{",string.Empty).Replace("-",string.Empty)) %>
 					</guid>
 					<pubDate>
-						<%# ((TestResultList)Container.DataItem).Date.ToString("ddd, dd MMM yyyy hh:mm:ss") +  " GMT" %>
+						<%# ((ITestResultList)Container.DataItem).Date.ToString("ddd, dd MMM yyyy hh:mm:ss") +  " GMT" %>
 					</pubDate>
 					<author>
 						Sitecore TestStar

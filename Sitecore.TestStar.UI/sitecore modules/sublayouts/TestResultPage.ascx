@@ -1,7 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="TestResultPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.TestResultPage" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
@@ -19,10 +18,10 @@
 		<asp:Repeater ID="rptResults" runat="server" OnItemDataBound="rptResults_ItemDataBound">
 			<ItemTemplate>
 				<asp:PlaceHolder ID="phDateHead" runat="server" Visible="false">
-					<h2><%# ((TestResultList)Container.DataItem).Date.ToString("MMMM d, yyyy") %></h2>
+					<h2><%# ((ITestResultList)Container.DataItem).Date.ToString("MMMM d, yyyy") %></h2>
 				</asp:PlaceHolder>
 				<div class="resultList whiteBox corners">
-					<h3><%# ((TestResultList)Container.DataItem).Title %></h3>
+					<h3><%# ((ITestResultList)Container.DataItem).Title %></h3>
 					<asp:Repeater ID="rptEntries" runat="server">
 						<ItemTemplate>
 							<div class="testResult">

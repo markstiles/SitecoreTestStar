@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Interfaces\ITestResult.cs" />
+    <Compile Include="Entities\Interfaces\ITestResultList.cs" />
     <Compile Include="Entities\TestEnvironment.cs" />
     <Compile Include="Entities\TestResultList.cs" />
     <Compile Include="Entities\TestSite.cs" />

@@ -15,6 +15,7 @@ using Sitecore.Web;
 using Sitecore.Links;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class TestResultPage : UserControl {
@@ -25,7 +26,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			
 			//choose results 
             ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
-			List<TestResultList> results = tProvider.GetResults().ToList();
+            List<ITestResultList> results = tProvider.GetResults().ToList();
 			
 			int page = 1;
 			int maxPosts = 10;
@@ -81,7 +82,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		protected void rptResults_ItemDataBound(object sender, RepeaterItemEventArgs e) {
 			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
 
-			TestResultList r = (TestResultList)e.Item.DataItem;
+            ITestResultList r = (ITestResultList)e.Item.DataItem;
 			
 			if (stored == null) 
 				stored = r.Date;

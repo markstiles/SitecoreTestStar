@@ -6,16 +6,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-	public class TestResultList {
+    public class TestResultList : ITestResultList {
 
-		public string ID = string.Empty;
-		public string Title = string.Empty;
-		public DateTime Date = DateTime.Now;
-        public IEnumerable<ITestResult> ResultEntries;
-		
-		#region Constructors
+        #region ITestResultList
 
-		public TestResultList() { }
+        protected string _ID;
+        public string ID { get { return _ID; } set { _ID = value; } }
+        protected string _Title;
+        public string Title { get { return _Title; } set { _Title = value; } }
+        protected DateTime _Date;
+        public DateTime Date { get { return _Date; } set { _Date = value; } }
+        protected IEnumerable<ITestResult> _ResultEntries;
+        public IEnumerable<ITestResult> ResultEntries { get { return _ResultEntries; } set { _ResultEntries = value; } }
+
+        #endregion ITestResultList
+
+        #region Constructors
+
+        public TestResultList() { 
+            ID = string.Empty;
+		    Title = string.Empty;
+		    Date = DateTime.Now;
+            ResultEntries = new List<ITestResult>();
+        }
 
 		public TestResultList(string id, string title, DateTime date, IEnumerable<ITestResult> entries) {
 			ID = id;

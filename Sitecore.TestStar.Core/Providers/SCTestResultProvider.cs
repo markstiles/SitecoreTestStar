@@ -15,7 +15,7 @@ using Sitecore.TestStar.Core.Entities.Interfaces;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
 		
-		public IEnumerable<TestResultList> GetResults() {
+		public IEnumerable<ITestResultList> GetResults() {
 			Item folder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			if (folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.ResultFoldNull);
@@ -23,14 +23,14 @@ namespace Sitecore.TestStar.Core.Providers {
 			if (!folder.HasChildren)
 				return Enumerable.Empty<TestResultList>();
 
-			IEnumerable<TestResultList> results = from Item i in folder.Axes.GetDescendants()
+            IEnumerable<ITestResultList> results = from Item i in folder.Axes.GetDescendants()
                                                   where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)
                                                   select FillTestResult(i);
 
 			return results.OrderByDescending(a => a.Date);
 		}
 
-        public TestResultList FillTestResult(Item i) {
+        public ITestResultList FillTestResult(Item i) {
 
             //get the entry children
             List<ITestResult> entries = new List<ITestResult>();
