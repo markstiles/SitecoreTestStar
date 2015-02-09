@@ -14,7 +14,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
 		#region Messaging
 
-		public List<UnitTestResult> ResultList = new List<UnitTestResult>();
+		public List<DefaultUnitTestResult> ResultList = new List<DefaultUnitTestResult>();
 
 		#endregion Messaging
 
@@ -22,7 +22,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
 		public void OnResult(TestMethod tm, TestResult tr, TestResultEnum tre) {
 
-			UnitTestResult utr = new UnitTestResult(
+			DefaultUnitTestResult utr = new DefaultUnitTestResult(
 				string.Empty,
 				DateTime.Now,
 				tre.ToString(),

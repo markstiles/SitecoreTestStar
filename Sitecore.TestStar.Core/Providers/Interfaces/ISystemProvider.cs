@@ -12,6 +12,6 @@ namespace Sitecore.TestStar.Core.Providers.Interfaces {
 
         IEnumerable<ITestSystem> GetSystems();
 
-        ITestSystem FillTestSystem(Item i);
+        ITestSystem GetTestSystem(string id, string name);
     }
 }

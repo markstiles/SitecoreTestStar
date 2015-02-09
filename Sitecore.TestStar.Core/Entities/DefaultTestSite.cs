@@ -7,7 +7,7 @@ using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Entities {
-	public class TestSite {
+	public class DefaultTestSite : ITestSite {
 
 		#region ITestSite
 
@@ -27,13 +27,13 @@ namespace Sitecore.TestStar.Core.Entities {
         public string SiteNodeID { get { return _SiteNodeID; } set { _SiteNodeID = value; } }
 
         protected Dictionary<string, object> _Properties;
-        public Dictionary<string, object> Properties;
+        public Dictionary<string, object> Properties { get { return _Properties; } set { _Properties = value; } }
         protected IEnumerable<ITestEnvironment> _Environments;
-        public IEnumerable<ITestEnvironment> Environments;
+        public IEnumerable<ITestEnvironment> Environments { get { return _Environments; } set { _Environments = value; } } 
 
         #endregion ITestSite
 
-        public TestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> environments) {
+        public DefaultTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> environments) {
 			ID = id;
 			Name = name;
 			Domain = domain;

@@ -15,7 +15,7 @@ using Sitecore.TestStar.Core.Entities.Interfaces;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
 		
-		public IEnumerable<ITestResultList> GetResults() {
+		public IEnumerable<ITestResultList> GetTestResultLists() {
 			Item folder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
 			if (folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.ResultFoldNull);
@@ -24,13 +24,13 @@ namespace Sitecore.TestStar.Core.Providers {
 				return Enumerable.Empty<ITestResultList>();
 
             IEnumerable<ITestResultList> results = from Item i in folder.Axes.GetDescendants()
-                                                  where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)
-                                                  select FillTestResult(i);
+                                                   where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)
+                                                   select GetTestResultList(i);
 
 			return results.OrderByDescending(a => a.Date);
 		}
 
-        public ITestResultList FillTestResult(Item i) {
+        public ITestResultList GetTestResultList(Item i) {
 
             //get the entry children
             List<ITestResult> entries = new List<ITestResult>();
@@ -39,9 +39,9 @@ namespace Sitecore.TestStar.Core.Providers {
             foreach(Item c in children){
                 ITestResult tr = null;
                 if(c.TemplateID.ToString().Equals(Cons.UnitTestResultTemplate)){
-                    tr = (ITestResult)new UnitTestResult(); 
+                    tr = (ITestResult)new DefaultUnitTestResult(); 
                 } else if(c.TemplateID.ToString().Equals(Cons.WebTestResultTemplate)){
-                    WebTestResult wtr = new WebTestResult();
+                    DefaultWebTestResult wtr = new DefaultWebTestResult();
                     wtr.Site = c["Site"];
                     wtr.Environment = c["Environment"];
                     wtr.RequestURL = c["RequestURL"];
@@ -61,7 +61,11 @@ namespace Sitecore.TestStar.Core.Providers {
                 }
             }
 			
-            return new TestResultList(i.ID.ToString(), i.DisplayName, i.GetSafeDateFieldValue("Date"), entries);
+            return GetTestResultList(i.ID.ToString(), i.DisplayName, i.GetSafeDateFieldValue("Date"), entries);
+        }
+
+        public ITestResultList GetTestResultList(string id, string name, DateTime date, List<ITestResult> entries) {
+            return new DefaultTestResultList(id, name, date, entries);
         }
 	}
 }

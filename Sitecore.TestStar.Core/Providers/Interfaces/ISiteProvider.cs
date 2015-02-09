@@ -14,6 +14,6 @@ namespace Sitecore.TestStar.Core.Providers.Interfaces {
 		
         IEnumerable<ITestSite> GetEnabledSites(IEnvironmentProvider eProvider);
 
-        ITestSite FillTestSite(IEnvironmentProvider eProvider, Item i);
+        ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs);
     }
 }

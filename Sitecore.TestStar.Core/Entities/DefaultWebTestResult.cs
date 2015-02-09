@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-    public class WebTestResult : ITestResult {
+    public class DefaultWebTestResult : ITestResult {
 
         #region ITestResult 
 
@@ -37,7 +37,7 @@ namespace Sitecore.TestStar.Core.Entities {
 		public string RequestURL;
 		public string ResponseStatus;
 		
-		public WebTestResult() {
+		public DefaultWebTestResult() {
 			ID = string.Empty;
 			Date = DateTime.Now;
 			ClassName = string.Empty;
@@ -50,7 +50,7 @@ namespace Sitecore.TestStar.Core.Entities {
 			ResponseStatus = string.Empty;
 		}
 
-		public WebTestResult(string id, DateTime dateTime, string type, string method, string className, string msg, string site, string env, string url, string status) {
+		public DefaultWebTestResult(string id, DateTime dateTime, string type, string method, string className, string msg, string site, string env, string url, string status) {
 			ID = id;
 			Date = dateTime;
 			ClassName = className;

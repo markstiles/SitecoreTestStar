@@ -10,9 +10,5 @@ namespace Sitecore.TestStar.Core.Providers.Interfaces {
     public interface ITextEntryProvider {
 
         string GetTextByKey(string TextKey);
-		
-        string GetTextByKey(string TextKey, Database db);
-
-        string FillTextEntry(Item i);
     }
 }

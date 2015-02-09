@@ -23,12 +23,12 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<ITestEnvironment>();
 
 			IEnumerable<ITestEnvironment> environments = from Item i in folder.GetChildren()
-														select FillTestEnvironment(i);
+                                                         select GetTestEnvironment(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("DomainPrefix"), i.GetSafeFieldValue("IPAddress"));
 			return environments;
 		}
 
-        public ITestEnvironment FillTestEnvironment(Item i) {
-            return (ITestEnvironment)new TestEnvironment(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("DomainPrefix"), i.GetSafeFieldValue("IPAddress"));
+        public ITestEnvironment GetTestEnvironment(string id, string name, string domainPrefix, string ipAddress) {
+            return (ITestEnvironment)new DefaultTestEnvironment(id, name, domainPrefix, ipAddress);
         }
 	}
 }

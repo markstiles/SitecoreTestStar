@@ -22,7 +22,7 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 
 			//handle the recent posts
             ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
-            List<ITestResultList> posts = tProvider.GetResults().ToList();
+            List<ITestResultList> posts = tProvider.GetTestResultLists().ToList();
 			if (posts.Count > 20) 
 				posts = posts.GetRange(0, 20);
 			rptRSS.DataSource = posts;

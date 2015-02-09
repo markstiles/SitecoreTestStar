@@ -22,6 +22,14 @@ namespace Sitecore.TestStar.Core.Extensions {
 			return (f == null) ? string.Empty : f.Value;
 		}
 
+        public static List<string> GetSafeFieldList(this Item i, string fieldName) {
+            List<string> empty = new List<string>();
+            if (i == null)
+                return empty;
+            DelimitedField f = i.Fields[fieldName];
+            return (f == null) ? empty : f.Items.ToList();
+        }
+
 		public static bool GetSafeFieldBool(this Item i, string fieldName) {
             if (i == null)
                 return false; 

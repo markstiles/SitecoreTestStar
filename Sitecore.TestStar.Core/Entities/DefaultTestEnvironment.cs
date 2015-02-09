@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-	public class TestEnvironment : ITestEnvironment {
+	public class DefaultTestEnvironment : ITestEnvironment {
 
         #region ITestEnvironment
 
@@ -23,9 +23,9 @@ namespace Sitecore.TestStar.Core.Entities {
 
         #region Constructors
 
-        public TestEnvironment() { }
+        public DefaultTestEnvironment() { }
 
-		public TestEnvironment(string id, string name, string domainPrefix, string ipAddress) {
+		public DefaultTestEnvironment(string id, string name, string domainPrefix, string ipAddress) {
 			ID = id;
 			Name = name;
 			DomainPrefix = domainPrefix;
@@ -35,7 +35,7 @@ namespace Sitecore.TestStar.Core.Entities {
 		#endregion Constructors
 
 		public override bool Equals(object obj) {
-			return (this.ID.Equals(((TestEnvironment)obj).ID)) ? true : false;
+			return (this.ID.Equals(((DefaultTestEnvironment)obj).ID)) ? true : false;
 		}
 	}
 }

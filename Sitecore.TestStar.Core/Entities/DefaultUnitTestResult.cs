@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-	public class UnitTestResult : ITestResult {
+	public class DefaultUnitTestResult : ITestResult {
 
         #region ITestResult
 
@@ -27,7 +27,7 @@ namespace Sitecore.TestStar.Core.Entities {
 
         #endregion ITestResult
         
-		public UnitTestResult() {
+		public DefaultUnitTestResult() {
 			ID = string.Empty;
 			Date = DateTime.Now;
 			ClassName = string.Empty;
@@ -37,7 +37,7 @@ namespace Sitecore.TestStar.Core.Entities {
             AdditionalInfo = string.Empty;
 		}
 
-		public UnitTestResult(string id, DateTime dateTime, string type, string method, string className, string msg) {
+		public DefaultUnitTestResult(string id, DateTime dateTime, string type, string method, string className, string msg) {
 			ID = id;
 			Date = dateTime;
 			ClassName = className;

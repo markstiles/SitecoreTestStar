@@ -22,7 +22,7 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<string>();
 
 			IEnumerable<string> assemblies = from Item i in folder.GetChildren()
-                                             select FillTestAssembly(i);
+                                             select i.GetSafeFieldValue("AssemblyName");
 			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
 
@@ -35,12 +35,8 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<string>();
 
             IEnumerable<string> assemblies = from Item i in folder.GetChildren()
-                                             select FillTestAssembly(i);
+                                             select i.GetSafeFieldValue("AssemblyName");
 			return assemblies.Where(a => !string.IsNullOrEmpty(a) && File.Exists(string.Format(@"{0}\{1}.dll", Cons.ExecutionRoot, a)));
 		}
-
-        public string FillTestAssembly(Item i) {
-            return i.GetSafeFieldValue("AssemblyName");
-        }
 	}
 }

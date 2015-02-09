@@ -26,7 +26,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			
 			//choose results 
             ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
-            List<ITestResultList> results = tProvider.GetResults().ToList();
+            List<ITestResultList> results = tProvider.GetTestResultLists().ToList();
 			
 			int page = 1;
 			int maxPosts = 10;

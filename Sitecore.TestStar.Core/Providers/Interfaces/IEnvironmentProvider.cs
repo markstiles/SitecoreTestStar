@@ -12,6 +12,6 @@ namespace Sitecore.TestStar.Core.Providers.Interfaces {
 
         IEnumerable<ITestEnvironment> GetEnvironments();
 
-        ITestEnvironment FillTestEnvironment(Item i);
+        ITestEnvironment GetTestEnvironment(string id, string name, string domainPrefix, string ipAddress);
     }
 }

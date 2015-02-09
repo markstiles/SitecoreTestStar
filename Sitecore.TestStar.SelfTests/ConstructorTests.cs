@@ -29,7 +29,7 @@ namespace Sitecore.TestStar.SelfTests {
             string domainPrefix = "domainPrefix";
             string ipAddress = "ipAddress";
             
-            TestEnvironment te = new TestEnvironment(id, name, domainPrefix, ipAddress);
+            DefaultTestEnvironment te = new DefaultTestEnvironment(id, name, domainPrefix, ipAddress);
             
             Assert.AreEqual(te.ID, id);
             Assert.AreEqual(te.Name, name);
@@ -43,7 +43,7 @@ namespace Sitecore.TestStar.SelfTests {
             string title = "title";
             DateTime dt = DateTime.Now;
 
-            TestResultList trl = new TestResultList(id, title, dt, new List<ITestResult>());
+            DefaultTestResultList trl = new DefaultTestResultList(id, title, dt, new List<ITestResult>());
             
             Assert.AreEqual(trl.ID, id);
             Assert.AreEqual(trl.Title, title);
@@ -67,11 +67,11 @@ namespace Sitecore.TestStar.SelfTests {
             string tename = "tename";
             string domainPrefix = "domainPrefix";
             string ipAddress = "ipAddress";
-            TestEnvironment te = new TestEnvironment(teid, tename, domainPrefix, ipAddress);
-            List<TestEnvironment> environments = new List<TestEnvironment>();
+            DefaultTestEnvironment te = new DefaultTestEnvironment(teid, tename, domainPrefix, ipAddress);
+            List<DefaultTestEnvironment> environments = new List<DefaultTestEnvironment>();
             environments.Add(te);
             
-            TestSite ts = new TestSite(id, name, domain, systemID, disabled, properties, environments);
+            DefaultTestSite ts = new DefaultTestSite(id, name, domain, systemID, disabled, properties, environments);
             
             Assert.AreEqual(ts.ID, id);
             Assert.AreEqual(ts.Name, name);
@@ -90,7 +90,7 @@ namespace Sitecore.TestStar.SelfTests {
             string id = "id";
             string name = "name";
             
-            TestSystem ts = new TestSystem(id, name);
+            DefaultTestSystem ts = new DefaultTestSystem(id, name);
 
             Assert.AreEqual(ts.ID, id);
             Assert.AreEqual(ts.Name, name);
@@ -105,7 +105,7 @@ namespace Sitecore.TestStar.SelfTests {
             string className = "className";
             string msg = "msg";
 
-            UnitTestResult utr = new UnitTestResult(id, dt, type, method, className, msg);
+            DefaultUnitTestResult utr = new DefaultUnitTestResult(id, dt, type, method, className, msg);
 
             Assert.AreEqual(utr.ID, id);
             Assert.IsTrue(System.DateTime.Equals(utr.Date, dt));
@@ -128,7 +128,7 @@ namespace Sitecore.TestStar.SelfTests {
             string url = "url";
             string status = "status";
 
-            WebTestResult wtr = new WebTestResult(id, dt, type, method, className, msg, site, env, url, status);
+            DefaultWebTestResult wtr = new DefaultWebTestResult(id, dt, type, method, className, msg, site, env, url, status);
 
             Assert.AreEqual(wtr.ID, id);
             Assert.IsTrue(System.DateTime.Equals(wtr.Date, dt));

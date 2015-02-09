@@ -16,7 +16,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
 		#region Messaging
 
-		public List<WebTestResult> ResultList = new List<WebTestResult>();
+		public List<DefaultWebTestResult> ResultList = new List<DefaultWebTestResult>();
 
 		#endregion Messaging
 
@@ -24,7 +24,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
 		public void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre) {
 
-			WebTestResult wtr = new WebTestResult(
+			DefaultWebTestResult wtr = new DefaultWebTestResult(
 				string.Empty,
 				DateTime.Now,
 				tre.ToString(),

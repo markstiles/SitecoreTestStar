@@ -26,12 +26,12 @@ namespace Sitecore.TestStar.WebService {
 	public class TestService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public List<UnitTestResult> RunUnitTests(string AssemblyName, string Category) {
+		public List<DefaultUnitTestResult> RunUnitTests(string AssemblyName, string Category) {
 			
 			//warm up nunit and configure the manager and handler
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
-			UnitTestManager manager = new UnitTestManager(wsuth);
+			DefaultUnitTestManager manager = new DefaultUnitTestManager(wsuth);
 
 			//build dictionary with any methods with the selected categories
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
@@ -52,15 +52,15 @@ namespace Sitecore.TestStar.WebService {
 		}
 
         [WebMethod]
-        public List<WebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
+        public List<DefaultWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
 
 			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
-            WebTestManager manager = new WebTestManager(wswth);
+            DefaultWebTestManager manager = new DefaultWebTestManager(wswth);
 
 			//build an error list to pass if you need it
-			List<WebTestResult> errorList = new List<WebTestResult> { new WebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
+			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
 			
 			//get the environment
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
@@ -69,7 +69,7 @@ namespace Sitecore.TestStar.WebService {
 				return errorList;
 			}
             IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
-            ITestEnvironment te = eProvider.FillTestEnvironment(ei);
+            ITestEnvironment te = eProvider.GetTestEnvironment(ei.ID.ToString(), ei.DisplayName, ei.GetSafeFieldValue("DomainPrefix"), ei.GetSafeFieldValue("IPAddress"));
 
 			//get the site
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
@@ -77,8 +77,8 @@ namespace Sitecore.TestStar.WebService {
 				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullSite;
 				return errorList;
 			}
-            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
-            ITestSite ts = sProvider.FillTestSite(eProvider, si);
+            SCSiteProvider sProvider = new SCSiteProvider();
+            ITestSite ts = sProvider.GetTestSite(eProvider, si);
 
 			//get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
@@ -94,8 +94,8 @@ namespace Sitecore.TestStar.WebService {
 
 		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::ClassName
-		public List<WebTestResult> RunWebTests(string EnvironmentID, string SiteID, List<string> TestCalls) {
-			List<WebTestResult> resultSet = new List<WebTestResult>();
+		public List<DefaultWebTestResult> RunWebTests(string EnvironmentID, string SiteID, List<string> TestCalls) {
+			List<DefaultWebTestResult> resultSet = new List<DefaultWebTestResult>();
 			foreach (string s in TestCalls) {
 				string[] arr = s.Split(new string[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
 				if (arr.Length < 2)

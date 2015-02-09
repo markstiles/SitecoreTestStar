@@ -16,11 +16,11 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Managers {
-	public class WebTestManager {
+	public class DefaultWebTestManager {
 
 		private IWebTestHandler Handler;
 
-		public WebTestManager(IWebTestHandler handler){
+		public DefaultWebTestManager(IWebTestHandler handler){
 			if (handler == null)
 				throw new ArgumentNullException(SCTextEntryProvider.Exceptions.Managers.IWebTestHandlerNull);
 			Handler = handler;

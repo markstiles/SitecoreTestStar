@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Providers.Interfaces {
     public interface ITestResultProvider {
 
-        IEnumerable<ITestResultList> GetResults();
+        IEnumerable<ITestResultList> GetTestResultLists();
 
-        ITestResultList FillTestResult(Item i);
+        ITestResultList GetTestResultList(string id, string name, DateTime date, List<ITestResult> entries);
     }
 }

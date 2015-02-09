@@ -13,23 +13,17 @@ using Sitecore.TestStar.Core.Providers.Interfaces;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTextEntryProvider : ITextEntryProvider {
 		
-		public string GetTextByKey(string TextKey) {
-			return GetTextByKey(TextKey, Sitecore.Context.Database);
-		}
+        public string GetTextByKey(string TextKey) {
 
-        public string GetTextByKey(string TextKey, Database db) {
+            Database db = Sitecore.Context.Database;
 
 			Item folder = db.GetItem(Cons.TextDictionary);
 			if (folder == null)
 				throw new NullReferenceException(Exceptions.Providers.TextDicNull);
 
 			Item i = db.GetItem(string.Format("{0}{1}", folder.Paths.Path, TextKey));
-			return (i != null) ? FillTextEntry(i) : string.Empty;
+            return (i != null) ? i.GetSafeFieldValue("Value") : string.Empty;
 		}
-
-        public string FillTextEntry(Item i) {
-            return i.GetSafeFieldValue("Value");
-        }
 
         #region SCProvider Exception Message Shortcuts
 

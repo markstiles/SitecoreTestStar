@@ -10,14 +10,14 @@ using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Entities {
 	
-	public class TestSystem : ITestSystem {
+	public class DefaultTestSystem : ITestSystem {
 
         protected string _ID;
 		public string ID { get { return _ID; } set { _ID = value; } }
         protected string _Name;
         public string Name { get { return _Name; } set { _Name = value; } }
 
-		public TestSystem(string id, string name) {
+		public DefaultTestSystem(string id, string name) {
 			ID = id;
 			Name = name;
 		}

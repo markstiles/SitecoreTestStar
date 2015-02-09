@@ -22,13 +22,13 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<ITestSystem>();
 
 			IEnumerable<ITestSystem> systems = from Item i in folder.GetChildren()
-											  where i.TemplateID.ToString().Equals(Cons.SystemTemplate)
-											  select FillTestSystem(i);
+											   where i.TemplateID.ToString().Equals(Cons.SystemTemplate)
+                                               select GetTestSystem(i.ID.ToString(), i.DisplayName);
 			return systems;
 		}
 
-        public ITestSystem FillTestSystem(Item i) {
-            return new TestSystem(i.ID.ToString(), i.DisplayName);
+        public ITestSystem GetTestSystem(string id, string name) {
+            return new DefaultTestSystem(id, name);
         }
 	}
 }

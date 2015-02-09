@@ -11,7 +11,5 @@ namespace Sitecore.TestStar.Core.Providers.Interfaces {
         IEnumerable<string> GetUnitTestAssemblies();
 		
 		IEnumerable<string> GetWebTestAssemblies();
-	
-        string FillTestAssembly(Item i);
     }
 }

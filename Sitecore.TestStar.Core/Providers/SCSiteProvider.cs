@@ -24,8 +24,8 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<ITestSite>();
 
 			IEnumerable<ITestSite> sites = from Item i in folder.Axes.GetDescendants()
-										  where i.TemplateID.ToString().Equals(Cons.SiteTemplate)
-										  select FillTestSite(eProvider, i);
+										   where i.TemplateID.ToString().Equals(Cons.SiteTemplate)
+                                           select GetTestSite(eProvider, i);
 			return sites;
 		}
 
@@ -33,7 +33,7 @@ namespace Sitecore.TestStar.Core.Providers {
 			return GetSites(eProvider).Where(a => !a.Disabled);
 		}
 
-        public ITestSite FillTestSite(IEnvironmentProvider eProvider, Item i) {
+        public ITestSite GetTestSite(IEnvironmentProvider eProvider, Item i) {
             Dictionary<string, object> p = new Dictionary<string, object>();
             if (i.HasChildren) {
                 foreach (Item c in i.GetChildren()) {
@@ -46,16 +46,13 @@ namespace Sitecore.TestStar.Core.Providers {
                 }
             }
 
-            List<ITestEnvironment> e = new List<ITestEnvironment>();
-            DelimitedField df = i.Fields["Environments"];
-            if (df != null) {
-                foreach (string id in df.Items) {
-                    Item env = Cons.MasterDB.GetItem(id);
-                    if (env != null)
-                        e.Add(eProvider.FillTestEnvironment(env));
-                }
-            }
-            return (ITestSite)new TestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, e);
+            List<string> envs = i.GetSafeFieldList("Environments");
+
+            return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, eProvider.GetEnvironments().Where(a => envs.Contains(a.ID)));
+        }
+
+        public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {
+            return (ITestSite)new DefaultTestSite(id, name, domain, systemID, disabled, properties, envs);
         }
 	}
 }
