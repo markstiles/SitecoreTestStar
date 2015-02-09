@@ -2,6 +2,7 @@
     CodeBehind="TestResultPage.ascx.cs" 
     Inherits="Sitecore.TestStar.Core.UI.sublayouts.TestResultPage" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
 
@@ -22,24 +23,24 @@
 				</asp:PlaceHolder>
 				<div class="resultList whiteBox corners">
 					<h3><%# ((TestResultList)Container.DataItem).Title %></h3>
-					<asp:Repeater ID="rptEntries" runat="server" OnItemDataBound="rptEntries_ItemDataBound">
+					<asp:Repeater ID="rptEntries" runat="server">
 						<ItemTemplate>
 							<div class="testResult">
 								<div class="resultDate">
-									<%# ((DateField)((Item)Container.DataItem).Fields["Date"]).DateTime.ToString("hh:mm tt") %>:
+									<%# ((ITestResult)Container.DataItem).Date.ToString("hh:mm tt") %>:
 								</div>
-								<div class="resultType t<%# ((Item)Container.DataItem)["Type"] %>">
-									<%# ((Item)Container.DataItem)["Type"] %>
+								<div class="resultType t<%# ((ITestResult)Container.DataItem).Type %>">
+									<%# ((ITestResult)Container.DataItem).Type %>
 								</div>
 								<div class="resultMethod">
-									- <%# ((Item)Container.DataItem)["Method"] %>
+									- <%# ((ITestResult)Container.DataItem).Method %>
 								</div>
 								<div class="clear"></div>
 								<div>
-									<asp:Literal ID="ltlWebTestDetails" runat="server"></asp:Literal>
+                                    <%# ((ITestResult)Container.DataItem).AdditionalInfo %>
 								</div>
-								<div class="resultMessage" style="<%# (((Item)Container.DataItem)["Message"]).Length > 0 ? string.Empty : "display:none;" %>">
-									<%# ((Item)Container.DataItem)["Message"] %>
+								<div class="resultMessage" style="<%# (((ITestResult)Container.DataItem).Message).Length > 0 ? string.Empty : "display:none;" %>">
+									<%# ((ITestResult)Container.DataItem).Message %>
 								</div>
 								<div class="clear"></div>
 							</div>

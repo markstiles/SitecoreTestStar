@@ -97,21 +97,9 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			}
 
 			//get the entry children
-			Item rItem = Sitecore.Context.Database.GetItemByID(r.ID);
 			Repeater rptEntries = (Repeater)e.Item.FindControl("rptEntries");
-			rptEntries.DataSource = rItem.GetChildren().Reverse();
+			rptEntries.DataSource = r.ResultEntries;
 			rptEntries.DataBind();
-		}
-
-		protected void rptEntries_ItemDataBound(object sender, RepeaterItemEventArgs e) {
-			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
-
-			//show extra information for web test items
-			Item entry = (Item)e.Item.DataItem;
-			if(entry.TemplateID.ToString().Equals(Sitecore.TestStar.Core.Utility.Constants.WebTestResultTemplate)) {
-				Literal ltlWebTestDetails = (Literal)e.Item.FindControl("ltlWebTestDetails");
-				ltlWebTestDetails.Text = string.Format("{0} - {1}: {2}<br/>{3}", entry["Site"], entry["Environment"], entry["ResponseStatus"], entry["RequestURL"]);
-			}
 		}
 
 		#endregion Events

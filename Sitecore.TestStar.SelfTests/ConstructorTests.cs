@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +42,8 @@ namespace Sitecore.TestStar.SelfTests {
             string id = "id";
             string title = "title";
             DateTime dt = DateTime.Now;
-            
-            TestResultList trl = new TestResultList(id, title, dt);
+
+            TestResultList trl = new TestResultList(id, title, dt, new List<ITestResult>());
             
             Assert.AreEqual(trl.ID, id);
             Assert.AreEqual(trl.Title, title);

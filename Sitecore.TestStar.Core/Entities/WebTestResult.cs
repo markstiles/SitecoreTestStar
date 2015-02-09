@@ -1,19 +1,38 @@
-﻿using System;
+﻿using Sitecore.TestStar.Core.Entities.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.Core.Entities {
-    public class WebTestResult {
+    public class WebTestResult : ITestResult {
 
-		public string ID;
-		public DateTime Date;
-		public string ClassName;
-		public string Method;
-		public string Type;
-		public string Message;
-		public string Site;
+        #region ITestResult 
+
+        protected string _ID;
+        public string ID { get { return _ID; } set { _ID = value; } }
+        protected DateTime _Date;
+        public DateTime Date { get { return _Date; } set { _Date = value; } }
+        protected string _ClassName;
+        public string ClassName { get { return _ClassName; } set { _ClassName = value; } }
+        protected string _Method;
+        public string Method { get { return _Method; } set { _Method = value; } }
+        protected string _Type;
+        public string Type { get { return _Type; } set { _Type = value; } }
+        protected string _Message;
+        public string Message { get { return _Message; } set { _Message = value; } }
+        protected string _AdditionalInfo;
+        public string AdditionalInfo { 
+            get {
+                return string.Format("{0} - {1}: {2}<br/>{3}", Site, Environment, ResponseStatus, RequestURL);
+            } 
+            set { /*_AdditionalInfo = value; */ } 
+        }
+
+        #endregion ITestResult
+
+        public string Site;
 		public string Environment;
 		public string RequestURL;
 		public string ResponseStatus;

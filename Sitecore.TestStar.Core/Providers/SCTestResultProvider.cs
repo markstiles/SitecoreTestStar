@@ -9,6 +9,8 @@ using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.Data.Fields;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
@@ -29,7 +31,37 @@ namespace Sitecore.TestStar.Core.Providers {
 		}
 
         public TestResultList FillTestResult(Item i) {
-            return new TestResultList(i.ID.ToString(), i.DisplayName, i.GetSafeDateFieldValue("Date"));
+
+            //get the entry children
+            List<ITestResult> entries = new List<ITestResult>();
+            List<Item> children = i.GetChildren().Reverse().ToList();
+            
+            foreach(Item c in children){
+                ITestResult tr = null;
+                if(c.TemplateID.ToString().Equals(Cons.UnitTestResultTemplate)){
+                    tr = (ITestResult)new UnitTestResult(); 
+                } else if(c.TemplateID.ToString().Equals(Cons.WebTestResultTemplate)){
+                    WebTestResult wtr = new WebTestResult();
+                    wtr.Site = c["Site"];
+                    wtr.Environment = c["Environment"];
+                    wtr.RequestURL = c["RequestURL"];
+                    wtr.ResponseStatus = c["ResponseStatus"];
+                    tr = (ITestResult)wtr;
+                }
+
+                if(tr != null) {
+                    tr.ID = c.ID.ToString();
+                    tr.Date = ((DateField)c.Fields["Date"]).DateTime;
+                    tr.Type = c["Type"];
+                    tr.Method = c["Method"];
+                    tr.ClassName = c["ClassName"];
+                    tr.Message = c["Message"]; 
+            
+                    entries.Add(tr);
+                }
+            }
+			
+            return new TestResultList(i.ID.ToString(), i.DisplayName, i.GetSafeDateFieldValue("Date"), entries);
         }
 	}
 }

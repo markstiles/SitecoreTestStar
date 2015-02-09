@@ -2,6 +2,7 @@
 	Inherits="Sitecore.TestStar.Core.UI.layouts.RSS" 
 	CodeBehind="RSS.aspx.cs" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
 
@@ -20,17 +21,17 @@
 					</title>
 					<description>
 						<%# "<![CDATA[" %>
-						<asp:Repeater ID="rptEntries" runat="server" OnItemDataBound="rptEntries_ItemDataBound">
+						<asp:Repeater ID="rptEntries" runat="server">
 							<ItemTemplate>
 								<div>
 									<div>
-										<%# ((DateField)((Item)Container.DataItem).Fields["Date"]).DateTime.ToString("hh:mm tt") %>: <%# ((Item)Container.DataItem)["Type"] %> - <%# ((Item)Container.DataItem)["Method"] %>
+										<%# ((ITestResult)Container.DataItem).Date.ToString("hh:mm tt") %>: <%# ((ITestResult)Container.DataItem).Type %> - <%# ((ITestResult)Container.DataItem).Method %>
 									</div>
 									<div>
-										<asp:Literal ID="ltlWebTestDetails" runat="server"></asp:Literal>
+                                        <%# ((ITestResult)Container.DataItem).AdditionalInfo %>
 									</div>
 									<div>
-										<%# ((Item)Container.DataItem)["Message"] %>
+										<%# ((ITestResult)Container.DataItem).Message %>
 									</div>
 								</div>
 							</ItemTemplate>
