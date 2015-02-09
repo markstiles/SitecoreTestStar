@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Utility;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public interface IWebTestHandler {
 
-		void OnResult(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre);
+		void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre);
 	}
 }

@@ -21,7 +21,7 @@ namespace Sitecore.TestStar.Core.Providers {
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.ResultFoldNull);
 
 			if (!folder.HasChildren)
-				return Enumerable.Empty<TestResultList>();
+				return Enumerable.Empty<ITestResultList>();
 
             IEnumerable<ITestResultList> results = from Item i in folder.Axes.GetDescendants()
                                                   where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)

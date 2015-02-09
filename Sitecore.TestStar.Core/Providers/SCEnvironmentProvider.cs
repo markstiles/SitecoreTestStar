@@ -9,25 +9,26 @@ using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCEnvironmentProvider : IEnvironmentProvider {
 
-		public IEnumerable<TestEnvironment> GetEnvironments() {
+		public IEnumerable<ITestEnvironment> GetEnvironments() {
 			Item folder = Cons.MasterDB.GetItem(Cons.EnvironmentFolder);
 			if(folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.EnvFoldNull);
 
             if (!folder.HasChildren)
-                return Enumerable.Empty<TestEnvironment>();
+                return Enumerable.Empty<ITestEnvironment>();
 
-			IEnumerable<TestEnvironment> environments = from Item i in folder.GetChildren()
+			IEnumerable<ITestEnvironment> environments = from Item i in folder.GetChildren()
 														select FillTestEnvironment(i);
 			return environments;
 		}
 
-        public TestEnvironment FillTestEnvironment(Item i) {
-            return new TestEnvironment(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("DomainPrefix"), i.GetSafeFieldValue("IPAddress"));
+        public ITestEnvironment FillTestEnvironment(Item i) {
+            return (ITestEnvironment)new TestEnvironment(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("DomainPrefix"), i.GetSafeFieldValue("IPAddress"));
         }
 	}
 }

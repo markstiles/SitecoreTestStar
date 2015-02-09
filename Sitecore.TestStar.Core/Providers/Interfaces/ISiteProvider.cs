@@ -1,5 +1,6 @@
 ﻿using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Providers.Interfaces {
     public interface ISiteProvider {
         
-        IEnumerable<TestSite> GetSites(IEnvironmentProvider eProvider);
+        IEnumerable<ITestSite> GetSites(IEnvironmentProvider eProvider);
 		
-        IEnumerable<TestSite> GetEnabledSites(IEnvironmentProvider eProvider);
+        IEnumerable<ITestSite> GetEnabledSites(IEnvironmentProvider eProvider);
 
-        TestSite FillTestSite(IEnvironmentProvider eProvider, Item i);
+        ITestSite FillTestSite(IEnvironmentProvider eProvider, Item i);
     }
 }

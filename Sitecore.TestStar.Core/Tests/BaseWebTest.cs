@@ -2,6 +2,7 @@
 using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Tests {
 	public abstract class BaseWebTest {
@@ -19,18 +20,18 @@ namespace Sitecore.TestStar.Core.Tests {
 			}
 		}
 
-		protected TestEnvironment ContextEnvironment {
+		protected ITestEnvironment ContextEnvironment {
 			get {
-				return ContextTest.GetProperty<TestEnvironment>(EnvironmentKey);
+				return ContextTest.GetProperty<ITestEnvironment>(EnvironmentKey);
 			}
 			set {
 				ContextTest.SetProperty(EnvironmentKey, value);
 			}
 		}
 
-		protected TestSite ContextSite {
+		protected ITestSite ContextSite {
 			get {
-				return ContextTest.GetProperty<TestSite>(SiteKey);
+				return ContextTest.GetProperty<ITestSite>(SiteKey);
 			}
 			set {
 				ContextTest.SetProperty(SiteKey, value);

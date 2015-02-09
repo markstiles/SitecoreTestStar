@@ -13,6 +13,7 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class WebTestManager {
@@ -25,20 +26,20 @@ namespace Sitecore.TestStar.Core.Managers {
 			Handler = handler;
 		}
 
-        public void RunTest(TestFixture tf, TestEnvironment Environment, TestSite Site) {
-            IEnumerable<TestEnvironment> Environments = new List<TestEnvironment>() { Environment };
-            IEnumerable<TestSite> Sites = new List<TestSite>() { Site };
+        public void RunTest(TestFixture tf, ITestEnvironment Environment, ITestSite Site) {
+            IEnumerable<ITestEnvironment> Environments = new List<ITestEnvironment>() { Environment };
+            IEnumerable<ITestSite> Sites = new List<ITestSite>() { Site };
             RunTest(tf, Environments, Sites);
         }
 
-		public void RunTest(TestFixture tf, IEnumerable<TestEnvironment> Environments, IEnumerable<TestSite> Sites) {
+		public void RunTest(TestFixture tf, IEnumerable<ITestEnvironment> Environments, IEnumerable<ITestSite> Sites) {
 			if (tf == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestFixtureNull);
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestMethodNull);
-			foreach (TestEnvironment te in Environments) {
-				foreach (TestSite ts in Sites) {
+			foreach (ITestEnvironment te in Environments) {
+				foreach (ITestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
 						Handler.OnResult(tm, te, ts, null, string.Empty, HttpStatusCode.NoContent, TestResultEnum.Skipped);
 						continue;
@@ -60,7 +61,7 @@ namespace Sitecore.TestStar.Core.Managers {
 		/// <summary>
 		/// Passes the proper test result to the handler method
 		/// </summary>
-		private void HandleTest(TestFixture tf, TestMethod tm, TestEnvironment te, TestSite ts) {
+		private void HandleTest(TestFixture tf, TestMethod tm, ITestEnvironment te, ITestSite ts) {
 			
 			TestResult tr = tm.Run(new NullListener(), TestFilter.Empty);
 			ResultSummarizer summ = new ResultSummarizer(tr);

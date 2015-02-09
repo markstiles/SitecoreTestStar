@@ -75,8 +75,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Interfaces\ITestEnvironment.cs" />
     <Compile Include="Entities\Interfaces\ITestResult.cs" />
     <Compile Include="Entities\Interfaces\ITestResultList.cs" />
+    <Compile Include="Entities\Interfaces\ITestSite.cs" />
+    <Compile Include="Entities\Interfaces\ITestSystem.cs" />
     <Compile Include="Entities\TestEnvironment.cs" />
     <Compile Include="Entities\TestResultList.cs" />
     <Compile Include="Entities\TestSite.cs" />

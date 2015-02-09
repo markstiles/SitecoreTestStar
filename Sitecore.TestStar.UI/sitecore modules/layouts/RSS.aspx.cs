@@ -32,7 +32,7 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 		protected void rptRSS_ItemDataBound(object sender, RepeaterItemEventArgs e) {
 			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
 
-			TestResultList r = (TestResultList)e.Item.DataItem;
+			ITestResultList r = (ITestResultList)e.Item.DataItem;
 
 			//get the entry children
 			Repeater rptEntries = (Repeater)e.Item.FindControl("rptEntries");

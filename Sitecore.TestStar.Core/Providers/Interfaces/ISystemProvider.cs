@@ -1,5 +1,6 @@
 ﻿using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Providers.Interfaces {
     public interface ISystemProvider {
 
-        IEnumerable<TestSystem> GetSystems();
+        IEnumerable<ITestSystem> GetSystems();
 
-        TestSystem FillTestSystem(Item i);
+        ITestSystem FillTestSystem(Item i);
     }
 }

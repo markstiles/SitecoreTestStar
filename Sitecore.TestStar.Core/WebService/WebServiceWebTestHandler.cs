@@ -1,5 +1,6 @@
 ﻿using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Utility;
@@ -21,7 +22,7 @@ namespace Sitecore.TestStar.Core.WebService {
 
         #region ITestHandler Events
 
-		public void OnResult(TestMethod tm, TestEnvironment te, TestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre) {
+		public void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre) {
 
 			WebTestResult wtr = new WebTestResult(
 				string.Empty,

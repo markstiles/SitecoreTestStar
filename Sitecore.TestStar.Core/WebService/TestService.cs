@@ -17,6 +17,7 @@ using Sitecore.Data.Items;
 using System.IO;
 using System.Web;
 using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.WebService {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -68,7 +69,7 @@ namespace Sitecore.TestStar.WebService {
 				return errorList;
 			}
             IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
-            TestEnvironment te = eProvider.FillTestEnvironment(ei);
+            ITestEnvironment te = eProvider.FillTestEnvironment(ei);
 
 			//get the site
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
@@ -77,7 +78,7 @@ namespace Sitecore.TestStar.WebService {
 				return errorList;
 			}
             ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
-            TestSite ts = sProvider.FillTestSite(eProvider, si);
+            ITestSite ts = sProvider.FillTestSite(eProvider, si);
 
 			//get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
