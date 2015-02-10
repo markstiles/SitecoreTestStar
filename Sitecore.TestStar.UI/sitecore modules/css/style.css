@@ -27,7 +27,7 @@ nav { background:url('../images/nav-bg.png') no-repeat 0 5px; height: 47px; widt
 		nav a.active,
 		nav a:hover { color: #007294; }
 		nav a div { display:inline-block; vertical-align:top; text-shadow:-3px 2px 2px #888888; }
-		nav a span { font-family: 'xolonium'; font-size:17px; color:#fff; position:relative; left:27px; top: -2px; display:inline-block; text-align:center; overflow:hidden; }
+		nav a span { font-family: "Da Mad Rave"; font-size:11px; color:#fff; position:relative; left:25px; top: 0px; display:inline-block; text-align:center; overflow:hidden; }
 		nav a:hover span { margin-right:47px; transition:margin-right 1s; }
 main { position:relative; }
 .main-bg { background:url('../images/content-frame-bg.png'); bottom: 4px; position: absolute; top: 62px; width: 100%; z-index: -1; }
