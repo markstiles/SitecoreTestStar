@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Utility;
 
-namespace Sitecore.TestStar.Core.Managers {
+namespace Sitecore.TestStar.Core.Handlers {
 	public interface IUnitTestHandler {
 		void OnResult(TestMethod tm, TestResult tr, TestResultEnum tre);
 	}

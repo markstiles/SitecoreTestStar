@@ -10,7 +10,7 @@ using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.WebService;
+using Sitecore.TestStar.Core.Handlers;
 using Sitecore.TestStar.Core.Entities;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Items;
@@ -31,7 +31,7 @@ namespace Sitecore.TestStar.WebService {
 			//warm up nunit and configure the manager and handler
 			CoreExtensions.Host.InitializeService();
 			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
-			DefaultUnitTestManager manager = new DefaultUnitTestManager(wsuth);
+			UnitTestManager manager = new UnitTestManager(wsuth);
 
 			//build dictionary with any methods with the selected categories
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
@@ -57,7 +57,7 @@ namespace Sitecore.TestStar.WebService {
 			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
             WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
-            DefaultWebTestManager manager = new DefaultWebTestManager(wswth);
+            WebTestManager manager = new WebTestManager(wswth);
 
 			//build an error list to pass if you need it
 			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
@@ -170,8 +170,8 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			//System.IO.File.WriteAllText("output.ps1", generatedCode);
-			return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+			
+            return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
 		}
 
 		[WebMethod]

@@ -11,13 +11,14 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.Core.Handlers;
 
 namespace Sitecore.TestStar.Core.Managers {
-	public class DefaultUnitTestManager {
+	public class UnitTestManager {
 
 		private IUnitTestHandler Handler;
 
-		public DefaultUnitTestManager(IUnitTestHandler handler) {
+		public UnitTestManager(IUnitTestHandler handler) {
 			if (handler == null)
 				throw new ArgumentNullException(SCTextEntryProvider.Exceptions.Managers.IUnitTestHandlerNull);
 			Handler = handler;

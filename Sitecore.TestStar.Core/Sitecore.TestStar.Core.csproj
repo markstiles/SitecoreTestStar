@@ -86,10 +86,10 @@
     <Compile Include="Entities\DefaultTestSystem.cs" />
     <Compile Include="Extensions\SitecoreExtensions.cs" />
     <Compile Include="Extensions\TestExtensions.cs" />
-    <Compile Include="Managers\IUnitTestHandler.cs" />
-    <Compile Include="Managers\IWebTestHandler.cs" />
-    <Compile Include="Managers\DefaultUnitTestManager.cs" />
-    <Compile Include="Managers\DefaultWebTestManager.cs" />
+    <Compile Include="Handlers\IUnitTestHandler.cs" />
+    <Compile Include="Handlers\IWebTestHandler.cs" />
+    <Compile Include="Managers\UnitTestManager.cs" />
+    <Compile Include="Managers\WebTestManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SCAssemblyProvider.cs" />
     <Compile Include="Providers\SCEnvironmentProvider.cs" />
@@ -114,8 +114,8 @@
     <Compile Include="WebService\TestService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WebService\WebServiceUnitTestHandler.cs" />
-    <Compile Include="WebService\WebServiceWebTestHandler.cs" />
+    <Compile Include="Handlers\WebServiceUnitTestHandler.cs" />
+    <Compile Include="Handlers\WebServiceWebTestHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Interop.SHDocVw.dll" />

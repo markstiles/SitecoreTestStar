@@ -9,7 +9,7 @@ using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Utility;
 
-namespace Sitecore.TestStar.Core.WebService {
+namespace Sitecore.TestStar.Core.Handlers {
 	public class WebServiceUnitTestHandler : IUnitTestHandler {
 
 		#region Messaging

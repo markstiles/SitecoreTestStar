@@ -11,7 +11,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.TestStar.Core.WebService {
+namespace Sitecore.TestStar.Core.Handlers {
     public class WebServiceWebTestHandler : IWebTestHandler {
 
 		#region Messaging

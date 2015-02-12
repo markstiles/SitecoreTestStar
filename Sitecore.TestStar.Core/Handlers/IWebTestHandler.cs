@@ -9,7 +9,7 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
-namespace Sitecore.TestStar.Core.Managers {
+namespace Sitecore.TestStar.Core.Handlers {
 	public interface IWebTestHandler {
 
 		void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre);
