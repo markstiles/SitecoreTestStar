@@ -14,18 +14,17 @@ using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Entities.Interfaces;
-using Sitecore.TestStar.Core.Handlers;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class WebTestManager {
 
-		private IWebTestHandler Handler;
+        #region Messaging
 
-		public WebTestManager(IWebTestHandler handler){
-			if (handler == null)
-				throw new ArgumentNullException(SCTextEntryProvider.Exceptions.Managers.IWebTestHandlerNull);
-			Handler = handler;
-		}
+        public List<DefaultWebTestResult> ResultList = new List<DefaultWebTestResult>();
+
+        #endregion Messaging
+
+		public WebTestManager(){ }
 
         public void RunTest(TestFixture tf, ITestEnvironment Environment, ITestSite Site) {
             IEnumerable<ITestEnvironment> Environments = new List<ITestEnvironment>() { Environment };
@@ -42,7 +41,7 @@ namespace Sitecore.TestStar.Core.Managers {
 			foreach (ITestEnvironment te in Environments) {
 				foreach (ITestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
-						Handler.OnResult(tm, te, ts, null, string.Empty, HttpStatusCode.NoContent, TestResultEnum.Skipped);
+						OnResult(tm, te, ts, null, string.Empty, HttpStatusCode.NoContent, TestResultEnum.Skipped);
 						continue;
 					}
 
@@ -71,12 +70,31 @@ namespace Sitecore.TestStar.Core.Managers {
 			HttpStatusCode status = ((Test)tm).GetProperty<HttpStatusCode>(BaseWebTest.ResponseStatusCodeKey);
 			string requestURL = ((Test)tm).GetProperty<string>(BaseWebTest.RequestURLKey);
 			if (tr.IsError) {
-				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Error);
+				OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Error);
 			} else if (tr.IsFailure) {
-				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Failure);
+				OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Failure);
 			} else if (tr.IsSuccess) {
-				Handler.OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Success);
+				OnResult(tm, te, ts, tr, requestURL, status, TestResultEnum.Success);
 			}
 		}
+
+        private void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre) {
+
+            DefaultWebTestResult wtr = new DefaultWebTestResult(
+                string.Empty,
+                DateTime.Now,
+                tre.ToString(),
+                TestUtility.GetClassName(tm.ClassName),
+                TestUtility.GetClassName(((Test)tm).ClassName),
+                (tr != null) ? tr.Message : string.Empty,
+                ts.Name,
+                te.Name,
+                requestURL,
+                responseStatus.ToString()
+            );
+
+            wtr.ID = SitecoreUtility.CreateResultEntry(tm.FixtureType.FullName, wtr.Date.ToDateFieldValue(), wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
+            ResultList.Add(wtr);
+        }
 	}
 }

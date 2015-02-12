@@ -10,7 +10,6 @@ using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Handlers;
 using Sitecore.TestStar.Core.Entities;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Items;
@@ -30,8 +29,7 @@ namespace Sitecore.TestStar.WebService {
 			
 			//warm up nunit and configure the manager and handler
 			CoreExtensions.Host.InitializeService();
-			WebServiceUnitTestHandler wsuth = new WebServiceUnitTestHandler();
-			UnitTestManager manager = new UnitTestManager(wsuth);
+			UnitTestManager manager = new UnitTestManager();
 
 			//build dictionary with any methods with the selected categories
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
@@ -48,7 +46,7 @@ namespace Sitecore.TestStar.WebService {
 			foreach (TestMethod method in sets.Values)
 				manager.RunTest(method);
 
-			return wsuth.ResultList;
+			return manager.ResultList;
 		}
 
         [WebMethod]
@@ -56,8 +54,7 @@ namespace Sitecore.TestStar.WebService {
 
 			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
-            WebServiceWebTestHandler wswth = new WebServiceWebTestHandler();
-            WebTestManager manager = new WebTestManager(wswth);
+            WebTestManager manager = new WebTestManager();
 
 			//build an error list to pass if you need it
 			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
@@ -89,7 +86,7 @@ namespace Sitecore.TestStar.WebService {
 
             manager.RunTest(tf, te, ts);
 
-            return wswth.ResultList;
+            return manager.ResultList;
         }
 
 		[WebMethod]

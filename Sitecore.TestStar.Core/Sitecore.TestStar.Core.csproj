@@ -86,8 +86,6 @@
     <Compile Include="Entities\DefaultTestSystem.cs" />
     <Compile Include="Extensions\SitecoreExtensions.cs" />
     <Compile Include="Extensions\TestExtensions.cs" />
-    <Compile Include="Handlers\IUnitTestHandler.cs" />
-    <Compile Include="Handlers\IWebTestHandler.cs" />
     <Compile Include="Managers\UnitTestManager.cs" />
     <Compile Include="Managers\WebTestManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +112,6 @@
     <Compile Include="WebService\TestService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Handlers\WebServiceUnitTestHandler.cs" />
-    <Compile Include="Handlers\WebServiceWebTestHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Interop.SHDocVw.dll" />
