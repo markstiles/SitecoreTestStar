@@ -101,6 +101,7 @@ namespace Sitecore.TestStar.SelfTests {
 
         [Test]
         public void UnitTestResultTest() {
+            string listName = "list";
             string id = "id";
             DateTime dt = DateTime.Now;
             string type = "type";
@@ -108,7 +109,7 @@ namespace Sitecore.TestStar.SelfTests {
             string className = "className";
             string msg = "msg";
 
-            DefaultUnitTestResult utr = new DefaultUnitTestResult(id, dt, type, method, className, msg);
+            DefaultUnitTestResult utr = new DefaultUnitTestResult(listName, id, dt, type, method, className, msg);
 
             Assert.AreEqual(utr.ID, id);
             Assert.IsTrue(System.DateTime.Equals(utr.Date, dt));
@@ -120,6 +121,7 @@ namespace Sitecore.TestStar.SelfTests {
 
         [Test]
         public void WebTestResultTest() {
+            string listName = "list"; 
             string id = "id";
             DateTime dt = DateTime.Now;
             string type = "type";
@@ -131,7 +133,7 @@ namespace Sitecore.TestStar.SelfTests {
             string url = "url";
             string status = "status";
 
-            DefaultWebTestResult wtr = new DefaultWebTestResult(id, dt, type, method, className, msg, site, env, url, status);
+            DefaultWebTestResult wtr = new DefaultWebTestResult(listName, id, dt, type, method, className, msg, site, env, url, status);
 
             Assert.AreEqual(wtr.ID, id);
             Assert.IsTrue(System.DateTime.Equals(wtr.Date, dt));

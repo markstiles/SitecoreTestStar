@@ -52,6 +52,10 @@
     <Reference Include="pnunit.framework">
       <HintPath>..\Sitecore.TestStar.Core\bin\pnunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Sitecore.TestStar.Core\bin\Debug\Sitecore.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,13 +67,22 @@
   <ItemGroup>
     <Compile Include="ConstructorTests.cs" />
     <Compile Include="ExtensionTests.cs" />
+    <Compile Include="ManagerTests.cs" />
+    <Compile Include="MockTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\UTAssemblyProvider.cs" />
+    <Compile Include="Providers\UTEnvironmentProvider.cs" />
+    <Compile Include="Providers\UTSiteProvider.cs" />
+    <Compile Include="Providers\UTTextEntryProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sitecore.TestStar.Core\Sitecore.TestStar.Core.csproj">
       <Project>{09facc1a-fc04-4af8-b70c-eb620659e9a7}</Project>
       <Name>Sitecore.TestStar.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Handlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
