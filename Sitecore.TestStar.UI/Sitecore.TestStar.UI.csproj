@@ -126,6 +126,7 @@
     <Content Include="sitecore modules\images\result-bot.png" />
     <Content Include="sitecore modules\images\result-pre.png" />
     <Content Include="sitecore modules\images\result-top.png" />
+    <Content Include="sitecore modules\images\rss.png" />
     <Content Include="sitecore modules\images\space-1.jpg" />
     <Content Include="sitecore modules\images\space-2.jpg" />
     <Content Include="sitecore modules\images\space-3.jpg" />

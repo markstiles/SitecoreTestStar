@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sitecore.TestStar.SelfTests {
+    /// <summary>
+    /// This is to make sure all input parameters make it to the correct destination variables. Sometimes they don't. In fact I wrote this because one didn't. Now they do. 
+    /// </summary>
     [TestFixture, Category("Constructor Tests")]
     public class ConstructorTests {
         

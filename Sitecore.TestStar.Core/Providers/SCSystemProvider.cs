@@ -9,12 +9,13 @@ using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCSystemProvider : ISystemProvider {
 
 		public IEnumerable<ITestSystem> GetSystems() {
-			Item folder = Cons.MasterDB.GetItem(Cons.SiteFolder);
+			Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.SiteFolder"));
 			if (folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.SiteFoldNull);
 
@@ -22,7 +23,7 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<ITestSystem>();
 
 			IEnumerable<ITestSystem> systems = from Item i in folder.GetChildren()
-											   where i.TemplateID.ToString().Equals(Cons.SystemTemplate)
+                                               where i.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.SystemTemplate"))
                                                select GetTestSystem(i.ID.ToString(), i.DisplayName);
 			return systems;
 		}

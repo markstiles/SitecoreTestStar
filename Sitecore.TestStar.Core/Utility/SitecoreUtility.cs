@@ -11,6 +11,7 @@ using Sitecore.SecurityModel;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Utility {
 	public static class SitecoreUtility {
@@ -26,11 +27,11 @@ namespace Sitecore.TestStar.Core.Utility {
 		public static string CreateResultEntry(string listName, string dateValue, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
 			string returnID = string.Empty;
 			//change to the item in the master db so that content isn't created in the web db
-			Item resultsFolder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
+			Item resultsFolder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
 			//need to open security to create item
 			using (new SecurityDisabler()) {
 				//get date folder
-				Sitecore.Data.Items.TemplateItem folderTemplate = Cons.MasterDB.Templates[Cons.ResultsFolderTemplate];
+                Sitecore.Data.Items.TemplateItem folderTemplate = Cons.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsFolderTemplate")];
 				Item parentNode = GetDateParentNode(resultsFolder, DateTime.Now, folderTemplate);
 				if (parentNode == null) 
 					return returnID;
@@ -40,7 +41,7 @@ namespace Sitecore.TestStar.Core.Utility {
 				Item listItem = parentNode.Axes.GetChild(goodListName);
 				//if it doesn't exist or if it's not the same type we want, then create it
 				if (listItem == null) //Create new item
-					listItem = parentNode.Add(goodListName, Cons.MasterDB.Templates[Cons.ResultsListTemplate]);
+                    listItem = parentNode.Add(goodListName, Cons.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsListTemplate")]);
 
 				//if you created the item successfully
 				if (listItem == null)
@@ -54,7 +55,7 @@ namespace Sitecore.TestStar.Core.Utility {
 				}
 			
 				string entryName = (listItem.Children.Count + 1).ToString("0000");
-				Item newEntryItem = listItem.Add(entryName, Cons.MasterDB.Templates[(isUnitTest) ? Cons.UnitTestResultTemplate : Cons.WebTestResultTemplate]);
+                Item newEntryItem = listItem.Add(entryName, Cons.MasterDB.Templates[(isUnitTest) ? Settings.GetSetting("TestStar.UnitTestResultTemplate") : Settings.GetSetting("TestStar.WebTestResultTemplate")]);
 				returnID = newEntryItem.ID.ToString();
 				using (new EditContext(newEntryItem, true, false)) {
 					newEntryItem["Type"] = type;

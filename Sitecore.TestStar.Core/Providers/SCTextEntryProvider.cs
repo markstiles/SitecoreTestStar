@@ -9,6 +9,7 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTextEntryProvider : ITextEntryProvider {
@@ -17,7 +18,7 @@ namespace Sitecore.TestStar.Core.Providers {
 
             Database db = Sitecore.Context.Database;
 
-			Item folder = db.GetItem(Cons.TextDictionary);
+            Item folder = db.GetItem(Settings.GetSetting("TestStar.TextDictionary"));
 			if (folder == null)
 				throw new NullReferenceException(Exceptions.Providers.TextDicNull);
 

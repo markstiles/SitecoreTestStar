@@ -5,7 +5,10 @@
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
 
-<div class="ResultList">
+<div class="resultList">
+    <div class="rssLink">
+        <asp:HyperLink ID="lnkFeed" Target="_blank" runat="server" Text="RSS"></asp:HyperLink>
+	</div>
 	<div class="pagerWrap">
 		<asp:HyperLink ID="lnkPrev" Visible="false" CssClass="prevPage whiteBox corners" runat="server"></asp:HyperLink>
 		<asp:HyperLink ID="lnkNext" Visible="false" CssClass="nextPage whiteBox corners" runat="server"></asp:HyperLink>

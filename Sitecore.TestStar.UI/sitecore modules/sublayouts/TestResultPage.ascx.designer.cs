@@ -13,6 +13,15 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
     public partial class TestResultPage {
         
         /// <summary>
+        /// lnkFeed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkFeed;
+        
+        /// <summary>
         /// lnkPrev control.
         /// </summary>
         /// <remarks>

@@ -73,7 +73,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 
 .subtext { color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; }
 
-.testInputs { margin:0 0 40px 23px; }
+.testInputs { margin:0 0 10px 5px; max-height:350px; overflow:auto; }
 
 .submit { background-color: #00aadd; display:inline-block; position:absolute; right:10px; bottom:10px; cursor:pointer; }
     .submit:hover { background-color: #555; }
@@ -115,7 +115,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
     .rResult { font-size:10px; display:inline-block; font-weight:bold; }
 
 .testInputs input { display:inline-block; margin:5px 0 0; vertical-align:top; }
-.testInputs label { display:inline-block; vertical-align:top; }
+.testInputs label { display:inline-block; vertical-align:top; font-family: "xolonium"; font-size: 16px; }
 
 .wtEnvs,
 .wtSystems,
@@ -123,11 +123,14 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .wtEnvs { width:200px; margin-right:10px; }
 .wtSystems { width:160px; margin-right:10px; }
 .wtSites { width:170px; }
-    .systemName { font-size:12px; display:block; }
+    .systemName { font-size:11px; display:block; font-family: verdana; }
 .utTests,
 .wtTests { margin:0 0 15px 0; }
 
-.resultList { margin-bottom: 15px; }
+.resultList { margin-bottom: 15px; position:relative; }
+    .rssLink { position:absolute; right:0px;top:0px;}
+		.rssLink a { text-shadow:0px 0px 12px #fff; transition:text-shadow 1s; background:url(../images/rss.png) 0 0 no-repeat; color:#fff; font-family:"Da Mad Rave"; padding-left:30px; line-height:28px; text-decoration:none; }
+        .rssLink a:hover { text-shadow: 0px 0px 12px #0ad; }
 	.testResult { border-bottom:1px solid #00aadd; padding:5px 10px; }
 	.testResult:last-child { border: 0px; }
 		.resultDate { font-weight:bold; display:inline-block; margin-right:5px; }

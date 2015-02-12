@@ -23,6 +23,9 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 		#region Events
 
 		protected void Page_Load(object sender, EventArgs e) {
+
+            //rss link
+            lnkFeed.NavigateUrl = LinkManager.GetItemUrl(Sitecore.Context.Item.Children.First());
 			
 			//choose results 
             ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();

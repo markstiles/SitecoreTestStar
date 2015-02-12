@@ -11,12 +11,13 @@ using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.Data.Fields;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
 		
 		public IEnumerable<ITestResultList> GetTestResultLists() {
-			Item folder = Cons.MasterDB.GetItem(Cons.ResultsFolder);
+            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
 			if (folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.ResultFoldNull);
 
@@ -24,7 +25,7 @@ namespace Sitecore.TestStar.Core.Providers {
 				return Enumerable.Empty<ITestResultList>();
 
             IEnumerable<ITestResultList> results = from Item i in folder.Axes.GetDescendants()
-                                                   where i.TemplateID.ToString().Equals(Cons.ResultsListTemplate)
+                                                   where i.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.ResultsListTemplate"))
                                                    select GetTestResultList(i);
 
 			return results.OrderByDescending(a => a.Date);
@@ -38,9 +39,9 @@ namespace Sitecore.TestStar.Core.Providers {
             
             foreach(Item c in children){
                 ITestResult tr = null;
-                if(c.TemplateID.ToString().Equals(Cons.UnitTestResultTemplate)){
-                    tr = (ITestResult)new DefaultUnitTestResult(); 
-                } else if(c.TemplateID.ToString().Equals(Cons.WebTestResultTemplate)){
+                if (c.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.UnitTestResultTemplate"))) {
+                    tr = (ITestResult)new DefaultUnitTestResult();
+                } else if (c.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.WebTestResultTemplate"))) {
                     DefaultWebTestResult wtr = new DefaultWebTestResult();
                     wtr.Site = c["Site"];
                     wtr.Environment = c["Environment"];

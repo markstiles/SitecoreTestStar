@@ -11,20 +11,21 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Fields;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCSiteProvider : ISiteProvider {
 
 		public IEnumerable<ITestSite> GetSites(IEnvironmentProvider eProvider) {
-			Item folder = Cons.MasterDB.GetItem(Cons.SiteFolder);
+            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.SiteFolder"));
 			if (folder == null)
 				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.EnvFoldNull);
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<ITestSite>();
-
+            
 			IEnumerable<ITestSite> sites = from Item i in folder.Axes.GetDescendants()
-										   where i.TemplateID.ToString().Equals(Cons.SiteTemplate)
+										   where i.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.SiteTemplate"))
                                            select GetTestSite(eProvider, i);
 			return sites;
 		}
