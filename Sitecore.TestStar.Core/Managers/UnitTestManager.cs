@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using NUnit.Core;
+﻿using NUnit.Core;
 using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Tests;
+using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class UnitTestManager {
@@ -22,11 +18,17 @@ namespace Sitecore.TestStar.Core.Managers {
 
         #endregion Messaging
 
-		public UnitTestManager() { }
+        ITextEntryProvider TextProvider;
+
+        public UnitTestManager(ITextEntryProvider t) {
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
 
 		public void RunTest(TestMethod tm) {
 			if (tm == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestMethodNull);
+                throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestMethodNull"));
 
 			var t = new Thread(new ThreadStart(() => HandleTest(tm)));
 			t.SetApartmentState(ApartmentState.STA);
@@ -54,6 +56,7 @@ namespace Sitecore.TestStar.Core.Managers {
         private void OnResult(TestMethod tm, TestResult tr, TestResultEnum tre) {
 
             DefaultUnitTestResult utr = new DefaultUnitTestResult(
+                tm.FixtureType.FullName,
                 string.Empty,
                 DateTime.Now,
                 tre.ToString(),
@@ -62,7 +65,6 @@ namespace Sitecore.TestStar.Core.Managers {
                 tr.Message
             );
 
-            utr.ID = SitecoreUtility.CreateResultEntry(tm.FixtureType.FullName, utr.Date.ToDateFieldValue(), utr.ClassName, utr.Method, utr.Type, utr.Message, true, string.Empty, string.Empty, string.Empty, string.Empty);
             ResultList.Add(utr);
         }
 	}

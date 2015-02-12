@@ -10,6 +10,8 @@ namespace Sitecore.TestStar.Core.Entities {
 
         #region ITestResult 
 
+        protected string _ListName;
+        public string ListName { get { return _ListName; } set { _ListName = value; } }
         protected string _ID;
         public string ID { get { return _ID; } set { _ID = value; } }
         protected DateTime _Date;
@@ -38,7 +40,8 @@ namespace Sitecore.TestStar.Core.Entities {
 		public string ResponseStatus;
 		
 		public DefaultWebTestResult() {
-			ID = string.Empty;
+            ListName = string.Empty;
+            ID = string.Empty;
 			Date = DateTime.Now;
 			ClassName = string.Empty;
 			Method = string.Empty;
@@ -50,8 +53,9 @@ namespace Sitecore.TestStar.Core.Entities {
 			ResponseStatus = string.Empty;
 		}
 
-		public DefaultWebTestResult(string id, DateTime dateTime, string type, string method, string className, string msg, string site, string env, string url, string status) {
-			ID = id;
+		public DefaultWebTestResult(string listName, string id, DateTime dateTime, string type, string method, string className, string msg, string site, string env, string url, string status) {
+            ListName = listName;
+            ID = id;
 			Date = dateTime;
 			ClassName = className;
 			Method = method;

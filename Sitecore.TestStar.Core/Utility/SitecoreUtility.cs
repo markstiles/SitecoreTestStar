@@ -24,7 +24,15 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		#region Result Definition
 
-		public static string CreateResultEntry(string listName, string dateValue, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
+        public static string CreateResultEntry(DefaultUnitTestResult d) {
+            return CreateResultEntry(d.ListName, d.Date.ToDateFieldValue(), d.ClassName, d.Method, d.Type, d.Message, true, string.Empty, string.Empty, string.Empty, string.Empty);
+        }
+
+        public static string CreateResultEntry(DefaultWebTestResult d) {
+            return CreateResultEntry(d.ListName, d.Date.ToDateFieldValue(), d.ClassName, d.Method, d.Type, d.Message, false, d.Site, d.Environment, d.RequestURL, d.ResponseStatus);
+        }
+
+		private static string CreateResultEntry(string listName, string dateValue, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
 			string returnID = string.Empty;
 			//change to the item in the master db so that content isn't created in the web db
 			Item resultsFolder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));

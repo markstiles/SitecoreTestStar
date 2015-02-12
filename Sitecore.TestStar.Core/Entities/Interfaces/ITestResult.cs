@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Entities.Interfaces {
     public interface ITestResult {
 
+        string ListName { get; set; }
         string ID { get; set; }
         DateTime Date { get; set; }
         string ClassName { get; set; }

@@ -1,19 +1,17 @@
-﻿using System;
+﻿using NUnit.Core;
+using NUnit.Util;
+using Sitecore.TestStar.Core.Entities;
+using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Tests;
+using Sitecore.TestStar.Core.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using NUnit.Core;
-using NUnit.Util;
-using Sitecore.TestStar.Core.Entities;
-using Sitecore.TestStar.Core.Extensions;
-using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Tests;
-using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
-using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Managers {
 	public class WebTestManager {
@@ -24,7 +22,13 @@ namespace Sitecore.TestStar.Core.Managers {
 
         #endregion Messaging
 
-		public WebTestManager(){ }
+        ITextEntryProvider TextProvider;
+
+		public WebTestManager(ITextEntryProvider t){
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
 
         public void RunTest(TestFixture tf, ITestEnvironment Environment, ITestSite Site) {
             IEnumerable<ITestEnvironment> Environments = new List<ITestEnvironment>() { Environment };
@@ -34,10 +38,10 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestFixture tf, IEnumerable<ITestEnvironment> Environments, IEnumerable<ITestSite> Sites) {
 			if (tf == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestFixtureNull);
+                throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestFixtureNull"));
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Managers.TestMethodNull);
+				throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestMethodNull"));
 			foreach (ITestEnvironment te in Environments) {
 				foreach (ITestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {
@@ -81,6 +85,7 @@ namespace Sitecore.TestStar.Core.Managers {
         private void OnResult(TestMethod tm, ITestEnvironment te, ITestSite ts, TestResult tr, string requestURL, HttpStatusCode responseStatus, TestResultEnum tre) {
 
             DefaultWebTestResult wtr = new DefaultWebTestResult(
+                tm.FixtureType.FullName,
                 string.Empty,
                 DateTime.Now,
                 tre.ToString(),
@@ -93,7 +98,6 @@ namespace Sitecore.TestStar.Core.Managers {
                 responseStatus.ToString()
             );
 
-            wtr.ID = SitecoreUtility.CreateResultEntry(tm.FixtureType.FullName, wtr.Date.ToDateFieldValue(), wtr.ClassName, wtr.Method, wtr.Type, wtr.Message, false, wtr.Site, wtr.Environment, wtr.RequestURL, wtr.ResponseStatus);
             ResultList.Add(wtr);
         }
 	}

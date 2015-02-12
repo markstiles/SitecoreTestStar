@@ -29,7 +29,7 @@ namespace Sitecore.TestStar.WebService {
 			
 			//warm up nunit and configure the manager and handler
 			CoreExtensions.Host.InitializeService();
-			UnitTestManager manager = new UnitTestManager();
+			UnitTestManager manager = new UnitTestManager(new SCTextEntryProvider());
 
 			//build dictionary with any methods with the selected categories
 			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
@@ -46,7 +46,11 @@ namespace Sitecore.TestStar.WebService {
 			foreach (TestMethod method in sets.Values)
 				manager.RunTest(method);
 
-			return manager.ResultList;
+            List<DefaultUnitTestResult> rl = manager.ResultList;
+            foreach(DefaultUnitTestResult d in rl)
+                d.ID = SitecoreUtility.CreateResultEntry(d);
+            
+			return rl;
 		}
 
         [WebMethod]
@@ -54,10 +58,10 @@ namespace Sitecore.TestStar.WebService {
 
 			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
-            WebTestManager manager = new WebTestManager();
+            WebTestManager manager = new WebTestManager(new SCTextEntryProvider());
 
 			//build an error list to pass if you need it
-			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
+			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
 			
 			//get the environment
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
@@ -86,6 +90,10 @@ namespace Sitecore.TestStar.WebService {
 
             manager.RunTest(tf, te, ts);
 
+            List<DefaultWebTestResult> rl = manager.ResultList;
+            foreach (DefaultWebTestResult d in rl)
+                d.ID = SitecoreUtility.CreateResultEntry(d);
+            
             return manager.ResultList;
         }
 
