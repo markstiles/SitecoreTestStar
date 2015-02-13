@@ -78,6 +78,18 @@ namespace Sitecore.TestStar.Core.Extensions {
 			return l;
 		}
 
+        public static IEnumerable<TestMethod> GetMethodsByCategory(this TestSuite suite, string category) {
+            return suite.GetFixtures()
+                .SelectMany<TestFixture, TestMethod>(tf => tf.Tests.Cast<TestMethod>()
+                    .Where(tm =>
+                        tf.Categories().Any(c => c.Equals(category)) // if category is on the TestFixture
+                        ||
+                        tm.Categories().Any(c => c.Equals(category)) // if category is on the Test method
+                    )
+                )
+                .Distinct();
+        }
+
 		/// <summary>
 		/// Gets all the test fixtures
 		/// </summary>
@@ -98,11 +110,8 @@ namespace Sitecore.TestStar.Core.Extensions {
 		/// </summary>
 		public static IEnumerable<string> GetAllCategories(this Test suite) {
 			List<string> cats = new List<string>();
-			if (suite.Categories != null && suite.Categories.Count > 0)
-				foreach(string c in suite.Categories)
-					if (!cats.Contains(c))
-						cats.Add(c);
-			
+            cats.AddRange(Categories(suite));
+            
 			if(suite.Tests != null)
 				foreach (Test ts in suite.Tests)
 					cats.AddRange(GetAllCategories(ts));

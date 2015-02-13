@@ -40,17 +40,8 @@ namespace Sitecore.TestStar.SelfTests {
         [Test]
         public void UnitTestHandler_Null() {
 
-            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName)
-                .GetFixtures()
-                .SelectMany<TestFixture, TestMethod>(tf => tf.Tests.Cast<TestMethod>()
-                    .Where(tm =>
-                        tf.Categories().Any(c => c.Equals(Category)) // if category is on the TestFixture
-                        ||
-                        tm.Categories().Any(c => c.Equals(Category)) // if category is on the Test method
-                    )
-                 )
-                .Distinct();
-            
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
+                
             //make sure they are found
             Assert.IsTrue(methods.Any());
 
