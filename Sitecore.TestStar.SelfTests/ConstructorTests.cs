@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.Core.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,8 +93,10 @@ namespace Sitecore.TestStar.SelfTests {
         public void TestSystemTest() {
             string id = "id";
             string name = "name";
-            
-            DefaultTestSystem ts = new DefaultTestSystem(id, name);
+
+            UTEnvironmentProvider eProvider = new UTEnvironmentProvider();
+            UTSiteProvider sProvider = new UTSiteProvider(eProvider);
+            DefaultTestSystem ts = new DefaultTestSystem(id, name, sProvider);
 
             Assert.AreEqual(ts.ID, id);
             Assert.AreEqual(ts.Name, name);

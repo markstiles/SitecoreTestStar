@@ -35,7 +35,7 @@ namespace Sitecore.TestStar.Core.Utility {
 			get {
 				return (IsWebApp)
 					? string.Format("{0}bin", HttpContext.Current.Request.PhysicalApplicationPath)
-					: AppDomain.CurrentDomain.BaseDirectory;
+					: string.Format("{0}bin", AppDomain.CurrentDomain.BaseDirectory);
 			}
 		}
 

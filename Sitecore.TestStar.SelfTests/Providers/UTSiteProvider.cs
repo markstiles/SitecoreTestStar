@@ -15,8 +15,16 @@ using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class UTSiteProvider : ISiteProvider {
+        
+        private IEnvironmentProvider EnvProvider;
 
-		public IEnumerable<ITestSite> GetSites(IEnvironmentProvider eProvider) {
+        public UTSiteProvider(IEnvironmentProvider e) {
+            if (e == null)
+                throw new NullReferenceException();
+            EnvProvider = e;
+        }
+		
+        public IEnumerable<ITestSite> GetSites() {
 
             List<string> envs = new List<string>(){ "1" };
 
@@ -28,15 +36,15 @@ namespace Sitecore.TestStar.Core.Providers {
                     "1", 
                     false, 
                     new Dictionary<string, object>(), 
-                    eProvider.GetEnvironments().Where(a => envs.Contains(a.ID))
+                    EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID))
                 ) 
             };
 			
             return sites;
 		}
 
-        public IEnumerable<ITestSite> GetEnabledSites(IEnvironmentProvider eProvider) {
-			return GetSites(eProvider).Where(a => !a.Disabled);
+        public IEnumerable<ITestSite> GetEnabledSites() {
+            return GetSites().Where(a => !a.Disabled);
 		}
 
         public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {

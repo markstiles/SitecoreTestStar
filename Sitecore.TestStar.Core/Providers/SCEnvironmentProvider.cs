@@ -14,11 +14,19 @@ using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCEnvironmentProvider : IEnvironmentProvider {
+        
+        private ITextEntryProvider TextProvider;
 
-		public IEnumerable<ITestEnvironment> GetEnvironments() {
+        public SCEnvironmentProvider(ITextEntryProvider t) {
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
+
+        public IEnumerable<ITestEnvironment> GetEnvironments() {
             Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.EnvironmentFolder"));
 			if(folder == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.EnvFoldNull);
+				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.EnvFoldNull(TextProvider));
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<ITestEnvironment>();

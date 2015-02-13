@@ -28,7 +28,8 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			// Initialise NUnit
 			CoreExtensions.Host.InitializeService();
 
-            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider(tProvider);
 
 			if (!IsPostBack) {
                 rptSuites.DataSource = TestUtility.GetUnitTestSuites(aProvider);

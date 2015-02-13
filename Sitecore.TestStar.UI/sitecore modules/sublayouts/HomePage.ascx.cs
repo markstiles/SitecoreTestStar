@@ -15,7 +15,8 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			// Initialise NUnit
 			CoreExtensions.Host.InitializeService();
 
-            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider(tProvider);
 
             Dictionary<string, TestSuite> ut = TestUtility.GetUnitTestSuites(aProvider);
 			ltlUCount.Text = string.Format("You're tracking {0} unit test assemblies", ut.Count);

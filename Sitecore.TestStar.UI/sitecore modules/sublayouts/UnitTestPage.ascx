@@ -9,20 +9,20 @@
 <div class="error corners"></div><div></div>
 
 <div class="whiteBox generate corners">
-    <h3><%= SCTextEntryProvider.Page.GenerateScript %></h3>
+    <h3><%= TextProviderPaths.Page.GenerateScript(new SCTextEntryProvider()) %></h3>
     <div class="genToggle">+</div>
     <div class="genFields">
-        <label for="utScriptName" class="title"><%= SCTextEntryProvider.Page.ScriptName %></label>
+        <label for="utScriptName" class="title"><%= TextProviderPaths.Page.ScriptName(new SCTextEntryProvider()) %></label>
         <input type="text" ID="utScriptName"></input>
 		<div class="submit corners">
-			<input id="utGenerate" type="submit" value="<%= SCTextEntryProvider.Page.GenerateScript %>">
+			<input id="utGenerate" type="submit" value="<%= TextProviderPaths.Page.GenerateScript(new SCTextEntryProvider()) %>">
 		</div>
     </div>
 </div>
 <div></div>
 <div class="testForm">
     <div class="suiteWrap">
-        <h2><%= SCTextEntryProvider.Page.UnitTestSuites %></h2>
+        <h2><%= TextProviderPaths.Page.UnitTestSuites(new SCTextEntryProvider()) %></h2>
         <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 			<ItemTemplate>
 			    <div class="utTests whiteBox corners">
@@ -45,14 +45,14 @@
                         </asp:Repeater>
                     </div>
                     <div class="submit corners">
-					    <input id="utSubmit" type="submit" value="<%= SCTextEntryProvider.Page.Run %>">
+					    <input id="utSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
                     </div>
                 </div>
 			</ItemTemplate>
 		</asp:Repeater>
 	</div>
 	<div class="resultWrap">
-        <h2><%= SCTextEntryProvider.Page.Results %> <div class="resultCounter"></div></h2>
+        <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>
         <div class="result-head"></div>
         <div class="resultSet">
             

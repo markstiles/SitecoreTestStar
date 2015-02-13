@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.Core.Providers.Interfaces {
     public interface ISiteProvider {
         
-        IEnumerable<ITestSite> GetSites(IEnvironmentProvider eProvider);
+        IEnumerable<ITestSite> GetSites();
 		
-        IEnumerable<ITestSite> GetEnabledSites(IEnvironmentProvider eProvider);
+        IEnumerable<ITestSite> GetEnabledSites();
 
         ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs);
     }

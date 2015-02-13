@@ -109,6 +109,7 @@
     <Compile Include="Entities\GenScriptResult.cs" />
     <Compile Include="Entities\DefaultUnitTestResult.cs" />
     <Compile Include="Entities\DefaultWebTestResult.cs" />
+    <Compile Include="Utility\TextProviderPaths.cs" />
     <Compile Include="WebService\TestService.cs">
       <SubType>Component</SubType>
     </Compile>

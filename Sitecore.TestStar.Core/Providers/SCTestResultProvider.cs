@@ -16,10 +16,18 @@ using Sitecore.Configuration;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
 		
+        private ITextEntryProvider TextProvider;
+
+        public SCTestResultProvider(ITextEntryProvider t) {
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
+
 		public IEnumerable<ITestResultList> GetTestResultLists() {
             Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
 			if (folder == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.ResultFoldNull);
+				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.ResultFoldNull(TextProvider));
 
 			if (!folder.HasChildren)
 				return Enumerable.Empty<ITestResultList>();

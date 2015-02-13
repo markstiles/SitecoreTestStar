@@ -8,6 +8,7 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Utility;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,60 +18,77 @@ namespace Sitecore.TestStar.SelfTests {
     [TestFixture, Category("Manager Tests")]
     public class ManagerTests {
 
+        private string AssemblyName;
+        private string Category;
+        private string ClassName;
+        private UnitTestManager utManager;
+        private WebTestManager wtManager;
+            
+        [SetUp]
+        public void Setup() {
+            AssemblyName = new UTAssemblyProvider().GetUnitTestAssemblies().First();
+            Category = "Mock Tests";
+            ClassName = "MockTests";
+            
+            //warm up nunit and configure the manager and handler
+            CoreExtensions.Host.InitializeService();
+
+            utManager = new UnitTestManager(new UTTextEntryProvider());
+            wtManager = new WebTestManager(new UTTextEntryProvider());
+        }
+
         [Test]
         public void UnitTestHandler_Null() {
+
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName)
+                .GetFixtures()
+                .SelectMany<TestFixture, TestMethod>(tf => tf.Tests.Cast<TestMethod>()
+                    .Where(tm =>
+                        tf.Categories().Any(c => c.Equals(Category)) // if category is on the TestFixture
+                        ||
+                        tm.Categories().Any(c => c.Equals(Category)) // if category is on the Test method
+                    )
+                 )
+                .Distinct();
             
-            string AssemblyName = new UTAssemblyProvider().GetUnitTestAssemblies().First();
-            string Category = "Mock Tests";
+            //make sure they are found
+            Assert.IsTrue(methods.Any());
 
-			//warm up nunit and configure the manager and handler
-			CoreExtensions.Host.InitializeService();
-			UnitTestManager manager = new UnitTestManager(new UTTextEntryProvider());
-
-			//build dictionary with any methods with the selected categories
-			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
-			foreach (TestFixture tf in TestUtility.GetTestSuite(AssemblyName).GetFixtures()) {
-				bool fixtHasCat = (tf.Categories().Any(b => b.Equals(Category)));
-				foreach (TestMethod tm in tf.Tests) {
-					if (!sets.ContainsKey(tm.MethodName) && (fixtHasCat || tm.Categories().Any(b => b.Equals(Category))))
-						sets.Add(tm.MethodName, tm);
-				}
-			}
-
-            //check that it found both
-            Assert.AreEqual(sets.Count, 2);
+            //check that it found all 3
+            Assert.AreEqual(methods.Count(), 3);
 
 			//run all tests found
-			foreach (TestMethod method in sets.Values)
-				manager.RunTest(method);
+            foreach (TestMethod m in methods)
+                utManager.RunTest(m);
 
-            Assert.AreEqual(manager.ResultList.Count, 2);
+            Assert.AreEqual(utManager.ResultList.Count, 3);
+            Assert.IsTrue(utManager.ResultList[0].Type.Equals("Failure"));
+            Assert.IsTrue(utManager.ResultList[1].Type.Equals("Success"));
+            Assert.IsTrue(utManager.ResultList[2].Type.Equals("Error"));
             
+            wtManager.ResultList.Clear();
 		}
 
         [Test]
         public void WebTestHandler_Null() {
 
-            string AssemblyName = new UTAssemblyProvider().GetUnitTestAssemblies().First();
-            string ClassName = "MockTests";
-
-            //warm up nunit and configure the manager and handler
-            CoreExtensions.Host.InitializeService();
-            WebTestManager manager = new WebTestManager(new UTTextEntryProvider());
+            wtManager = new WebTestManager(new UTTextEntryProvider());
 
             //get the environment
             IEnvironmentProvider eProvider = (IEnvironmentProvider)new UTEnvironmentProvider();
             ITestEnvironment te = eProvider.GetEnvironments().First();
 
             //get the site
-            UTSiteProvider sProvider = new UTSiteProvider();
-            ITestSite ts = sProvider.GetSites(eProvider).First();
+            UTSiteProvider sProvider = new UTSiteProvider(eProvider);
+            ITestSite ts = sProvider.GetSites().First();
 
             //get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
             Assert.IsNotNull(tf);
 
-            manager.RunTest(tf, te, ts);
+            wtManager.RunTest(tf, te, ts);
+
+            wtManager.ResultList.Clear();
         }
     }
 }

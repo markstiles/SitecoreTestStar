@@ -14,10 +14,22 @@ using Sitecore.Configuration;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCSystemProvider : ISystemProvider {
 
+        private ISiteProvider SiteProvider;
+        private ITextEntryProvider TextProvider;
+
+        public SCSystemProvider(ISiteProvider s, ITextEntryProvider t) {
+            if (s == null)
+                throw new NullReferenceException();
+            SiteProvider = s;
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
+
 		public IEnumerable<ITestSystem> GetSystems() {
 			Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.SiteFolder"));
 			if (folder == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.SiteFoldNull);
+				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.SiteFoldNull(TextProvider));
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<ITestSystem>();
@@ -29,7 +41,7 @@ namespace Sitecore.TestStar.Core.Providers {
 		}
 
         public ITestSystem GetTestSystem(string id, string name) {
-            return new DefaultTestSystem(id, name);
+            return new DefaultTestSystem(id, name, SiteProvider);
         }
 	}
 }

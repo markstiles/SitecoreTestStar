@@ -16,6 +16,7 @@ using Sitecore.Links;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.Core.UI.sublayouts {
 	public partial class TestResultPage : UserControl {
@@ -28,8 +29,9 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
             lnkFeed.NavigateUrl = LinkManager.GetItemUrl(Sitecore.Context.Item.Children.First());
 			
 			//choose results 
-            ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
-            List<ITestResultList> results = tProvider.GetTestResultLists().ToList();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            ITestResultProvider trProvider = (ITestResultProvider)new SCTestResultProvider(tProvider);
+            List<ITestResultList> results = trProvider.GetTestResultLists().ToList();
 			
 			int page = 1;
 			int maxPosts = 10;
@@ -40,10 +42,10 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			if (results.Count > maxPosts) {
 
 				//set link text
-				lnkNext.Text = SCTextEntryProvider.ResultList.NextBtn;
-				lnkNext2.Text = SCTextEntryProvider.ResultList.NextBtn;
-				lnkPrev.Text = SCTextEntryProvider.ResultList.PrevBtn;
-				lnkPrev2.Text = SCTextEntryProvider.ResultList.PrevBtn;
+				lnkNext.Text = TextProviderPaths.ResultList.NextBtn(tProvider);
+                lnkNext2.Text = TextProviderPaths.ResultList.NextBtn(tProvider);
+                lnkPrev.Text = TextProviderPaths.ResultList.PrevBtn(tProvider);
+                lnkPrev2.Text = TextProviderPaths.ResultList.PrevBtn(tProvider);
 
 				//build page links
 				int totalPages = (int)Math.Ceiling(decimal.Divide(results.Count, maxPosts));
@@ -78,7 +80,7 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 				rptResults.DataSource = results;
 				rptResults.DataBind();
 			} else {
-				ltlMessage.Text = SCTextEntryProvider.ResultList.NoResults;
+                ltlMessage.Text = TextProviderPaths.ResultList.NoResults(tProvider);
 			}
 		}
 

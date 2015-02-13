@@ -14,10 +14,18 @@ using Sitecore.Configuration;
 namespace Sitecore.TestStar.Core.Providers {
 	public class SCAssemblyProvider : IAssemblyProvider {
 
+        private ITextEntryProvider TextProvider;
+
+        public SCAssemblyProvider(ITextEntryProvider t) {
+            if (t == null)
+                throw new NullReferenceException();
+            TextProvider = t;
+        }
+
         public IEnumerable<string> GetUnitTestAssemblies() {
             Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.UnitAssemblies"));
 			if (folder == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.UnitFoldNull);
+                throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.UnitFoldNull(TextProvider));
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();
@@ -30,7 +38,7 @@ namespace Sitecore.TestStar.Core.Providers {
         public IEnumerable<string> GetWebTestAssemblies() {
             Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.WebAssemblies"));
 			if (folder == null)
-				throw new NullReferenceException(SCTextEntryProvider.Exceptions.Providers.WebFoldNull);
+                throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.WebFoldNull(TextProvider));
 
             if (!folder.HasChildren)
                 return Enumerable.Empty<string>();

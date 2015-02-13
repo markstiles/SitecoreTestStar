@@ -16,14 +16,18 @@ namespace Sitecore.TestStar.Core.Entities {
 		public string ID { get { return _ID; } set { _ID = value; } }
         protected string _Name;
         public string Name { get { return _Name; } set { _Name = value; } }
+        private ISiteProvider SiteProvider;
 
-		public DefaultTestSystem(string id, string name) {
+		public DefaultTestSystem(string id, string name, ISiteProvider s) {
+            if (s == null)
+                throw new NullReferenceException();
+            SiteProvider = s;
 			ID = id;
 			Name = name;
 		}
 
-		public virtual IEnumerable<ITestSite> Sites(ISiteProvider sProvider, IEnvironmentProvider eProvider) {
-            return sProvider.GetSites(eProvider).Where(s => s.SystemID.Equals(this.ID)); 
+		public virtual IEnumerable<ITestSite> Sites() {
+            return SiteProvider.GetSites().Where(s => s.SystemID.Equals(this.ID)); 
 		}
 	}
 }

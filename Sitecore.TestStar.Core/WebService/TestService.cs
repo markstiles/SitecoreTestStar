@@ -32,19 +32,20 @@ namespace Sitecore.TestStar.WebService {
 			UnitTestManager manager = new UnitTestManager(new SCTextEntryProvider());
 
 			//build dictionary with any methods with the selected categories
-			Dictionary<string, TestMethod> sets = new Dictionary<string, TestMethod>();
-			foreach (TestFixture tf in TestUtility.GetTestSuite(AssemblyName).GetFixtures()) {
-				bool fixtHasCat = (tf.Categories().Any(b => b.Equals(Category)));
-				foreach (TestMethod tm in tf.Tests) {
-					//don't add twice and if fixture or the method has the selected category then add
-					if (!sets.ContainsKey(tm.MethodName) && (fixtHasCat || tm.Categories().Any(b => b.Equals(Category))))
-						sets.Add(tm.MethodName, tm);
-				}
-			}
-
+			IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName)
+                .GetFixtures()
+                .SelectMany<TestFixture, TestMethod>(tf => tf.Tests.Cast<TestMethod>()
+                    .Where(tm =>
+                        tf.Categories().Any(c => c.Equals(Category)) // if category is on the TestFixture
+                        ||
+                        tm.Categories().Any(c => c.Equals(Category)) // if category is on the Test method
+                    )
+                 )
+                .Distinct();
+            
 			//run all tests found
-			foreach (TestMethod method in sets.Values)
-				manager.RunTest(method);
+            foreach (TestMethod m in methods)
+				manager.RunTest(m);
 
             List<DefaultUnitTestResult> rl = manager.ResultList;
             foreach(DefaultUnitTestResult d in rl)
@@ -56,6 +57,8 @@ namespace Sitecore.TestStar.WebService {
         [WebMethod]
         public List<DefaultWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
 
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            
 			//warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
             WebTestManager manager = new WebTestManager(new SCTextEntryProvider());
@@ -66,25 +69,25 @@ namespace Sitecore.TestStar.WebService {
 			//get the environment
             Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
 			if (ei == null) {
-				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullEnv;
+                errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullEnv(tProvider);
 				return errorList;
 			}
-            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider(tProvider);
             ITestEnvironment te = eProvider.GetTestEnvironment(ei.ID.ToString(), ei.DisplayName, ei.GetSafeFieldValue("DomainPrefix"), ei.GetSafeFieldValue("IPAddress"));
 
 			//get the site
             Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
 			if (si == null) {
-				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullSite;
+                errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullSite(tProvider);
 				return errorList;
 			}
-            SCSiteProvider sProvider = new SCSiteProvider();
-            ITestSite ts = sProvider.GetTestSite(eProvider, si);
+            SCSiteProvider sProvider = new SCSiteProvider(eProvider, tProvider);
+            ITestSite ts = sProvider.GetTestSite(si);
 
 			//get the test fixture
             TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
             if (tf == null) {
-				errorList[0].Message = SCTextEntryProvider.Errors.TestRunner.NullTest;
+                errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullTest(tProvider);
 				return errorList;
 			}
 
@@ -113,12 +116,14 @@ namespace Sitecore.TestStar.WebService {
 		[WebMethod]
 		///@TestCalls is a list of strings in the format AssemblyName::Category
 		public GenScriptResult CreateUnitTestScript(string ScriptName, List<string> TestCalls) {
-
+            
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            
 			if (string.IsNullOrEmpty(ScriptName))
-				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+                return new GenScriptResult(false, TextProviderPaths.Errors.ScriptGen.ScriptGenNameNull(tProvider));
 		
 			if (!TestCalls.Any())
-				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+                return new GenScriptResult(false, TextProviderPaths.Errors.ScriptGen.ScriptGenNoCalls(tProvider));
 
 			Dictionary<string, List<string>> testSet = new Dictionary<string, List<string>>();
 			//define exe, assembly, categories and name(blank)
@@ -175,17 +180,20 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			
-            return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+
+            return new GenScriptResult(true, string.Format(TextProviderPaths.Messages.ScriptGen.ScriptGenSuccess(tProvider), filePath));
 		}
 
 		[WebMethod]
 		public GenScriptResult CreateWebTestScript(string ScriptName, List<string> TestCalls, List<string> EnvironmentIDs, List<string> SiteIDs) {
-			if (string.IsNullOrEmpty(ScriptName))
-				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNameNull);
+            
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            
+            if (string.IsNullOrEmpty(ScriptName))
+                return new GenScriptResult(false, TextProviderPaths.Errors.ScriptGen.ScriptGenNameNull(tProvider));
 
 			if (!TestCalls.Any())
-				return new GenScriptResult(false, SCTextEntryProvider.Errors.ScriptGen.ScriptGenNoCalls);
+                return new GenScriptResult(false, TextProviderPaths.Errors.ScriptGen.ScriptGenNoCalls(tProvider));
 
 			StringBuilder sb = new StringBuilder();
 			sb.Append("#WEB TESTING#").AppendLine().AppendLine();
@@ -234,7 +242,7 @@ namespace Sitecore.TestStar.WebService {
 			using (StreamWriter newData = new StreamWriter(filePath, false)) {
 				newData.WriteLine(sb.ToString());
 			}
-			return new GenScriptResult(true, string.Format(SCTextEntryProvider.Messages.ScriptGen.ScriptGenSuccess, filePath));
+            return new GenScriptResult(true, string.Format(TextProviderPaths.Messages.ScriptGen.ScriptGenSuccess(tProvider), filePath));
 		}
 	}
 }

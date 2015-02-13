@@ -21,8 +21,9 @@ namespace Sitecore.TestStar.Core.UI.layouts {
 			XmlOutput.Text = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>";
 
 			//handle the recent posts
-            ITestResultProvider tProvider = (ITestResultProvider)new SCTestResultProvider();
-            List<ITestResultList> posts = tProvider.GetTestResultLists().ToList();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            ITestResultProvider trProvider = (ITestResultProvider)new SCTestResultProvider(tProvider);
+            List<ITestResultList> posts = trProvider.GetTestResultLists().ToList();
 			if (posts.Count > 20) 
 				posts = posts.GetRange(0, 20);
 			rptRSS.DataSource = posts;

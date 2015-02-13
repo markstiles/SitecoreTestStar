@@ -18,7 +18,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
         #endregion Messaging
 
-        ITextEntryProvider TextProvider;
+        private ITextEntryProvider TextProvider;
 
         public UnitTestManager(ITextEntryProvider t) {
             if (t == null)
@@ -28,7 +28,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestMethod tm) {
 			if (tm == null)
-                throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestMethodNull"));
+                throw new NullReferenceException(TextProviderPaths.Exceptions.Managers.TestMethodNull(TextProvider));
 
 			var t = new Thread(new ThreadStart(() => HandleTest(tm)));
 			t.SetApartmentState(ApartmentState.STA);

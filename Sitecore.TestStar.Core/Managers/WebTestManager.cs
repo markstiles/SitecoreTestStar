@@ -22,7 +22,7 @@ namespace Sitecore.TestStar.Core.Managers {
 
         #endregion Messaging
 
-        ITextEntryProvider TextProvider;
+        private ITextEntryProvider TextProvider;
 
 		public WebTestManager(ITextEntryProvider t){
             if (t == null)
@@ -38,10 +38,10 @@ namespace Sitecore.TestStar.Core.Managers {
 
 		public void RunTest(TestFixture tf, IEnumerable<ITestEnvironment> Environments, IEnumerable<ITestSite> Sites) {
 			if (tf == null)
-                throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestFixtureNull"));
+                throw new NullReferenceException(TextProviderPaths.Exceptions.Managers.TestFixtureNull(TextProvider));
 			TestMethod tm = tf.GetMethod("RunTest");
 			if (tm == null)
-				throw new NullReferenceException(TextProvider.GetTextByKey("/Exceptions/Managers/TestMethodNull"));
+                throw new NullReferenceException(TextProviderPaths.Exceptions.Managers.TestMethodNull(TextProvider));
 			foreach (ITestEnvironment te in Environments) {
 				foreach (ITestSite ts in Sites) {
 					if (!ts.Environments.Any(en => en.ID.Equals(te.ID))) {

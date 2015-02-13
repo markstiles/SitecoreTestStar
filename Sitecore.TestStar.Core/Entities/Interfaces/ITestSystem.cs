@@ -11,6 +11,6 @@ namespace Sitecore.TestStar.Core.Entities.Interfaces {
         string ID { get; set; }
         string Name { get; set; }
 
-        IEnumerable<ITestSite> Sites(ISiteProvider sProvider, IEnvironmentProvider eProvider);
+        IEnumerable<ITestSite> Sites();
     }
 }

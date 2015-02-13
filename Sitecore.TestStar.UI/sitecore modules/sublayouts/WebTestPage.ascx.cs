@@ -39,34 +39,36 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			//setup for testing
 			CoreExtensions.Host.InitializeService();
 
-            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider(tProvider);
             rptSuites.DataSource = TestUtility.GetWebTestSuites(aProvider);
             rptSuites.DataBind();
 
-            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider(tProvider);
             rptEnvironments.DataSource = from ITestEnvironment te in eProvider.GetEnvironments()
                                          orderby te.Name
                                          select new ListItem(te.Name, te.ID);
             rptEnvironments.DataBind();
 
-            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider();
+            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider(eProvider, tProvider);
+            rptSites.DataSource = from ITestSite ts in sProvider.GetEnabledSites()
+                                  orderby ts.SystemID, ts.Name
+                                  select new ListItem(ts.Name, ts.ID);
+            rptSites.DataBind();
+
+            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider(sProvider, tProvider);
             rptSystems.DataSource = from ITestSystem tsys in sysProvider.GetSystems()
                                     orderby tsys.Name
                                     select new ListItem(tsys.Name, tsys.ID);
             rptSystems.DataBind();
-
-            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
-            rptSites.DataSource = from ITestSite ts in sProvider.GetEnabledSites(eProvider)
-                                  orderby ts.SystemID, ts.Name
-                                  select new ListItem(ts.Name, ts.ID);
-            rptSites.DataBind();
 		}
 
         protected string GetSystemName(string siteID) {
-            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider();
-            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider();
-            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider();
-            ITestSite ts = sProvider.GetEnabledSites(eProvider).Where(a => a.ID.Equals(siteID)).FirstOrDefault();
+            SCTextEntryProvider tProvider = new SCTextEntryProvider();
+            IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider(tProvider);
+            ISiteProvider sProvider = (ISiteProvider)new SCSiteProvider(eProvider, tProvider);
+            ISystemProvider sysProvider = (ISystemProvider)new SCSystemProvider(sProvider, tProvider);
+            ITestSite ts = sProvider.GetEnabledSites().Where(a => a.ID.Equals(siteID)).FirstOrDefault();
             return (ts == null || string.IsNullOrEmpty(ts.SystemID))
                 ? string.Empty
                 : sysProvider.GetSystems().Where(a => a.ID.Equals(ts.SystemID)).FirstOrDefault().Name;
