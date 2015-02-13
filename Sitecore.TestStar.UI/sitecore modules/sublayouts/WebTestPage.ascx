@@ -89,14 +89,14 @@
 						<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
                     </h3>
                     <div class="testInputs">
-                        <asp:Repeater ID="rptFixtures" runat="server">
+                        <asp:Repeater ID="rptCategories" runat="server">
                             <ItemTemplate>
                                 <div class="row">
                                     <input type="checkbox" 
-                                        id="<%# CondenseClassName(((ListItem)Container.DataItem).Text) %>" 
+                                        id="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>" 
                                         name="<%# ((ListItem)Container.DataItem).Text %>" 
                                         value="<%# ((ListItem)Container.DataItem).Value %>">
-                                    <label for="<%# CondenseClassName(((ListItem)Container.DataItem).Text) %>">
+                                    <label for="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>">
                                         <%# TestUtility.GetClassName(((ListItem)Container.DataItem).Text) %>
                                     </label>
                                 </div>
@@ -111,7 +111,7 @@
 		</asp:Repeater>
     </div>
 	<div class="resultWrap">
-        <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %><div class="resultCounter"></div></h2>
+        <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>
         <div class="result-head"></div>
         <div class="resultSet">
             

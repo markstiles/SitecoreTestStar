@@ -11,8 +11,8 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
 
-namespace Sitecore.TestStar.WebTests.Tests {
-	[TestFixture, RequiresSTA]
+namespace Sitecore.TestStar.WebTests {
+    [TestFixture, RequiresSTA, Category("Sitemap Test")]
 	public class SitemapTest : BranchingTest {
 
 		public SitemapTest() { }

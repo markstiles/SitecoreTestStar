@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Sitecore.TestStar.Core.Tests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,13 @@ namespace Sitecore.TestStar.SelfTests {
     public class MockTests {
 
         [Test]
-        public void FailTest() {
-            Assert.Fail();
-        }
-
-        [Test]
         public void PassTest() {
             Assert.Pass();
+        }
+        
+        [Test]
+        public void FailTest() {
+            Assert.Fail();
         }
 
         [Test]

@@ -78,18 +78,18 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
             return scID.Replace("{", string.Empty).Replace("}", string.Empty).Replace("-", string.Empty);
         }
 
-        protected string CondenseClassName(string className) {
-            return className.Replace(".", string.Empty);
-        }
-
         protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
             if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
 
             KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
 
-            Repeater rptFixtures = (Repeater)e.Item.FindControl("rptFixtures");
-            rptFixtures.DataSource = from TestFixture t in profile.Value.GetFixtures() select new ListItem(t.ClassName, profile.Key);
-            rptFixtures.DataBind();
+            Repeater rptCategories = (Repeater)e.Item.FindControl("rptCategories");
+            rptCategories.DataSource = from string t in profile.Value.GetAllCategories().OrderBy(a => a) select new ListItem(t, profile.Key);
+            rptCategories.DataBind();
+        }
+
+        protected string CondenseCatName(string className) {
+            return className.Replace(".", string.Empty);
         }
 
 		#endregion Events

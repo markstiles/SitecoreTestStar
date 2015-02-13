@@ -30,16 +30,13 @@ namespace Sitecore.TestStar.Core.Managers {
             TextProvider = t;
         }
 
-        public void RunTest(TestFixture tf, ITestEnvironment Environment, ITestSite Site) {
+        public void RunTest(TestMethod tm, ITestEnvironment Environment, ITestSite Site) {
             IEnumerable<ITestEnvironment> Environments = new List<ITestEnvironment>() { Environment };
             IEnumerable<ITestSite> Sites = new List<ITestSite>() { Site };
-            RunTest(tf, Environments, Sites);
+            RunTest(tm, Environments, Sites);
         }
 
-		public void RunTest(TestFixture tf, IEnumerable<ITestEnvironment> Environments, IEnumerable<ITestSite> Sites) {
-			if (tf == null)
-                throw new NullReferenceException(TextProviderPaths.Exceptions.Managers.TestFixtureNull(TextProvider));
-			TestMethod tm = tf.GetMethod("RunTest");
+		public void RunTest(TestMethod tm, IEnumerable<ITestEnvironment> Environments, IEnumerable<ITestSite> Sites) {
 			if (tm == null)
                 throw new NullReferenceException(TextProviderPaths.Exceptions.Managers.TestMethodNull(TextProvider));
 			foreach (ITestEnvironment te in Environments) {
@@ -54,7 +51,7 @@ namespace Sitecore.TestStar.Core.Managers {
 					tm.SetProperty(BaseWebTest.EnvironmentKey, te);
 					tm.SetProperty(BaseWebTest.SiteKey, ts);
 
-					var t = new Thread(new ThreadStart(() => HandleTest(tf, tm, te, ts)));
+					var t = new Thread(new ThreadStart(() => HandleTest(tm, te, ts)));
 					t.SetApartmentState(ApartmentState.STA);
 					t.Start();
 					t.Join();
@@ -65,12 +62,11 @@ namespace Sitecore.TestStar.Core.Managers {
 		/// <summary>
 		/// Passes the proper test result to the handler method
 		/// </summary>
-		private void HandleTest(TestFixture tf, TestMethod tm, ITestEnvironment te, ITestSite ts) {
+		private void HandleTest(TestMethod tm, ITestEnvironment te, ITestSite ts) {
 			
 			TestResult tr = tm.Run(new NullListener(), TestFilter.Empty);
 			ResultSummarizer summ = new ResultSummarizer(tr);
 
-			Type t = tf.FixtureType;
 			HttpStatusCode status = ((Test)tm).GetProperty<HttpStatusCode>(BaseWebTest.ResponseStatusCodeKey);
 			string requestURL = ((Test)tm).GetProperty<string>(BaseWebTest.RequestURLKey);
 			if (tr.IsError) {

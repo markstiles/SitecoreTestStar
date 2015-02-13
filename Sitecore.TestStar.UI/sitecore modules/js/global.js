@@ -136,7 +136,7 @@ $(document).ready(function () {
                 for (var k = 0; k < sites.length; k++) {
                     var curSite = sites[k];
                     //call web service
-                    var data = JSON.stringify({ EnvironmentID: $(curEnv).attr("value"), SiteID: $(curSite).attr("value"), AssemblyName: $(curTest).attr("value"), ClassName: $(curTest).attr("name") });
+                    var data = JSON.stringify({ EnvironmentID: $(curEnv).attr("value"), SiteID: $(curSite).attr("value"), AssemblyName: $(curTest).attr("value"), Category: $(curTest).attr("name") });
                     wTests.push(data);
                 }
             }

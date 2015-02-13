@@ -10,7 +10,7 @@ using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Tests;
 
-namespace Sitecore.TestStar.WebTests.Tests {
+namespace Sitecore.TestStar.WebTests {
 	/// <summary>
 	/// Branching indicates that the test itself handles more than one single request per instance created. This is due to testing multiple web services etc.
 	/// </summary>

@@ -20,25 +20,20 @@ namespace Sitecore.TestStar.SelfTests {
 
         private string AssemblyName;
         private string Category;
-        private string ClassName;
-        private UnitTestManager utManager;
-        private WebTestManager wtManager;
             
         [SetUp]
         public void Setup() {
             AssemblyName = new UTAssemblyProvider().GetUnitTestAssemblies().First();
             Category = "Mock Tests";
-            ClassName = "MockTests";
             
             //warm up nunit and configure the manager and handler
             CoreExtensions.Host.InitializeService();
-
-            utManager = new UnitTestManager(new UTTextEntryProvider());
-            wtManager = new WebTestManager(new UTTextEntryProvider());
         }
 
         [Test]
-        public void UnitTestHandler_Null() {
+        public void UnitTestHandler_HandleTest() {
+
+            UnitTestManager utManager = new UnitTestManager(new UTTextEntryProvider());
 
             IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
                 
@@ -53,18 +48,18 @@ namespace Sitecore.TestStar.SelfTests {
                 utManager.RunTest(m);
 
             Assert.AreEqual(utManager.ResultList.Count, 3);
-            Assert.IsTrue(utManager.ResultList[0].Type.Equals("Failure"));
-            Assert.IsTrue(utManager.ResultList[1].Type.Equals("Success"));
-            Assert.IsTrue(utManager.ResultList[2].Type.Equals("Error"));
+            Assert.IsTrue(utManager.ResultList.Where(a => a.Type.Equals("Success")).Any());
+            Assert.IsTrue(utManager.ResultList.Where(a => a.Type.Equals("Failure")).Any());
+            Assert.IsTrue(utManager.ResultList.Where(a => a.Type.Equals("Error")).Any());
             
-            wtManager.ResultList.Clear();
+            utManager.ResultList.Clear();
 		}
 
         [Test]
-        public void WebTestHandler_Null() {
+        public void WebTestHandler_HandleTest() {
 
-            wtManager = new WebTestManager(new UTTextEntryProvider());
-
+            WebTestManager wtManager = new WebTestManager(new UTTextEntryProvider());
+        
             //get the environment
             IEnvironmentProvider eProvider = (IEnvironmentProvider)new UTEnvironmentProvider();
             ITestEnvironment te = eProvider.GetEnvironments().First();
@@ -74,10 +69,22 @@ namespace Sitecore.TestStar.SelfTests {
             ITestSite ts = sProvider.GetSites().First();
 
             //get the test fixture
-            TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
-            Assert.IsNotNull(tf);
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
 
-            wtManager.RunTest(tf, te, ts);
+            //make sure they are found
+            Assert.IsTrue(methods.Any());
+
+            //check that it found all 3
+            Assert.AreEqual(methods.Count(), 3);
+
+            //run all tests found
+            foreach (TestMethod m in methods)
+                wtManager.RunTest(m, te, ts);
+
+            Assert.AreEqual(wtManager.ResultList.Count, 3);
+            Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Success")).Any());
+            Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Failure")).Any());
+            Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Error")).Any());
 
             wtManager.ResultList.Clear();
         }

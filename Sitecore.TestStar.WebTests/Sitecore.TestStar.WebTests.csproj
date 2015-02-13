@@ -62,11 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\BranchingTest.cs" />
-    <Compile Include="Tests\IPTest.cs" />
-    <Compile Include="Tests\PingTest.cs" />
-    <Compile Include="Tests\RedirectTest.cs" />
-    <Compile Include="Tests\SitemapTest.cs" />
+    <Compile Include="BranchingTest.cs" />
+    <Compile Include="IPTest.cs" />
+    <Compile Include="PingTest.cs" />
+    <Compile Include="RedirectTest.cs" />
+    <Compile Include="SitemapTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sitecore.TestStar.Core\Sitecore.TestStar.Core.csproj">

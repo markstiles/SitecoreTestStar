@@ -46,7 +46,7 @@ namespace Sitecore.TestStar.WebService {
 		}
 
         [WebMethod]
-        public List<DefaultWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string ClassName) {
+        public List<DefaultWebTestResult> RunWebTest(string EnvironmentID, string SiteID, string AssemblyName, string Category) {
 
             SCTextEntryProvider tProvider = new SCTextEntryProvider();
             
@@ -76,13 +76,10 @@ namespace Sitecore.TestStar.WebService {
             ITestSite ts = sProvider.GetTestSite(si);
 
 			//get the test fixture
-            TestFixture tf = TestUtility.GetTestSuite(AssemblyName).GetFixtures().Where(a => a.ClassName.Equals(ClassName)).FirstOrDefault();
-            if (tf == null) {
-                errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullTest(tProvider);
-				return errorList;
-			}
-
-            manager.RunTest(tf, te, ts);
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
+            
+            foreach(TestMethod m in methods)
+                manager.RunTest(m, te, ts);
 
             List<DefaultWebTestResult> rl = manager.ResultList;
             foreach (DefaultWebTestResult d in rl)
