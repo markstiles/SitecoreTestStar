@@ -18,5 +18,10 @@ namespace Sitecore.TestStar.SelfTests {
         public void PassTest() {
             Assert.Pass();
         }
+
+        [Test]
+        public void ErrorTest() {
+            throw new Exception();
+        }
     }
 }
