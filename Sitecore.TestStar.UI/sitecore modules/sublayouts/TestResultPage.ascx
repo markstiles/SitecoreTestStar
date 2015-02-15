@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="TestResultPage.ascx.cs" 
-    Inherits="Sitecore.TestStar.Core.UI.sublayouts.TestResultPage" %>
+    Inherits="Sitecore.TestStar.UI.sublayouts.TestResultPage" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>

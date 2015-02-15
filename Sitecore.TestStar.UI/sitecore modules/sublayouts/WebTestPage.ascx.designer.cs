@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.Core.UI.sublayouts {
+namespace Sitecore.TestStar.UI.sublayouts {
     
     
     public partial class WebTestPage {
@@ -40,12 +40,12 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
         protected global::System.Web.UI.WebControls.Repeater rptSites;
         
         /// <summary>
-        /// rptSuites control.
+        /// WebTestList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptSuites;
+        protected global::Sitecore.TestStar.UI.userControls.TestSuiteList WebTestList;
     }
 }

@@ -114,7 +114,7 @@ $(document).ready(function () {
         e.preventDefault();
         $(".error").hide();
         //form validation
-        var tests = $(".wtTests input[type='checkbox']:checked");
+        var tests = $(".webTests input[type='checkbox']:checked");
         var envs = $(".wtEnvs input[type='checkbox']:checked");
         var sites = $(".wtSites input[type='checkbox']:checked");
         if (tests.length == 0 || envs.length == 0 || sites.length == 0) {
@@ -184,7 +184,7 @@ $(document).ready(function () {
     	e.preventDefault();
 
     	//form validation
-    	var tests = $(".wtTests input[type='checkbox']:checked");
+    	var tests = $(".webTests input[type='checkbox']:checked");
     	var envs = $(".wtEnvs input[type='checkbox']:checked");
     	var sites = $(".wtSites input[type='checkbox']:checked");
     	if (tests.length == 0 || envs.length == 0 || sites.length == 0) {

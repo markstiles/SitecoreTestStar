@@ -1,9 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="WebTestPage.ascx.cs" 
-    Inherits="Sitecore.TestStar.Core.UI.sublayouts.WebTestPage" %>
+    Inherits="Sitecore.TestStar.UI.sublayouts.WebTestPage" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Register Src="../userControls/TestSuiteList.ascx" TagPrefix="ts" TagName="TestSuiteList" %>
 
 <div class="log corners"></div><div></div>
 <div class="error corners"></div><div></div>
@@ -82,33 +83,10 @@
             </div>    
         </div>
         <h2><%= TextProviderPaths.Page.TestSuites(new SCTextEntryProvider()) %></h2>
-        <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
-			<ItemTemplate>
-                <div class="wtTests whiteBox corners">
-                    <h3 title="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
-						<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
-                    </h3>
-                    <div class="testInputs">
-                        <asp:Repeater ID="rptCategories" runat="server">
-                            <ItemTemplate>
-                                <div class="row">
-                                    <input type="checkbox" 
-                                        id="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>" 
-                                        name="<%# ((ListItem)Container.DataItem).Text %>" 
-                                        value="<%# ((ListItem)Container.DataItem).Value %>">
-                                    <label for="<%# CondenseCatName(((ListItem)Container.DataItem).Text) %>">
-                                        <%# TestUtility.GetClassName(((ListItem)Container.DataItem).Text) %>
-                                    </label>
-                                </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                    </div>
-                    <div class="submit corners">
-			            <input id="wtSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
-                    </div>
-                </div>
-			</ItemTemplate>
-		</asp:Repeater>
+		<div class="whiteSubmit corners">
+			<input id="wtSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
+		</div>
+        <ts:TestSuiteList ID="WebTestList" runat="server" TestType="Web"></ts:TestSuiteList>
     </div>
 	<div class="resultWrap">
         <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>

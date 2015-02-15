@@ -54,8 +54,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,6 +108,13 @@
     <Compile Include="sitecore modules\sublayouts\WebTestPage.ascx.designer.cs">
       <DependentUpon>WebTestPage.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="sitecore modules\userControls\TestSuiteList.ascx.cs">
+      <DependentUpon>TestSuiteList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sitecore modules\userControls\TestSuiteList.ascx.designer.cs">
+      <DependentUpon>TestSuiteList.ascx.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Packages\" />
@@ -149,6 +158,9 @@
     <Content Include="sitecore modules\sublayouts\WebTestPage.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="sitecore modules\userControls\TestSuiteList.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="AppConfig\Sitecore.TestStar.UI.Site.config" />
@@ -176,7 +188,8 @@ start xcopy /S /Y "$(ProjectDir)\sitecore modules\js\*" "$(SolutionDir)\Website\
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\images\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\images"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\css\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\css"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"
-start xcopy /S /Y "$(ProjectDir)\sitecore modules\scripts\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\scripts"</PostBuildEvent>
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\scripts\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\scripts"
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\userControls\*.ascx" "$(SolutionDir)\Website\sitecore modules\web\teststar\userControls"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

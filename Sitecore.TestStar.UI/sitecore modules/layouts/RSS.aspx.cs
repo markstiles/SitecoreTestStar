@@ -11,7 +11,7 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
-namespace Sitecore.TestStar.Core.UI.layouts {
+namespace Sitecore.TestStar.UI.layouts {
 	public partial class RSS : System.Web.UI.Page {
 		protected void Page_Load(object sender, EventArgs e) {
 

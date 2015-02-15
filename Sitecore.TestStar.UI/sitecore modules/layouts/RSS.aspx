@@ -1,5 +1,5 @@
 ﻿<%@ Page language="c#" AutoEventWireup="true" 
-	Inherits="Sitecore.TestStar.Core.UI.layouts.RSS" 
+	Inherits="Sitecore.TestStar.UI.layouts.RSS" 
 	CodeBehind="RSS.aspx.cs" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>

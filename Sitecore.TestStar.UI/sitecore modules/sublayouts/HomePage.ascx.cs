@@ -9,7 +9,7 @@ using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Providers;
 
-namespace Sitecore.TestStar.Core.UI.sublayouts {
+namespace Sitecore.TestStar.UI.sublayouts {
 	public partial class HomePage : System.Web.UI.UserControl {
 		protected void Page_Load(object sender, EventArgs e) {
 			// Initialise NUnit

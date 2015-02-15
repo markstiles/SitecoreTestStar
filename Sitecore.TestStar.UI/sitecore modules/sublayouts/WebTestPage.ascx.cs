@@ -25,7 +25,7 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
-namespace Sitecore.TestStar.Core.UI.sublayouts {
+namespace Sitecore.TestStar.UI.sublayouts {
 	[RequiresSTA]
 	public partial class WebTestPage : System.Web.UI.UserControl {
 
@@ -40,10 +40,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 			CoreExtensions.Host.InitializeService();
 
             SCTextEntryProvider tProvider = new SCTextEntryProvider();
-            IAssemblyProvider aProvider = (IAssemblyProvider)new SCAssemblyProvider(tProvider);
-            rptSuites.DataSource = TestUtility.GetWebTestSuites(aProvider);
-            rptSuites.DataBind();
-
             IEnvironmentProvider eProvider = (IEnvironmentProvider)new SCEnvironmentProvider(tProvider);
             rptEnvironments.DataSource = from ITestEnvironment te in eProvider.GetEnvironments()
                                          orderby te.Name
@@ -76,20 +72,6 @@ namespace Sitecore.TestStar.Core.UI.sublayouts {
 
         protected string GetShortID(string scID) {
             return scID.Replace("{", string.Empty).Replace("}", string.Empty).Replace("-", string.Empty);
-        }
-
-        protected void rptSuites_ItemDataBound(object sender, RepeaterItemEventArgs e) {
-            if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem) return;
-
-            KeyValuePair<string, TestSuite> profile = (KeyValuePair<string, TestSuite>)e.Item.DataItem;
-
-            Repeater rptCategories = (Repeater)e.Item.FindControl("rptCategories");
-            rptCategories.DataSource = from string t in profile.Value.GetAllCategories().OrderBy(a => a) select new ListItem(t, profile.Key);
-            rptCategories.DataBind();
-        }
-
-        protected string CondenseCatName(string className) {
-            return className.Replace(".", string.Empty);
         }
 
 		#endregion Events

@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.UI.layouts {
+namespace Sitecore.TestStar.UI.userControls {
     
     
-    public partial class RSS {
+    public partial class TestSuiteList {
         
         /// <summary>
-        /// XmlOutput control.
+        /// rptSuites control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal XmlOutput;
-        
-        /// <summary>
-        /// rptRSS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptRSS;
+        protected global::System.Web.UI.WebControls.Repeater rptSuites;
     }
 }

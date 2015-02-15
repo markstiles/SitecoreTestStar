@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.Core.UI.layouts {
+namespace Sitecore.TestStar.UI.layouts {
     
     
     public partial class Master {

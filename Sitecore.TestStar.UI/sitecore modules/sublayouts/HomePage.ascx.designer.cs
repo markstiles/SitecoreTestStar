@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sitecore.TestStar.Core.UI.sublayouts {
+namespace Sitecore.TestStar.UI.sublayouts {
     
     
     public partial class HomePage {

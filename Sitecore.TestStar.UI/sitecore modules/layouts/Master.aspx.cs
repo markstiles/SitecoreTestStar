@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Sitecore.Data.Items;
 using Sitecore.Links;
 
-namespace Sitecore.TestStar.Core.UI.layouts {
+namespace Sitecore.TestStar.UI.layouts {
 	public partial class Master : System.Web.UI.Page {
 		protected void Page_Load(object sender, EventArgs e) {
 

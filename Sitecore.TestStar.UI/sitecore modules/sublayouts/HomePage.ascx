@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
     CodeBehind="HomePage.ascx.cs" 
-    Inherits="Sitecore.TestStar.Core.UI.sublayouts.HomePage" %>
+    Inherits="Sitecore.TestStar.UI.sublayouts.HomePage" %>
  <%@ Import Namespace="NUnit.Core" %>
 
 <div class="home">

@@ -18,7 +18,7 @@ using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.TestStar.Core.Utility;
 
-namespace Sitecore.TestStar.Core.UI.sublayouts {
+namespace Sitecore.TestStar.UI.sublayouts {
 	public partial class TestResultPage : UserControl {
 
 		#region Events
