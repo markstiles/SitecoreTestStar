@@ -89,7 +89,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	    .whiteSubmit:hover:before { border-right: 10px solid #fff; }
 	.whiteSubmit:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid #0ad; }
 	    .whiteSubmit:hover:after { border-top: 10px solid #fff; }
-    .whiteSubmit input { border:0px; background-color:transparent; color:#fff; font-size:14px; padding:0px 10px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; float:left; }
+    .whiteSubmit input { border:0px; background-color:transparent; color:#fff; font-size:14px; padding:0px 40px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; float:left; }
 		.whiteSubmit:hover input { color: #0ad; } 
 
 .resultWrap { display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
