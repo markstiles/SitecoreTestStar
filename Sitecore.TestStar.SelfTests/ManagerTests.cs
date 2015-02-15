@@ -47,6 +47,7 @@ namespace Sitecore.TestStar.SelfTests {
             foreach (TestMethod m in methods)
                 utManager.RunTest(m);
 
+			//ensure you have one of each
             Assert.AreEqual(utManager.ResultList.Count, 3);
             Assert.IsTrue(utManager.ResultList.Where(a => a.Type.Equals("Success")).Any());
             Assert.IsTrue(utManager.ResultList.Where(a => a.Type.Equals("Failure")).Any());
@@ -81,7 +82,8 @@ namespace Sitecore.TestStar.SelfTests {
             foreach (TestMethod m in methods)
                 wtManager.RunTest(m, te, ts);
 
-            Assert.AreEqual(wtManager.ResultList.Count, 3);
+			//ensure you have one of each
+			Assert.AreEqual(wtManager.ResultList.Count, 3);
             Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Success")).Any());
             Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Failure")).Any());
             Assert.IsTrue(wtManager.ResultList.Where(a => a.Type.Equals("Error")).Any());

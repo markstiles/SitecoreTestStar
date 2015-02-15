@@ -16,9 +16,17 @@ namespace Sitecore.TestStar.SelfTests {
             //TestExtensions.GetProperty(); //x2 one for TestMethod one for ITest
             //TestExtensions.GetMethod();
             //TestExtensions.GetMethods();
+			//TestExtensions.GetMethodsByCategory(this TestSuite suite, string category)
             //TestExtensions.GetFixtures();
             //TestExtensions.GetAllCategories();
             //TestExtensions.Categories();
+
+			//SitecoreExtensions.GetItemByID
+			//SitecoreExtensions.GetSafeFieldValue
+			//SitecoreExtensions.GetSafeFieldList
+			//SitecoreExtensions.GetSafeFieldBool
+			//SitecoreExtensions.GetSafeDateFieldValue
+			//SitecoreExtensions.ToDateFieldValue
 		}
     }
 }
