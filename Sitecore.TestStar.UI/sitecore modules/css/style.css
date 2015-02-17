@@ -83,14 +83,14 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
         .submit:hover:after { border-top: 10px solid #555; }
     .submit input { border:0px; background-color:transparent; color:#fff; font-size:16px; padding:7px 9px 0 0px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
 
-.whiteSubmit { background: #0ad; position:absolute; right:0px; top:0px; cursor:pointer; }
-    .whiteSubmit:hover { background-color: #fff; }
-	.whiteSubmit:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid #0ad; }
-	    .whiteSubmit:hover:before { border-right: 10px solid #fff; }
-	.whiteSubmit:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid #0ad; }
-	    .whiteSubmit:hover:after { border-top: 10px solid #fff; }
-    .whiteSubmit input { border:0px; background-color:transparent; color:#fff; font-size:14px; padding:0px 40px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; float:left; }
-		.whiteSubmit:hover input { color: #0ad; } 
+.blueSubmit { background: #0ad; position:relative; margin-bottom:15px; display:inline-block; cursor:pointer; }
+    .blueSubmit:hover { background-color: #fff; }
+	.blueSubmit:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid #0ad; }
+	    .blueSubmit:hover:before { border-right: 10px solid #fff; }
+	.blueSubmit:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid #0ad; }
+	    .blueSubmit:hover:after { border-top: 10px solid #fff; }
+    .blueSubmit input { border:0px; background-color:transparent; color:#fff; font-size:18px; padding:0px 40px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
+		.blueSubmit:hover input { color: #0ad; } 
 
 .resultWrap { display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
 	.resultWrap h2 { position: relative; }    

@@ -24,7 +24,7 @@
 <div class="testForm">
     <div class="suiteWrap">
         <h2><%= TextProviderPaths.Page.UnitTestSuites(new SCTextEntryProvider()) %></h2>
-		<div class="whiteSubmit corners">
+		<div class="blueSubmit corners">
 			<input id="utSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
 		</div>
 		<ts:TestSuiteList ID="UnitTestList" runat="server" TestType="Unit"></ts:TestSuiteList>

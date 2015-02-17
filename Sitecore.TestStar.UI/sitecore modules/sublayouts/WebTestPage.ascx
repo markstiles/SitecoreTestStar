@@ -83,7 +83,7 @@
             </div>    
         </div>
         <h2><%= TextProviderPaths.Page.TestSuites(new SCTextEntryProvider()) %></h2>
-		<div class="whiteSubmit corners">
+		<div class="blueSubmit corners">
 			<input id="wtSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
 		</div>
         <ts:TestSuiteList ID="WebTestList" runat="server" TestType="Web"></ts:TestSuiteList>
