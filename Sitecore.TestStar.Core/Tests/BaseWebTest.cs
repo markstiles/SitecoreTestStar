@@ -3,6 +3,7 @@ using NUnit.Core;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using System.Text;
 
 namespace Sitecore.TestStar.Core.Tests {
 	public abstract class BaseWebTest {
@@ -11,6 +12,9 @@ namespace Sitecore.TestStar.Core.Tests {
 		public static readonly string ResponseStatusCodeKey = "ResponseStatusCode";
 		public static readonly string EnvironmentKey = "ContextEnvironment";
 		public static readonly string SiteKey = "ContextSite";
+
+        protected bool HasFailed = false;
+        protected StringBuilder Log = new StringBuilder();
 
 		protected TestMethod CurrentTestMethod;
 
@@ -58,6 +62,11 @@ namespace Sitecore.TestStar.Core.Tests {
 
 		public BaseWebTest() { }
 
-		public abstract void RunTest();
+        public abstract void RunTest();
+
+        protected void LogFailure(string requestURL, string message) {
+            HasFailed = true;
+            Log.Append(message).AppendLine();
+        }
 	}
 }

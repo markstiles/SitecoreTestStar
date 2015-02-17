@@ -13,7 +13,7 @@ using Sitecore.TestStar.Core.Tests;
 
 namespace Sitecore.TestStar.WebTests {
     [TestFixture, RequiresSTA, Category("Sitemap Test")]
-	public class SitemapTest : BranchingTest {
+	public class SitemapTest : BaseWebTest {
 
 		public SitemapTest() { }
 
@@ -56,11 +56,11 @@ namespace Sitecore.TestStar.WebTests {
 							ResponseStatus = resp.StatusCode;
 							resp.Close();
 							if (!ResponseStatus.Equals(HttpStatusCode.OK))
-								SetFailure(child.InnerText, string.Format("{0} was {1}", child.InnerText, ResponseStatus.ToString()));
+								LogFailure(child.InnerText, string.Format("{0} was {1}", child.InnerText, ResponseStatus.ToString()));
 						} catch (WebException wex) {
 							HttpWebResponse resp = (HttpWebResponse)wex.Response;
 							ResponseStatus = (resp != null) ? resp.StatusCode : HttpStatusCode.BadRequest;
-							SetFailure(child.InnerText, string.Format("Sitemap link {0} wasn't found. {1}", child.InnerText, wex.Message));
+							LogFailure(child.InnerText, string.Format("Sitemap link {0} wasn't found. {1}", child.InnerText, wex.Message));
 						}
 					}
 				}
