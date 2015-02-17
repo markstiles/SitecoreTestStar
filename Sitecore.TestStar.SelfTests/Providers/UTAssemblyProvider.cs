@@ -14,12 +14,14 @@ using Sitecore.Configuration;
 namespace Sitecore.TestStar.Core.Providers {
 	public class UTAssemblyProvider : IAssemblyProvider {
 
+        public static string UTTestAssemblyName = "Sitecore.TestStar.SelfTests";
+
         public IEnumerable<string> GetUnitTestAssemblies() {
-            return new List<string>() { "Sitecore.TestStar.SelfTests" };
+            return new List<string>() { UTTestAssemblyName };
 		}
 
         public IEnumerable<string> GetWebTestAssemblies() {
-            return new List<string>() { "Sitecore.TestStar.SelfTests" };
+            return new List<string>() { UTTestAssemblyName };
 		}
 	}
 }
