@@ -153,8 +153,6 @@ $(document).ready(function () {
             s += "<div class='rSite'>" + res.Method + " - " + res.Environment + " - " + res.Site + "</div>";
             s += "<div class='clearfix'></div>";
             var div = (res.Message.length > 0) ? ": " : "";
-            console.log(res.Message.length);
-            console.log(res.Message);
             s += "<div class='rResult'>" + res.Type + div + " " + res.Message + "</div>";
             s += "</div>";
 
