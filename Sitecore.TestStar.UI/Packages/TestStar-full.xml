@@ -18,128 +18,6 @@
   <Sources>
     <xitems>
       <Entries>
-        <x-item>/master/sitecore/content/TestStar/{8239F597-E6ED-4B27-8D0C-2345BA613197}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/{7A0A6559-71A4-4FE9-AFA8-BFC92A3EBED2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/{3449A8FD-6516-4011-B0C5-46DCC4DCA208}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/{6B336815-7E53-454A-817E-FA52E4D6F33E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/{2789CBEA-390F-4EB3-8FE0-1752A800E720}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/{7674B071-21C7-4E69-91F1-379C22A16E19}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/{A2922C55-7739-469C-9438-06C1BBA7B243}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/{9DFA580D-CB62-496C-854C-688773721EC2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/{3DD58285-339C-4025-B7AE-B1F83C9968E9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0001/{C7259876-1AFB-40FF-8387-8ABA60D9D885}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0002/{66164413-0098-47F3-B977-9F3C972A9FC8}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0003/{4CBDDD22-6D05-4B59-8308-DF853E65BCF3}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0004/{E18826FF-4DDB-4686-BF73-F262AB8B4EED}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0005/{024E1EF5-5B26-4F76-AEC8-B7E9F6660E85}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0006/{A1EDEA53-08DF-48E5-AA6C-56F560F8011B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0007/{1412CBBF-9CCB-4FD1-9BFA-AC4A24E49EEA}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/{03111654-46EF-4455-9F33-5F5F9936A55F}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0001/{EDA6329C-DE7A-4814-A152-51297A830B6A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0002/{D4C85708-0413-461A-917B-5CDBE62A0A8A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0003/{D0BADA2C-C92B-4C89-9451-C7A927B8CEDD}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0004/{4F10B8E2-00B4-4C2A-A0B0-C9F2F9ACC30D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0005/{0D3FEA38-F7C9-4A2F-A8E7-BA54CE7DC18F}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0006/{EC0962DF-70D6-450A-868A-0029AFA0B488}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0007/{C264A1DB-76BE-41D3-83AD-8CB4DD399474}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/{9DDE77BA-AEBE-40B3-9690-E63973E38379}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/0001/{BC7CA33B-B8E1-4F86-84BD-84B38D3B778E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/0002/{EDDD8BC3-926C-4996-9A1C-D68DEF0A790C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/{72ED1FFB-BBF0-45FF-9C6A-2E3175408B27}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0001/{79C8C6C9-FE7D-4756-BAB5-6947A414C294}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0002/{9100F1BB-9CEF-4F0A-8B38-FF84FAFDA8CD}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0003/{8EEDF51C-531E-4AA3-9CEF-00D9839F2F61}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/{AA0D4D91-24EE-4C16-9072-2601B7B5185C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0001/{9E35098C-2A68-4466-857E-DD6712354EEF}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0002/{F2A4CBA3-152B-45AB-9F22-52006F48BA7B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0003/{8FC3410A-FBF9-4396-B07A-59E4A0E2CA47}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0004/{57EA7C16-85F1-4B26-A0C4-BF9051FA7A8B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0005/{3D9039C3-E5C0-402E-8097-C8A7CBE02025}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0006/{904DAF5A-DDD1-41A6-A863-BA2031C69BB7}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0007/{F044DC85-6A93-4BA0-B48C-228BF3625A3A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/{D8B65D61-A562-430E-B297-E4C96CD06032}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/{1662B83F-F7AE-46B1-8AA2-1C7AABCA36CF}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/NoScriptName/{AC997FA4-B95E-496E-B9AE-1846CCE458E2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNameNull/{888F5D55-3639-42ED-8DB5-3813BF7C1AC6}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNoCalls/{7FF192B9-2890-4E61-B39F-E5C14AB7990C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/{B2953596-8C7B-4B44-84DF-E9C85068AF9A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoEnvs/{A522EC06-6437-4827-B178-F51AAA727C78}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoSites/{67C979B7-9CFC-4BB1-B99F-38FD52072EF7}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoTests/{575E7031-C6DB-4DF5-B15F-53BA2D41544C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullEnv/{5AC1096F-0A34-4165-9E58-2199423CB47E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullSite/{B8D7B2F1-D6A0-4A45-A5F2-28999CC8DA70}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullTest/{CC558607-E6A4-4B6A-80D5-AC9C69748CB2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/{66F895A3-86BE-44C6-89AC-AB5376F77E53}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Actual/{6C705C14-E6CA-4DE8-A610-D812062651C0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Expected/{5FA29D1B-A426-4D5D-84A6-737A4F01702A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/NotRedirect/{61279A08-2247-4FA6-8DBD-525414982912}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapEmpty/{DA893AAE-C4A0-445F-BF65-88DE6CD9301D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapLinkNotFound/{4DA97127-255E-4271-820D-44AAC955EB18}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNoLinks/{B6FAD819-EC58-423B-B03E-99FD7F38770F}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNotFound/{05903182-4EAB-4078-83A8-14CD52122DD1}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Was/{8ECC5F4F-BCBF-41C6-89A0-9E5190D91683}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/{72F8A5BD-3FF8-4753-9823-ED5EE8227A82}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/{05E9114A-41B8-476C-B2F2-AC4C7ED8DF7B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/IUnitTestHandlerNull/{92D01848-7B88-4DDD-A9C0-C280EF2A0426}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/IWebTestHandlerNull/{B22E86D7-97C7-4E84-9A5C-07534678A08D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/TestFixtureNull/{01D0D314-7BB5-435C-800E-B4F2E97BE5B9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/TestMethodNull/{C3173DCD-EEFE-43D1-B78A-97401CD893D9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/{431AEF5F-207A-4B31-8919-06A4FCA91E8D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/EnvFoldNull/{3C34D6A2-C567-443B-AC63-B52612C5DD11}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/ResultFoldNull/{29118749-4619-4A8E-97AB-51BB95371936}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/SiteFoldNull/{87CC21E9-46CF-4053-B83C-E2B5E80EEF8D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/TextDicNull/{D24E360C-FE12-4F75-B8E4-06AF8D7947BE}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/UnitFoldNull/{EFF07F13-B3E9-4477-BB45-83F4EB992017}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/WebFoldNull/{4484500E-9F0D-4994-8B77-1638FB052F0F}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Util/{087691DD-3C2D-4371-8DEA-7AA15CC5A6DE}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Util/NullJSON/{42B2D49B-5096-4DBD-B8CC-BD98DF00DBB5}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/{5B941DD1-EB2C-4E2C-8ADB-6E28EC572F79}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/ScriptGen/{E287407D-BFF9-4B7D-B544-521FF6DA5957}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/ScriptGen/ScriptGenSuccess/{9E288641-1C5D-4B1D-BE4B-FABF17FE3077}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/{7F2FFB16-BE40-455E-B16B-D4A4E86A2E61}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Environments/{24945D50-65C7-45EF-BCE1-9030E895A672}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/GenerateScript/{A7DB75D3-16DA-4879-BFDE-02DEECD25EF5}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Results/{761E350C-66C2-4161-AE58-0364F91088BF}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Run/{8E8CE23A-8096-4049-A1EA-31C7990F5AD6}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/ScriptName/{C775E874-1C48-44C8-9F92-982096B1F7BB}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Sites/{8FFE86F1-1E8B-4805-9AB1-3D048AF457C0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Systems/{0B12DE1C-BE92-4A1D-81B5-8460E9280F72}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestDeselect/{F4C1D9DA-F102-40A4-9547-B1BCFBE44E8C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSelect/{E4574F15-6EBD-4DDF-AE4A-3000A30A567A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSettings/{4BFA8A68-4776-4766-9D05-D60614D59BDB}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSuites/{DE64CAFD-BCF5-496B-B1FA-D92004173C32}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/UnitTestSuites/{D8ACA0A4-262E-418F-855E-D27118703333}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/{B33B4C35-450D-4434-8E1A-12AF56FC90C0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Error/{8AE114A1-A946-444F-B7E8-1F17120C2D6D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Failure/{772EE955-FB3F-47A2-96B2-57CB74A8F577}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NextBtn/{5AEDBF08-8431-4209-84C4-AD2AF29C062D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NoResults/{C660136B-2369-4545-90DF-91C64EE5A9BB}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/PrevBtn/{1534BA80-7480-4034-ABBF-94E83DE11EB2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Skipped/{B1720296-ECBF-4E30-A8DB-78BCFCD70998}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Success/{148EBA86-CFA5-40CA-956B-4BCD464D893A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/SitecoreTestStarSelfTests/{1E9E22AD-0F60-41D8-8B80-0A52ED822CC3}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/SitecoreTeststarWebTests/{FD8A9799-116C-485D-ABA1-84AB7DE3DF22}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Home/{6A11AD28-B1B9-4D73-8F09-041ABD563463}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Home/Results/{17F52C69-CEEB-462C-9049-F3AEAA07EF98}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Home/Results/rss/{9889C17F-47A8-4674-9490-6D32551F1ACA}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Home/UnitTests/{0E68E77D-B77D-422B-837B-A1B872A2F1F8}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Home/WebTests/{D3B51E77-CBAE-43ED-9FF1-1B05A6971A90}/invariant/0</x-item>
-      </Entries>
-      <SkipVersions>False</SkipVersions>
-      <Converter>
-        <ItemToEntryConverter>
-          <Transforms />
-        </ItemToEntryConverter>
-      </Converter>
-      <Include />
-      <Exclude />
-      <Name>content tree</Name>
-    </xitems>
-    <xitems>
-      <Entries>
         <x-item>/master/sitecore/templates/Modules/TestStar/{D00D517A-6D31-4E26-9269-A019699E4F48}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Modules/TestStar/Content/{9570D4CD-4688-485D-A75C-E3C4CB9095AA}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Modules/TestStar/Content/ContentFolder/{DE29F3ED-FBD8-4DFD-8483-C5B622E27C27}/invariant/0</x-item>
@@ -214,7 +92,16 @@
       <SkipVersions>False</SkipVersions>
       <Converter>
         <ItemToEntryConverter>
-          <Transforms />
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
         </ItemToEntryConverter>
       </Converter>
       <Include />
@@ -432,6 +319,94 @@
       <Exclude />
       <Name>user controls</Name>
     </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/content/TestStar/{8239F597-E6ED-4B27-8D0C-2345BA613197}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/{7A0A6559-71A4-4FE9-AFA8-BFC92A3EBED2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/Environments/{3449A8FD-6516-4011-B0C5-46DCC4DCA208}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/Sites/{6B336815-7E53-454A-817E-FA52E4D6F33E}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/{2789CBEA-390F-4EB3-8FE0-1752A800E720}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/{D8B65D61-A562-430E-B297-E4C96CD06032}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/{1662B83F-F7AE-46B1-8AA2-1C7AABCA36CF}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/NoScriptName/{AC997FA4-B95E-496E-B9AE-1846CCE458E2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNameNull/{888F5D55-3639-42ED-8DB5-3813BF7C1AC6}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNoCalls/{7FF192B9-2890-4E61-B39F-E5C14AB7990C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/{B2953596-8C7B-4B44-84DF-E9C85068AF9A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoEnvs/{A522EC06-6437-4827-B178-F51AAA727C78}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoSites/{67C979B7-9CFC-4BB1-B99F-38FD52072EF7}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoTests/{575E7031-C6DB-4DF5-B15F-53BA2D41544C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullEnv/{5AC1096F-0A34-4165-9E58-2199423CB47E}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullSite/{B8D7B2F1-D6A0-4A45-A5F2-28999CC8DA70}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullTest/{CC558607-E6A4-4B6A-80D5-AC9C69748CB2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/{66F895A3-86BE-44C6-89AC-AB5376F77E53}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Actual/{6C705C14-E6CA-4DE8-A610-D812062651C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Expected/{5FA29D1B-A426-4D5D-84A6-737A4F01702A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/NotRedirect/{61279A08-2247-4FA6-8DBD-525414982912}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapEmpty/{DA893AAE-C4A0-445F-BF65-88DE6CD9301D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapLinkNotFound/{4DA97127-255E-4271-820D-44AAC955EB18}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNoLinks/{B6FAD819-EC58-423B-B03E-99FD7F38770F}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNotFound/{05903182-4EAB-4078-83A8-14CD52122DD1}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Was/{8ECC5F4F-BCBF-41C6-89A0-9E5190D91683}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/{72F8A5BD-3FF8-4753-9823-ED5EE8227A82}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/{05E9114A-41B8-476C-B2F2-AC4C7ED8DF7B}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/IUnitTestHandlerNull/{92D01848-7B88-4DDD-A9C0-C280EF2A0426}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/IWebTestHandlerNull/{B22E86D7-97C7-4E84-9A5C-07534678A08D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/TestFixtureNull/{01D0D314-7BB5-435C-800E-B4F2E97BE5B9}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/TestMethodNull/{C3173DCD-EEFE-43D1-B78A-97401CD893D9}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/{431AEF5F-207A-4B31-8919-06A4FCA91E8D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/EnvFoldNull/{3C34D6A2-C567-443B-AC63-B52612C5DD11}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/ResultFoldNull/{29118749-4619-4A8E-97AB-51BB95371936}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/SiteFoldNull/{87CC21E9-46CF-4053-B83C-E2B5E80EEF8D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/TextDicNull/{D24E360C-FE12-4F75-B8E4-06AF8D7947BE}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/UnitFoldNull/{EFF07F13-B3E9-4477-BB45-83F4EB992017}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Providers/WebFoldNull/{4484500E-9F0D-4994-8B77-1638FB052F0F}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Util/{087691DD-3C2D-4371-8DEA-7AA15CC5A6DE}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Util/NullJSON/{42B2D49B-5096-4DBD-B8CC-BD98DF00DBB5}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/{5B941DD1-EB2C-4E2C-8ADB-6E28EC572F79}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/ScriptGen/{E287407D-BFF9-4B7D-B544-521FF6DA5957}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Messages/ScriptGen/ScriptGenSuccess/{9E288641-1C5D-4B1D-BE4B-FABF17FE3077}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/{7F2FFB16-BE40-455E-B16B-D4A4E86A2E61}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Environments/{24945D50-65C7-45EF-BCE1-9030E895A672}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/GenerateScript/{A7DB75D3-16DA-4879-BFDE-02DEECD25EF5}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Results/{761E350C-66C2-4161-AE58-0364F91088BF}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Run/{8E8CE23A-8096-4049-A1EA-31C7990F5AD6}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/ScriptName/{C775E874-1C48-44C8-9F92-982096B1F7BB}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Sites/{8FFE86F1-1E8B-4805-9AB1-3D048AF457C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Systems/{0B12DE1C-BE92-4A1D-81B5-8460E9280F72}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestDeselect/{F4C1D9DA-F102-40A4-9547-B1BCFBE44E8C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSelect/{E4574F15-6EBD-4DDF-AE4A-3000A30A567A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSettings/{4BFA8A68-4776-4766-9D05-D60614D59BDB}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSuites/{DE64CAFD-BCF5-496B-B1FA-D92004173C32}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/UnitTestSuites/{D8ACA0A4-262E-418F-855E-D27118703333}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/{B33B4C35-450D-4434-8E1A-12AF56FC90C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Error/{8AE114A1-A946-444F-B7E8-1F17120C2D6D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Failure/{772EE955-FB3F-47A2-96B2-57CB74A8F577}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NextBtn/{5AEDBF08-8431-4209-84C4-AD2AF29C062D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NoResults/{C660136B-2369-4545-90DF-91C64EE5A9BB}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/PrevBtn/{1534BA80-7480-4034-ABBF-94E83DE11EB2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Skipped/{B1720296-ECBF-4E30-A8DB-78BCFCD70998}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Success/{148EBA86-CFA5-40CA-956B-4BCD464D893A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/SitecoreTestStarSelfTests/{1E9E22AD-0F60-41D8-8B80-0A52ED822CC3}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/SitecoreTeststarWebTests/{FD8A9799-116C-485D-ABA1-84AB7DE3DF22}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Home/{6A11AD28-B1B9-4D73-8F09-041ABD563463}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Home/Results/{17F52C69-CEEB-462C-9049-F3AEAA07EF98}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Home/Results/rss/{9889C17F-47A8-4674-9490-6D32551F1ACA}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Home/UnitTests/{0E68E77D-B77D-422B-837B-A1B872A2F1F8}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Home/WebTests/{D3B51E77-CBAE-43ED-9FF1-1B05A6971A90}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms />
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>content tree</Name>
+    </xitems>
   </Sources>
   <Converter>
     <TrivialConverter>
