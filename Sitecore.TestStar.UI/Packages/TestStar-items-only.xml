@@ -205,6 +205,36 @@
       <Exclude />
       <Name>content tree</Name>
     </xitems>
+    <xitems>
+      <Entries>
+        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/{CEB6281C-E131-4855-9405-62AAFADA148F}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/Master/{5A0A8762-CD44-4599-8BE8-D481C879DF37}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/RSS/{ABADA14F-5989-480E-9198-79B51587437E}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/{BD5C8C8B-B4C4-409C-B323-962527B62A65}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/Home/{8566D477-3C92-4D8A-BD89-E0201423C9AC}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/TestResult/{7BE1C30A-11A8-4482-BC77-C56539071DCB}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/UnitTest/{2AC4AA62-3EFE-4326-A087-1F872F785FA6}/invariant/0</x-item>
+        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/WebTest/{87D37E7D-3E1D-4B19-A2FF-90C397E6B01E}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>layouts and sublayouts</Name>
+    </xitems>
   </Sources>
   <Converter>
     <TrivialConverter>
