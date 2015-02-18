@@ -63,6 +63,10 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	.whiteBox:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
 	.whiteBox:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
 
+.blueBox { background: #0ad; padding:5px 10px; color:#fff; font-family:"xolonium"; margin-bottom:15px; }
+	.blueBox:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid #0ad; }
+	.blueBox:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid #0ad; }
+    
 .generate { max-width:590px; margin-bottom:15px; display:block; position:relative; }
     .genFields { display:none; margin:0 0 40px 23px; }
 	.genToggle { position: absolute; top:0px; right:10px; width:50px; color: #00aadd; font-family: "xolonium"; font-size: 30px; text-align:center; cursor:pointer; }
@@ -101,6 +105,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .result { background-color:#fff; padding:10px; line-height:12px; margin:0 10px 6px 0; }
     .result:before { top: 0; left: 0; border-top: 10px solid #333; border-right: 10px solid white; }
 	.result:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid white; }
+    .resultStatus {  }
 	.result-head { background:url('../images/result-top.png') no-repeat 0 0px; height:18px; }
     .result-foot { background:url('../images/result-bot.png') no-repeat 0 0px; height:18px; }
 

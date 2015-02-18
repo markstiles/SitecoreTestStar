@@ -21,6 +21,10 @@
         var errNoScriptName = "<%= TextProviderPaths.Errors.ScriptGen.NoScriptName(new SCTextEntryProvider()) %>";
         var deselectTests = "<%= TextProviderPaths.Page.TestDeselect(new SCTextEntryProvider()) %>";
         var selectTests = "<%= TextProviderPaths.Page.TestSelect(new SCTextEntryProvider()) %>";
+        var labSuccess = "<%= TextProviderPaths.ResultList.Success(new SCTextEntryProvider()) %>";
+        var labFailure = "<%= TextProviderPaths.ResultList.Failure(new SCTextEntryProvider()) %>";
+        var labError = "<%= TextProviderPaths.ResultList.Error(new SCTextEntryProvider()) %>";
+        var labSkipped = "<%= TextProviderPaths.ResultList.Skipped(new SCTextEntryProvider()) %>";
     </script>
 	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>

@@ -162,14 +162,26 @@ namespace Sitecore.TestStar.Core.Utility {
         }
 
         public static class ResultList {
+            public static string Error(ITextEntryProvider t) {
+                return t.GetTextByKey("/ResultList/Error");
+            }
+            public static string Failure(ITextEntryProvider t) {
+                return t.GetTextByKey("/ResultList/Failure");
+            }
             public static string NextBtn(ITextEntryProvider t) {
                 return t.GetTextByKey("/ResultList/NextBtn");
+            }
+            public static string NoResults(ITextEntryProvider t) {
+                return t.GetTextByKey("/ResultList/NoResults");
             }
             public static string PrevBtn(ITextEntryProvider t) {
                 return t.GetTextByKey("/ResultList/PrevBtn");
             }
-            public static string NoResults(ITextEntryProvider t) {
-                return t.GetTextByKey("/ResultList/NoResults");
+            public static string Skipped(ITextEntryProvider t) {
+                return t.GetTextByKey("/ResultList/Skipped");
+            }
+            public static string Success(ITextEntryProvider t) {
+                return t.GetTextByKey("/ResultList/Success");
             }
         }
     }

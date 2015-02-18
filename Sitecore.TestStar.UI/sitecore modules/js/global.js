@@ -75,9 +75,10 @@ $(document).ready(function () {
 	//makes recursive calls while tests are available
 	function UnitTestRunner() {
 		if (uPos >= uTests.length) {
-			$(".resultCounter").text("100%");
+		    TestsCompleted();
 			return;
 		} else {
+		    $(".resultStatus").html("");
 			var per = (uPos / uTests.length) * 100;
 			$(".resultCounter").text(Math.floor(per) + "%");
 		}
@@ -180,9 +181,10 @@ $(document).ready(function () {
 	//makes recursive calls while tests are available
     function WebTestRunner() {
     	if (wPos >= wTests.length) {
-    		$(".resultCounter").text("100%");
+    	    TestsCompleted();
     		return;
     	} else {
+    	    $(".resultStatus").html("");
     		var per = (wPos / wTests.length) * 100;
     		$(".resultCounter").text(Math.floor(per) + "%");
     	}
@@ -272,6 +274,15 @@ $(document).ready(function () {
 			success: SuccessHandler,
 			error: ErrorHandler
 		});
+	}
+
+	function TestsCompleted() {
+	    $(".resultCounter").text("100%");
+	    var sCount = $(".resultSet .Success").length;
+	    var fCount = $(".resultSet .Failure").length;
+	    var eCount = $(".resultSet .Error").length;
+	    var skCount = $(".resultSet .Skipped").length;
+	    $(".resultStatus").html("<div class='blueBox corners'>" + sCount + " " + labSuccess + ", " + fCount + " " + labFailure + ", " + eCount + " " + labError + ", " + skCount + " " + labSkipped + "</div>");
 	}
 
 	var checkAllTests = true;

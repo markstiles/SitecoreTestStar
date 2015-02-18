@@ -7,6 +7,7 @@
 
 <div class="resultWrap">
     <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>
+    <div class="resultStatus"></div>
     <div class="result-head"></div>
     <div class="resultSet">
             
