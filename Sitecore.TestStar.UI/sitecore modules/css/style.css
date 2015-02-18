@@ -158,6 +158,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 		.tSkipped { color:#0030ff; }
 		.resultMessage { background: #00aadd; color: #fff; margin: 4px 0; padding: 5px 10px; }
 h3 span { color:#555; }
+.message { color: #fff; font-family: "xolonium"; }
 .pagerWrap { margin-bottom:15px; }
 .prevPage, 
 .nextPage { color:#00aadd; font-family:"xolonium"; text-decoration:none; display:inline-block; }
