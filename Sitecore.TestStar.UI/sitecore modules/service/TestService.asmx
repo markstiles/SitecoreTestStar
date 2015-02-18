@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" Class="Sitecore.TestStar.WebService.TestService" %>
+﻿<%@ WebService Language="C#" Class="Sitecore.TestStar.UI.Service.TestService" %>

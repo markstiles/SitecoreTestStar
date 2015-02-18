@@ -57,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -79,6 +80,9 @@
     </Compile>
     <Compile Include="sitecore modules\layouts\RSS.aspx.designer.cs">
       <DependentUpon>RSS.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore modules\service\TestService.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="sitecore modules\sublayouts\HomePage.ascx.cs">
       <DependentUpon>HomePage.ascx</DependentUpon>
@@ -187,7 +191,7 @@ start xcopy /S /Y "$(ProjectDir)\sitecore modules\fonts\*" "$(SolutionDir)\Websi
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\js\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\js"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\images\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\images"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\css\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\css"
-start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"
+start xcopy /S /Y "$(ProjectDir)\sitecore modules\service\*.asmx" "$(SolutionDir)\Website\sitecore modules\web\teststar\service"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\scripts\*" "$(SolutionDir)\Website\sitecore modules\web\teststar\scripts"
 start xcopy /S /Y "$(ProjectDir)\sitecore modules\userControls\*.ascx" "$(SolutionDir)\Website\sitecore modules\web\teststar\userControls"</PostBuildEvent>
   </PropertyGroup>

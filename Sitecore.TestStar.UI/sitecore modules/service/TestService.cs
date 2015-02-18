@@ -18,7 +18,7 @@ using System.Web;
 using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
-namespace Sitecore.TestStar.WebService {
+namespace Sitecore.TestStar.UI.Service {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[System.ComponentModel.ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService]
