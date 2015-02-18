@@ -12,6 +12,12 @@
     <link href="/sitecore modules/web/teststar/css/style.css" rel="stylesheet" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script type="text/javascript">
+        var errNoEnvs = "You should select at least one environment";
+        var errNoSites = "You should select at least one site";
+        var errNoTests = "You should select at least one test";
+        var errNoScriptName = "You should enter a script name";
+    </script>
 	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>
 <body>

@@ -13,6 +13,15 @@ namespace Sitecore.TestStar.UI.sublayouts {
     public partial class WebTestPage {
         
         /// <summary>
+        /// GenerateForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Sitecore.TestStar.UI.userControls.GenerateForm GenerateForm;
+        
+        /// <summary>
         /// rptEnvironments control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace Sitecore.TestStar.UI.sublayouts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Sitecore.TestStar.UI.userControls.TestSuiteList WebTestList;
+        
+        /// <summary>
+        /// ResultList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Sitecore.TestStar.UI.userControls.ResultsList ResultList;
     }
 }

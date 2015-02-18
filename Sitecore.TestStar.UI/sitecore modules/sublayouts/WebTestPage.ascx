@@ -5,20 +5,15 @@
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 <%@ Register Src="../userControls/TestSuiteList.ascx" TagPrefix="ts" TagName="TestSuiteList" %>
+<%@ Register Src="../userControls/GenerateForm.ascx" TagPrefix="ts" TagName="GenerateForm" %>
+<%@ Register Src="../userControls/ResultList.ascx" TagPrefix="ts" TagName="ResultList" %>
 
 <div class="log corners"></div><div></div>
 <div class="error corners"></div><div></div>
 
-<div class="whiteBox generate corners">
+<div class="whiteBox generate corners wt">
     <h3><%= TextProviderPaths.Page.GenerateScript(new SCTextEntryProvider()) %></h3>
-	<div class="genToggle">+</div>
-    <div class="genFields">
-        <label for="wtScriptName" class="title"><%= TextProviderPaths.Page.ScriptName(new SCTextEntryProvider()) %></label>
-        <input type="text" ID="wtScriptName"></input>
-		<div class="submit corners">
-			<input id="wtGenerate" type="submit" value="<%= TextProviderPaths.Page.GenerateScript(new SCTextEntryProvider()) %>">
-		</div>
-    </div>
+	<ts:GenerateForm ID="GenerateForm" runat="server"></ts:GenerateForm>
 </div>
 <div></div>
 <div class="testForm">
@@ -88,12 +83,5 @@
 		</div>
         <ts:TestSuiteList ID="WebTestList" runat="server" TestType="Web"></ts:TestSuiteList>
     </div>
-	<div class="resultWrap">
-        <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>
-        <div class="result-head"></div>
-        <div class="resultSet">
-            
-        </div>
-		<div class="result-foot"></div>
-    </div>
+	<ts:ResultList ID="ResultList" runat="server"></ts:ResultList>
 </div>

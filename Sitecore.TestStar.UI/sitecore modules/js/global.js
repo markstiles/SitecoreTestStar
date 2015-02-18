@@ -38,10 +38,15 @@ $(document).ready(function () {
 	$("#utSubmit").click(function (e) {
 	    $(".resultSet").html("");
 	    e.preventDefault();
+	    
+	    var tests = $(".testInputs input[type='checkbox']:checked");
+	    var pass = UnitTestValidation(tests, "notGenerate");
+	    if (!pass)
+	        return;
 
 	    uTests = [];
 		uPos = 0;
-	    var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
+		$(tests).each(function (key, value) {
 			//run test through web service
 	    	var data = JSON.stringify({ AssemblyName: $(value).attr("value"), Category: $(value).attr("name") });
 	    	uTests.push(data);
@@ -82,20 +87,38 @@ $(document).ready(function () {
 	}
 
 	//test generation
-	$("#utGenerate").click(function (e) {
+	$(".ut #tGenerate").click(function (e) {
 		$(".resultSet").html("");
 		e.preventDefault();
 
+		var tests = $(".testInputs input[type='checkbox']:checked");
+		var scriptName = $("#tScriptName").val().trim();
+		var pass = UnitTestValidation(tests, scriptName);
+		if (!pass)
+		    return;
+
 		var tCalls = [];
-		var checkedBoxes = $(".testInputs input[type=checkbox]:checked").each(function (key, value) {
+		$(tests).each(function (key, value) {
 			tCalls.push($(value).attr("value") + "::" + $(value).attr("name"));
 		});
-
-		var data = JSON.stringify({ ScriptName: $("#utScriptName").val(), TestCalls: tCalls });
-
+        
+		var data = JSON.stringify({ ScriptName: scriptName, TestCalls: tCalls });
 		CallTestWS("CreateUnitTestScript", data, RunGenSuccess, TestError);
 	});
 		
+    //form validation
+	function UnitTestValidation(tests, scriptName) {
+	    $(".error").hide();
+	    if (tests.length == 0) {
+	        $(".error").html(errNoTests).show();
+	        return false;
+	    } else if (scriptName == "") {
+	        $(".error").html(errNoScriptName).show();
+	        return false;
+	    }
+	    return true;
+	}
+
 	//	WEB TESTING //////////
 
     //if system is (un)checked then (un)check all corresponding sites
@@ -110,22 +133,14 @@ $(document).ready(function () {
     //web test submit
     $("#wtSubmit").click(function (e) {
         $(".resultSet").html("");
-
         e.preventDefault();
-        $(".error").hide();
-        //form validation
+        
         var tests = $(".webTests input[type='checkbox']:checked");
         var envs = $(".wtEnvs input[type='checkbox']:checked");
         var sites = $(".wtSites input[type='checkbox']:checked");
-        if (tests.length == 0 || envs.length == 0 || sites.length == 0) {
-	        $(".error").show();
-	        if (envs.length == 0)
-	            $(".error").html("You should select at least one environment");
-	        else if (sites.length == 0)
-	            $(".error").html("You should select at least one site");
-	        else if (tests.length == 0)
-	            $(".error").html("You should select at least one test");
-	    }
+        var pass = WebTestValidation(tests, envs, sites, "notGenerate")
+        if (!pass)
+            return;
 
         wTests = [];
         wPos = 0;
@@ -177,23 +192,17 @@ $(document).ready(function () {
     }
 
 	//test generation
-    $("#wtGenerate").click(function (e) {
+    $(".wt #tGenerate").click(function (e) {
     	$(".resultSet").html("");
     	e.preventDefault();
-
-    	//form validation
+    	
     	var tests = $(".webTests input[type='checkbox']:checked");
     	var envs = $(".wtEnvs input[type='checkbox']:checked");
     	var sites = $(".wtSites input[type='checkbox']:checked");
-    	if (tests.length == 0 || envs.length == 0 || sites.length == 0) {
-    		$(".error").show();
-    		if (envs.length == 0)
-    			$(".error").html("You should select at least one environment");
-    		else if (sites.length == 0)
-    			$(".error").html("You should select at least one site");
-    		else if (tests.length == 0)
-    			$(".error").html("You should select at least one test");
-    	}
+    	var scriptName = $("#tScriptName").val().trim();
+    	var pass = WebTestValidation(tests, envs, sites, scriptName)
+    	if (!pass)
+    	    return;
 
     	wTests = [];
     	for (var i = 0; i < tests.length; i++) 
@@ -205,9 +214,28 @@ $(document).ready(function () {
     	for (var k = 0; k < sites.length; k++) 
     		wSites.push($(sites[k]).attr("value"));
 
-    	var data = JSON.stringify({ ScriptName: $("#wtScriptName").val(), TestCalls: wTests, EnvironmentIDs: wEnvs, SiteIDs: wSites });
+    	var data = JSON.stringify({ ScriptName: scriptName, TestCalls: wTests, EnvironmentIDs: wEnvs, SiteIDs: wSites });
 		CallTestWS("CreateWebTestScript", data, RunGenSuccess, TestError);
     });
+
+    //form validation
+    function WebTestValidation(tests, envs, sites, scriptName) {
+        $(".error").hide();
+        if (envs.length == 0) {
+            $(".error").html(errNoEnvs).show();
+            return false;
+        } else if (sites.length == 0) {
+            $(".error").html(errNoSites).show();
+            return false;
+        } else if (tests.length == 0) {
+            $(".error").html(errNoTests).show();
+            return false;
+        } else if(scriptName == "") {
+            $(".error").html(errNoScriptName).show();
+            return false;
+        }
+        return true;
+    }
 
 	//	SHARED TEST FUNCTIONS //////////
 

@@ -112,6 +112,20 @@
     <Compile Include="sitecore modules\sublayouts\WebTestPage.ascx.designer.cs">
       <DependentUpon>WebTestPage.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="sitecore modules\userControls\GenerateForm.ascx.cs">
+      <DependentUpon>GenerateForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sitecore modules\userControls\GenerateForm.ascx.designer.cs">
+      <DependentUpon>GenerateForm.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore modules\userControls\ResultList.ascx.cs">
+      <DependentUpon>ResultList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sitecore modules\userControls\ResultList.ascx.designer.cs">
+      <DependentUpon>ResultList.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="sitecore modules\userControls\TestSuiteList.ascx.cs">
       <DependentUpon>TestSuiteList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,6 +174,12 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="sitecore modules\sublayouts\WebTestPage.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="sitecore modules\userControls\GenerateForm.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="sitecore modules\userControls\ResultList.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="sitecore modules\userControls\TestSuiteList.ascx">
