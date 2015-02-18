@@ -35,7 +35,7 @@ $(document).ready(function () {
 	//	UNIT TESTING //////////
 
     //unit test submit
-	$("#utSubmit").click(function (e) {
+	$(".ut #tSubmit").click(function (e) {
 	    $(".resultSet").html("");
 	    e.preventDefault();
 	    
@@ -131,7 +131,7 @@ $(document).ready(function () {
 	});
 
     //web test submit
-    $("#wtSubmit").click(function (e) {
+    $(".wt #tSubmit").click(function (e) {
         $(".resultSet").html("");
         e.preventDefault();
         
@@ -273,4 +273,17 @@ $(document).ready(function () {
 			error: ErrorHandler
 		});
 	}
+
+	var checkAllTests = true;
+	$(".allSelector").html(selectTests);
+	$(".allSelector").click(function () {
+	    var testBoxes = $(".testList input[type='checkbox']");
+	    if ($(this).html().indexOf(deselectTests) >= 0) {
+	        $(this).html("(" + selectTests + ")");
+	        testBoxes.prop('checked', false);
+	    } else {
+	        $(this).html("(" + deselectTests + ")");
+	        testBoxes.prop('checked', true);
+	    }
+	});
 });

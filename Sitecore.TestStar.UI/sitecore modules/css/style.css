@@ -90,7 +90,9 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	.blueSubmit:after { bottom: 0; right: 0; border-right: 10px solid #333; border-top: 10px solid #0ad; }
 	    .blueSubmit:hover:after { border-top: 10px solid #fff; }
     .blueSubmit input { border:0px; background-color:transparent; color:#fff; font-size:18px; padding:0px 40px; text-transform:uppercase; font-family:'xolonium'; cursor:pointer; }
-		.blueSubmit:hover input { color: #0ad; } 
+		.blueSubmit:hover input { color: #0ad; }
+
+.allSelector { display:inline-block; margin-left:15px; color:#fff; cursor:pointer; }
 
 .resultWrap { display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
 	.resultWrap h2 { position: relative; }    

@@ -5,9 +5,13 @@
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 
+<div class="blueSubmit corners">
+	<input id="tSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">
+</div>
+<div class="allSelector"></div>
 <asp:Repeater ID="rptSuites" runat="server" OnItemDataBound="rptSuites_ItemDataBound">
 	<ItemTemplate>
-		<div class="whiteBox corners <%# GetTestType() %>Tests">
+		<div class="whiteBox corners <%# GetTestType() %>Tests testList">
             <h3 title="<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>">
 				<%# ((KeyValuePair<string, TestSuite>)Container.DataItem).Key %>
 			</h3>

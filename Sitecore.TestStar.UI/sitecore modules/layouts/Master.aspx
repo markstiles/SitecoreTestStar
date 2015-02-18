@@ -17,6 +17,8 @@
         var errNoSites = "You should select at least one site";
         var errNoTests = "You should select at least one test";
         var errNoScriptName = "You should enter a script name";
+        var deselectTests = "deselect all";
+        var selectTests = "select all";
     </script>
 	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>
