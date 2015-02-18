@@ -1,9 +1,9 @@
 <project>
   <Metadata>
     <metadata>
-      <PackageName>TestStar-package</PackageName>
+      <PackageName>TestStar-full</PackageName>
       <Author>mstiles</Author>
-      <Version>2015.1.4</Version>
+      <Version>2015.2.18</Version>
       <Revision />
       <License />
       <Comment />
@@ -18,146 +18,67 @@
   <Sources>
     <xitems>
       <Entries>
-        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/{CEB6281C-E131-4855-9405-62AAFADA148F}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/Master/{5A0A8762-CD44-4599-8BE8-D481C879DF37}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Layouts/Modules/TestStar/RSS/{ABADA14F-5989-480E-9198-79B51587437E}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/{BD5C8C8B-B4C4-409C-B323-962527B62A65}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/Home/{8566D477-3C92-4D8A-BD89-E0201423C9AC}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/TestResult/{7BE1C30A-11A8-4482-BC77-C56539071DCB}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/UnitTest/{2AC4AA62-3EFE-4326-A087-1F872F785FA6}/invariant/0</x-item>
-        <x-item>/master/sitecore/layout/Sublayouts/Modules/TestStar/WebTest/{87D37E7D-3E1D-4B19-A2FF-90C397E6B01E}/invariant/0</x-item>
-      </Entries>
-      <SkipVersions>False</SkipVersions>
-      <Converter>
-        <ItemToEntryConverter>
-          <Transforms>
-            <InstallerConfigurationTransform>
-              <Options>
-                <BehaviourOptions>
-                  <ItemMode>Undefined</ItemMode>
-                  <ItemMergeMode>Undefined</ItemMergeMode>
-                </BehaviourOptions>
-              </Options>
-            </InstallerConfigurationTransform>
-          </Transforms>
-        </ItemToEntryConverter>
-      </Converter>
-      <Include />
-      <Exclude />
-      <Name>layouts and sublayouts</Name>
-    </xitems>
-    <xitems>
-      <Entries>
         <x-item>/master/sitecore/content/TestStar/{8239F597-E6ED-4B27-8D0C-2345BA613197}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/{7A0A6559-71A4-4FE9-AFA8-BFC92A3EBED2}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/Environments/{3449A8FD-6516-4011-B0C5-46DCC4DCA208}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Integration/{095865B2-2DAB-47B8-BF31-37264690E15D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Local/{07D7E0C9-5D4E-4FAC-B359-8825FF696192}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Prod1/{4CD75989-4091-46D8-BB1E-639F316DBD03}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Prod2/{B5AAE915-A53F-4B17-A914-3AC7A5C4E059}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/ProdLive/{E4A75A2A-D585-4824-A12B-3CB28E589AC1}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/ProdLiveRaw/{34FF96FE-5371-4E9B-8F4A-09F0F03C737E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Staging/{078E9092-A4B1-44F1-803D-AFAB9D09C10E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Environments/Test/{CCAE380C-E827-4131-99FC-4B9D827BE762}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/Sites/{6B336815-7E53-454A-817E-FA52E4D6F33E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/Redirects/{6C8876B1-503A-40D2-B494-4ACC2F4413C5}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/Sitecore/{C1654231-13EE-44C3-9483-44E540915544}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/Sitecore/Aldurazyme/{D3C3B8FB-3FE0-4362-AF30-A4DF685D4CE9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/Sitecore/TestStar/{DF898DEF-92A5-4F6E-AD5D-866E38CEF332}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/Sites/Static/{05F0FFFA-FE3F-463E-A3E2-2FBEDFC4CAFE}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TestResults/{2789CBEA-390F-4EB3-8FE0-1752A800E720}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/{5DB2DA8F-046C-40BF-B620-71DB0F856F4A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/{4FE89A17-7FA5-47F9-9361-53E5267B2633}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/{66908D85-A9DA-4773-9E83-CBF55D835418}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/{C1E8BC3C-3FC6-491F-A662-A7D693F52BE2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0001/{D909F269-FEAB-4610-8B5F-DAA51A144D51}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0002/{8E8677C8-78CF-479D-B8C4-BDF3F817EF70}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0003/{F991E7A6-E021-40CC-84F3-2D7AD01063C9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0004/{2FCE0FFF-611D-43A4-8704-ECC44E8E8827}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0005/{B910F0C4-8AE9-4FAD-8DAE-4190777A208B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ExtensionTests/0006/{2A1B332F-2603-4FB9-9286-53DAF9FEFD19}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/{A4F8C296-4877-4296-9A6D-54B9F8CA61D9}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0001/{A63CF8C5-8D3B-4789-8709-F7DC0452D9F1}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0002/{FB5B2121-9201-4A63-91F0-6CE30D831A07}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0003/{6493C742-C236-41E3-A393-A33799F9C761}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0004/{59749A24-EB6F-488F-8237-6C6AB0D11664}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0005/{865D46AE-EAF3-499C-912B-7F6B92EBD480}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/IPTest/0006/{20327F99-DEF6-4BEC-87D2-2D39D7AF2B74}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/{34271DBA-32D4-4C3B-A643-8BC796E6D9B2}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0001/{E6E3F898-8BE8-4548-BE6A-3F952DA840CA}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0002/{4186A3CB-B0F1-4A5F-A1C6-E972600A3789}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0003/{4D126962-36E9-4613-B094-2E59F5A3105A}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0004/{AABB8694-67D6-4A8B-8CF3-1023147D5524}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0005/{46AAE085-F70E-4E0F-BEF2-57029F37BB14}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/PingTest/0006/{EE033FC5-122D-4E85-8D50-F0DBC8FEC685}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ProviderTests/{01B50175-9B3D-4079-BFDA-FF2B94066558}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/ProviderTests/0001/{FB3B3EFA-C918-4AF0-B1E3-41D3E6CE02C0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/UtilityTests/{7FE53AC7-280E-45E7-A29D-53932A249651}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/UtilityTests/0001/{18F2E34E-A7BF-4ED2-AE7D-5254FED94DD0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/UtilityTests/0002/{A3891A9D-4A06-4470-983E-470B7499E477}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/02/UtilityTests/0003/{D3A668A5-AF02-4B6C-9DAA-692977836064}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/{9EB53F25-59E5-4B2E-BE00-16239F980791}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/{79AAC00B-880A-452B-ACD9-C2E7BECD8FB8}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0001/{5440AC89-E222-471A-8F6C-B7DC733C18C6}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0002/{65C1151D-13DE-48A2-9E3D-C7B5817CF3D6}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0003/{C7C399E8-8EC2-4850-A73B-CDF418F346FB}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0004/{FE5B3703-0D66-49C7-B051-650E60EAF562}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0005/{FFCB1486-8C9F-4B12-A3B9-D1286924C901}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ExtensionTests/0006/{852A5C5C-1610-4111-A243-097F5B9C1D77}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/{3D80DD56-0789-4334-BA8A-417D1869EEE0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0001/{C6F2BD4A-4DAF-46CE-9F4F-3DABACB9D41B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0002/{73E23908-B513-4E51-9B27-5B64B5F98F36}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0003/{6E98BAC2-A7F4-4811-9480-7235BD44752D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0004/{31D92B7A-7ED2-4DDA-BA48-201378581B4C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0005/{AE70EB68-4770-4685-AA54-2F715A0EC32E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/IPTest/0006/{DBEACD93-4F14-4782-9BAD-F8BFB41EEC23}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/{B896B865-F320-4C20-BE8E-6255EED68EAF}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0001/{BAEDDB4E-8517-4949-A944-7F5901AA9556}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0002/{BEC516FD-D3D4-43C6-83EE-EBEB5E40657C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0003/{24EA1323-09C2-4F8A-B586-B4CD83A922DA}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0004/{B27B4BD9-D3D8-4ED0-8DDA-32DDD37A195B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0005/{02E23076-165A-4811-8FFE-938824885507}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0006/{CFEC4A93-8181-4538-9B99-36118146E269}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0007/{F99BDA0F-2B06-4E90-93DB-DF08B9A09E7E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/PingTest/0008/{7D1550EF-3874-4899-A90F-A3F0ECA53941}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ProviderTests/{8ECD2A18-7B72-4F91-8565-E0EE3AF30C17}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/ProviderTests/0001/{E5425378-E539-4AFC-995C-F4A1B92965FD}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/UtilityTests/{5CE37D5E-4D5F-4FA3-9E34-300EE93E4849}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/UtilityTests/0001/{44C1B08B-0EB0-4F65-A87A-5D0C17856E7C}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/UtilityTests/0002/{C42FF917-623F-4E53-91AE-81BD46D7F83B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/03/UtilityTests/0003/{3D5873F6-E73E-4934-8ABB-88047BF4D7E0}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/{55C0AF92-B56F-4C93-81D1-4A26006FB054}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/IPTest/{4DDFD6BE-49F5-456D-ABD3-523BF438D436}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/IPTest/0001/{6F79A981-FA57-4914-BDBB-5ACDBEB0F8EC}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/IPTest/0002/{C26A20DF-D2EF-41F3-AC6B-BFF34E092C26}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/IPTest/0003/{096DD553-B907-4970-A3E2-6C47D5AA82E4}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/IPTest/0004/{A5FA3A8C-D5E3-425A-B6D0-A5D5CE99067E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/{8A38EFF2-E44E-45C2-B43F-A660ED9FDFC1}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0001/{F9CD18CC-902B-49D8-A947-667C9742468E}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0002/{99FDBD46-1CE5-4CEC-BE66-87AA79F2FC87}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0003/{2DA3F987-82CF-4B38-9FA4-DEF736B89F5F}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0004/{BB8F4A1D-CE09-4CF7-B729-456F3F5A426B}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0005/{271307A5-59B8-409E-AB26-3829B374E30D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/PingTest/0006/{C9E63774-F18A-4DE0-A4DF-5E1DD321FDE8}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/RedirectTest/{3DB45FD2-2143-4186-8F64-282FBDEA3097}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/RedirectTest/0001/{8C868D43-E358-4759-A070-42DB888743ED}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/RedirectTest/0002/{5763750E-17D9-479A-AD06-416670DD3351}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/RedirectTest/0003/{FB7467E2-32FE-4851-9C8D-778C34997FBB}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/RedirectTest/0004/{43EA85C6-DDCA-46CD-ADBA-9A8916F64176}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/SitemapTest/{8A5CE829-09C6-49A7-AA33-AC608AA0B8FD}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/SitemapTest/0001/{6B1B91E9-FCE5-4975-90F0-F2895C827D4D}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/SitemapTest/0002/{4BB5C3D1-14CD-4877-8318-0AD23831C110}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/SitemapTest/0003/{CE3917D0-1B95-422F-ACC9-7791C99EDE23}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/01/04/SitemapTest/0004/{8BECAB91-7236-4A7C-98BD-CE32F25559A9}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/{7674B071-21C7-4E69-91F1-379C22A16E19}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/{A2922C55-7739-469C-9438-06C1BBA7B243}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/{9DFA580D-CB62-496C-854C-688773721EC2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/{3DD58285-339C-4025-B7AE-B1F83C9968E9}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0001/{C7259876-1AFB-40FF-8387-8ABA60D9D885}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0002/{66164413-0098-47F3-B977-9F3C972A9FC8}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0003/{4CBDDD22-6D05-4B59-8308-DF853E65BCF3}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0004/{E18826FF-4DDB-4686-BF73-F262AB8B4EED}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0005/{024E1EF5-5B26-4F76-AEC8-B7E9F6660E85}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0006/{A1EDEA53-08DF-48E5-AA6C-56F560F8011B}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsConstructorTests/0007/{1412CBBF-9CCB-4FD1-9BFA-AC4A24E49EEA}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/{03111654-46EF-4455-9F33-5F5F9936A55F}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0001/{EDA6329C-DE7A-4814-A152-51297A830B6A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0002/{D4C85708-0413-461A-917B-5CDBE62A0A8A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0003/{D0BADA2C-C92B-4C89-9451-C7A927B8CEDD}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0004/{4F10B8E2-00B4-4C2A-A0B0-C9F2F9ACC30D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0005/{0D3FEA38-F7C9-4A2F-A8E7-BA54CE7DC18F}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0006/{EC0962DF-70D6-450A-868A-0029AFA0B488}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsExtensionTests/0007/{C264A1DB-76BE-41D3-83AD-8CB4DD399474}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/{9DDE77BA-AEBE-40B3-9690-E63973E38379}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/0001/{BC7CA33B-B8E1-4F86-84BD-84B38D3B778E}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsManagerTests/0002/{EDDD8BC3-926C-4996-9A1C-D68DEF0A790C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/{72ED1FFB-BBF0-45FF-9C6A-2E3175408B27}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0001/{79C8C6C9-FE7D-4756-BAB5-6947A414C294}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0002/{9100F1BB-9CEF-4F0A-8B38-FF84FAFDA8CD}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsMockTests/0003/{8EEDF51C-531E-4AA3-9CEF-00D9839F2F61}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/{AA0D4D91-24EE-4C16-9072-2601B7B5185C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0001/{9E35098C-2A68-4466-857E-DD6712354EEF}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0002/{F2A4CBA3-152B-45AB-9F22-52006F48BA7B}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0003/{8FC3410A-FBF9-4396-B07A-59E4A0E2CA47}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0004/{57EA7C16-85F1-4B26-A0C4-BF9051FA7A8B}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0005/{3D9039C3-E5C0-402E-8097-C8A7CBE02025}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0006/{904DAF5A-DDD1-41A6-A863-BA2031C69BB7}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TestResults/2015/02/18/SitecoreTestStarSelfTestsUtilityTests/0007/{F044DC85-6A93-4BA0-B48C-228BF3625A3A}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/{EB0E6702-40D8-4DA1-B276-C3771F24F9E5}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/{D8B65D61-A562-430E-B297-E4C96CD06032}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/{1662B83F-F7AE-46B1-8AA2-1C7AABCA36CF}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/NoScriptName/{AC997FA4-B95E-496E-B9AE-1846CCE458E2}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNameNull/{888F5D55-3639-42ED-8DB5-3813BF7C1AC6}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/ScriptGen/ScriptGenNoCalls/{7FF192B9-2890-4E61-B39F-E5C14AB7990C}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/{B2953596-8C7B-4B44-84DF-E9C85068AF9A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoEnvs/{A522EC06-6437-4827-B178-F51AAA727C78}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoSites/{67C979B7-9CFC-4BB1-B99F-38FD52072EF7}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NoTests/{575E7031-C6DB-4DF5-B15F-53BA2D41544C}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullEnv/{5AC1096F-0A34-4165-9E58-2199423CB47E}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullSite/{B8D7B2F1-D6A0-4A45-A5F2-28999CC8DA70}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/TestRunner/NullTest/{CC558607-E6A4-4B6A-80D5-AC9C69748CB2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/{66F895A3-86BE-44C6-89AC-AB5376F77E53}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Actual/{6C705C14-E6CA-4DE8-A610-D812062651C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Expected/{5FA29D1B-A426-4D5D-84A6-737A4F01702A}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/NotRedirect/{61279A08-2247-4FA6-8DBD-525414982912}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapEmpty/{DA893AAE-C4A0-445F-BF65-88DE6CD9301D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapLinkNotFound/{4DA97127-255E-4271-820D-44AAC955EB18}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNoLinks/{B6FAD819-EC58-423B-B03E-99FD7F38770F}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/SitemapNotFound/{05903182-4EAB-4078-83A8-14CD52122DD1}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Errors/WebTests/Was/{8ECC5F4F-BCBF-41C6-89A0-9E5190D91683}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/{72F8A5BD-3FF8-4753-9823-ED5EE8227A82}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/{05E9114A-41B8-476C-B2F2-AC4C7ED8DF7B}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Exceptions/Managers/IUnitTestHandlerNull/{92D01848-7B88-4DDD-A9C0-C280EF2A0426}/invariant/0</x-item>
@@ -184,15 +105,21 @@
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/ScriptName/{C775E874-1C48-44C8-9F92-982096B1F7BB}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Sites/{8FFE86F1-1E8B-4805-9AB1-3D048AF457C0}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/Systems/{0B12DE1C-BE92-4A1D-81B5-8460E9280F72}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestDeselect/{F4C1D9DA-F102-40A4-9547-B1BCFBE44E8C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSelect/{E4574F15-6EBD-4DDF-AE4A-3000A30A567A}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSettings/{4BFA8A68-4776-4766-9D05-D60614D59BDB}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/TestSuites/{DE64CAFD-BCF5-496B-B1FA-D92004173C32}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/Page/UnitTestSuites/{D8ACA0A4-262E-418F-855E-D27118703333}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/{B33B4C35-450D-4434-8E1A-12AF56FC90C0}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Error/{8AE114A1-A946-444F-B7E8-1F17120C2D6D}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Failure/{772EE955-FB3F-47A2-96B2-57CB74A8F577}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NextBtn/{5AEDBF08-8431-4209-84C4-AD2AF29C062D}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/NoResults/{C660136B-2369-4545-90DF-91C64EE5A9BB}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/PrevBtn/{1534BA80-7480-4034-ABBF-94E83DE11EB2}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Skipped/{B1720296-ECBF-4E30-A8DB-78BCFCD70998}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/TextDictionary/ResultList/Success/{148EBA86-CFA5-40CA-956B-4BCD464D893A}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/{AE46FAEF-CAF6-45EA-9B52-516F1CCA5919}/invariant/0</x-item>
-        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/DataImporterTests/{D422AFA4-F82D-486E-91A2-79E9EB01350C}/invariant/0</x-item>
+        <x-item>/master/sitecore/content/TestStar/Content/UnitTestAssemblies/SitecoreTestStarSelfTests/{1E9E22AD-0F60-41D8-8B80-0A52ED822CC3}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/{5AECEFE8-0A4E-4FF6-B498-B340B1050D0E}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Content/WebTestAssemblies/SitecoreTeststarWebTests/{FD8A9799-116C-485D-ABA1-84AB7DE3DF22}/invariant/0</x-item>
         <x-item>/master/sitecore/content/TestStar/Home/{6A11AD28-B1B9-4D73-8F09-041ABD563463}/invariant/0</x-item>
@@ -209,7 +136,7 @@
       </Converter>
       <Include />
       <Exclude />
-      <Name>content</Name>
+      <Name>content tree</Name>
     </xitems>
     <xitems>
       <Entries>
@@ -294,6 +221,217 @@
       <Exclude />
       <Name>templates</Name>
     </xitems>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/Sitecore.TestStar.UI.Site.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>config</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/nunit.core.dll</x-item>
+        <x-item>/bin/nunit.core.interfaces.dll</x-item>
+        <x-item>/bin/nunit.framework.dll</x-item>
+        <x-item>/bin/nunit.mocks.dll</x-item>
+        <x-item>/bin/nunit.util.dll</x-item>
+        <x-item>/bin/pnunit.framework.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>nunit binaries</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/Sitecore.TestStar.Core.dll</x-item>
+        <x-item>/bin/Sitecore.TestStar.SelfTests.dll</x-item>
+        <x-item>/bin/Sitecore.TestStar.UI.dll</x-item>
+        <x-item>/bin/Sitecore.TestStar.WebTests.dll</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>teststar binaries</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/css/style.css</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>css</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/fonts/DaMadRave.ttf</x-item>
+        <x-item>/sitecore modules/Web/teststar/fonts/darktech_ldr.ttf</x-item>
+        <x-item>/sitecore modules/Web/teststar/fonts/Xolonium-Bold.ttf</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>fonts</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/images/bullet.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-bg.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-bot.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-bot-pre.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-bot-pre-thick.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-bot-pre-thin.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/content-frame-top.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/h1-pre.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/header.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/nav-bg.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/nav-btn-bg.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/result-bot.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/result-pre.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/result-top.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/rss.png</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/space-1.jpg</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/space-2.jpg</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/space-3.jpg</x-item>
+        <x-item>/sitecore modules/Web/teststar/images/space-4.jpg</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>images</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/js/global.js</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>js</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/layouts/Master.aspx</x-item>
+        <x-item>/sitecore modules/Web/teststar/layouts/RSS.aspx</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>layouts</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/scripts/ph.txt</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>script placeholder</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/service/TestService.asmx</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>web service asmx</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/sublayouts/HomePage.ascx</x-item>
+        <x-item>/sitecore modules/Web/teststar/sublayouts/TestResultPage.ascx</x-item>
+        <x-item>/sitecore modules/Web/teststar/sublayouts/UnitTestPage.ascx</x-item>
+        <x-item>/sitecore modules/Web/teststar/sublayouts/WebTestPage.ascx</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>sublayouts</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/sitecore modules/Web/teststar/userControls/GenerateForm.ascx</x-item>
+        <x-item>/sitecore modules/Web/teststar/userControls/ResultList.ascx</x-item>
+        <x-item>/sitecore modules/Web/teststar/userControls/TestSuiteList.ascx</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms />
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>user controls</Name>
+    </xfiles>
   </Sources>
   <Converter>
     <TrivialConverter>
