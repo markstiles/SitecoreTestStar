@@ -10,6 +10,8 @@ namespace Sitecore.TestStar.SelfTests {
     [TestFixture, Category("Mock Tests")]
     public class MockTests {
 
+        public static string Category = "Mock Tests";
+
         [Test]
         public void PassTest() {
             Assert.Pass();

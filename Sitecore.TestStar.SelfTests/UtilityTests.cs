@@ -20,7 +20,7 @@ namespace Sitecore.TestStar.SelfTests {
             string validName = "new";
             
             string result = SitecoreUtility.GetItemName(invalidName);
-            Assert.IsTrue(result.Equals(validName));
+            Assert.AreEqual(result, validName);
         }
 
         [Test]
@@ -50,10 +50,10 @@ namespace Sitecore.TestStar.SelfTests {
             Dictionary<string, TestSuite> result = TestUtility.GetUnitTestSuites(aProvider);
             
             //check that you got one
-            Assert.IsTrue(result.Count.Equals(1));
+            Assert.AreEqual(result.Count, 1);
             
             //make sure it's the right one
-            Assert.IsTrue(result.First().Key.Equals(UTAssemblyProvider.UTTestAssemblyName));
+            Assert.AreEqual(result.First().Key, UTAssemblyProvider.UTTestAssemblyName);
         }
 
         [Test]
@@ -63,17 +63,17 @@ namespace Sitecore.TestStar.SelfTests {
             Dictionary<string, TestSuite> result = TestUtility.GetWebTestSuites(aProvider);
 
             //check that you got one
-            Assert.IsTrue(result.Count.Equals(1));
+            Assert.AreEqual(result.Count, 1);
 
             //make sure it's the right one
-            Assert.IsTrue(result.First().Key.Equals(UTAssemblyProvider.UTTestAssemblyName));
+            Assert.AreEqual(result.First().Key, UTAssemblyProvider.UTTestAssemblyName);
         }
 
         [Test]
         public void TestUtil_GetTestSuite() {
             TestSuite result = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName);
 
-            Assert.IsTrue(result != null);
+            Assert.IsNotNull(result);
         }
 
         [Test]
@@ -81,8 +81,8 @@ namespace Sitecore.TestStar.SelfTests {
             string fullPath = "Some.Test.LibraryPath";
             
             string result = TestUtility.GetClassName(fullPath);
-            
-            Assert.IsTrue(result.Equals("LibraryPath"));
+
+            Assert.AreEqual(result, "LibraryPath");
         }
 
         #endregion TestUtility

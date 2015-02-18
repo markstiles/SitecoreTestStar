@@ -18,31 +18,13 @@ namespace Sitecore.TestStar.SelfTests {
     [TestFixture, Category("Manager Tests")]
     public class ManagerTests {
 
-        private string AssemblyName;
-        private string Category;
-            
-        [SetUp]
-        public void Setup() {
-            AssemblyName = new UTAssemblyProvider().GetUnitTestAssemblies().First();
-            Category = "Mock Tests";
-            
-            //warm up nunit and configure the manager and handler
-            CoreExtensions.Host.InitializeService();
-        }
-
         [Test]
         public void UnitTestHandler_HandleTest() {
 
             UnitTestManager utManager = new UnitTestManager(new UTTextEntryProvider());
 
-            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetMethodsByCategory(MockTests.Category);
                 
-            //make sure they are found
-            Assert.IsTrue(methods.Any());
-
-            //check that it found all 3
-            Assert.AreEqual(methods.Count(), 3);
-
 			//run all tests found
             foreach (TestMethod m in methods)
                 utManager.RunTest(m);
@@ -70,13 +52,7 @@ namespace Sitecore.TestStar.SelfTests {
             ITestSite ts = sProvider.GetSites().First();
 
             //get the test fixture
-            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(AssemblyName).GetMethodsByCategory(Category);
-
-            //make sure they are found
-            Assert.IsTrue(methods.Any());
-
-            //check that it found all 3
-            Assert.AreEqual(methods.Count(), 3);
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetMethodsByCategory(MockTests.Category);
 
             //run all tests found
             foreach (TestMethod m in methods)

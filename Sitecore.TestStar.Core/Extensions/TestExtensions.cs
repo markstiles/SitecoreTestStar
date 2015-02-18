@@ -45,38 +45,7 @@ namespace Sitecore.TestStar.Core.Extensions {
 
 		#endregion Tests
 
-		#region Test Fixtures
-
-		/// <summary>
-		/// Gets the method that should be run from the test fixture. All web tests should have a run test method from IWebTest interface
-		/// </summary>
-		public static TestMethod GetMethod(this TestFixture tf, string methodName) {
-			foreach (TestMethod tm in tf.Tests) {
-				if (tm.MethodName.Equals(methodName))
-					return tm;
-			}
-			return null;
-		}
-
-		#endregion Test Fixtures
-
 		#region Test Suites
-
-		/// <summary>
-		/// Gets all the test methods
-		/// </summary>
-		public static IEnumerable<TestMethod> GetMethods(this TestSuite suite) {
-			List<TestMethod> l = new List<TestMethod>();
-			foreach (Test ts in suite.Tests) {
-				if (ts is NamespaceSuite)
-					l.AddRange(GetMethods((TestSuite)ts));
-				else if (ts is TestFixture) {
-					foreach (TestMethod tm in ts.Tests)
-						l.Add(tm);
-				}
-			}
-			return l;
-		}
 
         public static IEnumerable<TestMethod> GetMethodsByCategory(this TestSuite suite, string category) {
             return suite.GetFixtures()
@@ -93,7 +62,7 @@ namespace Sitecore.TestStar.Core.Extensions {
 		/// <summary>
 		/// Gets all the test fixtures
 		/// </summary>
-		public static IEnumerable<TestFixture> GetFixtures(this TestSuite suite) {
+		private static IEnumerable<TestFixture> GetFixtures(this TestSuite suite) {
 			List<TestFixture> fixtures = new List<TestFixture>();
 			foreach (Test ts in suite.Tests) {
 				if (ts is NamespaceSuite)
@@ -122,7 +91,7 @@ namespace Sitecore.TestStar.Core.Extensions {
 		/// <summary>
 		/// Gets all the categories for the current test
 		/// </summary>
-		public static IEnumerable<string> Categories(this Test suite) {
+		private static IEnumerable<string> Categories(this Test suite) {
 			List<string> cats = new List<string>();
 			if (suite.Categories != null && suite.Categories.Count > 0)
 				foreach (string c in suite.Categories)

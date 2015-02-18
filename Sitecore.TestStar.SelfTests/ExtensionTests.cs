@@ -1,5 +1,8 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Core;
+using NUnit.Framework;
 using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,37 +12,17 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.SelfTests {
     [TestFixture, Category("Extension Tests")]
     public class ExtensionTests {
-        
+
         #region SitecoreExtensions
 
         [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.GetItemByID
-        }
+        public void SCExtensions_ToDateFieldValue() {
+            DateTime dt = new DateTime(2015, 1, 1, 1, 1, 1);
+            string expected = "20150101T010101";
 
-        [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.GetSafeFieldValue
-        }
-        
-        [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.GetSafeFieldList
-        }
-        
-        [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.GetSafeFieldBool
-        }
-        
-        [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.GetSafeDateFieldValue
-        }
-        
-        [Test]
-        public void SCExtensions_() {
-            //SitecoreExtensions.ToDateFieldValue
+            string result = SitecoreExtensions.ToDateFieldValue(dt);
+
+            Assert.AreEqual(result, expected);
         }
 
         #endregion SitecoreExtensions
@@ -47,48 +30,85 @@ namespace Sitecore.TestStar.SelfTests {
         #region TestExtensions
 
         [Test]
-        public void TestExtensions_() {
-            //TestExtensions.SetProperty(); //x2 one for TestMethod one for Test
+        public void TestExtensions_SetProperty_TestMethod() {
+            TestMethod method = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetMethodsByCategory(MockTests.Category).First();
+            
+            Assert.IsNotNull(method);
+
+            string propKey = "propKey";
+            bool propValue = true;
+
+            method.SetProperty(propKey, propValue);
+            bool result = (bool)method.Properties[propKey];
+
+            Assert.IsTrue(result);
         }
 
         [Test]
-        public void TestExtensions_() {
+        public void TestExtensions_SetProperty_Test() {
+            TestSuite suite = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName);
 
+            Assert.IsNotNull(suite);
+
+            string propKey = "propKey";
+            bool propValue = true;
+
+            suite.SetProperty(propKey, propValue);
+            bool result = (bool)suite.Properties[propKey];
+
+            Assert.IsTrue(result);
         }
 
         [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetProperty(); //x2 one for TestMethod one for ITest
+        public void TestExtensions_GetProperty_TestMethod() {
+            TestMethod method = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetMethodsByCategory(MockTests.Category).First();
+
+            Assert.IsNotNull(method);
+
+            string propKey = "propKey";
+            bool propValue = true;
+
+            method.Properties[propKey] = propValue;
+            bool result = method.GetProperty<bool>(propKey);
+
+            Assert.IsTrue(result);
         }
 
         [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetMethod();
+        public void TestExtensions_GetProperty_Test() {
+            TestSuite suite = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName);
+
+            Assert.IsNotNull(suite);
+
+            string propKey = "propKey";
+            bool propValue = true;
+
+            suite.Properties[propKey] = propValue;
+            bool result = suite.GetProperty<bool>(propKey);
+
+            Assert.IsTrue(result);
         }
 
         [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetMethods();
+        public void TestExtensions_GetMethodsByCategory() {
+            IEnumerable<TestMethod> methods = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetMethodsByCategory(MockTests.Category);
+
+            //make sure they are found
+            Assert.IsTrue(methods.Any());
+
+            //check that it found all 3
+            Assert.AreEqual(methods.Count(), 3);
         }
 
         [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetMethodsByCategory(this TestSuite suite, string category)
-        }
+        public void TestExtensions_GetAllCategories() {
+            IEnumerable<string> cats = TestUtility.GetTestSuite(UTAssemblyProvider.UTTestAssemblyName).GetAllCategories();
 
-        [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetFixtures();
-        }
+            //make sure they're found
+            Assert.IsTrue(cats.Any());
 
-        [Test]
-        public void TestExtensions_() {
-            //TestExtensions.GetAllCategories();
-        }
-
-        [Test]
-        public void TestExtensions_() {
-            //TestExtensions.Categories();
+            //make sure the count is right
+            Assert.AreEqual(cats.Count(), 5);
         }
 
         #endregion TestExtensions
