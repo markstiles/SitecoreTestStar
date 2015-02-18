@@ -275,7 +275,7 @@ $(document).ready(function () {
 	}
 
 	var checkAllTests = true;
-	$(".allSelector").html(selectTests);
+	$(".allSelector").html("(" + selectTests + ")");
 	$(".allSelector").click(function () {
 	    var testBoxes = $(".testList input[type='checkbox']");
 	    if ($(this).html().indexOf(deselectTests) >= 0) {
