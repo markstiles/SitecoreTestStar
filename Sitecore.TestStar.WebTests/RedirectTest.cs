@@ -8,22 +8,22 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
+using Sitecore.TestStar.Core.Providers;
 
 namespace Sitecore.TestStar.WebTests {
     [TestFixture, RequiresSTA, Category("Redirect Test")]
 	public class RedirectTest : BaseWebTest {
 
-		public RedirectTest() { }
-		
 		[Test]
-		public override void RunTest() {
+		public void RunTest() {
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(RequestURL);
 			req.AllowAutoRedirect = false;
 			try {
 				HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
 				ResponseStatus = resp.StatusCode;
 				resp.Close();
-				Assert.IsTrue((((int)ResponseStatus).Equals(301) || ((int)ResponseStatus).Equals(302)), string.Format("HttpStatusCode should be 301 or 302 but was: {0}", ((int)ResponseStatus).ToString()));
+                SCTextEntryProvider t = new SCTextEntryProvider();
+                Assert.IsTrue((((int)ResponseStatus).Equals(301) || ((int)ResponseStatus).Equals(302)), string.Format("{0}: {1}", TextProviderPaths.Errors.Webtests.NotRedirect(t), ((int)ResponseStatus).ToString()));
 			} catch (WebException wex) {
 				HttpWebResponse resp = (HttpWebResponse)wex.Response;
 				ResponseStatus = (resp != null) ? resp.StatusCode : HttpStatusCode.BadRequest;

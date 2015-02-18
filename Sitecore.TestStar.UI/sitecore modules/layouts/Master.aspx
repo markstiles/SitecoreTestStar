@@ -3,6 +3,8 @@
 	CodeBehind="Master.aspx.cs" %>
 <%@ Register TagPrefix="sc" Namespace="Sitecore.Web.UI.WebControls" Assembly="Sitecore.Kernel" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
+<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
 
 <!DOCTYPE html>
 
@@ -13,12 +15,12 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script type="text/javascript">
-        var errNoEnvs = "You should select at least one environment";
-        var errNoSites = "You should select at least one site";
-        var errNoTests = "You should select at least one test";
-        var errNoScriptName = "You should enter a script name";
-        var deselectTests = "deselect all";
-        var selectTests = "select all";
+        var errNoEnvs = "<%= TextProviderPaths.Errors.TestRunner.NoEnvs(new SCTextEntryProvider()) %>";
+        var errNoSites = "<%= TextProviderPaths.Errors.TestRunner.NoSites(new SCTextEntryProvider()) %>";
+        var errNoTests = "<%= TextProviderPaths.Errors.TestRunner.NoTests(new SCTextEntryProvider()) %>";
+        var errNoScriptName = "<%= TextProviderPaths.Errors.ScriptGen.NoScriptName(new SCTextEntryProvider()) %>";
+        var deselectTests = "<%= TextProviderPaths.Page.TestDeselect(new SCTextEntryProvider()) %>";
+        var selectTests = "<%= TextProviderPaths.Page.TestSelect(new SCTextEntryProvider()) %>";
     </script>
 	<script src="/sitecore modules/web/teststar/js/global.js"></script>
 </head>

@@ -59,11 +59,7 @@ namespace Sitecore.TestStar.Core.Tests {
 				ContextTest.SetProperty(RequestURLKey, value);
 			}
 		}
-
-		public BaseWebTest() { }
-
-        public abstract void RunTest();
-
+        
         protected void LogFailure(string requestURL, string message) {
             HasFailed = true;
             Log.Append(message).AppendLine();

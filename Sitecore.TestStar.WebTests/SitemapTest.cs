@@ -10,18 +10,20 @@ using NUnit.Util;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
+using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.WebTests {
     [TestFixture, RequiresSTA, Category("Sitemap Test")]
 	public class SitemapTest : BaseWebTest {
 
-		public SitemapTest() { }
-
 		[Test]
-		public override void RunTest() {
+		public void RunTest() {
 
 			string smapPath = string.Format("{0}/{1}", RequestURL, "sitemap.xml");
-
+            
+            SCTextEntryProvider t = new SCTextEntryProvider();
+            
 			//get the sitemap in some non-error throwing way
 			string smap = string.Empty;
 			try {
@@ -33,17 +35,17 @@ namespace Sitecore.TestStar.WebTests {
 					}
 				}
 			} catch (WebException ex) {
-				Assert.Fail("There was no sitemap.xml file found.");
+				Assert.Fail(TextProviderPaths.Errors.Webtests.SitemapNotFound(t));
 			}
 
 			if (string.IsNullOrEmpty(smap.Trim()))
-				Assert.Fail("The sitemap.xml was empty.");
+                Assert.Fail(TextProviderPaths.Errors.Webtests.SitemapEmpty(t));
 
 			XmlDocument xd = new XmlDocument();
 			xd.LoadXml(smap);
 			XmlNode urlSet = xd.LastChild;
 			if (!urlSet.Name.Equals("urlset") || !urlSet.HasChildNodes)
-				Assert.Fail("The sitemap.xml has no links.");
+				Assert.Fail(TextProviderPaths.Errors.Webtests.SitemapNoLinks(t));
 
 			foreach (XmlNode url in urlSet) {
 				if (!url.HasChildNodes)
@@ -56,11 +58,11 @@ namespace Sitecore.TestStar.WebTests {
 							ResponseStatus = resp.StatusCode;
 							resp.Close();
 							if (!ResponseStatus.Equals(HttpStatusCode.OK))
-								LogFailure(child.InnerText, string.Format("{0} was {1}", child.InnerText, ResponseStatus.ToString()));
+                                LogFailure(child.InnerText, string.Format("{0} {1} {2}", child.InnerText, TextProviderPaths.Errors.Webtests.Was(t), ResponseStatus.ToString()));
 						} catch (WebException wex) {
 							HttpWebResponse resp = (HttpWebResponse)wex.Response;
 							ResponseStatus = (resp != null) ? resp.StatusCode : HttpStatusCode.BadRequest;
-							LogFailure(child.InnerText, string.Format("Sitemap link {0} wasn't found. {1}", child.InnerText, wex.Message));
+							LogFailure(child.InnerText, string.Format("{0} {1} {2}", TextProviderPaths.Errors.Webtests.SitemapLinkNotFound(t), child.InnerText, wex.Message));
 						}
 					}
 				}

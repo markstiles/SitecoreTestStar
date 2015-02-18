@@ -17,10 +17,8 @@ namespace Sitecore.TestStar.WebTests {
     [TestFixture, RequiresSTA, Category("Ping Test")]
 	public class PingTest : BaseWebTest {
 
-		public PingTest() { }
-		
 		[Test]
-		public override void RunTest() {
+		public void RunTest() {
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(RequestURL);
 			try { // catches the 400 and 500 errors by exception
 				HttpWebResponse resp = (HttpWebResponse)req.GetResponse();

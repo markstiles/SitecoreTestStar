@@ -54,18 +54,30 @@ namespace Sitecore.TestStar.Core.Utility {
 
         public static class Errors {
             public static class TestRunner {
+                public static string NoEnvs(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/TestRunner/NoEnvs");
+                }
+                public static string NoSites(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/TestRunner/NoSites");
+                }
+                public static string NoTests(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/TestRunner/NoTests");
+                }
                 public static string NullEnv(ITextEntryProvider t) {
-                    return t.GetTextByKey("/Errors/TestRunner/WebFoldNull");
+                    return t.GetTextByKey("/Errors/TestRunner/NullEnv");
                 }
                 public static string NullSite(ITextEntryProvider t) {
-                    return t.GetTextByKey("/Errors/TestRunner/WebFoldNull");
+                    return t.GetTextByKey("/Errors/TestRunner/NullSite");
                 }
                 public static string NullTest(ITextEntryProvider t) {
-                    return t.GetTextByKey("/Errors/TestRunner/WebFoldNull");
+                    return t.GetTextByKey("/Errors/TestRunner/NullTest");
                 }
             }
 
             public static class ScriptGen {
+                public static string NoScriptName(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/ScriptGen/NoScriptName");
+                }
                 public static string ScriptGenNameNull(ITextEntryProvider t) {
                     return t.GetTextByKey("/Errors/ScriptGen/WebFoldNull");
                 }
@@ -73,8 +85,35 @@ namespace Sitecore.TestStar.Core.Utility {
                     return t.GetTextByKey("/Errors/ScriptGen/WebFoldNull");
                 }
             }
-        }
 
+            public static class Webtests {
+                public static string Actual(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/Actual");
+                }
+                public static string Expected(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/Expected");
+                }
+                public static string NotRedirect(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/NotRedirect");
+                }
+                public static string SitemapEmpty(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/SitemapEmpty");
+                }
+                public static string SitemapLinkNotFound(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/SitemapLinkNotFound");
+                }
+                public static string SitemapNoLinks(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/SitemapNoLinks");
+                }
+                public static string SitemapNotFound(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/SitemapNotFound");
+                }
+                public static string Was(ITextEntryProvider t) {
+                    return t.GetTextByKey("/Errors/Webtests/Was");
+                }
+            }
+        }
+        
         public static class Messages {
             public static class ScriptGen {
                 public static string ScriptGenSuccess(ITextEntryProvider t) {
@@ -82,7 +121,7 @@ namespace Sitecore.TestStar.Core.Utility {
                 }
             }
         }
-
+        
         public static class Page {
             public static string Environments(ITextEntryProvider t) {
                 return t.GetTextByKey("/Page/Environments");
@@ -107,6 +146,12 @@ namespace Sitecore.TestStar.Core.Utility {
             }
             public static string TestSettings(ITextEntryProvider t) {
                 return t.GetTextByKey("/Page/TestSettings");
+            }
+            public static string TestSelect(ITextEntryProvider t) {
+                return t.GetTextByKey("/Page/TestSelect");
+            }
+            public static string TestDeselect(ITextEntryProvider t) {
+                return t.GetTextByKey("/Page/TestDeselect");
             }
             public static string TestSuites(ITextEntryProvider t) {
                 return t.GetTextByKey("/Page/TestSuites");
