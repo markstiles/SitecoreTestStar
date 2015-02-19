@@ -3,7 +3,7 @@
     <metadata>
       <PackageName>TestStar-items-only</PackageName>
       <Author>mstiles</Author>
-      <Version>2015.2.18</Version>
+      <Version>2015.2.19</Version>
       <Revision />
       <License />
       <Comment />
@@ -88,6 +88,11 @@
         <x-item>/master/sitecore/templates/Modules/TestStar/Pages/WebTestPage/__Standard Values/{EBE22B99-0B59-4E7A-8C6A-16CBF5272334}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Modules/TestStar/Pages/WebTestPage/{AFF58B16-812E-45D6-90A0-837C0520A95A}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Modules/TestStar/SiteRoot/{BD4A31B5-8963-4682-A320-CD41897D4E70}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Modules/TestStar/Content/TestEnvironmentOverride/{B2887F30-57DA-4EF0-A223-BE900CEC99DA}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Modules/TestStar/Content/TestEnvironmentOverride/Test Environment Override/{2056F963-1B06-496D-AAB6-5C9E9DB5CC4E}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Modules/TestStar/Content/TestEnvironmentOverride/Test Environment Override/DomainPrefix/{F2A2850F-5579-4DB0-AB36-BEA3B622E230}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Modules/TestStar/Content/TestEnvironmentOverride/Test Environment Override/IPAddress/{A0D1C6C2-F983-4477-A37E-253BBFAA148C}/invariant/0</x-item>
+        <x-item>/master/sitecore/templates/Modules/TestStar/Content/TestEnvironmentOverride/Test Environment Override/TestEnvironment/{F78DDE17-0636-4531-B62F-7CE70B2D9097}/invariant/0</x-item>
       </Entries>
       <SkipVersions>False</SkipVersions>
       <Converter>
