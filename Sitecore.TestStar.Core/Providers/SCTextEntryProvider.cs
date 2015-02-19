@@ -16,13 +16,11 @@ namespace Sitecore.TestStar.Core.Providers {
 		
         public string GetTextByKey(string TextKey) {
 
-            Database db = Sitecore.Context.Database;
-
-            Item folder = db.GetItem(Settings.GetSetting("TestStar.TextDictionary"));
+            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.TextDictionary"));
 			if (folder == null)
 				throw new NullReferenceException();
 
-			Item i = db.GetItem(string.Format("{0}{1}", folder.Paths.Path, TextKey));
+            Item i = Cons.MasterDB.GetItem(string.Format("{0}{1}", folder.Paths.Path, TextKey));
             return (i != null) ? i.GetSafeFieldValue("Value") : string.Empty;
 		}
     }
