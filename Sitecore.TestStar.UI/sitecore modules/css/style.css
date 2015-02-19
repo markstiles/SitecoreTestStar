@@ -142,7 +142,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .webTests { margin:0 0 15px 0; }
 
 .resultList { margin-bottom: 15px; position:relative; }
-    .rssLink { position:absolute; right:0px;top:0px;}
+    .rssLink { position:absolute; left:0px;top:0px;}
 		.rssLink a { text-shadow:0px 0px 12px #fff; transition:text-shadow 1s; background:url(../images/rss.png) 0 0 no-repeat; color:#fff; font-family:"Da Mad Rave"; padding-left:30px; line-height:28px; text-decoration:none; }
         .rssLink a:hover { text-shadow: 0px 0px 12px #0ad; }
 	.testResult { border-bottom:1px solid #00aadd; padding:5px 10px; }
@@ -157,7 +157,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 		.resultMessage { background: #00aadd; color: #fff; margin: 4px 0; padding: 5px 10px; }
 h3 span { color:#555; }
 .message { color: #fff; font-family: "xolonium"; }
-.pagerWrap { margin-bottom:15px; }
+.pagerWrap { margin-bottom:15px; text-align:right; }
 .prevPage, 
 .nextPage { color:#00aadd; font-family:"xolonium"; text-decoration:none; display:inline-block; }
 .prevPage { margin-right:15px; }
