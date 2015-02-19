@@ -32,6 +32,7 @@ namespace Sitecore.TestStar.Core.Providers {
                 return Enumerable.Empty<ITestEnvironment>();
 
 			IEnumerable<ITestEnvironment> environments = from Item i in folder.GetChildren()
+                                                         where i.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.EnvironmentTemplate"))
                                                          select GetTestEnvironment(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("DomainPrefix"), i.GetSafeFieldValue("IPAddress"));
 			return environments;
 		}

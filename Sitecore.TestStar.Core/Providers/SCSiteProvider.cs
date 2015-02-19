@@ -61,7 +61,30 @@ namespace Sitecore.TestStar.Core.Providers {
 
             List<string> envs = i.GetSafeFieldList("Environments");
 
-            return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID)));
+            IEnumerable<ITestEnvironment> siteEnvs = EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID));
+            
+            //handle environment override values
+            IEnumerable<Item> envOverrides = from Item s in i.GetChildren()
+                                             where s.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.EnvironmentOverrideTemplate")) 
+                                             select s;
+            if(envOverrides.Any()){
+                Dictionary<string, ITestEnvironment> de = siteEnvs.ToDictionary(a => a.ID);
+                foreach(Item eo in envOverrides){
+                    string eID = eo.GetSafeFieldValue("TestEnvironment");
+                    if(de.ContainsKey(eID)) {
+                        string dPrefix = eo.GetSafeFieldValue("DomainPrefix");
+                        string ip = eo.GetSafeFieldValue("IPAddress");
+                        
+                        if(!string.IsNullOrEmpty(dPrefix))
+                            de[eID].DomainPrefix = dPrefix;
+                        if(!string.IsNullOrEmpty(ip))
+                            de[eID].IPAddress = ip;
+                    }
+                }
+                siteEnvs = de.Values;
+            }
+
+            return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, siteEnvs);
         }
 
         public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {
