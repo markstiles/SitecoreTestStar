@@ -12,6 +12,17 @@ function AnimateNavWidth(obj, newWidth) {
 
 $(document).ready(function () {
     
+    $(".mobileNav").click(function (e) {
+        if ($("body").hasClass("mNavOpen")) {
+            $("body").removeClass("mNavOpen");
+            window.scrollTo(0, 0);
+        } else {
+            $("body").addClass("mNavOpen");
+        }
+        $(window).scrollTop(0);
+        e.preventDefault();
+    });
+
 	//set bg
 	var bgNum = 4;
 	var bgCur = Math.floor((Math.random() * 4) + 1);
@@ -123,7 +134,7 @@ $(document).ready(function () {
 	//	WEB TESTING //////////
 
     //if system is (un)checked then (un)check all corresponding sites
-	$(".wtSystems input[type='checkbox']").click(function (e) {
+	$(".sysInputs input[type='checkbox']").click(function (e) {
 	    var type = $(this).attr("name");
 	    if ($(this).is(':checked'))
 	        $(".wtSites input." + type).prop('checked', true);

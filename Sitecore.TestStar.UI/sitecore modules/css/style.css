@@ -73,7 +73,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 	.generate .submit { display: none; }
 
 .testForm { margin-bottom:15px; }
-.suiteWrap { max-width:620px; display:inline-block; vertical-align:top; position:relative; }
+.suiteWrap { max-width:645px; display:inline-block; vertical-align:top; position:relative; }
 
 .subtext { color:#00aadd; font-size:18px; font-family:'xolonium'; margin-bottom:15px; }
 
@@ -98,7 +98,7 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 
 .allSelector { display:inline-block; margin-left:15px; color:#fff; cursor:pointer; font-family:"xolonium"; }
 
-.resultWrap { display:inline-block; vertical-align:top; margin-left:20px; width:400px; }
+.resultWrap { display:inline-block; vertical-align:top; margin-left:10px; width:385px; }
 	.resultWrap h2 { position: relative; }    
 	.resultCounter { position:absolute; right:30px; top:0px;}
 .resultSet { max-height:600px; overflow:auto; margin:10px 0 5px; }
@@ -134,11 +134,9 @@ footer { background:url('../images/content-frame-bot.png') no-repeat; height: 37
 .testInputs label { display:inline-block; vertical-align:top; font-family: "xolonium"; font-size: 16px; }
 
 .wtEnvs,
-.wtSystems,
 .wtSites { display:inline-block; vertical-align:top; margin-bottom:15px; }
 .wtEnvs { width:200px; margin-right:10px; }
-.wtSystems { width:160px; margin-right:10px; }
-.wtSites { width:170px; }
+.wtSites { width:390px; }
     .systemName { font-size:11px; display:block; font-family: verdana; }
 .unitTests,
 .webTests { margin:0 0 15px 0; }

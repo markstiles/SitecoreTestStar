@@ -1,0 +1,26 @@
+﻿img,
+embed,
+object,
+video { max-width: 100%; height: auto; }
+
+header { height:auto; }
+.logo { background: url("../images/header-resp.png") no-repeat; height: 128px; left: 10px; width: 131px; position:static; margin:15px auto; }
+    .logo a { width: auto; }
+nav { display:none; background:none; width:100%; height:auto; position:relative; top:0px; }
+    nav ul { margin:10px; }
+    nav li { display: block; }
+    nav a { background: #0ad; border: 1px solid #fff; margin: 2px 0 0 0; text-align: center; padding:0px; line-height:31px; }
+    nav a div { display: none; }
+        nav a span { width: auto !important; position:static; }
+        nav a:hover span { margin-right:0px; }
+main { padding:0px 10px; }
+.main-bg { display:none; }
+h1 { line-height: 33px; }
+.mainInner { background: url("../images/content-frame-bg.png") repeat 0 0 ; border-top: 20px solid #fff; border-bottom:20px solid #fff; padding:20px 10px 10px; }
+footer { background:none; height:auto; margin:10px; position:relative; }
+.preThin { position: static; width:auto; margin-top:10px; }
+
+.mobileNav { border:1px solid #fff; background: url("../images/mobile-nav-btn.png") no-repeat scroll left top rgba(0, 0, 0, 0); box-shadow: 0 0 5px #777777; 
+             cursor: pointer; display: block; height: 40px; position: fixed; right: 10px; top: 15px; width: 44px; z-index: 3; }
+.mNavOpen .mobileNav { background-position: 0 -40px; }    
+.mNavOpen nav { display: block; }

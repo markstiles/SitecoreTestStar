@@ -12,6 +12,7 @@
 <head runat="server">
 	<title>TestStar</title>
     <link href="/sitecore modules/web/teststar/css/style.css" rel="stylesheet" />
+    <link href="/sitecore modules/web/teststar/css/responsive.css" rel="stylesheet" media="all and (max-width: 1095px)"  />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
     <script type="text/javascript">
@@ -36,6 +37,7 @@
 				<div class="logo">
 					<a href="/" title="Sitecore TestStar"><span>Sitecore TestStar</span></a>                
 				</div>
+                <div class="mobileNav"></div>
 				<nav>
 					<ul>
 						<asp:Repeater ID="rptNav" runat="server">

@@ -138,6 +138,7 @@
     <Folder Include="Packages\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sitecore modules\css\responsive.css" />
     <Content Include="sitecore modules\css\style.css" />
     <Content Include="sitecore modules\images\bullet.png" />
     <Content Include="sitecore modules\images\content-frame-bg.png" />
@@ -147,7 +148,9 @@
     <Content Include="sitecore modules\images\content-frame-bot.png" />
     <Content Include="sitecore modules\images\content-frame-top.png" />
     <Content Include="sitecore modules\images\h1-pre.png" />
+    <Content Include="sitecore modules\images\header-resp.png" />
     <Content Include="sitecore modules\images\header.png" />
+    <Content Include="sitecore modules\images\mobile-nav-btn.png" />
     <Content Include="sitecore modules\images\nav-bg.png" />
     <Content Include="sitecore modules\images\nav-btn-bg.png" />
     <Content Include="sitecore modules\images\result-bot.png" />

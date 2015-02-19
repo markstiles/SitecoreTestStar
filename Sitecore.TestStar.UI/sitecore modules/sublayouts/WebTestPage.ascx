@@ -38,9 +38,9 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <div class="wtSystems whiteBox corners">
+            <div class="wtSites whiteBox corners">
                 <h3><%= TextProviderPaths.Page.Systems(new SCTextEntryProvider()) %></h3>
-                <div class="testInputs">
+                <div class="testInputs sysInputs">
                     <asp:Repeater ID="rptSystems" runat="server">
                         <ItemTemplate>
                             <div class="row">
@@ -55,8 +55,6 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
-            </div>
-            <div class="wtSites whiteBox corners">
                 <h3><%= TextProviderPaths.Page.Sites(new SCTextEntryProvider()) %></h3>
                 <div class="testInputs">
                     <asp:Repeater ID="rptSites" runat="server">
