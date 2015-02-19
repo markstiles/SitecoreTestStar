@@ -20,12 +20,10 @@ namespace Sitecore.TestStar.UI.layouts {
 
 		protected string GetLink(Item i) {
 			string cssClass =  (Sitecore.Context.Item.ID.ToString().Equals(i.ID.ToString())) ? "class='active'" : string.Empty;
-			UrlOptions u = new UrlOptions();
-			u.LanguageEmbedding = LanguageEmbedding.Never;
 			string navTitle = i["Nav Title"];
 			string navText = (string.IsNullOrEmpty(navTitle)) ? i.DisplayName : navTitle;
 			string firstLetter = navText.ToArray().First().ToString();
-			return string.Format("<a title='{3}' href='{0}'{1}><div>{2}</div><span>{3}</span></a>", LinkManager.GetItemUrl(i, u), cssClass, firstLetter, navText);
+			return string.Format("<a title='{3}' href='{0}'{1}><div>{2}</div><span>{3}</span></a>", LinkManager.GetItemUrl(i), cssClass, firstLetter, navText);
 		}
 	}
 }
