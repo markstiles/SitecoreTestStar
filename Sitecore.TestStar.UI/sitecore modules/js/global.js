@@ -149,7 +149,7 @@ $(document).ready(function () {
         
         var tests = $(".webTests input[type='checkbox']:checked");
         var envs = $(".wtEnvs input[type='checkbox']:checked");
-        var sites = $(".wtSites input[type='checkbox']:checked");
+        var sites = $(".wtSites .siteInputs input[type='checkbox']:checked");
         var pass = WebTestValidation(tests, envs, sites, "notGenerate")
         if (!pass)
             return;

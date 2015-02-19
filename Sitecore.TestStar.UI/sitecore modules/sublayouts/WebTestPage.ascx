@@ -56,7 +56,7 @@
                     </asp:Repeater>
                 </div>
                 <h3><%= TextProviderPaths.Page.Sites(new SCTextEntryProvider()) %></h3>
-                <div class="testInputs">
+                <div class="testInputs siteInputs">
                     <asp:Repeater ID="rptSites" runat="server">
                         <ItemTemplate>
                             <div class="row">
