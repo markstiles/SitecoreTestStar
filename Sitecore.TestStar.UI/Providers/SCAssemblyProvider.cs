@@ -8,10 +8,10 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Extensions;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Providers;
 using Sitecore.Configuration;
 
-namespace Sitecore.TestStar.Core.Providers {
+namespace Sitecore.TestStar.UI.Providers {
 	public class SCAssemblyProvider : IAssemblyProvider {
 
         private ITextEntryProvider TextProvider;

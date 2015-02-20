@@ -8,7 +8,7 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Utility;
-using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.UI.Providers;
 
 namespace Sitecore.TestStar.WebTests {
     [TestFixture, RequiresSTA, Category("Redirect Test")]

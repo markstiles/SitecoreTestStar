@@ -7,11 +7,11 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.Configuration;
 
-namespace Sitecore.TestStar.Core.Providers {
+namespace Sitecore.TestStar.UI.Providers {
 	public class SCSystemProvider : ISystemProvider {
 
         private ISiteProvider SiteProvider;

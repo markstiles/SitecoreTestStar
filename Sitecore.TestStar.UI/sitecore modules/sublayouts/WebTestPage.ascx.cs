@@ -22,7 +22,7 @@ using Sitecore.TestStar.Core.Managers;
 using System.IO;
 using System.Net;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.UI.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.UI.sublayouts {

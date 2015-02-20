@@ -3,7 +3,7 @@
     Inherits="Sitecore.TestStar.UI.userControls.TestSuiteList" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Import Namespace="Sitecore.TestStar.UI.Providers" %>
 
 <div class="blueSubmit corners">
 	<input id="tSubmit" type="submit" value="<%= TextProviderPaths.Page.Run(new SCTextEntryProvider()) %>">

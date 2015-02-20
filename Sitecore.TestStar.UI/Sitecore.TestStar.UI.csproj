@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\SCAssemblyProvider.cs" />
+    <Compile Include="Providers\SCEnvironmentProvider.cs" />
+    <Compile Include="Providers\SCSiteProvider.cs" />
+    <Compile Include="Providers\SCSystemProvider.cs" />
+    <Compile Include="Providers\SCTestResultProvider.cs" />
+    <Compile Include="Providers\SCTextEntryProvider.cs" />
     <Compile Include="sitecore modules\layouts\Master.aspx.cs">
       <DependentUpon>Master.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

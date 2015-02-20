@@ -15,7 +15,7 @@ using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Items;
 using System.IO;
 using System.Web;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.UI.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.UI.Service {

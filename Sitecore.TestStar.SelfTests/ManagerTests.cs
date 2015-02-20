@@ -5,7 +5,6 @@ using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Managers;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Utility;
 using System;
 using System.Collections;

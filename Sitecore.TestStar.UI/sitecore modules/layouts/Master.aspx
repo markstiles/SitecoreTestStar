@@ -4,7 +4,7 @@
 <%@ Register TagPrefix="sc" Namespace="Sitecore.Web.UI.WebControls" Assembly="Sitecore.Kernel" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Import Namespace="Sitecore.TestStar.UI.Providers" %>
 
 <!DOCTYPE html>
 

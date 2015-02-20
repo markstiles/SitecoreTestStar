@@ -8,7 +8,6 @@ using Sitecore.Data.Items;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Utility;
 using Sitecore.TestStar.Core.Extensions;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.Configuration;
 
 namespace Sitecore.TestStar.Core.Providers {

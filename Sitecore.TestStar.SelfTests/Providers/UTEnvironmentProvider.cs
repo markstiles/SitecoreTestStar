@@ -8,7 +8,6 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.Configuration;
 

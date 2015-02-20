@@ -3,7 +3,7 @@
     Inherits="Sitecore.TestStar.UI.sublayouts.UnitTestPage" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Import Namespace="Sitecore.TestStar.UI.Providers" %>
 <%@ Register Src="../userControls/TestSuiteList.ascx" TagPrefix="ts" TagName="TestSuiteList" %>
 <%@ Register Src="../userControls/GenerateForm.ascx" TagPrefix="ts" TagName="GenerateForm" %>
 <%@ Register Src="../userControls/ResultList.ascx" TagPrefix="ts" TagName="ResultList" %>

@@ -8,7 +8,6 @@ using System.Web;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 
 namespace Sitecore.TestStar.Core.Utility {
 	public class TestUtility {

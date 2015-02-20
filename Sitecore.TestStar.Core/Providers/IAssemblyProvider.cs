@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.TestStar.Core.Providers.Interfaces {
+namespace Sitecore.TestStar.Core.Providers {
     public interface IAssemblyProvider {
 
         IEnumerable<string> GetUnitTestAssemblies();

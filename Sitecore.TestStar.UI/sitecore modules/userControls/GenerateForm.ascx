@@ -3,7 +3,7 @@
     Inherits="Sitecore.TestStar.UI.userControls.GenerateForm" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Import Namespace="Sitecore.TestStar.UI.Providers" %>
 
 <div class="genToggle">+</div>
 <div class="genFields">

@@ -9,11 +9,11 @@ using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.Data.Fields;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.Configuration;
 
-namespace Sitecore.TestStar.Core.Providers {
+namespace Sitecore.TestStar.UI.Providers {
 	public class SCSiteProvider : ISiteProvider {
         
         private ITextEntryProvider TextProvider;
@@ -47,24 +47,18 @@ namespace Sitecore.TestStar.Core.Providers {
 		}
 
         public ITestSite GetTestSite(Item i) {
-            Dictionary<string, object> p = new Dictionary<string, object>();
-            if (i.HasChildren) {
-                foreach (Item c in i.GetChildren()) {
-                    string s = c.GetSafeFieldValue("Value");
-                    string l = s.ToLower();
-                    if (l.Contains("true") || l.Contains("false"))
-                        p.Add(c.DisplayName, bool.Parse(l));
-                    else
-                        p.Add(c.DisplayName, s);
-                }
-            }
+
+            //get the properties
+            Dictionary<string, object> props = i.Axes.GetDescendants()
+                .Where(p => p.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.PropertyTemplate")))
+                .Distinct()
+                .ToDictionary(p => p.DisplayName, p => (object)p.GetSafeFieldValue("Value").ToLower());
 
             List<string> envs = i.GetSafeFieldList("Environments");
-
             IEnumerable<ITestEnvironment> siteEnvs = EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID));
             
             //handle environment override values
-            IEnumerable<Item> envOverrides = from Item s in i.GetChildren()
+            IEnumerable<Item> envOverrides = from Item s in i.Axes.GetDescendants()
                                              where s.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.EnvironmentOverrideTemplate")) 
                                              select s;
             if(envOverrides.Any()){
@@ -84,7 +78,7 @@ namespace Sitecore.TestStar.Core.Providers {
                 siteEnvs = de.Values;
             }
 
-            return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), p, siteEnvs);
+            return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), props, siteEnvs);
         }
 
         public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {

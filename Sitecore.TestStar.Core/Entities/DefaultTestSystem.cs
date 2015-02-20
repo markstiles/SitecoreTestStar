@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Utility;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 
 namespace Sitecore.TestStar.Core.Entities {

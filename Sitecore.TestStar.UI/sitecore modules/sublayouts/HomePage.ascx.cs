@@ -6,8 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NUnit.Core;
 using Sitecore.TestStar.Core.Utility;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Providers;
+using Sitecore.TestStar.UI.Providers;
 
 namespace Sitecore.TestStar.UI.sublayouts {
 	public partial class HomePage : System.Web.UI.UserControl {

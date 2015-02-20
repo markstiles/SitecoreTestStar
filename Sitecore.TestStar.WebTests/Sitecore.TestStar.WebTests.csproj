@@ -72,6 +72,10 @@
       <Project>{09facc1a-fc04-4af8-b70c-eb620659e9a7}</Project>
       <Name>Sitecore.TestStar.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sitecore.TestStar.UI\Sitecore.TestStar.UI.csproj">
+      <Project>{42f6d81a-070c-4c58-a6ac-0353da8fea62}</Project>
+      <Name>Sitecore.TestStar.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

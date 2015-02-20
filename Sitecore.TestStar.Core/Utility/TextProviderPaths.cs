@@ -1,4 +1,4 @@
-﻿using Sitecore.TestStar.Core.Providers.Interfaces;
+﻿using Sitecore.TestStar.Core.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -8,8 +8,8 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.UI.Providers;
 
 namespace Sitecore.TestStar.UI.layouts {
 	public partial class RSS : System.Web.UI.Page {

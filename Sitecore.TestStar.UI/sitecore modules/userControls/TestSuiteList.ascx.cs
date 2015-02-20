@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.UI.Providers;
 
 namespace Sitecore.TestStar.UI.userControls {
 	public partial class TestSuiteList : System.Web.UI.UserControl {

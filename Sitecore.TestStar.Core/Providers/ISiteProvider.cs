@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sitecore.TestStar.Core.Providers.Interfaces {
+namespace Sitecore.TestStar.Core.Providers {
     public interface ISiteProvider {
         
         IEnumerable<ITestSite> GetSites();

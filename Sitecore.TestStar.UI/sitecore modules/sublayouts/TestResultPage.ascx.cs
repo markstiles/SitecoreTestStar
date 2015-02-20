@@ -14,9 +14,9 @@ using Sitecore.TestStar.Core.Providers;
 using Sitecore.Web;
 using Sitecore.Links;
 using Sitecore.Data.Items;
-using Sitecore.TestStar.Core.Providers.Interfaces;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.TestStar.Core.Utility;
+using Sitecore.TestStar.UI.Providers;
 
 namespace Sitecore.TestStar.UI.sublayouts {
 	public partial class TestResultPage : UserControl {

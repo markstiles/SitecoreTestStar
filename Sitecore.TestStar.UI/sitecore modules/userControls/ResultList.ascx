@@ -3,7 +3,7 @@
     Inherits="Sitecore.TestStar.UI.userControls.ResultsList" %>
 <%@ Import Namespace="NUnit.Core" %>
 <%@ Import Namespace="Sitecore.TestStar.Core.Utility" %>
-<%@ Import Namespace="Sitecore.TestStar.Core.Providers" %>
+<%@ Import Namespace="Sitecore.TestStar.UI.Providers" %>
 
 <div class="resultWrap">
     <h2><%= TextProviderPaths.Page.Results(new SCTextEntryProvider()) %> <div class="resultCounter"></div></h2>

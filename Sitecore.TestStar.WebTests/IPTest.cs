@@ -11,7 +11,7 @@ using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Tests;
 using Sitecore.TestStar.Core.Providers;
-using Sitecore.TestStar.Core.Providers.Interfaces;
+using Sitecore.TestStar.UI.Providers;
 using Sitecore.TestStar.Core.Utility;
 
 namespace Sitecore.TestStar.WebTests {
