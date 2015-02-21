@@ -61,8 +61,8 @@ namespace Sitecore.TestStar.SelfTests {
             string domain = "domain";
             string systemID = "systemID";
             bool disabled = false;
-            
-            Dictionary<string,object> properties = new Dictionary<string, object>();
+
+            Dictionary<string, string> properties = new Dictionary<string, string>();
             string key = "first";
             string value = "second";
             properties.Add(key, value);

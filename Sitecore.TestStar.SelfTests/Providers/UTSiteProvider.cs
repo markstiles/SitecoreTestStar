@@ -34,7 +34,7 @@ namespace Sitecore.TestStar.Core.Providers {
                     "test.com", 
                     "1", 
                     false, 
-                    new Dictionary<string, object>(), 
+                    new Dictionary<string, string>(), 
                     EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID))
                 ) 
             };
@@ -46,7 +46,7 @@ namespace Sitecore.TestStar.Core.Providers {
             return GetSites().Where(a => !a.Disabled);
 		}
 
-        public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {
+        public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, string> properties, IEnumerable<ITestEnvironment> envs) {
             return (ITestSite)new DefaultTestSite(id, name, domain, systemID, disabled, properties, envs);
         }
 	}

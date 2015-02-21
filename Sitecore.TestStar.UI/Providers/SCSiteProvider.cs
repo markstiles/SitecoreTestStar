@@ -49,10 +49,10 @@ namespace Sitecore.TestStar.UI.Providers {
         public ITestSite GetTestSite(Item i) {
 
             //get the properties
-            Dictionary<string, object> props = i.Axes.GetDescendants()
+            Dictionary<string, string> props = i.Axes.GetDescendants()
                 .Where(p => p.TemplateID.ToString().Equals(Settings.GetSetting("TestStar.PropertyTemplate")))
                 .Distinct()
-                .ToDictionary(p => p.DisplayName, p => (object)p.GetSafeFieldValue("Value").ToLower());
+                .ToDictionary(p => p.DisplayName, p => p.GetSafeFieldValue("Value"));
 
             List<string> envs = i.GetSafeFieldList("Environments");
             IEnumerable<ITestEnvironment> siteEnvs = EnvProvider.GetEnvironments().Where(a => envs.Contains(a.ID));
@@ -81,7 +81,7 @@ namespace Sitecore.TestStar.UI.Providers {
             return GetTestSite(i.ID.ToString(), i.DisplayName, i.GetSafeFieldValue("Domain"), i.ParentID.ToString(), i.GetSafeFieldBool("Disabled"), props, siteEnvs);
         }
 
-        public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs) {
+        public ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, string> properties, IEnumerable<ITestEnvironment> envs) {
             return (ITestSite)new DefaultTestSite(id, name, domain, systemID, disabled, properties, envs);
         }
 	}

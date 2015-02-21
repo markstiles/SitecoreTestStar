@@ -14,6 +14,6 @@ namespace Sitecore.TestStar.Core.Providers {
 		
         IEnumerable<ITestSite> GetEnabledSites();
 
-        ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, object> properties, IEnumerable<ITestEnvironment> envs);
+        ITestSite GetTestSite(string id, string name, string domain, string systemID, bool disabled, Dictionary<string, string> properties, IEnumerable<ITestEnvironment> envs);
     }
 }
