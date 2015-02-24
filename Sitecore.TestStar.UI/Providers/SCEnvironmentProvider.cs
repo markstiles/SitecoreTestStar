@@ -7,10 +7,11 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.UI.Extensions;
 using Sitecore.Configuration;
+using Sitecore.TestStar.UI.Utility;
 
 namespace Sitecore.TestStar.UI.Providers {
 	public class SCEnvironmentProvider : IEnvironmentProvider {
@@ -24,7 +25,7 @@ namespace Sitecore.TestStar.UI.Providers {
         }
 
         public IEnumerable<ITestEnvironment> GetEnvironments() {
-            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.EnvironmentFolder"));
+            Item folder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.EnvironmentFolder"));
 			if(folder == null)
 				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.EnvFoldNull(TextProvider));
 

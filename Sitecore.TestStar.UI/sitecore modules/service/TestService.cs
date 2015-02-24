@@ -17,6 +17,8 @@ using System.IO;
 using System.Web;
 using Sitecore.TestStar.UI.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
+using Sitecore.TestStar.UI.Utility;
+using Sitecore.TestStar.UI.Extensions;
 
 namespace Sitecore.TestStar.UI.Service {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -58,7 +60,7 @@ namespace Sitecore.TestStar.UI.Service {
 			List<DefaultWebTestResult> errorList = new List<DefaultWebTestResult> { new DefaultWebTestResult(string.Empty, string.Empty, DateTime.Now, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty) };
 			
 			//get the environment
-            Item ei = TestStar.Core.Utility.Constants.MasterDB.GetItem(EnvironmentID);
+            Item ei = SitecoreUtility.MasterDB.GetItem(EnvironmentID);
 			if (ei == null) {
                 errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullEnv(tProvider);
 				return errorList;
@@ -67,7 +69,7 @@ namespace Sitecore.TestStar.UI.Service {
             ITestEnvironment te = eProvider.GetTestEnvironment(ei.ID.ToString(), ei.DisplayName, ei.GetSafeFieldValue("DomainPrefix"), ei.GetSafeFieldValue("IPAddress"));
 
 			//get the site
-            Item si = TestStar.Core.Utility.Constants.MasterDB.GetItem(SiteID);
+            Item si = SitecoreUtility.MasterDB.GetItem(SiteID);
 			if (si == null) {
                 errorList[0].Message = TextProviderPaths.Errors.TestRunner.NullSite(tProvider);
 				return errorList;

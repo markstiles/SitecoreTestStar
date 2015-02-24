@@ -211,7 +211,7 @@ $(document).ready(function () {
     	
     	var tests = $(".webTests input[type='checkbox']:checked");
     	var envs = $(".wtEnvs input[type='checkbox']:checked");
-    	var sites = $(".wtSites input[type='checkbox']:checked");
+    	var sites = $(".siteInputs input[type='checkbox']:checked");
     	var scriptName = $("#tScriptName").val().trim();
     	var pass = WebTestValidation(tests, envs, sites, scriptName)
     	if (!pass)

@@ -1,5 +1,4 @@
-﻿using Sitecore.Data.Items;
-using Sitecore.TestStar.Core.Entities;
+﻿using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using System;
 using System.Collections.Generic;

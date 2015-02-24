@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.UI.Extensions;
+using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.Configuration;
+using Sitecore.TestStar.UI.Utility;
 
 namespace Sitecore.TestStar.UI.Providers {
 	public class SCAssemblyProvider : IAssemblyProvider {
@@ -23,7 +25,7 @@ namespace Sitecore.TestStar.UI.Providers {
         }
 
         public IEnumerable<string> GetUnitTestAssemblies() {
-            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.UnitAssemblies"));
+            Item folder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.UnitAssemblies"));
 			if (folder == null)
                 throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.UnitFoldNull(TextProvider));
 
@@ -36,7 +38,7 @@ namespace Sitecore.TestStar.UI.Providers {
 		}
 
         public IEnumerable<string> GetWebTestAssemblies() {
-            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.WebAssemblies"));
+            Item folder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.WebAssemblies"));
 			if (folder == null)
                 throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.WebFoldNull(TextProvider));
 

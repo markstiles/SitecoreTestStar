@@ -59,9 +59,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\pnunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\..\testsite-sc-7.1\Website\bin\Sitecore.Kernel.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -84,7 +81,6 @@
     <Compile Include="Entities\DefaultTestResultList.cs" />
     <Compile Include="Entities\DefaultTestSite.cs" />
     <Compile Include="Entities\DefaultTestSystem.cs" />
-    <Compile Include="Extensions\SitecoreExtensions.cs" />
     <Compile Include="Extensions\TestExtensions.cs" />
     <Compile Include="Managers\UnitTestManager.cs" />
     <Compile Include="Managers\WebTestManager.cs" />
@@ -98,7 +94,6 @@
     <Compile Include="Tests\BaseWebTest.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Enums.cs" />
-    <Compile Include="Utility\SitecoreUtility.cs" />
     <Compile Include="Utility\TestUtility.cs" />
     <Compile Include="Entities\GenScriptResult.cs" />
     <Compile Include="Entities\DefaultUnitTestResult.cs" />

@@ -8,8 +8,9 @@ using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Utility;
 using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.UI.Utility;
 
-namespace Sitecore.TestStar.Core.Extensions {
+namespace Sitecore.TestStar.UI.Extensions {
 	public static class SitecoreExtensions {
 		public static Item GetItemByID(this Database db, string id) {
 			return db.GetItem(SitecoreUtility.GetID(id));

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Sitecore.Data;
 
 namespace Sitecore.TestStar.Core.Utility {
 	public static class Constants {
@@ -40,21 +39,5 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		#endregion 
-
-		#region DB
-
-		public static Database MasterDB {
-			get {
-				return Sitecore.Configuration.Factory.GetDatabase("master");
-			}
-		}
-
-		public static Database WebDB {
-			get {
-				return Sitecore.Configuration.Factory.GetDatabase("web");
-			}
-		}
-
-		#endregion DB
 	}
 }

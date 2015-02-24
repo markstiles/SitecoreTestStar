@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
 using Sitecore.TestStar.Core.Extensions;
+using Sitecore.TestStar.UI.Extensions;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.Data.Fields;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.Configuration;
+using Sitecore.TestStar.UI.Utility;
 
 namespace Sitecore.TestStar.UI.Providers {
 	public class SCTestResultProvider : ITestResultProvider {
@@ -25,7 +26,7 @@ namespace Sitecore.TestStar.UI.Providers {
         }
 
 		public IEnumerable<ITestResultList> GetTestResultLists() {
-            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
+            Item folder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
 			if (folder == null)
 				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.ResultFoldNull(TextProvider));
 

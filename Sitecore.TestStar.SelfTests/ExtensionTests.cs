@@ -12,21 +12,7 @@ using System.Threading.Tasks;
 namespace Sitecore.TestStar.SelfTests {
     [TestFixture, Category("Extension Tests")]
     public class ExtensionTests {
-
-        #region SitecoreExtensions
-
-        [Test]
-        public void SCExtensions_ToDateFieldValue() {
-            DateTime dt = new DateTime(2015, 1, 1, 1, 1, 1);
-            string expected = "20150101T010101";
-
-            string result = SitecoreExtensions.ToDateFieldValue(dt);
-
-            Assert.AreEqual(result, expected);
-        }
-
-        #endregion SitecoreExtensions
-
+        
         #region TestExtensions
 
         [Test]

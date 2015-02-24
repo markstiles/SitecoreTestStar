@@ -7,11 +7,12 @@ using Sitecore.Data.Items;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
 using Sitecore.TestStar.Core.Utility;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.UI.Extensions;
 using Sitecore.Data.Fields;
 using Sitecore.TestStar.Core.Providers;
 using Sitecore.TestStar.Core.Entities.Interfaces;
 using Sitecore.Configuration;
+using Sitecore.TestStar.UI.Utility;
 
 namespace Sitecore.TestStar.UI.Providers {
 	public class SCSiteProvider : ISiteProvider {
@@ -29,7 +30,7 @@ namespace Sitecore.TestStar.UI.Providers {
         }
 
         public IEnumerable<ITestSite> GetSites() {
-            Item folder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.SiteFolder"));
+            Item folder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.SiteFolder"));
 			if (folder == null)
 				throw new NullReferenceException(TextProviderPaths.Exceptions.Providers.EnvFoldNull(TextProvider));
 

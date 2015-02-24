@@ -10,10 +10,10 @@ using Sitecore.Data.Items;
 using Sitecore.SecurityModel;
 using Sitecore.TestStar.Core.Entities;
 using Sitecore.TestStar.Core.Extensions;
-using Cons = Sitecore.TestStar.Core.Utility.Constants;
+using Sitecore.TestStar.UI.Extensions;
 using Sitecore.Configuration;
 
-namespace Sitecore.TestStar.Core.Utility {
+namespace Sitecore.TestStar.UI.Utility {
 	public static class SitecoreUtility {
 
 		public static Sitecore.Data.ID GetID(string id){
@@ -35,11 +35,11 @@ namespace Sitecore.TestStar.Core.Utility {
 		private static string CreateResultEntry(string listName, string dateValue, string className, string method, string type, string message, bool isUnitTest, string siteID, string envID, string url, string status) {
 			string returnID = string.Empty;
 			//change to the item in the master db so that content isn't created in the web db
-			Item resultsFolder = Cons.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
+            Item resultsFolder = SitecoreUtility.MasterDB.GetItem(Settings.GetSetting("TestStar.ResultsFolder"));
 			//need to open security to create item
 			using (new SecurityDisabler()) {
 				//get date folder
-                Sitecore.Data.Items.TemplateItem folderTemplate = Cons.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsFolderTemplate")];
+                Sitecore.Data.Items.TemplateItem folderTemplate = SitecoreUtility.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsFolderTemplate")];
 				Item parentNode = GetDateParentNode(resultsFolder, DateTime.Now, folderTemplate);
 				if (parentNode == null) 
 					return returnID;
@@ -49,7 +49,7 @@ namespace Sitecore.TestStar.Core.Utility {
 				Item listItem = parentNode.Axes.GetChild(goodListName);
 				//if it doesn't exist or if it's not the same type we want, then create it
 				if (listItem == null) //Create new item
-                    listItem = parentNode.Add(goodListName, Cons.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsListTemplate")]);
+                    listItem = parentNode.Add(goodListName, SitecoreUtility.MasterDB.Templates[Settings.GetSetting("TestStar.ResultsListTemplate")]);
 
 				//if you created the item successfully
 				if (listItem == null)
@@ -62,8 +62,8 @@ namespace Sitecore.TestStar.Core.Utility {
 					}
 				}
 			
-				string entryName = (listItem.Children.Count + 1).ToString("0000");
-                Item newEntryItem = listItem.Add(entryName, Cons.MasterDB.Templates[(isUnitTest) ? Settings.GetSetting("TestStar.UnitTestResultTemplate") : Settings.GetSetting("TestStar.WebTestResultTemplate")]);
+				string entryName = (listItem.Children.Count + 1).ToString("00000");
+                Item newEntryItem = listItem.Add(entryName, SitecoreUtility.MasterDB.Templates[(isUnitTest) ? Settings.GetSetting("TestStar.UnitTestResultTemplate") : Settings.GetSetting("TestStar.WebTestResultTemplate")]);
 				returnID = newEntryItem.ID.ToString();
 				using (new EditContext(newEntryItem, true, false)) {
 					newEntryItem["Type"] = type;
@@ -91,6 +91,11 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		public static Item GetDateParentNode(Item parentNode, DateTime dt, TemplateItem folderType) {
 
+            if (parentNode == null)
+                throw new NullReferenceException();
+            if (folderType == null)
+                throw new NullReferenceException();
+            
 			//get year folder
 			Item year = parentNode.Children[dt.Year.ToString()];
 			if (year == null) {
@@ -125,10 +130,12 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		public static void PublishItem(Item item) {
+            if (item == null)
+                throw new NullReferenceException();
 
 			var pubOpts = new Sitecore.Publishing.PublishOptions(
-				Cons.MasterDB, 
-				Cons.WebDB, 
+                SitecoreUtility.MasterDB,
+                SitecoreUtility.WebDB, 
 				Sitecore.Publishing.PublishMode.Full, 
 				Sitecore.Data.Managers.LanguageManager.DefaultLanguage, 
 				DateTime.Now);
@@ -145,6 +152,9 @@ namespace Sitecore.TestStar.Core.Utility {
 
 		public static string GetItemName(string val) {
 
+            if (val == null)
+                throw new NullReferenceException();
+
 			string newVal = ItemUtil.ProposeValidItemName(val);
 
 			StringBuilder sb = new StringBuilder();
@@ -158,13 +168,35 @@ namespace Sitecore.TestStar.Core.Utility {
 		}
 
 		public static string MakeHref(string a) {
+            if (a == null)
+                throw new NullReferenceException();
+
 			return string.Format("<a href='{0}' target='_blank'>{0}</a>", a);
 		}
 
 		public static string GetKeyStr(string s) {
+            if (s == null)
+                throw new NullReferenceException();
+
 			return string.Format("<span class='resultKey'>{0}</span>", s);
 		}
 
 		#endregion Text Formatting
+
+        #region DB
+
+        public static Database MasterDB {
+            get {
+                return Sitecore.Configuration.Factory.GetDatabase("master");
+            }
+        }
+
+        public static Database WebDB {
+            get {
+                return Sitecore.Configuration.Factory.GetDatabase("web");
+            }
+        }
+
+        #endregion DB
 	}
 }
