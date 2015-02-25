@@ -4,6 +4,7 @@
 <%@ Import Namespace="Sitecore.TestStar.Core.Entities.Interfaces" %>
 <%@ Import Namespace="Sitecore.Data.Items" %>
 <%@ Import Namespace="Sitecore.Data.Fields" %>
+<%@ Import Namespace="Sitecore.Links" %>
 
 <asp:Literal id="XmlOutput" runat="server"></asp:Literal>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -38,10 +39,10 @@
 						<%# "]]>" %>
 					</description>
 					<link>
-						<%# string.Format("http://{0}/results", Request.Url.Host) %>
+						<%# string.Format("http://{0}{1}", Request.Url.Host, LinkManager.GetItemUrl(Sitecore.Context.Item.Parent)) %>
 					</link>
 					<guid>
-						<%# string.Format("http://{0}/results?g={0}", Request.Url.Host, ((ITestResultList)Container.DataItem).ID.Replace("{",string.Empty).Replace("-",string.Empty)) %>
+						<%# string.Format("http://{0}{1}?g={2}", Request.Url.Host, LinkManager.GetItemUrl(Sitecore.Context.Item.Parent), ((ITestResultList)Container.DataItem).ID.Replace("{",string.Empty).Replace("-",string.Empty)) %>
 					</guid>
 					<pubDate>
 						<%# ((ITestResultList)Container.DataItem).Date.ToString("ddd, dd MMM yyyy hh:mm:ss") +  " GMT" %>
